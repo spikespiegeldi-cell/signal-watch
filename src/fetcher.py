@@ -77,22 +77,23 @@ def record(b: dict, key: str, value: Optional[float]) -> tuple:
 
 # ── Tech chain ────────────────────────────────────────────────────────────────
 
-def fetch_arxiv(keywords: list) -> Optional[int]:
-    """Count arXiv papers matching keywords submitted in the past 24h."""
+def fetch_arxiv(keywords: list) -> Optional[float]:
+    """7-day moving average of arXiv papers matching keywords (total past 7 days / 7)."""
     try:
         q = " OR ".join(f'"{kw}"' for kw in keywords)
-        yd = (date.today() - timedelta(days=1)).strftime("%Y%m%d")
+        start = (date.today() - timedelta(days=7)).strftime("%Y%m%d")
         td = date.today().strftime("%Y%m%d")
         url = (
             f"http://export.arxiv.org/api/query"
             f"?search_query=all:{requests.utils.quote(q)}"
-            f"&submittedDate=[{yd}0000+TO+{td}2359]&max_results=1"
+            f"&submittedDate=[{start}0000+TO+{td}2359]&max_results=1"
         )
         r = requests.get(url, timeout=30, headers=HEADERS)
         root = ET.fromstring(r.text)
         ns = {"os": "http://a9.com/-/spec/opensearch/1.1/"}
         total = root.find("os:totalResults", ns)
-        return int(total.text) if total is not None else 0
+        count = int(total.text) if total is not None else 0
+        return round(count / 7, 1)
     except Exception as e:
         log.warning(f"arXiv: {e}")
         return None
@@ -115,17 +116,17 @@ def fetch_hackernews(keywords: list) -> Optional[int]:
         return None
 
 
-def fetch_patents(companies: list) -> Optional[int]:
-    """Count recent patent applications for tracked companies via USPTO PatentsView API."""
+def fetch_patents(companies: list) -> Optional[float]:
+    """7-day moving average of patent applications for tracked companies (total past 7 days / 7)."""
     try:
         count = 0
-        yesterday = (date.today() - timedelta(days=7)).strftime("%Y-%m-%d")  # wider window for USPTO lag
+        start = (date.today() - timedelta(days=7)).strftime("%Y-%m-%d")
         today_str = date.today().strftime("%Y-%m-%d")
         for company in companies[:3]:
             payload = {
                 "q": {
                     "_and": [
-                        {"_gte": {"patent_date": yesterday}},
+                        {"_gte": {"patent_date": start}},
                         {"_lte": {"patent_date": today_str}},
                         {"_contains": {"assignee_organization": company}}
                     ]
@@ -139,7 +140,7 @@ def fetch_patents(companies: list) -> Optional[int]:
             )
             if r.ok:
                 count += r.json().get("total_patent_count", 0)
-        return count
+        return round(count / 7, 1)
     except Exception as e:
         log.warning(f"Patents: {e}")
         return None
@@ -254,18 +255,18 @@ def fetch_nih(keywords: list) -> Optional[int]:
         return None
 
 
-def fetch_biorxiv() -> Optional[int]:
-    """Count bioRxiv preprints submitted in the past 24h."""
+def fetch_biorxiv() -> Optional[float]:
+    """7-day moving average of bioRxiv preprints (total past 7 days / 7)."""
     try:
-        yd = (date.today() - timedelta(days=1)).strftime("%Y-%m-%d")
+        start = (date.today() - timedelta(days=7)).strftime("%Y-%m-%d")
         td = date.today().strftime("%Y-%m-%d")
         r = requests.get(
-            f"https://api.biorxiv.org/details/biorxiv/{yd}/{td}/0/json",
+            f"https://api.biorxiv.org/details/biorxiv/{start}/{td}/0/json",
             timeout=30
         ).json()
         msgs = r.get("messages", [{}])
         total = msgs[0].get("total", 0) if msgs else 0
-        return int(total)
+        return round(int(total) / 7, 1)
     except Exception as e:
         log.warning(f"bioRxiv: {e}")
         return None
@@ -524,21 +525,22 @@ def fetch_arpa_e() -> Optional[int]:
         return None
 
 
-def fetch_arxiv_physics() -> Optional[int]:
-    """Count arXiv physics.app-ph preprints submitted in the past 24h."""
+def fetch_arxiv_physics() -> Optional[float]:
+    """7-day moving average of arXiv physics.app-ph preprints (total past 7 days / 7)."""
     try:
-        yd = (date.today() - timedelta(days=1)).strftime("%Y%m%d")
+        start = (date.today() - timedelta(days=7)).strftime("%Y%m%d")
         td = date.today().strftime("%Y%m%d")
         url = (
             f"http://export.arxiv.org/api/query"
             f"?search_query=cat:physics.app-ph"
-            f"&submittedDate=[{yd}0000+TO+{td}2359]&max_results=1"
+            f"&submittedDate=[{start}0000+TO+{td}2359]&max_results=1"
         )
         r = requests.get(url, timeout=30, headers=HEADERS)
         root = ET.fromstring(r.text)
         ns = {"os": "http://a9.com/-/spec/opensearch/1.1/"}
         total = root.find("os:totalResults", ns)
-        return int(total.text) if total is not None else 0
+        count = int(total.text) if total is not None else 0
+        return round(count / 7, 1)
     except Exception as e:
         log.warning(f"arXiv physics: {e}")
         return None

@@ -335,10 +335,10 @@
 
 {% macro signal_unit(source) -%}
 {%- set s = source | lower -%}
-{%- if 'arxiv' in s and 'physics' not in s -%}papers/day
-{%- elif 'physics' in s or 'biorxiv' in s -%}preprints/day
+{%- if 'arxiv' in s and 'physics' not in s -%}7-day moving avg (papers/day)
+{%- elif 'physics' in s or 'biorxiv' in s -%}7-day moving avg (preprints/day)
 {%- elif 'hacker news' in s -%}matching stories
-{%- elif 'patent' in s -%}filings
+{%- elif 'patent' in s -%}7-day moving avg (filings/day)
 {%- elif 'crunchbase' in s -%}news items/day
 {%- elif 'yield' in s -%}% spread (+ = normal, − = inverted)
 {%- elif 'box production' in s -%}industrial production index
@@ -496,7 +496,7 @@
           <div class="glossary-chain-title">Tech Chain</div>
           <div class="glossary-item">
             <span class="glossary-source">arXiv papers</span>
-            <span class="glossary-desc">Number of academic papers submitted to arXiv in the past 24h matching your tracked keywords. A spike suggests a research wave is forming around a topic before it reaches mainstream media.</span>
+            <span class="glossary-desc">7-day moving average of academic papers submitted to arXiv matching your tracked keywords (total past 7 days ÷ 7, expressed as papers/day). Using a weekly average smooths out weekend quiet periods and batch submission patterns. A rising average suggests a research wave is forming before it reaches mainstream media.</span>
           </div>
           <div class="glossary-item">
             <span class="glossary-source">Hacker News</span>
@@ -504,7 +504,7 @@
           </div>
           <div class="glossary-item">
             <span class="glossary-source">USPTO Patents</span>
-            <span class="glossary-desc">Number of new patent applications filed by your tracked companies this week. A surge in filings often precedes a product launch or signals a company is racing to protect new IP.</span>
+            <span class="glossary-desc">7-day moving average of patent applications filed by your tracked companies (total past 7 days ÷ 7, expressed as filings/day). USPTO data has processing lags so a weekly window captures filings more reliably than a single day. A rising average often precedes a product launch or signals a company racing to protect new IP.</span>
           </div>
           <div class="glossary-item">
             <span class="glossary-source">Crunchbase</span>
@@ -542,7 +542,7 @@
           </div>
           <div class="glossary-item">
             <span class="glossary-source">bioRxiv</span>
-            <span class="glossary-desc">Number of biology preprints submitted to bioRxiv in the past 24h. Preprints are published before peer review, so they represent the very earliest public signal of research momentum in a field.</span>
+            <span class="glossary-desc">7-day moving average of biology preprints submitted to bioRxiv (total past 7 days ÷ 7, expressed as preprints/day). Preprints are published before peer review — the earliest public signal of research momentum. The weekly average removes day-of-week submission noise.</span>
           </div>
           <div class="glossary-item">
             <span class="glossary-source">ClinicalTrials.gov</span>
