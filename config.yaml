@@ -37,8 +37,11 @@ economy_chain:
     yield_curve: "T10Y2Y"
     box_production: "IPG2653S"
   linkedin_keywords:
-    - "software engineer"
-    - "data scientist"
+    - "drug discovery"
+    - "autonomous vehicle engineer"
+    - "clinical research"
+    - "nuclear engineer"
+    - "AI researcher"
 
 biotech_chain:
   nih_keywords:
