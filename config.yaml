@@ -50,15 +50,26 @@ biotech_chain:
     - "small molecule"
     - "CAR-T"
     - "mRNA"
+    - "CRISPR"
+    - "lipid nanoparticle"
+    - "PROTAC"
+    - "blood-brain barrier"
+    - "epigenetic reprogramming"
   clinicaltrials_keywords:
     - "CAR-T"
     - "obesity"
     - "small molecule"
     - "cancer immunotherapy"
+    - "Alzheimer"
+    - "Parkinson"
+    - "gene therapy"
+    - "PROTAC"
   sec_biotech_keywords:
     - "biopharmaceutical"
     - "therapeutics"
     - "genomics"
+    - "gene editing"
+    - "cell therapy"
 
 social_chain:
   subreddits:
@@ -99,6 +110,10 @@ corporate_chain:
     - "UiPath"
     - "Firefly Neuroscience"
     - "Schrodinger"
+    - "Arvinas"
+    - "Intellia Therapeutics"
+    - "Beam Therapeutics"
+    - "Denali Therapeutics"
 
 energy_chain:
   commodities:
