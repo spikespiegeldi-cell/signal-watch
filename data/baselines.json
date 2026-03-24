@@ -1,1 +1,227 @@
-{}
+{
+  "tech_arxiv": {
+    "values": [
+      1063
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 1063.0
+  },
+  "tech_hn": {
+    "values": [
+      81769
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 81769.0
+  },
+  "tech_patents": {
+    "values": [
+      0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.0
+  },
+  "tech_crunchbase": {
+    "values": [
+      1
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 1.0
+  },
+  "econ_yield": {
+    "values": [
+      0.51
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.51
+  },
+  "econ_marine": {
+    "values": [
+      0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.0
+  },
+  "econ_jobs": {
+    "values": [
+      0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.0
+  },
+  "bio_nih": {
+    "values": [
+      11024
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 11024.0
+  },
+  "bio_biorxiv": {
+    "values": [
+      345
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 345.0
+  },
+  "bio_clin": {
+    "values": [
+      0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.0
+  },
+  "bio_sec": {
+    "values": [
+      3
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 3.0
+  },
+  "soc_trends": {
+    "values": [
+      21.0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 21.0
+  },
+  "soc_ks": {
+    "values": [
+      0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.0
+  },
+  "soc_amazon": {
+    "values": [
+      30
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 30.0
+  },
+  "geo_commodities": {
+    "values": [
+      3307.566666666666
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 3307.5667
+  },
+  "geo_marine": {
+    "values": [
+      0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.0
+  },
+  "geo_eu": {
+    "values": [
+      0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.0
+  },
+  "geo_congress": {
+    "values": [
+      0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.0
+  },
+  "corp_form4": {
+    "values": [
+      0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.0
+  },
+  "corp_jobs": {
+    "values": [
+      0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.0
+  },
+  "corp_patents": {
+    "values": [
+      0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.0
+  },
+  "corp_8k": {
+    "values": [
+      7
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 7.0
+  },
+  "en_physics": {
+    "values": [
+      23047
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 23047.0
+  },
+  "en_commodities": {
+    "values": [
+      1538.4166666666667
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 1538.4167
+  },
+  "en_crunchbase": {
+    "values": [
+      0
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "avg30": 0.0
+  }
+}

@@ -3,21 +3,1103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signal Watch</title>
+<title>Signal Watch — 2026-03-24</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-         display: flex; align-items: center; justify-content: center;
-         min-height: 100vh; margin: 0; background: #f8fafc; color: #0f172a; }
-  .msg { text-align: center; }
-  h1 { font-size: 24px; margin-bottom: 8px; }
-  p  { color: #64748b; font-size: 14px; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --muted: #64748b;
+    --subtle: #94a3b8;
+    --high: #16a34a;
+    --medium: #d97706;
+    --low: #6b7280;
+    --alert-bg: #fefce8;
+    --alert-border: #eab308;
+    --rising: #16a34a;
+    --flat: #3b82f6;
+    --dropping: #ef4444;
+    --silent: #94a3b8;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Top bar */
+  .topbar {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .topbar-brand { display: flex; align-items: baseline; gap: 12px; }
+  .topbar-brand h1 { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+  .topbar-brand .date { font-size: 12px; color: #64748b; }
+  .topbar-alert {
+    background: var(--alert-bg);
+    border: 1px solid var(--alert-border);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: #78350f;
+    font-weight: 500;
+    max-width: 500px;
+    flex-shrink: 1;
+  }
+  .topbar-no-alert { font-size: 12px; color: #475569; }
+
+  /* Main layout */
+  .container { max-width: 1280px; margin: 0 auto; padding: 24px 16px; }
+
+  /* Chain grid */
+  .chain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 768px) {
+    .chain-grid { grid-template-columns: 1fr; }
+    .topbar { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* Chain card */
+  .chain-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .chain-card--HIGH  { border-left: 4px solid var(--high); }
+  .chain-card--MEDIUM{ border-left: 4px solid var(--medium); }
+  .chain-card--LOW   { border-left: 4px solid var(--low); }
+
+  .card-header {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .chain-name { font-size: 15px; font-weight: 700; color: var(--text); }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    margin-left: 8px;
+  }
+  .badge--HIGH   { background: var(--high); }
+  .badge--MEDIUM { background: var(--medium); }
+  .badge--LOW    { background: var(--low); }
+  .time-horizon {
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--bg);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  /* Convergence bar */
+  .convergence-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .conv-label { font-size: 11px; color: var(--muted); }
+  .conv-squares { display: flex; gap: 4px; }
+  .conv-sq {
+    width: 18px; height: 8px; border-radius: 2px;
+    background: var(--border);
+  }
+  .conv-sq--filled { background: var(--high); }
+  .conv-count { font-size: 11px; color: var(--muted); }
+
+  /* Conclusion */
+  .conclusion {
+    padding: 14px 20px;
+    font-size: 14px;
+    color: #1e293b;
+    line-height: 1.6;
+    font-style: italic;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Expandable signals */
+  details { border-top: none; }
+  details > summary {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+  }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::before {
+    content: '▶';
+    font-size: 9px;
+    transition: transform 0.15s;
+  }
+  details[open] > summary::before { transform: rotate(90deg); }
+
+  .signal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .signal-table th {
+    padding: 6px 20px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .signal-table td {
+    padding: 8px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+  }
+  .signal-table tr:last-child td { border-bottom: none; }
+
+  .status-badge {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .status-badge--RISING   { background: var(--rising); }
+  .status-badge--FLAT     { background: var(--flat); }
+  .status-badge--DROPPING { background: var(--dropping); }
+  .status-badge--SILENT   { background: var(--silent); color: #fff; }
+
+  .signal-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* Section heading */
+  .section-heading {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 12px;
+  }
+
+  /* History panel */
+  .history-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .history-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .history-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 8px 6px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    min-width: 52px;
+    background: var(--bg);
+    cursor: default;
+  }
+  .history-day-date {
+    font-size: 10px;
+    color: var(--subtle);
+    white-space: nowrap;
+  }
+  .history-dots {
+    display: flex;
+    gap: 2px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 44px;
+  }
+  .history-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .history-dot--1 { background: #fde68a; }
+  .history-dot--2 { background: #fbbf24; }
+  .history-dot--3 { background: #f59e0b; }
+  .history-dot--4 { background: var(--high); }
+  .history-dot--alert { outline: 1px solid #dc2626; }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--subtle);
+    padding: 16px 0 32px;
+  }
 </style>
 </head>
 <body>
-<div class="msg">
-  <h1>Signal Watch</h1>
-  <p>Dashboard will appear here after the first automated run.<br>
-     Trigger the GitHub Actions workflow manually to generate the first report.</p>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="topbar-brand">
+    <h1>Signal Watch</h1>
+    <span class="date">2026-03-24</span>
+  </div>
+  
+  <div class="topbar-no-alert">No cross-chain alerts today</div>
+  
+</div>
+
+<div class="container">
+
+  <!-- Chain grid -->
+  <p class="section-heading" style="margin-bottom:16px;">Signal Chains</p>
+  <div class="chain-grid">
+
+    
+    <div class="chain-card chain-card--HIGH">
+
+      <div class="card-header">
+        <div class="card-header-top">
+          <div style="display:flex;align-items:center;">
+            <span class="chain-name">Tech</span>
+            <span class="badge badge--HIGH">HIGH</span>
+          </div>
+          <span class="time-horizon">weeks</span>
+        </div>
+        <div class="convergence-row">
+          <span class="conv-label">Convergence</span>
+          <div class="conv-squares">
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+          </div>
+          <span class="conv-count">0/4</span>
+        </div>
+      </div>
+
+      <div class="conclusion">Tech sector shows no emerging signals; all metrics at baseline.</div>
+
+      <details>
+        <summary>Show signals (4)</summary>
+        <table class="signal-table">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Today</th>
+              <th>30d avg</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>
+                <div>arXiv papers matching keywords</div>
+                
+                <div class="signal-note">Agentic AI, solid-state battery papers stable</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>Hacker News stories matching keywords</div>
+                
+                <div class="signal-note">Tech community interest unchanged from baseline</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>USPTO patent filings by tracked companies</div>
+                
+                <div class="signal-note">No patent activity today, consistent with average</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>Crunchbase tech funding news items</div>
+                
+                <div class="signal-note">Single funding item matches 30-day average</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </details>
+
+    </div>
+    
+    <div class="chain-card chain-card--MEDIUM">
+
+      <div class="card-header">
+        <div class="card-header-top">
+          <div style="display:flex;align-items:center;">
+            <span class="chain-name">Economy</span>
+            <span class="badge badge--MEDIUM">MEDIUM</span>
+          </div>
+          <span class="time-horizon">weeks</span>
+        </div>
+        <div class="convergence-row">
+          <span class="conv-label">Convergence</span>
+          <div class="conv-squares">
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+          </div>
+          <span class="conv-count">0/4</span>
+        </div>
+      </div>
+
+      <div class="conclusion">Economic indicators flat; one source silent; no emerging trends.</div>
+
+      <details>
+        <summary>Show signals (4)</summary>
+        <table class="signal-table">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Today</th>
+              <th>30d avg</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>
+                <div>FRED T10Y2Y yield spread</div>
+                
+                <div class="signal-note">Yield curve spread stable at 0.51</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>FRED cardboard box production index</div>
+                
+                <div class="signal-note">Source returned no data today</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--SILENT">SILENT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>Shanghai port congestion news articles</div>
+                
+                <div class="signal-note">No port congestion signals detected</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>Job market proxy — Indeed RSS count</div>
+                
+                <div class="signal-note">Job posting activity at zero baseline</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </details>
+
+    </div>
+    
+    <div class="chain-card chain-card--HIGH">
+
+      <div class="card-header">
+        <div class="card-header-top">
+          <div style="display:flex;align-items:center;">
+            <span class="chain-name">Biotech</span>
+            <span class="badge badge--HIGH">HIGH</span>
+          </div>
+          <span class="time-horizon">weeks</span>
+        </div>
+        <div class="convergence-row">
+          <span class="conv-label">Convergence</span>
+          <div class="conv-squares">
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+          </div>
+          <span class="conv-count">0/4</span>
+        </div>
+      </div>
+
+      <div class="conclusion">Biotech sector stable; GLP-1, mRNA, cell therapy unchanged.</div>
+
+      <details>
+        <summary>Show signals (4)</summary>
+        <table class="signal-table">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Today</th>
+              <th>30d avg</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>
+                <div>NIH Reporter active grants this FY</div>
+                
+                <div class="signal-note">Federal biotech funding stable at 11024 grants</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>bioRxiv preprints submitted</div>
+                
+                <div class="signal-note">Daily preprint submissions unchanged from average</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>ClinicalTrials.gov active trials started</div>
+                
+                <div class="signal-note">No new trial starts in 30-day window</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>SEC S-1 biotech filings</div>
+                
+                <div class="signal-note">Three biotech IPO filings match baseline</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </details>
+
+    </div>
+    
+    <div class="chain-card chain-card--MEDIUM">
+
+      <div class="card-header">
+        <div class="card-header-top">
+          <div style="display:flex;align-items:center;">
+            <span class="chain-name">Social</span>
+            <span class="badge badge--MEDIUM">MEDIUM</span>
+          </div>
+          <span class="time-horizon">weeks</span>
+        </div>
+        <div class="convergence-row">
+          <span class="conv-label">Convergence</span>
+          <div class="conv-squares">
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+          </div>
+          <span class="conv-count">0/4</span>
+        </div>
+      </div>
+
+      <div class="conclusion">Social signals flat; Reddit source silent; no emerging trends.</div>
+
+      <details>
+        <summary>Show signals (4)</summary>
+        <table class="signal-table">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Today</th>
+              <th>30d avg</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>
+                <div>Reddit post velocity across tracked subreddits</div>
+                
+                <div class="signal-note">Source returned no data today</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--SILENT">SILENT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>Google Trends avg interest score</div>
+                
+                <div class="signal-note">Biohacking, pickleball, homesteading interest stable</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>New Kickstarter projects</div>
+                
+                <div class="signal-note">Zero new projects matches 30-day average</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>Amazon Movers & Shakers item count</div>
+                
+                <div class="signal-note">Trending product count stable at 30 items</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </details>
+
+    </div>
+    
+    <div class="chain-card chain-card--HIGH">
+
+      <div class="card-header">
+        <div class="card-header-top">
+          <div style="display:flex;align-items:center;">
+            <span class="chain-name">Geopolitics</span>
+            <span class="badge badge--HIGH">HIGH</span>
+          </div>
+          <span class="time-horizon">weeks</span>
+        </div>
+        <div class="convergence-row">
+          <span class="conv-label">Convergence</span>
+          <div class="conv-squares">
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+          </div>
+          <span class="conv-count">0/4</span>
+        </div>
+      </div>
+
+      <div class="conclusion">Geopolitical indicators flat; commodity prices and policy stable.</div>
+
+      <details>
+        <summary>Show signals (4)</summary>
+        <table class="signal-table">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Today</th>
+              <th>30d avg</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>
+                <div>Average commodity price index</div>
+                
+                <div class="signal-note">Lithium, copper, wheat prices stable</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>Shipping congestion news articles</div>
+                
+                <div class="signal-note">No shipping disruption signals detected</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>EU open consultations count</div>
+                
+                <div class="signal-note">Zero EU consultations matches baseline</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>Congressional committee hearings</div>
+                
+                <div class="signal-note">No congressional activity in 7-day window</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </details>
+
+    </div>
+    
+    <div class="chain-card chain-card--HIGH">
+
+      <div class="card-header">
+        <div class="card-header-top">
+          <div style="display:flex;align-items:center;">
+            <span class="chain-name">Corporate</span>
+            <span class="badge badge--HIGH">HIGH</span>
+          </div>
+          <span class="time-horizon">weeks</span>
+        </div>
+        <div class="convergence-row">
+          <span class="conv-label">Convergence</span>
+          <div class="conv-squares">
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+          </div>
+          <span class="conv-count">0/4</span>
+        </div>
+      </div>
+
+      <div class="conclusion">Corporate watchlist shows no emerging signals; activity at baseline.</div>
+
+      <details>
+        <summary>Show signals (4)</summary>
+        <table class="signal-table">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Today</th>
+              <th>30d avg</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>
+                <div>SEC Form 4 insider filings for watchlist</div>
+                
+                <div class="signal-note">No insider trading activity detected</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>Job posting proxy for watchlist companies</div>
+                
+                <div class="signal-note">Zero job postings matches baseline</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>USPTO patent filings by watchlist companies</div>
+                
+                <div class="signal-note">No patent filings from NVDA, TSLA, MSFT, AAPL, META</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>SEC 8-K filings for watchlist companies</div>
+                
+                <div class="signal-note">Seven material event filings match average</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </details>
+
+    </div>
+    
+    <div class="chain-card chain-card--MEDIUM">
+
+      <div class="card-header">
+        <div class="card-header-top">
+          <div style="display:flex;align-items:center;">
+            <span class="chain-name">Energy</span>
+            <span class="badge badge--MEDIUM">MEDIUM</span>
+          </div>
+          <span class="time-horizon">weeks</span>
+        </div>
+        <div class="convergence-row">
+          <span class="conv-label">Convergence</span>
+          <div class="conv-squares">
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+            <div class="conv-sq "></div>
+            
+          </div>
+          <span class="conv-count">0/4</span>
+        </div>
+      </div>
+
+      <div class="conclusion">Energy sector flat; ARPA-E source silent; commodity prices stable.</div>
+
+      <details>
+        <summary>Show signals (4)</summary>
+        <table class="signal-table">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Today</th>
+              <th>30d avg</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>
+                <div>ARPA-E press releases</div>
+                
+                <div class="signal-note">Source returned no data today</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--SILENT">SILENT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>arXiv physics.app-ph preprints</div>
+                
+                <div class="signal-note">Applied physics research submissions stable</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>Average energy commodity price</div>
+                
+                <div class="signal-note">Lithium, cobalt, uranium prices stable</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div>Crunchbase energy funding news</div>
+                
+                <div class="signal-note">Zero energy funding announcements today</div>
+                
+              </td>
+              <td>N/A</td>
+              <td style="color:var(--muted);">N/A</td>
+              <td>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </details>
+
+    </div>
+    
+
+  </div>
+
+  <!-- 30-day history panel -->
+  
+  <div class="history-section">
+    <p class="section-heading">30-Day History</p>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:4px;">
+      Each column is one day. Dots represent chains; colour = max convergence that day.
+    </p>
+    <div class="history-grid">
+      
+      <div class="history-day" title="2026-03-24">
+        <div class="history-day-date">03-24</div>
+        <div class="history-dots">
+          
+          
+          <div class="history-dot history-dot--0 "
+               title="Tech: 0/4"></div>
+          
+          
+          <div class="history-dot history-dot--0 "
+               title="Economy: 0/4"></div>
+          
+          
+          <div class="history-dot history-dot--0 "
+               title="Biotech: 0/4"></div>
+          
+          
+          <div class="history-dot history-dot--0 "
+               title="Social: 0/4"></div>
+          
+          
+          <div class="history-dot history-dot--0 "
+               title="Geopolitics: 0/4"></div>
+          
+          
+          <div class="history-dot history-dot--0 "
+               title="Corporate: 0/4"></div>
+          
+          
+          <div class="history-dot history-dot--0 "
+               title="Energy: 0/4"></div>
+          
+        </div>
+      </div>
+      
+    </div>
+    <div class="legend">
+      <span class="legend-item"><span class="legend-dot" style="background:#e2e8f0;"></span> 0–1 (noise)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#fde68a;"></span> 2 (watch)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span> 3 (signal)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#16a34a;"></span> 4 (strong)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#e2e8f0;outline:1px solid #dc2626;"></span> cross-chain alert</span>
+    </div>
+  </div>
+  
+
+  <footer>
+    Signal Watch &middot; 2026-03-24 &middot;
+    A trend is flagged only when 3+ independent signals show unusual movement on the same day.
+    &middot; <a href="https://spikespiegeldi-cell.github.io/signal-watch" style="color:inherit;">https://spikespiegeldi-cell.github.io/signal-watch</a>
+  </footer>
+
 </div>
 </body>
 </html>

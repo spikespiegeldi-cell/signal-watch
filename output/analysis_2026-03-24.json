@@ -1,0 +1,266 @@
+{
+  "date": "2026-03-24",
+  "chains": [
+    {
+      "name": "Tech",
+      "signals": [
+        {
+          "source": "arXiv papers matching keywords",
+          "status": "FLAT",
+          "note": "Agentic AI, solid-state battery papers stable",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "Hacker News stories matching keywords",
+          "status": "FLAT",
+          "note": "Tech community interest unchanged from baseline",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "USPTO patent filings by tracked companies",
+          "status": "FLAT",
+          "note": "No patent activity today, consistent with average",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "Crunchbase tech funding news items",
+          "status": "FLAT",
+          "note": "Single funding item matches 30-day average",
+          "today": "N/A",
+          "avg30": "N/A"
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Tech sector shows no emerging signals; all metrics at baseline.",
+      "confidence": "HIGH",
+      "time_horizon": "weeks"
+    },
+    {
+      "name": "Economy",
+      "signals": [
+        {
+          "source": "FRED T10Y2Y yield spread",
+          "status": "FLAT",
+          "note": "Yield curve spread stable at 0.51",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "FRED cardboard box production index",
+          "status": "SILENT",
+          "note": "Source returned no data today",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "Shanghai port congestion news articles",
+          "status": "FLAT",
+          "note": "No port congestion signals detected",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "Job market proxy \u2014 Indeed RSS count",
+          "status": "FLAT",
+          "note": "Job posting activity at zero baseline",
+          "today": "N/A",
+          "avg30": "N/A"
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Economic indicators flat; one source silent; no emerging trends.",
+      "confidence": "MEDIUM",
+      "time_horizon": "weeks"
+    },
+    {
+      "name": "Biotech",
+      "signals": [
+        {
+          "source": "NIH Reporter active grants this FY",
+          "status": "FLAT",
+          "note": "Federal biotech funding stable at 11024 grants",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "bioRxiv preprints submitted",
+          "status": "FLAT",
+          "note": "Daily preprint submissions unchanged from average",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "ClinicalTrials.gov active trials started",
+          "status": "FLAT",
+          "note": "No new trial starts in 30-day window",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "SEC S-1 biotech filings",
+          "status": "FLAT",
+          "note": "Three biotech IPO filings match baseline",
+          "today": "N/A",
+          "avg30": "N/A"
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Biotech sector stable; GLP-1, mRNA, cell therapy unchanged.",
+      "confidence": "HIGH",
+      "time_horizon": "weeks"
+    },
+    {
+      "name": "Social",
+      "signals": [
+        {
+          "source": "Reddit post velocity across tracked subreddits",
+          "status": "SILENT",
+          "note": "Source returned no data today",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "Google Trends avg interest score",
+          "status": "FLAT",
+          "note": "Biohacking, pickleball, homesteading interest stable",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "New Kickstarter projects",
+          "status": "FLAT",
+          "note": "Zero new projects matches 30-day average",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "Amazon Movers & Shakers item count",
+          "status": "FLAT",
+          "note": "Trending product count stable at 30 items",
+          "today": "N/A",
+          "avg30": "N/A"
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Social signals flat; Reddit source silent; no emerging trends.",
+      "confidence": "MEDIUM",
+      "time_horizon": "weeks"
+    },
+    {
+      "name": "Geopolitics",
+      "signals": [
+        {
+          "source": "Average commodity price index",
+          "status": "FLAT",
+          "note": "Lithium, copper, wheat prices stable",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "Shipping congestion news articles",
+          "status": "FLAT",
+          "note": "No shipping disruption signals detected",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "EU open consultations count",
+          "status": "FLAT",
+          "note": "Zero EU consultations matches baseline",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "Congressional committee hearings",
+          "status": "FLAT",
+          "note": "No congressional activity in 7-day window",
+          "today": "N/A",
+          "avg30": "N/A"
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Geopolitical indicators flat; commodity prices and policy stable.",
+      "confidence": "HIGH",
+      "time_horizon": "weeks"
+    },
+    {
+      "name": "Corporate",
+      "signals": [
+        {
+          "source": "SEC Form 4 insider filings for watchlist",
+          "status": "FLAT",
+          "note": "No insider trading activity detected",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "Job posting proxy for watchlist companies",
+          "status": "FLAT",
+          "note": "Zero job postings matches baseline",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "USPTO patent filings by watchlist companies",
+          "status": "FLAT",
+          "note": "No patent filings from NVDA, TSLA, MSFT, AAPL, META",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "SEC 8-K filings for watchlist companies",
+          "status": "FLAT",
+          "note": "Seven material event filings match average",
+          "today": "N/A",
+          "avg30": "N/A"
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Corporate watchlist shows no emerging signals; activity at baseline.",
+      "confidence": "HIGH",
+      "time_horizon": "weeks"
+    },
+    {
+      "name": "Energy",
+      "signals": [
+        {
+          "source": "ARPA-E press releases",
+          "status": "SILENT",
+          "note": "Source returned no data today",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "arXiv physics.app-ph preprints",
+          "status": "FLAT",
+          "note": "Applied physics research submissions stable",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "Average energy commodity price",
+          "status": "FLAT",
+          "note": "Lithium, cobalt, uranium prices stable",
+          "today": "N/A",
+          "avg30": "N/A"
+        },
+        {
+          "source": "Crunchbase energy funding news",
+          "status": "FLAT",
+          "note": "Zero energy funding announcements today",
+          "today": "N/A",
+          "avg30": "N/A"
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Energy sector flat; ARPA-E source silent; commodity prices stable.",
+      "confidence": "MEDIUM",
+      "time_horizon": "weeks"
+    }
+  ],
+  "top_alert": null,
+  "alert_chains": []
+}
