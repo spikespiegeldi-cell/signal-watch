@@ -4,12 +4,12 @@
     "tech": {
       "arxiv": {
         "today": 4919.4,
-        "avg30": 12231.82,
+        "avg30": 11567.0545,
         "label": "arXiv AI papers (24h)"
       },
       "hacker_news": {
-        "today": 19978,
-        "avg30": 41048.0909,
+        "today": 20110,
+        "avg30": 39303.25,
         "label": "HN stories matching keywords"
       },
       "patents": {
@@ -25,8 +25,8 @@
     },
     "economy": {
       "yield_curve": {
-        "today": null,
-        "avg30": 0.506,
+        "today": 0.49,
+        "avg30": 0.5045,
         "label": "FRED T10Y2Y yield spread"
       },
       "box_production": {
@@ -48,12 +48,12 @@
     "biotech": {
       "nih_reporter": {
         "today": 6987,
-        "avg30": 8455.0,
+        "avg30": 8332.6667,
         "label": "NIH grants this FY"
       },
       "biorxiv": {
-        "today": 225.4,
-        "avg30": 309.91,
+        "today": 225.7,
+        "avg30": 302.2545,
         "label": "bioRxiv preprints (24h)"
       },
       "clinical_trials": {
@@ -62,8 +62,8 @@
         "label": "ClinicalTrials.gov active trials (30d)"
       },
       "sec_s1_biotech": {
-        "today": 6,
-        "avg30": 3.4545,
+        "today": 7,
+        "avg30": 3.75,
         "label": "SEC S-1 biotech filings (24h)"
       }
     },
@@ -74,8 +74,8 @@
         "label": "Tracked subreddit post velocity (24h)"
       },
       "google_trends": {
-        "today": 2.0,
-        "avg30": 8.3182,
+        "today": 3.0,
+        "avg30": 7.875,
         "label": "Google Trends avg interest (7d)"
       },
       "kickstarter": {
@@ -91,7 +91,7 @@
     },
     "geopolitics": {
       "commodities": {
-        "today": 3366.6767,
+        "today": null,
         "avg30": 3337.064,
         "label": "Avg price: lithium, copper, wheat"
       },
@@ -114,7 +114,7 @@
     "corporate": {
       "sec_form4": {
         "today": 1,
-        "avg30": 0.2727,
+        "avg30": 0.3333,
         "label": "SEC Form 4 insider filings (24h)"
       },
       "jobs_proxy": {
@@ -129,7 +129,7 @@
       },
       "sec_8k": {
         "today": 10,
-        "avg30": 8.0,
+        "avg30": 8.1667,
         "label": "SEC 8-K filings by watchlist (24h)"
       }
     },
@@ -141,11 +141,11 @@
       },
       "arxiv_physics": {
         "today": 3292.4,
-        "avg30": 17659.3818,
+        "avg30": 16462.1333,
         "label": "arXiv physics.app-ph preprints (24h)"
       },
       "energy_commodities": {
-        "today": 3011.4433,
+        "today": null,
         "avg30": 2699.4993,
         "label": "Avg price: lithium, uranium, copper"
       },
