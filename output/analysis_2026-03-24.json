@@ -6,17 +6,17 @@
       "signals": [
         {
           "source": "arXiv papers matching keywords",
-          "status": "SILENT",
-          "note": "Source returned no data today",
-          "today": null,
-          "avg30": 1063.0
+          "status": "RISING",
+          "note": "344% above 30-day average, major spike",
+          "today": 34436,
+          "avg30": 7737.6
         },
         {
           "source": "Hacker News stories matching keywords",
           "status": "DROPPING",
-          "note": "71% below 30-day average, significant decline",
-          "today": 20100,
-          "avg30": 69443.6
+          "note": "80% below 30-day average, significant decline",
+          "today": 12069,
+          "avg30": 59881.1667
         },
         {
           "source": "USPTO patent filings by tracked companies",
@@ -28,13 +28,13 @@
         {
           "source": "Crunchbase tech funding news items",
           "status": "FLAT",
-          "note": "Matches 30-day average exactly",
+          "note": "Stable at 1 item, normal range",
           "today": 1,
           "avg30": 1.0
         }
       ],
-      "convergence": 0,
-      "conclusion": "Tech signals muted; HN story volume dropped sharply but isolated.",
+      "convergence": 1,
+      "conclusion": "Academic research surge in AI biology, but media interest declining sharply.",
       "confidence": "LOW",
       "time_horizon": "weeks"
     },
@@ -51,27 +51,27 @@
         {
           "source": "FRED cardboard box production index",
           "status": "SILENT",
-          "note": "Source returned no data today",
+          "note": "Source returned no data",
           "today": null,
           "avg30": null
         },
         {
           "source": "Shanghai port congestion news articles",
           "status": "FLAT",
-          "note": "No articles, consistent with baseline",
+          "note": "Zero articles, consistent baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Job market proxy Indeed RSS count",
           "status": "FLAT",
-          "note": "No job postings, consistent with baseline",
+          "note": "Zero count, consistent baseline",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Economy chain shows no signals; yield spread stable, labor quiet.",
+      "conclusion": "Economic indicators stable; limited data availability today.",
       "confidence": "LOW",
       "time_horizon": "months"
     },
@@ -81,34 +81,34 @@
         {
           "source": "NIH Reporter active grants this FY",
           "status": "DROPPING",
-          "note": "32% below 30-day average, significant decline",
+          "note": "28% below 30-day average, notable decline",
           "today": 6987,
-          "avg30": 10216.6
+          "avg30": 9678.3333
         },
         {
           "source": "bioRxiv preprints submitted",
           "status": "FLAT",
-          "note": "Matches 30-day average closely",
+          "note": "Stable at 348, within normal range",
           "today": 348,
-          "avg30": 345.6
+          "avg30": 346.0
         },
         {
           "source": "ClinicalTrials.gov active trials started",
           "status": "FLAT",
-          "note": "No trials, consistent with baseline",
+          "note": "Zero trials, consistent baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "SEC S-1 biotech filings",
           "status": "FLAT",
-          "note": "Matches 30-day average exactly",
+          "note": "Stable at 3, normal range",
           "today": 3,
           "avg30": 3.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Biotech shows NIH grant decline but no convergence signal.",
+      "conclusion": "NIH grant activity declining; preprint and filing activity stable.",
       "confidence": "LOW",
       "time_horizon": "months"
     },
@@ -118,34 +118,34 @@
         {
           "source": "Reddit post velocity across tracked subreddits",
           "status": "SILENT",
-          "note": "Source returned no data today",
+          "note": "Source returned no data",
           "today": null,
           "avg30": null
         },
         {
           "source": "Google Trends avg interest score",
           "status": "DROPPING",
-          "note": "100% below 30-day average, complete collapse",
+          "note": "100% below 30-day average, sharp decline",
           "today": 0.0,
-          "avg30": 16.8
+          "avg30": 14.0
         },
         {
           "source": "New Kickstarter projects",
           "status": "FLAT",
-          "note": "No projects, consistent with baseline",
+          "note": "Zero projects, consistent baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Amazon Movers & Shakers item count",
           "status": "FLAT",
-          "note": "Matches 30-day average exactly",
+          "note": "Stable at 30, normal range",
           "today": 30,
           "avg30": 30.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Social signals weak; Google Trends interest dropped sharply.",
+      "conclusion": "Public interest in tracked topics declining significantly today.",
       "confidence": "LOW",
       "time_horizon": "weeks"
     },
@@ -155,34 +155,34 @@
         {
           "source": "Average commodity price index",
           "status": "SILENT",
-          "note": "Source returned no data today",
+          "note": "Source returned no data",
           "today": null,
           "avg30": 3307.5667
         },
         {
           "source": "Shipping congestion news articles",
           "status": "FLAT",
-          "note": "No articles, consistent with baseline",
+          "note": "Zero articles, consistent baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "EU open consultations count",
           "status": "FLAT",
-          "note": "No consultations, consistent with baseline",
+          "note": "Zero consultations, consistent baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Congressional committee hearings",
           "status": "FLAT",
-          "note": "No hearings, consistent with baseline",
+          "note": "Zero hearings, consistent baseline",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Geopolitics chain silent; no commodity or policy signals detected.",
+      "conclusion": "Geopolitical activity quiet; commodity data unavailable today.",
       "confidence": "LOW",
       "time_horizon": "months"
     },
@@ -192,34 +192,34 @@
         {
           "source": "SEC Form 4 insider filings for watchlist",
           "status": "FLAT",
-          "note": "No filings, consistent with baseline",
+          "note": "Zero filings, consistent baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Job posting proxy for watchlist companies",
           "status": "FLAT",
-          "note": "No postings, consistent with baseline",
+          "note": "Zero postings, consistent baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "USPTO patent filings by watchlist companies",
           "status": "FLAT",
-          "note": "No filings, consistent with baseline",
+          "note": "Zero filings, consistent baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "SEC 8-K filings for watchlist companies",
           "status": "RISING",
-          "note": "31% above 30-day average, elevated activity",
+          "note": "25% above 30-day average, slight uptick",
           "today": 10,
-          "avg30": 7.6
+          "avg30": 8.0
         }
       ],
       "convergence": 1,
-      "conclusion": "Corporate 8-K filings elevated; single signal, insufficient convergence.",
+      "conclusion": "Modest increase in corporate event filings; insider activity quiet.",
       "confidence": "LOW",
       "time_horizon": "weeks"
     },
@@ -229,34 +229,34 @@
         {
           "source": "ARPA-E press releases",
           "status": "SILENT",
-          "note": "Source returned no data today",
+          "note": "Source returned no data",
           "today": null,
           "avg30": null
         },
         {
           "source": "arXiv physics.app-ph preprints",
           "status": "FLAT",
-          "note": "Matches 30-day average exactly",
+          "note": "Stable at 23047, normal range",
           "today": 23047,
           "avg30": 23047.0
         },
         {
           "source": "Average energy commodity price",
           "status": "SILENT",
-          "note": "Source returned no data today",
+          "note": "Source returned no data",
           "today": null,
           "avg30": 1538.4167
         },
         {
           "source": "Crunchbase energy funding news",
           "status": "FLAT",
-          "note": "No funding news, consistent with baseline",
+          "note": "Zero items, consistent baseline",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Energy chain mostly silent; physics preprints stable.",
+      "conclusion": "Energy research stable; commodity and funding data unavailable.",
       "confidence": "LOW",
       "time_horizon": "months"
     }

@@ -3,13 +3,13 @@
   "chains": {
     "tech": {
       "arxiv": {
-        "today": null,
-        "avg30": 1063.0,
+        "today": 34436,
+        "avg30": 7737.6,
         "label": "arXiv AI papers (24h)"
       },
       "hacker_news": {
-        "today": 20100,
-        "avg30": 69443.6,
+        "today": 12069,
+        "avg30": 59881.1667,
         "label": "HN stories matching keywords"
       },
       "patents": {
@@ -48,12 +48,12 @@
     "biotech": {
       "nih_reporter": {
         "today": 6987,
-        "avg30": 10216.6,
+        "avg30": 9678.3333,
         "label": "NIH grants this FY"
       },
       "biorxiv": {
         "today": 348,
-        "avg30": 345.6,
+        "avg30": 346.0,
         "label": "bioRxiv preprints (24h)"
       },
       "clinical_trials": {
@@ -75,7 +75,7 @@
       },
       "google_trends": {
         "today": 0.0,
-        "avg30": 16.8,
+        "avg30": 14.0,
         "label": "Google Trends avg interest (7d)"
       },
       "kickstarter": {
@@ -129,7 +129,7 @@
       },
       "sec_8k": {
         "today": 10,
-        "avg30": 7.6,
+        "avg30": 8.0,
         "label": "SEC 8-K filings by watchlist (24h)"
       }
     },
