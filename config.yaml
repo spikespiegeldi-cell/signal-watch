@@ -77,6 +77,8 @@ geopolitics_chain:
     - lithium
     - copper
     - wheat
+    - crude-oil
+    - gold
 
 corporate_chain:
   company_watchlist:
