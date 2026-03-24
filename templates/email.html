@@ -22,12 +22,24 @@
 
   <!-- Top alert (shown only if present) -->
   {% if analysis.top_alert %}
+  {% set alert = analysis.top_alert %}
   <tr>
     <td style="background:#fefce8;border-left:4px solid #eab308;padding:16px 32px;">
       <p style="margin:0;font-size:11px;color:#854d0e;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">Cross-Chain Alert</p>
-      <p style="margin:6px 0 0;font-size:14px;color:#78350f;line-height:1.5;">{{ analysis.top_alert }}</p>
+      <p style="margin:6px 0 0;font-size:15px;font-weight:600;color:#78350f;line-height:1.5;">
+        {% if alert is mapping %}{{ alert.summary }}{% else %}{{ alert }}{% endif %}
+      </p>
+      {% if alert is mapping and alert.implication %}
+      <p style="margin:10px 0 0;font-size:13px;color:#451a03;line-height:1.65;">{{ alert.implication }}</p>
+      {% endif %}
+      {% if alert is mapping and alert.drivers %}
+      <p style="margin:10px 0 4px;font-size:11px;color:#92400e;font-weight:600;">Key drivers:</p>
+      <p style="margin:0;font-size:12px;color:#78350f;">
+        {% for d in alert.drivers %}<span style="display:inline-block;background:#fef3c7;border:1px solid #fbbf24;border-radius:999px;padding:2px 10px;margin:2px 4px 2px 0;font-size:11px;font-weight:600;">{{ d }}</span>{% endfor %}
+      </p>
+      {% endif %}
       {% if analysis.alert_chains %}
-      <p style="margin:8px 0 0;font-size:12px;color:#92400e;">Chains involved: {{ analysis.alert_chains | join(', ') }}</p>
+      <p style="margin:10px 0 0;font-size:12px;color:#92400e;">Chains involved: {{ analysis.alert_chains | join(', ') }}</p>
       {% endif %}
     </td>
   </tr>

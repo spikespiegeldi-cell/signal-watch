@@ -22,7 +22,14 @@ Count the number of RISING signals in each chain.
 
 ## Cross-chain alert
 If 2 or more chains independently show convergence >= 3 on the same day,
-surface a top_alert string describing the cross-chain pattern.
+populate top_alert with three fields:
+- summary: one sentence describing the cross-chain pattern (max 20 words)
+- implication: 2-3 sentences in plain English explaining what this convergence means
+  for an investor or analyst. Name specific companies, keywords, or sectors from the
+  data that are driving the signal. Max 60 words.
+- drivers: list of up to 6 specific entities (company names, keywords, or source names)
+  that are most responsible for triggering the alert.
+If no cross-chain alert, set top_alert to null.
 
 ## Output rules
 - Return ONLY valid JSON. No prose, no markdown fences, no code blocks.
@@ -48,6 +55,10 @@ surface a top_alert string describing the cross-chain pattern.
       "time_horizon": "weeks|months|years"
     }
   ],
-  "top_alert": "one sentence or null",
+  "top_alert": {
+    "summary": "one sentence max 20 words",
+    "implication": "2-3 sentences max 60 words naming specific companies or keywords",
+    "drivers": ["entity1", "entity2"]
+  },
   "alert_chains": ["chain1", "chain2"]
 }

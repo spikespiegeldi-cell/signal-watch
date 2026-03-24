@@ -63,6 +63,55 @@
   }
   .topbar-no-alert { font-size: 12px; color: #475569; }
 
+  /* Alert detail panel */
+  .alert-panel {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .alert-panel-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #92400e;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 8px;
+  }
+  .alert-summary {
+    font-size: 15px;
+    font-weight: 600;
+    color: #78350f;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .alert-implication {
+    font-size: 13px;
+    color: #451a03;
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+  .alert-drivers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .alert-driver-tag {
+    background: #fef3c7;
+    border: 1px solid #fbbf24;
+    color: #78350f;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .alert-chains-row {
+    font-size: 11px;
+    color: #92400e;
+    margin-top: 10px;
+  }
+
   /* Main layout */
   .container { max-width: 1280px; margin: 0 auto; padding: 24px 16px; }
 
@@ -368,11 +417,11 @@
     <span class="date">{{ date }}</span>
   </div>
   {% if analysis.top_alert %}
+  {% set alert = analysis.top_alert %}
   <div class="topbar-alert">
-    <strong>Cross-chain alert:</strong> {{ analysis.top_alert }}
-    {% if analysis.alert_chains %}
-    &mdash; {{ analysis.alert_chains | join(', ') }}
-    {% endif %}
+    <strong>Cross-chain alert:</strong>
+    {% if alert is mapping %}{{ alert.summary }}{% else %}{{ alert }}{% endif %}
+    {% if analysis.alert_chains %}&mdash; {{ analysis.alert_chains | join(', ') }}{% endif %}
   </div>
   {% else %}
   <div class="topbar-no-alert">No cross-chain alerts today</div>
@@ -380,6 +429,28 @@
 </div>
 
 <div class="container">
+
+  <!-- Alert detail panel -->
+  {% if analysis.top_alert and analysis.top_alert is mapping %}
+  {% set alert = analysis.top_alert %}
+  <div class="alert-panel">
+    <div class="alert-panel-title">Cross-Chain Alert</div>
+    <div class="alert-summary">{{ alert.summary }}</div>
+    {% if alert.implication %}
+    <div class="alert-implication">{{ alert.implication }}</div>
+    {% endif %}
+    {% if alert.drivers %}
+    <div class="alert-drivers">
+      {% for d in alert.drivers %}
+      <span class="alert-driver-tag">{{ d }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if analysis.alert_chains %}
+    <div class="alert-chains-row">Chains involved: {{ analysis.alert_chains | join(', ') }}</div>
+    {% endif %}
+  </div>
+  {% endif %}
 
   <!-- Chain grid -->
   <p class="section-heading" style="margin-bottom:16px;">Signal Chains</p>
