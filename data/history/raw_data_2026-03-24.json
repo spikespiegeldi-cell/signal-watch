@@ -8,8 +8,8 @@
         "label": "arXiv AI papers (24h)"
       },
       "hacker_news": {
-        "today": 81769,
-        "avg30": 81769.0,
+        "today": 81779,
+        "avg30": 81774.0,
         "label": "HN stories matching keywords"
       },
       "patents": {
@@ -74,8 +74,8 @@
         "label": "Tracked subreddit post velocity (24h)"
       },
       "google_trends": {
-        "today": 21.0,
-        "avg30": 21.0,
+        "today": 21.3333,
+        "avg30": 21.1667,
         "label": "Google Trends avg interest (7d)"
       },
       "kickstarter": {
@@ -91,7 +91,7 @@
     },
     "geopolitics": {
       "commodities": {
-        "today": 3307.5667,
+        "today": null,
         "avg30": 3307.5667,
         "label": "Avg price: lithium, copper, wheat"
       },
@@ -145,7 +145,7 @@
         "label": "arXiv physics.app-ph preprints (24h)"
       },
       "energy_commodities": {
-        "today": 1538.4167,
+        "today": null,
         "avg30": 1538.4167,
         "label": "Avg price: lithium, cobalt, uranium"
       },
