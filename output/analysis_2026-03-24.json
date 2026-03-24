@@ -6,35 +6,35 @@
       "signals": [
         {
           "source": "arXiv papers matching keywords",
-          "status": "FLAT",
-          "note": "Stable at 1063 papers, no change",
-          "today": 1063,
+          "status": "SILENT",
+          "note": "Source returned no data today",
+          "today": null,
           "avg30": 1063.0
         },
         {
           "source": "Hacker News stories matching keywords",
-          "status": "FLAT",
-          "note": "81786 vs 81779.5 avg, within range",
-          "today": 81786,
-          "avg30": 81779.5
+          "status": "DROPPING",
+          "note": "71% below 30-day average, significant decline",
+          "today": 20100,
+          "avg30": 69443.6
         },
         {
           "source": "USPTO patent filings by tracked companies",
           "status": "FLAT",
-          "note": "Zero filings, consistent with average",
+          "note": "No filings, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Crunchbase tech funding news items",
           "status": "FLAT",
-          "note": "1 item matches 30-day average",
+          "note": "Matches 30-day average exactly",
           "today": 1,
           "avg30": 1.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Tech sector shows baseline activity with no emerging signals.",
+      "conclusion": "Tech signals muted; HN story volume dropped sharply but isolated.",
       "confidence": "LOW",
       "time_horizon": "weeks"
     },
@@ -44,7 +44,7 @@
         {
           "source": "FRED T10Y2Y yield spread",
           "status": "FLAT",
-          "note": "0.51 spread unchanged from average",
+          "note": "Stable at 0.51, no change",
           "today": 0.51,
           "avg30": 0.51
         },
@@ -58,59 +58,59 @@
         {
           "source": "Shanghai port congestion news articles",
           "status": "FLAT",
-          "note": "Zero articles, consistent baseline",
+          "note": "No articles, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Job market proxy Indeed RSS count",
           "status": "FLAT",
-          "note": "Zero count matches 30-day average",
+          "note": "No job postings, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Economic indicators remain stable with no divergence signals detected.",
+      "conclusion": "Economy chain shows no signals; yield spread stable, labor quiet.",
       "confidence": "LOW",
-      "time_horizon": "weeks"
+      "time_horizon": "months"
     },
     {
       "name": "Biotech",
       "signals": [
         {
           "source": "NIH Reporter active grants this FY",
-          "status": "FLAT",
-          "note": "11024 grants unchanged from average",
-          "today": 11024,
-          "avg30": 11024.0
+          "status": "DROPPING",
+          "note": "32% below 30-day average, significant decline",
+          "today": 6987,
+          "avg30": 10216.6
         },
         {
           "source": "bioRxiv preprints submitted",
           "status": "FLAT",
-          "note": "345 preprints match 30-day average",
-          "today": 345,
-          "avg30": 345.0
+          "note": "Matches 30-day average closely",
+          "today": 348,
+          "avg30": 345.6
         },
         {
           "source": "ClinicalTrials.gov active trials started",
           "status": "FLAT",
-          "note": "Zero trials, consistent with baseline",
+          "note": "No trials, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "SEC S-1 biotech filings",
           "status": "FLAT",
-          "note": "3 filings match 30-day average",
+          "note": "Matches 30-day average exactly",
           "today": 3,
           "avg30": 3.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Biotech research and funding activity remains at steady baseline levels.",
+      "conclusion": "Biotech shows NIH grant decline but no convergence signal.",
       "confidence": "LOW",
-      "time_horizon": "weeks"
+      "time_horizon": "months"
     },
     {
       "name": "Social",
@@ -124,28 +124,28 @@
         },
         {
           "source": "Google Trends avg interest score",
-          "status": "RISING",
-          "note": "21.67 vs 21.0 avg, +3.2% increase",
-          "today": 21.6667,
-          "avg30": 21.0
+          "status": "DROPPING",
+          "note": "100% below 30-day average, complete collapse",
+          "today": 0.0,
+          "avg30": 16.8
         },
         {
           "source": "New Kickstarter projects",
           "status": "FLAT",
-          "note": "Zero projects, consistent baseline",
+          "note": "No projects, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Amazon Movers & Shakers item count",
           "status": "FLAT",
-          "note": "30 items match 30-day average",
+          "note": "Matches 30-day average exactly",
           "today": 30,
           "avg30": 30.0
         }
       ],
-      "convergence": 1,
-      "conclusion": "Minimal social signal activity; Google Trends shows marginal uptick.",
+      "convergence": 0,
+      "conclusion": "Social signals weak; Google Trends interest dropped sharply.",
       "confidence": "LOW",
       "time_horizon": "weeks"
     },
@@ -162,29 +162,29 @@
         {
           "source": "Shipping congestion news articles",
           "status": "FLAT",
-          "note": "Zero articles, consistent baseline",
+          "note": "No articles, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "EU open consultations count",
           "status": "FLAT",
-          "note": "Zero consultations, consistent baseline",
+          "note": "No consultations, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Congressional committee hearings",
           "status": "FLAT",
-          "note": "Zero hearings, consistent baseline",
+          "note": "No hearings, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Geopolitical activity remains quiet with no emerging tensions detected.",
+      "conclusion": "Geopolitics chain silent; no commodity or policy signals detected.",
       "confidence": "LOW",
-      "time_horizon": "weeks"
+      "time_horizon": "months"
     },
     {
       "name": "Corporate",
@@ -192,34 +192,34 @@
         {
           "source": "SEC Form 4 insider filings for watchlist",
           "status": "FLAT",
-          "note": "Zero filings, consistent with average",
+          "note": "No filings, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Job posting proxy for watchlist companies",
           "status": "FLAT",
-          "note": "Zero postings, consistent baseline",
+          "note": "No postings, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "USPTO patent filings by watchlist companies",
           "status": "FLAT",
-          "note": "Zero filings, consistent with average",
+          "note": "No filings, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "SEC 8-K filings for watchlist companies",
-          "status": "FLAT",
-          "note": "7 filings match 30-day average",
-          "today": 7,
-          "avg30": 7.0
+          "status": "RISING",
+          "note": "31% above 30-day average, elevated activity",
+          "today": 10,
+          "avg30": 7.6
         }
       ],
-      "convergence": 0,
-      "conclusion": "Major tech companies show normal baseline activity, no anomalies.",
+      "convergence": 1,
+      "conclusion": "Corporate 8-K filings elevated; single signal, insufficient convergence.",
       "confidence": "LOW",
       "time_horizon": "weeks"
     },
@@ -236,7 +236,7 @@
         {
           "source": "arXiv physics.app-ph preprints",
           "status": "FLAT",
-          "note": "23047 preprints match 30-day average",
+          "note": "Matches 30-day average exactly",
           "today": 23047,
           "avg30": 23047.0
         },
@@ -250,15 +250,15 @@
         {
           "source": "Crunchbase energy funding news",
           "status": "FLAT",
-          "note": "Zero items, consistent baseline",
+          "note": "No funding news, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Energy sector research stable; commodity price data unavailable today.",
+      "conclusion": "Energy chain mostly silent; physics preprints stable.",
       "confidence": "LOW",
-      "time_horizon": "weeks"
+      "time_horizon": "months"
     }
   ],
   "top_alert": null,

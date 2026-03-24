@@ -3,13 +3,13 @@
   "chains": {
     "tech": {
       "arxiv": {
-        "today": 1063,
+        "today": null,
         "avg30": 1063.0,
         "label": "arXiv AI papers (24h)"
       },
       "hacker_news": {
-        "today": 81786,
-        "avg30": 81779.5,
+        "today": 20100,
+        "avg30": 69443.6,
         "label": "HN stories matching keywords"
       },
       "patents": {
@@ -47,13 +47,13 @@
     },
     "biotech": {
       "nih_reporter": {
-        "today": 11024,
-        "avg30": 11024.0,
+        "today": 6987,
+        "avg30": 10216.6,
         "label": "NIH grants this FY"
       },
       "biorxiv": {
-        "today": 345,
-        "avg30": 345.0,
+        "today": 348,
+        "avg30": 345.6,
         "label": "bioRxiv preprints (24h)"
       },
       "clinical_trials": {
@@ -74,8 +74,8 @@
         "label": "Tracked subreddit post velocity (24h)"
       },
       "google_trends": {
-        "today": 21.6667,
-        "avg30": 21.0,
+        "today": 0.0,
+        "avg30": 16.8,
         "label": "Google Trends avg interest (7d)"
       },
       "kickstarter": {
@@ -128,8 +128,8 @@
         "label": "Patent filings by watchlist cos (24h)"
       },
       "sec_8k": {
-        "today": 7,
-        "avg30": 7.0,
+        "today": 10,
+        "avg30": 7.6,
         "label": "SEC 8-K filings by watchlist (24h)"
       }
     },
@@ -147,7 +147,7 @@
       "energy_commodities": {
         "today": null,
         "avg30": 1538.4167,
-        "label": "Avg price: lithium, cobalt, uranium"
+        "label": "Avg price: lithium, uranium, copper"
       },
       "crunchbase_energy": {
         "today": 0,
