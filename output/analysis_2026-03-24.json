@@ -7,16 +7,16 @@
         {
           "source": "arXiv papers matching keywords",
           "status": "DROPPING",
-          "note": "65% below 30-day average, significant decline",
+          "note": "62% below 30-day average, significant decline",
           "today": 4919.4,
-          "avg30": 14059.925
+          "avg30": 13044.3111
         },
         {
           "source": "Hacker News stories matching keywords",
           "status": "DROPPING",
-          "note": "74% below 30-day average, major pullback",
-          "today": 12074,
-          "avg30": 45729.8889
+          "note": "54% below 30-day average, weak engagement",
+          "today": 19982,
+          "avg30": 43155.1
         },
         {
           "source": "USPTO patent filings by tracked companies",
@@ -34,8 +34,8 @@
         }
       ],
       "convergence": 0,
-      "conclusion": "Tech interest declining sharply across academic and news sources.",
-      "confidence": "HIGH",
+      "conclusion": "Tech interest declining sharply across academic and community channels.",
+      "confidence": "MEDIUM",
       "time_horizon": "weeks"
     },
     {
@@ -46,7 +46,7 @@
           "status": "FLAT",
           "note": "Within normal range, slight compression",
           "today": 0.49,
-          "avg30": 0.5078
+          "avg30": 0.506
         },
         {
           "source": "FRED cardboard box production index",
@@ -58,20 +58,20 @@
         {
           "source": "Shanghai port congestion news articles",
           "status": "FLAT",
-          "note": "No articles, consistent with baseline",
+          "note": "No congestion signals, baseline normal",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Job market proxy Indeed RSS count",
           "status": "FLAT",
-          "note": "No activity, consistent with baseline",
+          "note": "No job postings detected, consistent",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Economic indicators stable with limited data availability.",
+      "conclusion": "Economic indicators stable with limited visibility into labor demand.",
       "confidence": "LOW",
       "time_horizon": "months"
     },
@@ -81,16 +81,16 @@
         {
           "source": "NIH Reporter active grants this FY",
           "status": "DROPPING",
-          "note": "20% below 30-day average, grant activity declining",
+          "note": "19% below 30-day average, grant activity declining",
           "today": 6987,
-          "avg30": 8781.2222
+          "avg30": 8601.8
         },
         {
           "source": "bioRxiv preprints submitted",
           "status": "DROPPING",
-          "note": "32% below 30-day average, research submission slowdown",
-          "today": 224.4,
-          "avg30": 331.05
+          "note": "29% below 30-day average, research submission slowdown",
+          "today": 225.3,
+          "avg30": 319.3
         },
         {
           "source": "ClinicalTrials.gov active trials started",
@@ -101,15 +101,15 @@
         },
         {
           "source": "SEC S-1 biotech filings",
-          "status": "RISING",
-          "note": "55% above 30-day average, IPO activity surge",
-          "today": 5,
-          "avg30": 3.2222
+          "status": "FLAT",
+          "note": "Stable at 3 filings, normal range",
+          "today": 3,
+          "avg30": 3.2
         }
       ],
-      "convergence": 1,
-      "conclusion": "Biotech research declining but IPO filings rising, mixed signals.",
-      "confidence": "LOW",
+      "convergence": 0,
+      "conclusion": "Biotech research activity declining; grant and preprint submissions below trend.",
+      "confidence": "MEDIUM",
       "time_horizon": "months"
     },
     {
@@ -125,9 +125,9 @@
         {
           "source": "Google Trends avg interest score",
           "status": "DROPPING",
-          "note": "85% below 30-day average, major interest decline",
-          "today": 1.5,
-          "avg30": 9.6944
+          "note": "75% below 30-day average, interest collapse",
+          "today": 2.25,
+          "avg30": 8.95
         },
         {
           "source": "New Kickstarter projects",
@@ -145,7 +145,7 @@
         }
       ],
       "convergence": 0,
-      "conclusion": "Social interest in tracked topics declining significantly.",
+      "conclusion": "Social interest in tracked topics collapsed; Google Trends shows severe decline.",
       "confidence": "MEDIUM",
       "time_horizon": "weeks"
     },
@@ -154,15 +154,15 @@
       "signals": [
         {
           "source": "Average commodity price index",
-          "status": "SILENT",
-          "note": "Source returned no data today",
-          "today": null,
-          "avg30": 3317.3222
+          "status": "RISING",
+          "note": "1.1% above 30-day average, modest uptick",
+          "today": 3366.6767,
+          "avg30": 3329.6608
         },
         {
           "source": "Shipping congestion news articles",
           "status": "FLAT",
-          "note": "No articles, consistent with baseline",
+          "note": "No congestion signals, baseline normal",
           "today": 0,
           "avg30": 0.0
         },
@@ -182,7 +182,7 @@
         }
       ],
       "convergence": 0,
-      "conclusion": "Geopolitical activity flat with limited data availability.",
+      "conclusion": "Commodity prices slightly elevated; geopolitical activity minimal.",
       "confidence": "LOW",
       "time_horizon": "months"
     },
@@ -192,14 +192,14 @@
         {
           "source": "SEC Form 4 insider filings for watchlist",
           "status": "RISING",
-          "note": "800% above 30-day average, insider activity spike",
+          "note": "400% above 30-day average, insider activity spike",
           "today": 1,
-          "avg30": 0.1111
+          "avg30": 0.2
         },
         {
           "source": "Job posting proxy for watchlist companies",
           "status": "FLAT",
-          "note": "No postings, consistent with baseline",
+          "note": "No job postings, consistent with baseline",
           "today": 0,
           "avg30": 0.0
         },
@@ -213,14 +213,14 @@
         {
           "source": "SEC 8-K filings for watchlist companies",
           "status": "RISING",
-          "note": "32% above 30-day average, corporate event activity",
+          "note": "28% above 30-day average, elevated corporate events",
           "today": 10,
-          "avg30": 7.5556
+          "avg30": 7.8
         }
       ],
       "convergence": 2,
-      "conclusion": "Corporate insider and event filings rising, watch for developments.",
-      "confidence": "MEDIUM",
+      "conclusion": "Corporate activity elevated with insider filings and 8-K events spiking.",
+      "confidence": "LOW",
       "time_horizon": "weeks"
     },
     {
@@ -236,16 +236,16 @@
         {
           "source": "arXiv physics.app-ph preprints",
           "status": "DROPPING",
-          "note": "84% below 30-day average, research submission collapse",
+          "note": "83% below 30-day average, severe research decline",
           "today": 3292.4,
-          "avg30": 20852.0444
+          "avg30": 19096.08
         },
         {
           "source": "Average energy commodity price",
-          "status": "SILENT",
-          "note": "Source returned no data today",
-          "today": null,
-          "avg30": 2491.5367
+          "status": "RISING",
+          "note": "15% above 30-day average, price strength",
+          "today": 3011.4433,
+          "avg30": 2621.5133
         },
         {
           "source": "Crunchbase energy funding news",
@@ -256,15 +256,11 @@
         }
       ],
       "convergence": 0,
-      "conclusion": "Energy research declining sharply with limited market data.",
+      "conclusion": "Energy commodity prices rising while research output collapses sharply.",
       "confidence": "MEDIUM",
       "time_horizon": "weeks"
     }
   ],
-  "top_alert": "Corporate insider filings and 8-K events rising while tech and research interest declining across multiple chains.",
-  "alert_chains": [
-    "Corporate",
-    "Tech",
-    "Energy"
-  ]
+  "top_alert": null,
+  "alert_chains": []
 }

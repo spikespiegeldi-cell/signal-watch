@@ -63,6 +63,55 @@
   }
   .topbar-no-alert { font-size: 12px; color: #475569; }
 
+  /* Alert detail panel */
+  .alert-panel {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .alert-panel-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #92400e;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 8px;
+  }
+  .alert-summary {
+    font-size: 15px;
+    font-weight: 600;
+    color: #78350f;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .alert-implication {
+    font-size: 13px;
+    color: #451a03;
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+  .alert-drivers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .alert-driver-tag {
+    background: #fef3c7;
+    border: 1px solid #fbbf24;
+    color: #78350f;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .alert-chains-row {
+    font-size: 11px;
+    color: #92400e;
+    margin-top: 10px;
+  }
+
   /* Main layout */
   .container { max-width: 1280px; margin: 0 auto; padding: 24px 16px; }
 
@@ -342,29 +391,27 @@
     <span class="date">2026-03-24</span>
   </div>
   
-  <div class="topbar-alert">
-    <strong>Cross-chain alert:</strong> Corporate insider filings and 8-K events rising while tech and research interest declining across multiple chains.
-    
-    &mdash; Corporate, Tech, Energy
-    
-  </div>
+  <div class="topbar-no-alert">No cross-chain alerts today</div>
   
 </div>
 
 <div class="container">
+
+  <!-- Alert detail panel -->
+  
 
   <!-- Chain grid -->
   <p class="section-heading" style="margin-bottom:16px;">Signal Chains</p>
   <div class="chain-grid">
 
     
-    <div class="chain-card chain-card--HIGH">
+    <div class="chain-card chain-card--MEDIUM">
 
       <div class="card-header">
         <div class="card-header-top">
           <div style="display:flex;align-items:center;">
             <span class="chain-name">Tech</span>
-            <span class="badge badge--HIGH">HIGH</span>
+            <span class="badge badge--MEDIUM">MEDIUM</span>
           </div>
           <span class="time-horizon">weeks</span>
         </div>
@@ -385,7 +432,7 @@
         </div>
       </div>
 
-      <div class="conclusion">Tech interest declining sharply across academic and news sources.</div>
+      <div class="conclusion">Tech interest declining sharply across academic and community channels.</div>
 
       <details>
         <summary>Show signals (4)</summary>
@@ -404,7 +451,7 @@
               <td>
                 <div>arXiv papers matching keywords</div>
                 
-                <div class="signal-note">65% below 30-day average, significant decline</div>
+                <div class="signal-note">62% below 30-day average, significant decline</div>
                 
               </td>
               <td>
@@ -412,7 +459,7 @@
                 <div class="unit-hint">7-day moving avg (papers/day)</div>
               </td>
               <td style="color:var(--muted);">
-                14059.925
+                13044.3111
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -424,15 +471,15 @@
               <td>
                 <div>Hacker News stories matching keywords</div>
                 
-                <div class="signal-note">74% below 30-day average, major pullback</div>
+                <div class="signal-note">54% below 30-day average, weak engagement</div>
                 
               </td>
               <td>
-                12074
+                19982
                 <div class="unit-hint">matching stories</div>
               </td>
               <td style="color:var(--muted);">
-                45729.8889
+                43155.1
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -513,7 +560,7 @@
         </div>
       </div>
 
-      <div class="conclusion">Economic indicators stable with limited data availability.</div>
+      <div class="conclusion">Economic indicators stable with limited visibility into labor demand.</div>
 
       <details>
         <summary>Show signals (4)</summary>
@@ -540,7 +587,7 @@
                 <div class="unit-hint">% spread (+ = normal, − = inverted)</div>
               </td>
               <td style="color:var(--muted);">
-                0.5078
+                0.506
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -572,7 +619,7 @@
               <td>
                 <div>Shanghai port congestion news articles</div>
                 
-                <div class="signal-note">No articles, consistent with baseline</div>
+                <div class="signal-note">No congestion signals, baseline normal</div>
                 
               </td>
               <td>
@@ -592,7 +639,7 @@
               <td>
                 <div>Job market proxy Indeed RSS count</div>
                 
-                <div class="signal-note">No activity, consistent with baseline</div>
+                <div class="signal-note">No job postings detected, consistent</div>
                 
               </td>
               <td>
@@ -614,13 +661,13 @@
 
     </div>
     
-    <div class="chain-card chain-card--LOW">
+    <div class="chain-card chain-card--MEDIUM">
 
       <div class="card-header">
         <div class="card-header-top">
           <div style="display:flex;align-items:center;">
             <span class="chain-name">Biotech</span>
-            <span class="badge badge--LOW">LOW</span>
+            <span class="badge badge--MEDIUM">MEDIUM</span>
           </div>
           <span class="time-horizon">months</span>
         </div>
@@ -628,7 +675,7 @@
           <span class="conv-label">Convergence</span>
           <div class="conv-squares">
             
-            <div class="conv-sq conv-sq--filled"></div>
+            <div class="conv-sq "></div>
             
             <div class="conv-sq "></div>
             
@@ -637,11 +684,11 @@
             <div class="conv-sq "></div>
             
           </div>
-          <span class="conv-count">1/4</span>
+          <span class="conv-count">0/4</span>
         </div>
       </div>
 
-      <div class="conclusion">Biotech research declining but IPO filings rising, mixed signals.</div>
+      <div class="conclusion">Biotech research activity declining; grant and preprint submissions below trend.</div>
 
       <details>
         <summary>Show signals (4)</summary>
@@ -660,7 +707,7 @@
               <td>
                 <div>NIH Reporter active grants this FY</div>
                 
-                <div class="signal-note">20% below 30-day average, grant activity declining</div>
+                <div class="signal-note">19% below 30-day average, grant activity declining</div>
                 
               </td>
               <td>
@@ -668,7 +715,7 @@
                 <div class="unit-hint">active grants this FY</div>
               </td>
               <td style="color:var(--muted);">
-                8781.2222
+                8601.8
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -680,15 +727,15 @@
               <td>
                 <div>bioRxiv preprints submitted</div>
                 
-                <div class="signal-note">32% below 30-day average, research submission slowdown</div>
+                <div class="signal-note">29% below 30-day average, research submission slowdown</div>
                 
               </td>
               <td>
-                224.4
+                225.3
                 <div class="unit-hint">7-day moving avg (preprints/day)</div>
               </td>
               <td style="color:var(--muted);">
-                331.05
+                319.3
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -720,19 +767,19 @@
               <td>
                 <div>SEC S-1 biotech filings</div>
                 
-                <div class="signal-note">55% above 30-day average, IPO activity surge</div>
+                <div class="signal-note">Stable at 3 filings, normal range</div>
                 
               </td>
               <td>
-                5
+                3
                 <div class="unit-hint">IPO filings/day</div>
               </td>
               <td style="color:var(--muted);">
-                3.2222
+                3.2
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
-                <span class="status-badge status-badge--RISING">RISING</span>
+                <span class="status-badge status-badge--FLAT">FLAT</span>
               </td>
             </tr>
             
@@ -769,7 +816,7 @@
         </div>
       </div>
 
-      <div class="conclusion">Social interest in tracked topics declining significantly.</div>
+      <div class="conclusion">Social interest in tracked topics collapsed; Google Trends shows severe decline.</div>
 
       <details>
         <summary>Show signals (4)</summary>
@@ -808,15 +855,15 @@
               <td>
                 <div>Google Trends avg interest score</div>
                 
-                <div class="signal-note">85% below 30-day average, major interest decline</div>
+                <div class="signal-note">75% below 30-day average, interest collapse</div>
                 
               </td>
               <td>
-                1.5
+                2.25
                 <div class="unit-hint">interest score 0–100</div>
               </td>
               <td style="color:var(--muted);">
-                9.6944
+                8.95
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -897,7 +944,7 @@
         </div>
       </div>
 
-      <div class="conclusion">Geopolitical activity flat with limited data availability.</div>
+      <div class="conclusion">Commodity prices slightly elevated; geopolitical activity minimal.</div>
 
       <details>
         <summary>Show signals (4)</summary>
@@ -916,19 +963,19 @@
               <td>
                 <div>Average commodity price index</div>
                 
-                <div class="signal-note">Source returned no data today</div>
+                <div class="signal-note">1.1% above 30-day average, modest uptick</div>
                 
               </td>
               <td>
-                None
+                3366.6767
                 <div class="unit-hint">avg spot price (USD)</div>
               </td>
               <td style="color:var(--muted);">
-                3317.3222
+                3329.6608
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
-                <span class="status-badge status-badge--SILENT">SILENT</span>
+                <span class="status-badge status-badge--RISING">RISING</span>
               </td>
             </tr>
             
@@ -936,7 +983,7 @@
               <td>
                 <div>Shipping congestion news articles</div>
                 
-                <div class="signal-note">No articles, consistent with baseline</div>
+                <div class="signal-note">No congestion signals, baseline normal</div>
                 
               </td>
               <td>
@@ -998,13 +1045,13 @@
 
     </div>
     
-    <div class="chain-card chain-card--MEDIUM">
+    <div class="chain-card chain-card--LOW">
 
       <div class="card-header">
         <div class="card-header-top">
           <div style="display:flex;align-items:center;">
             <span class="chain-name">Corporate</span>
-            <span class="badge badge--MEDIUM">MEDIUM</span>
+            <span class="badge badge--LOW">LOW</span>
           </div>
           <span class="time-horizon">weeks</span>
         </div>
@@ -1025,7 +1072,7 @@
         </div>
       </div>
 
-      <div class="conclusion">Corporate insider and event filings rising, watch for developments.</div>
+      <div class="conclusion">Corporate activity elevated with insider filings and 8-K events spiking.</div>
 
       <details>
         <summary>Show signals (4)</summary>
@@ -1044,7 +1091,7 @@
               <td>
                 <div>SEC Form 4 insider filings for watchlist</div>
                 
-                <div class="signal-note">800% above 30-day average, insider activity spike</div>
+                <div class="signal-note">400% above 30-day average, insider activity spike</div>
                 
               </td>
               <td>
@@ -1052,7 +1099,7 @@
                 <div class="unit-hint">insider filings/day</div>
               </td>
               <td style="color:var(--muted);">
-                0.1111
+                0.2
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -1064,7 +1111,7 @@
               <td>
                 <div>Job posting proxy for watchlist companies</div>
                 
-                <div class="signal-note">No postings, consistent with baseline</div>
+                <div class="signal-note">No job postings, consistent with baseline</div>
                 
               </td>
               <td>
@@ -1104,7 +1151,7 @@
               <td>
                 <div>SEC 8-K filings for watchlist companies</div>
                 
-                <div class="signal-note">32% above 30-day average, corporate event activity</div>
+                <div class="signal-note">28% above 30-day average, elevated corporate events</div>
                 
               </td>
               <td>
@@ -1112,7 +1159,7 @@
                 <div class="unit-hint">material event filings/day</div>
               </td>
               <td style="color:var(--muted);">
-                7.5556
+                7.8
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -1153,7 +1200,7 @@
         </div>
       </div>
 
-      <div class="conclusion">Energy research declining sharply with limited market data.</div>
+      <div class="conclusion">Energy commodity prices rising while research output collapses sharply.</div>
 
       <details>
         <summary>Show signals (4)</summary>
@@ -1192,7 +1239,7 @@
               <td>
                 <div>arXiv physics.app-ph preprints</div>
                 
-                <div class="signal-note">84% below 30-day average, research submission collapse</div>
+                <div class="signal-note">83% below 30-day average, severe research decline</div>
                 
               </td>
               <td>
@@ -1200,7 +1247,7 @@
                 <div class="unit-hint">7-day moving avg (preprints/day)</div>
               </td>
               <td style="color:var(--muted);">
-                20852.0444
+                19096.08
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -1212,19 +1259,19 @@
               <td>
                 <div>Average energy commodity price</div>
                 
-                <div class="signal-note">Source returned no data today</div>
+                <div class="signal-note">15% above 30-day average, price strength</div>
                 
               </td>
               <td>
-                None
+                3011.4433
                 <div class="unit-hint">avg spot price (USD)</div>
               </td>
               <td style="color:var(--muted);">
-                2491.5367
+                2621.5133
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
-                <span class="status-badge status-badge--SILENT">SILENT</span>
+                <span class="status-badge status-badge--RISING">RISING</span>
               </td>
             </tr>
             
@@ -1271,31 +1318,31 @@
         <div class="history-dots">
           
           
-          <div class="history-dot history-dot--0 history-dot--alert"
+          <div class="history-dot history-dot--0 "
                title="Tech: 0/4"></div>
           
           
-          <div class="history-dot history-dot--0 history-dot--alert"
+          <div class="history-dot history-dot--0 "
                title="Economy: 0/4"></div>
           
           
-          <div class="history-dot history-dot--1 history-dot--alert"
-               title="Biotech: 1/4"></div>
+          <div class="history-dot history-dot--0 "
+               title="Biotech: 0/4"></div>
           
           
-          <div class="history-dot history-dot--0 history-dot--alert"
+          <div class="history-dot history-dot--0 "
                title="Social: 0/4"></div>
           
           
-          <div class="history-dot history-dot--0 history-dot--alert"
+          <div class="history-dot history-dot--0 "
                title="Geopolitics: 0/4"></div>
           
           
-          <div class="history-dot history-dot--2 history-dot--alert"
+          <div class="history-dot history-dot--2 "
                title="Corporate: 2/4"></div>
           
           
-          <div class="history-dot history-dot--0 history-dot--alert"
+          <div class="history-dot history-dot--0 "
                title="Energy: 0/4"></div>
           
         </div>
