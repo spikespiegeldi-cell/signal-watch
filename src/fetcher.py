@@ -640,9 +640,20 @@ def main():
     log.info("Fetching Geopolitics chain...")
     geo_comms = cfg["geopolitics_chain"]["commodities"]
     geo_prices = [fetch_commodity_price(c) for c in geo_comms]
-    valid_prices = [p for p in geo_prices if p is not None]
-    avg_price = sum(valid_prices) / len(valid_prices) if valid_prices else None
-    geo_price_today, geo_price_avg = record(b, "geo_commodities", avg_price)
+    # Track each commodity against its own 30d baseline, then report % that are rising.
+    # This avoids cancellation from incomparable price units (USD/barrel vs USD/oz etc).
+    rising_count = 0
+    valid_count = 0
+    for commodity, price in zip(geo_comms, geo_prices):
+        if price is None:
+            continue
+        key = f"geo_comm_{commodity.replace('-', '_')}"
+        today_val, avg_val = record(b, key, price)
+        valid_count += 1
+        if avg_val and avg_val > 0 and today_val >= avg_val:
+            rising_count += 1
+    pct_rising = round(rising_count / valid_count * 100) if valid_count > 0 else None
+    geo_price_today, geo_price_avg = record(b, "geo_commodities", pct_rising)
     geo_mar2, geo_mar2_avg   = record(b, "geo_marine",  fetch_marine_proxy())
     geo_eu,   geo_eu_avg     = record(b, "geo_eu",      fetch_eu_consultations())
     geo_cong, geo_cong_avg   = record(b, "geo_congress", fetch_congress_hearings())

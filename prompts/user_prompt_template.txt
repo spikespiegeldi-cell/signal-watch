@@ -32,7 +32,7 @@ Amazon Movers & Shakers item count: {{ AMZ_TODAY }} (30d avg: {{ AMZ_AVG }})
 
 ## Geopolitics chain
 Commodities tracked: {{ GEO_COMMODITIES }}
-Average commodity price index ({{ GEO_COMMODITIES }}): {{ GEO_COMM_TODAY }} (30d avg: {{ GEO_COMM_AVG }})
+% of tracked commodities above own 30d baseline ({{ GEO_COMMODITIES }}): {{ GEO_COMM_TODAY }} (30d avg: {{ GEO_COMM_AVG }})
 Shipping congestion news articles (7d): {{ GEO_MAR_TODAY }} (30d avg: {{ GEO_MAR_AVG }})
 EU open consultations count: {{ EU_TODAY }} (30d avg: {{ EU_AVG }})
 Congressional committee hearings (7d): {{ CONG_TODAY }} (30d avg: {{ CONG_AVG }})

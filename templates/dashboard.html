@@ -402,7 +402,7 @@
 {%- elif 'trend' in s -%}interest score 0–100
 {%- elif 'kickstarter' in s -%}new projects/day
 {%- elif 'amazon' in s -%}items in movers list
-{%- elif 'commodit' in s or 'price' in s -%}avg spot price (USD)
+{%- elif 'commodit' in s or 'price' in s -%}% of tracked commodities above own 30d avg
 {%- elif 'eu' in s -%}open consultations
 {%- elif 'congress' in s -%}hearings this week
 {%- elif 'arpa' in s -%}press releases (30d)
@@ -651,7 +651,7 @@
           <div class="glossary-chain-title">Geopolitics Chain</div>
           <div class="glossary-item">
             <span class="glossary-source">Commodity Prices</span>
-            <span class="glossary-desc">Average spot price (USD) of tracked commodities (lithium, copper, wheat). Commodity price moves often foreshadow supply chain disruptions, inflation shifts, and geopolitical tensions before they appear in mainstream news.</span>
+            <span class="glossary-desc">Percentage of tracked commodities (lithium, copper, wheat, crude oil, gold) that are trading above their own 30-day average today. 100 = all rising, 0 = all falling, ~50 = normal mixed market. Each commodity is compared to its own baseline so different price units (USD/barrel vs USD/oz) do not cancel each other out. A reading above 60 suggests broad commodity strength — often a leading signal of inflation, supply stress, or geopolitical tension.</span>
           </div>
           <div class="glossary-item">
             <span class="glossary-source">Shipping Congestion</span>
