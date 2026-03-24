@@ -205,6 +205,7 @@
   .status-badge--SILENT   { background: var(--silent); color: #fff; }
 
   .signal-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .unit-hint { font-size: 10px; color: var(--subtle); margin-top: 2px; font-style: italic; }
 
   /* Section heading */
   .section-heading {
@@ -291,6 +292,34 @@
 </head>
 <body>
 
+{% macro signal_unit(source) -%}
+{%- set s = source | lower -%}
+{%- if 'arxiv' in s and 'physics' not in s -%}papers/day
+{%- elif 'physics' in s or 'biorxiv' in s -%}preprints/day
+{%- elif 'hacker news' in s -%}matching stories
+{%- elif 'patent' in s -%}filings
+{%- elif 'crunchbase' in s -%}news items/day
+{%- elif 'yield' in s -%}% spread (+ = normal, − = inverted)
+{%- elif 'box production' in s -%}industrial production index
+{%- elif 'marine' in s or 'shipping' in s -%}news articles (7d)
+{%- elif 'job' in s or 'indeed' in s -%}job listings proxy
+{%- elif 'nih' in s -%}active grants this FY
+{%- elif 'clinical' in s -%}active trials (30d window)
+{%- elif 's-1' in s -%}IPO filings/day
+{%- elif 'form 4' in s -%}insider filings/day
+{%- elif '8-k' in s -%}material event filings/day
+{%- elif 'reddit' in s -%}posts across tracked subs (24h)
+{%- elif 'trend' in s -%}interest score 0–100
+{%- elif 'kickstarter' in s -%}new projects/day
+{%- elif 'amazon' in s -%}items in movers list
+{%- elif 'commodit' in s or 'price' in s -%}avg spot price (USD)
+{%- elif 'eu' in s -%}open consultations
+{%- elif 'congress' in s -%}hearings this week
+{%- elif 'arpa' in s -%}press releases (30d)
+{%- else -%}count
+{%- endif -%}
+{%- endmacro %}
+
 <!-- Top bar -->
 <div class="topbar">
   <div class="topbar-brand">
@@ -359,8 +388,14 @@
                 <div class="signal-note">{{ sig.note }}</div>
                 {% endif %}
               </td>
-              <td>{{ sig.today }}</td>
-              <td style="color:var(--muted);">{{ sig.avg30 }}</td>
+              <td>
+                {{ sig.today }}
+                {% if sig.today != 'N/A' %}<div class="unit-hint">{{ signal_unit(sig.source) }}</div>{% endif %}
+              </td>
+              <td style="color:var(--muted);">
+                {{ sig.avg30 }}
+                {% if sig.avg30 != 'N/A' %}<div class="unit-hint">30-day avg</div>{% endif %}
+              </td>
               <td>
                 <span class="status-badge status-badge--{{ sig.status }}">{{ sig.status }}</span>
               </td>
