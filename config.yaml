@@ -1,0 +1,85 @@
+# Signal Watch — personalisation config
+# Edit this file to target your specific interests. No Python knowledge needed.
+
+email:
+  to: your@email.com
+  from: signals@yourdomain.com
+  send_time_utc: "07:00"
+  only_alert_on_convergence: 2   # min convergence to send email
+
+tech_chain:
+  arxiv_keywords:
+    - "agentic AI"
+    - "solid-state battery"
+    - "GLP-2"
+  hacker_news_keywords:
+    - "agent"
+    - "reasoning model"
+    - "LLM"
+  patent_companies:
+    - "OpenAI"
+    - "Anthropic"
+    - "Google DeepMind"
+
+economy_chain:
+  fred_series:
+    yield_curve: "T10Y2Y"
+    box_production: "IPG2653S"
+  linkedin_keywords:
+    - "software engineer"
+    - "data scientist"
+
+biotech_chain:
+  nih_keywords:
+    - "GLP-1"
+    - "mRNA"
+    - "cell therapy"
+  clinicaltrials_keywords:
+    - "obesity"
+    - "Alzheimer"
+    - "cancer immunotherapy"
+  sec_biotech_keywords:
+    - "biopharmaceutical"
+    - "therapeutics"
+    - "genomics"
+
+social_chain:
+  subreddits:
+    - r/longevity
+    - r/Nootropics
+    - r/homesteading
+  google_trends_terms:
+    - "biohacking"
+    - "pickleball"
+    - "homesteading"
+  amazon_category: "books"
+
+geopolitics_chain:
+  commodities:
+    - lithium
+    - copper
+    - wheat
+
+corporate_chain:
+  company_watchlist:
+    - "NVDA"
+    - "TSLA"
+    - "MSFT"
+    - "AAPL"
+    - "META"
+
+energy_chain:
+  commodities:
+    - lithium
+    - cobalt
+    - uranium
+
+thresholds:
+  rising_pct: 20       # % above 30d avg to count as RISING
+  dropping_pct: 20     # % below 30d avg to count as DROPPING
+  convergence_alert: 3 # min signals RISING to flag a chain
+
+dashboard:
+  github_pages_repo: "username/signal-watch"
+  show_raw_data: true
+  sparkline_days: 30

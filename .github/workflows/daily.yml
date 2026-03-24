@@ -1,0 +1,50 @@
+name: Signal Watch — Daily Pipeline
+
+on:
+  schedule:
+    - cron: "0 7 * * *"   # 07:00 UTC every day
+  workflow_dispatch:        # allow manual trigger from Actions tab
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write       # needed to push docs/index.html back to repo
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Stage 1 — Fetch (07:00 UTC)
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_SECRET: ${{ secrets.REDDIT_SECRET }}
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+        run: python src/fetcher.py
+
+      - name: Stage 2 — Analyse (07:05 UTC)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python src/analyzer.py
+
+      - name: Stage 3 — Send email (07:10 UTC)
+        env:
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+        run: python src/emailer.py
+
+      - name: Stage 4 — Publish dashboard (07:15 UTC)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python src/publisher.py

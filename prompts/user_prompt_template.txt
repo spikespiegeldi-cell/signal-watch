@@ -1,0 +1,55 @@
+Today is {{ DATE }}. Here is the raw signal data fetched this morning.
+For each metric: today's value and the 30-day rolling average are provided.
+If a value shows "N/A (source silent)", mark that source as SILENT.
+
+## Tech chain
+Keywords monitored: {{ TECH_KEYWORDS }}
+arXiv papers matching keywords (24h): {{ ARXIV_TODAY }} (30d avg: {{ ARXIV_AVG }})
+Hacker News stories matching keywords: {{ HN_TODAY }} (30d avg: {{ HN_AVG }})
+USPTO patent filings by tracked companies (24h): {{ PATENT_TODAY }} (30d avg: {{ PATENT_AVG }})
+Crunchbase tech funding news items (24h): {{ CB_TODAY }} (30d avg: {{ CB_AVG }})
+
+## Economy chain
+FRED T10Y2Y yield spread: {{ YIELD_TODAY }} (30d avg: {{ YIELD_AVG }})
+FRED cardboard box production index (IPG2653S): {{ BOX_TODAY }} (30d avg: {{ BOX_AVG }})
+Shanghai port congestion news articles (7d): {{ MARINE_TODAY }} (30d avg: {{ MARINE_AVG }})
+Job market proxy — Indeed RSS count: {{ JOBS_TODAY }} (30d avg: {{ JOBS_AVG }})
+
+## Biotech chain
+Keywords monitored: {{ BIO_KEYWORDS }}
+NIH Reporter active grants this FY: {{ NIH_TODAY }} (30d avg: {{ NIH_AVG }})
+bioRxiv preprints submitted (24h): {{ BIORXIV_TODAY }} (30d avg: {{ BIORXIV_AVG }})
+ClinicalTrials.gov active trials started (30d window): {{ CLIN_TODAY }} (30d avg: {{ CLIN_AVG }})
+SEC S-1 biotech filings (24h): {{ SEC_BIO_TODAY }} (30d avg: {{ SEC_BIO_AVG }})
+
+## Social chain
+Subreddits monitored: {{ SUBREDDITS }}
+Google Trends terms: {{ TRENDS_TERMS }}
+Reddit post velocity across tracked subreddits (24h): {{ REDDIT_TODAY }} (30d avg: {{ REDDIT_AVG }})
+Google Trends avg interest score (7d window): {{ TRENDS_TODAY }} (30d avg: {{ TRENDS_AVG }})
+New Kickstarter projects (24h): {{ KS_TODAY }} (30d avg: {{ KS_AVG }})
+Amazon Movers & Shakers item count: {{ AMZ_TODAY }} (30d avg: {{ AMZ_AVG }})
+
+## Geopolitics chain
+Commodities tracked: {{ GEO_COMMODITIES }}
+Average commodity price index ({{ GEO_COMMODITIES }}): {{ GEO_COMM_TODAY }} (30d avg: {{ GEO_COMM_AVG }})
+Shipping congestion news articles (7d): {{ GEO_MAR_TODAY }} (30d avg: {{ GEO_MAR_AVG }})
+EU open consultations count: {{ EU_TODAY }} (30d avg: {{ EU_AVG }})
+Congressional committee hearings (7d): {{ CONG_TODAY }} (30d avg: {{ CONG_AVG }})
+
+## Corporate chain
+Company watchlist: {{ WATCHLIST }}
+SEC Form 4 insider filings for watchlist (24h): {{ CORP_F4_TODAY }} (30d avg: {{ CORP_F4_AVG }})
+Job posting proxy for watchlist companies: {{ CORP_JOBS_TODAY }} (30d avg: {{ CORP_JOBS_AVG }})
+USPTO patent filings by watchlist companies (24h): {{ CORP_PAT_TODAY }} (30d avg: {{ CORP_PAT_AVG }})
+SEC 8-K filings for watchlist companies (24h): {{ CORP_8K_TODAY }} (30d avg: {{ CORP_8K_AVG }})
+
+## Energy chain
+Commodities tracked: {{ EN_COMMODITIES }}
+ARPA-E press releases (30d): {{ EN_ARPA_TODAY }} (30d avg: {{ EN_ARPA_AVG }})
+arXiv physics.app-ph preprints (24h): {{ EN_PHYS_TODAY }} (30d avg: {{ EN_PHYS_AVG }})
+Average energy commodity price ({{ EN_COMMODITIES }}): {{ EN_COMM_TODAY }} (30d avg: {{ EN_COMM_AVG }})
+Crunchbase energy funding news (24h): {{ EN_CB_TODAY }} (30d avg: {{ EN_CB_AVG }})
+
+Analyse all 7 chains. Apply scoring rules from your instructions.
+Return JSON only — no preamble, no explanation outside the JSON.

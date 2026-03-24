@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal Watch — {{ date }}</title>
+</head>
+<body style="margin:0;padding:0;background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f5;padding:24px 0;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+
+  <!-- Header -->
+  <tr>
+    <td style="background:#0f172a;padding:28px 32px;border-radius:8px 8px 0 0;">
+      <p style="margin:0;color:#94a3b8;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;">Early Signal Intelligence</p>
+      <h1 style="margin:4px 0 0;color:#f8fafc;font-size:22px;font-weight:700;letter-spacing:-0.02em;">Signal Watch</h1>
+      <p style="margin:6px 0 0;color:#64748b;font-size:13px;">{{ date }}</p>
+    </td>
+  </tr>
+
+  <!-- Top alert (shown only if present) -->
+  {% if analysis.top_alert %}
+  <tr>
+    <td style="background:#fefce8;border-left:4px solid #eab308;padding:16px 32px;">
+      <p style="margin:0;font-size:11px;color:#854d0e;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">Cross-Chain Alert</p>
+      <p style="margin:6px 0 0;font-size:14px;color:#78350f;line-height:1.5;">{{ analysis.top_alert }}</p>
+      {% if analysis.alert_chains %}
+      <p style="margin:8px 0 0;font-size:12px;color:#92400e;">Chains involved: {{ analysis.alert_chains | join(', ') }}</p>
+      {% endif %}
+    </td>
+  </tr>
+  {% endif %}
+
+  <!-- Body background -->
+  <tr>
+    <td style="background:#ffffff;padding:8px 0 0;">
+
+      {% set confidence_colors = {'HIGH': '#16a34a', 'MEDIUM': '#d97706', 'LOW': '#6b7280'} %}
+      {% set border_colors = {'HIGH': '#16a34a', 'MEDIUM': '#f59e0b', 'LOW': '#d1d5db'} %}
+
+      {% for chain in analysis.chains %}
+      {% if chain.convergence >= min_convergence %}
+
+      <!-- Chain card -->
+      <table width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 2px;">
+        <tr>
+          <td style="border-left:4px solid {{ border_colors.get(chain.confidence, '#d1d5db') }};padding:20px 32px;">
+
+            <!-- Chain header -->
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>
+                  <span style="font-size:15px;font-weight:700;color:#0f172a;">{{ chain.name }}</span>
+                  <span style="display:inline-block;margin-left:10px;padding:2px 10px;border-radius:999px;font-size:11px;font-weight:600;color:#ffffff;background:{{ confidence_colors.get(chain.confidence, '#6b7280') }};">{{ chain.confidence }}</span>
+                </td>
+                <td align="right">
+                  <span style="font-size:12px;color:#64748b;">{{ chain.time_horizon }}</span>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Convergence bar -->
+            <table cellpadding="0" cellspacing="0" style="margin:10px 0 8px;">
+              <tr>
+                <td style="font-size:11px;color:#64748b;padding-right:8px;">Convergence</td>
+                {% for i in range(4) %}
+                <td style="width:18px;height:10px;border-radius:2px;margin-right:3px;background:{% if i < chain.convergence %}#16a34a{% else %}#e2e8f0{% endif %};padding:0 2px;"></td>
+                {% endfor %}
+                <td style="font-size:11px;color:#64748b;padding-left:6px;">{{ chain.convergence }}/4</td>
+              </tr>
+            </table>
+
+            <!-- Conclusion -->
+            <p style="margin:0 0 12px;font-size:14px;color:#1e293b;line-height:1.6;font-style:italic;">{{ chain.conclusion }}</p>
+
+            <!-- Rising signals -->
+            {% set rising = chain.signals | selectattr('status', 'equalto', 'RISING') | list %}
+            {% if rising %}
+            <p style="margin:0 0 6px;font-size:11px;color:#64748b;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Rising signals</p>
+            {% for sig in rising %}
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 4px;">
+              <tr>
+                <td style="font-size:12px;color:#374151;width:40%;">{{ sig.source }}</td>
+                <td style="font-size:12px;color:#374151;width:20%;text-align:center;">{{ sig.today }}</td>
+                <td style="font-size:12px;color:#94a3b8;width:20%;text-align:center;">avg: {{ sig.avg30 }}</td>
+                <td align="right" width="20%">
+                  <span style="padding:1px 8px;border-radius:4px;font-size:10px;font-weight:700;color:#ffffff;background:#16a34a;">RISING</span>
+                </td>
+              </tr>
+              {% if sig.note %}
+              <tr>
+                <td colspan="4" style="font-size:11px;color:#6b7280;padding-bottom:4px;">{{ sig.note }}</td>
+              </tr>
+              {% endif %}
+            {% endfor %}
+            {% endif %}
+
+          </td>
+        </tr>
+      </table>
+      <table width="100%" cellpadding="0" cellspacing="0"><tr><td style="background:#f1f5f9;height:1px;"></td></tr></table>
+
+      {% endif %}
+      {% endfor %}
+
+    </td>
+  </tr>
+
+  <!-- Footer -->
+  <tr>
+    <td style="background:#f8fafc;padding:20px 32px;border-radius:0 0 8px 8px;border-top:1px solid #e2e8f0;">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p style="margin:0;font-size:12px;color:#64748b;">View full signal evidence and 30-day history</p>
+          </td>
+          <td align="right">
+            <a href="{{ dashboard_url }}" style="display:inline-block;padding:8px 18px;background:#0f172a;color:#f8fafc;text-decoration:none;border-radius:6px;font-size:12px;font-weight:600;">Open Dashboard &rarr;</a>
+          </td>
+        </tr>
+      </table>
+      <p style="margin:12px 0 0;font-size:11px;color:#94a3b8;">
+        Powered by Signal Watch &middot; {{ date }} &middot;
+        A trend is flagged only when 3+ independent signals show unusual movement on the same day.
+      </p>
+    </td>
+  </tr>
+
+</table>
+</td></tr>
+</table>
+
+</body>
+</html>

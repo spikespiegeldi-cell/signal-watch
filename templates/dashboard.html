@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal Watch — {{ date }}</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --muted: #64748b;
+    --subtle: #94a3b8;
+    --high: #16a34a;
+    --medium: #d97706;
+    --low: #6b7280;
+    --alert-bg: #fefce8;
+    --alert-border: #eab308;
+    --rising: #16a34a;
+    --flat: #3b82f6;
+    --dropping: #ef4444;
+    --silent: #94a3b8;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Top bar */
+  .topbar {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .topbar-brand { display: flex; align-items: baseline; gap: 12px; }
+  .topbar-brand h1 { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+  .topbar-brand .date { font-size: 12px; color: #64748b; }
+  .topbar-alert {
+    background: var(--alert-bg);
+    border: 1px solid var(--alert-border);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: #78350f;
+    font-weight: 500;
+    max-width: 500px;
+    flex-shrink: 1;
+  }
+  .topbar-no-alert { font-size: 12px; color: #475569; }
+
+  /* Main layout */
+  .container { max-width: 1280px; margin: 0 auto; padding: 24px 16px; }
+
+  /* Chain grid */
+  .chain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 768px) {
+    .chain-grid { grid-template-columns: 1fr; }
+    .topbar { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* Chain card */
+  .chain-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .chain-card--HIGH  { border-left: 4px solid var(--high); }
+  .chain-card--MEDIUM{ border-left: 4px solid var(--medium); }
+  .chain-card--LOW   { border-left: 4px solid var(--low); }
+
+  .card-header {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .chain-name { font-size: 15px; font-weight: 700; color: var(--text); }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    margin-left: 8px;
+  }
+  .badge--HIGH   { background: var(--high); }
+  .badge--MEDIUM { background: var(--medium); }
+  .badge--LOW    { background: var(--low); }
+  .time-horizon {
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--bg);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  /* Convergence bar */
+  .convergence-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .conv-label { font-size: 11px; color: var(--muted); }
+  .conv-squares { display: flex; gap: 4px; }
+  .conv-sq {
+    width: 18px; height: 8px; border-radius: 2px;
+    background: var(--border);
+  }
+  .conv-sq--filled { background: var(--high); }
+  .conv-count { font-size: 11px; color: var(--muted); }
+
+  /* Conclusion */
+  .conclusion {
+    padding: 14px 20px;
+    font-size: 14px;
+    color: #1e293b;
+    line-height: 1.6;
+    font-style: italic;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Expandable signals */
+  details { border-top: none; }
+  details > summary {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+  }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::before {
+    content: '▶';
+    font-size: 9px;
+    transition: transform 0.15s;
+  }
+  details[open] > summary::before { transform: rotate(90deg); }
+
+  .signal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .signal-table th {
+    padding: 6px 20px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .signal-table td {
+    padding: 8px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+  }
+  .signal-table tr:last-child td { border-bottom: none; }
+
+  .status-badge {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .status-badge--RISING   { background: var(--rising); }
+  .status-badge--FLAT     { background: var(--flat); }
+  .status-badge--DROPPING { background: var(--dropping); }
+  .status-badge--SILENT   { background: var(--silent); color: #fff; }
+
+  .signal-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* Section heading */
+  .section-heading {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 12px;
+  }
+
+  /* History panel */
+  .history-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .history-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .history-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 8px 6px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    min-width: 52px;
+    background: var(--bg);
+    cursor: default;
+  }
+  .history-day-date {
+    font-size: 10px;
+    color: var(--subtle);
+    white-space: nowrap;
+  }
+  .history-dots {
+    display: flex;
+    gap: 2px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 44px;
+  }
+  .history-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .history-dot--1 { background: #fde68a; }
+  .history-dot--2 { background: #fbbf24; }
+  .history-dot--3 { background: #f59e0b; }
+  .history-dot--4 { background: var(--high); }
+  .history-dot--alert { outline: 1px solid #dc2626; }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--subtle);
+    padding: 16px 0 32px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="topbar-brand">
+    <h1>Signal Watch</h1>
+    <span class="date">{{ date }}</span>
+  </div>
+  {% if analysis.top_alert %}
+  <div class="topbar-alert">
+    <strong>Cross-chain alert:</strong> {{ analysis.top_alert }}
+    {% if analysis.alert_chains %}
+    &mdash; {{ analysis.alert_chains | join(', ') }}
+    {% endif %}
+  </div>
+  {% else %}
+  <div class="topbar-no-alert">No cross-chain alerts today</div>
+  {% endif %}
+</div>
+
+<div class="container">
+
+  <!-- Chain grid -->
+  <p class="section-heading" style="margin-bottom:16px;">Signal Chains</p>
+  <div class="chain-grid">
+
+    {% for chain in analysis.chains %}
+    <div class="chain-card chain-card--{{ chain.confidence }}">
+
+      <div class="card-header">
+        <div class="card-header-top">
+          <div style="display:flex;align-items:center;">
+            <span class="chain-name">{{ chain.name }}</span>
+            <span class="badge badge--{{ chain.confidence }}">{{ chain.confidence }}</span>
+          </div>
+          <span class="time-horizon">{{ chain.time_horizon }}</span>
+        </div>
+        <div class="convergence-row">
+          <span class="conv-label">Convergence</span>
+          <div class="conv-squares">
+            {% for i in range(4) %}
+            <div class="conv-sq {% if i < chain.convergence %}conv-sq--filled{% endif %}"></div>
+            {% endfor %}
+          </div>
+          <span class="conv-count">{{ chain.convergence }}/4</span>
+        </div>
+      </div>
+
+      <div class="conclusion">{{ chain.conclusion }}</div>
+
+      <details>
+        <summary>Show signals ({{ chain.signals | length }})</summary>
+        <table class="signal-table">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Today</th>
+              <th>30d avg</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for sig in chain.signals %}
+            <tr>
+              <td>
+                <div>{{ sig.source }}</div>
+                {% if sig.note %}
+                <div class="signal-note">{{ sig.note }}</div>
+                {% endif %}
+              </td>
+              <td>{{ sig.today }}</td>
+              <td style="color:var(--muted);">{{ sig.avg30 }}</td>
+              <td>
+                <span class="status-badge status-badge--{{ sig.status }}">{{ sig.status }}</span>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </details>
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+  <!-- 30-day history panel -->
+  {% if history %}
+  <div class="history-section">
+    <p class="section-heading">30-Day History</p>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:4px;">
+      Each column is one day. Dots represent chains; colour = max convergence that day.
+    </p>
+    <div class="history-grid">
+      {% for day in history %}
+      <div class="history-day" title="{{ day.date }}">
+        <div class="history-day-date">{{ day.date[5:] }}</div>
+        <div class="history-dots">
+          {% for chain in day.chains %}
+          {% set conv = chain.convergence %}
+          <div class="history-dot history-dot--{{ conv }} {% if day.has_alert %}history-dot--alert{% endif %}"
+               title="{{ chain.name }}: {{ conv }}/4"></div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="legend">
+      <span class="legend-item"><span class="legend-dot" style="background:#e2e8f0;"></span> 0–1 (noise)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#fde68a;"></span> 2 (watch)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span> 3 (signal)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#16a34a;"></span> 4 (strong)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#e2e8f0;outline:1px solid #dc2626;"></span> cross-chain alert</span>
+    </div>
+  </div>
+  {% endif %}
+
+  <footer>
+    Signal Watch &middot; {{ date }} &middot;
+    A trend is flagged only when 3+ independent signals show unusual movement on the same day.
+    &middot; <a href="{{ dashboard_url }}" style="color:inherit;">{{ dashboard_url }}</a>
+  </footer>
+
+</div>
+</body>
+</html>
