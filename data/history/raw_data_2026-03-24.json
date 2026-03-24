@@ -8,8 +8,8 @@
         "label": "arXiv AI papers (24h)"
       },
       "hacker_news": {
-        "today": 81779,
-        "avg30": 81774.0,
+        "today": 81784,
+        "avg30": 81777.3333,
         "label": "HN stories matching keywords"
       },
       "patents": {
@@ -74,8 +74,8 @@
         "label": "Tracked subreddit post velocity (24h)"
       },
       "google_trends": {
-        "today": 21.3333,
-        "avg30": 21.1667,
+        "today": 20.0,
+        "avg30": 20.7778,
         "label": "Google Trends avg interest (7d)"
       },
       "kickstarter": {
