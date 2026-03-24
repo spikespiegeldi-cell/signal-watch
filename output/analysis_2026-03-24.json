@@ -7,16 +7,16 @@
         {
           "source": "arXiv papers matching keywords",
           "status": "DROPPING",
-          "note": "Papers down 55% vs 30d average",
+          "note": "Papers down 53% vs 30d average",
           "today": 4919.4,
-          "avg30": 11013.0833
+          "avg30": 10544.3385
         },
         {
           "source": "Hacker News stories matching keywords",
           "status": "DROPPING",
-          "note": "Stories down 47% vs 30d average",
-          "today": 19982,
-          "avg30": 37817.0
+          "note": "Stories down 66% vs 30d average",
+          "today": 12071,
+          "avg30": 35978.0
         },
         {
           "source": "USPTO patent filings by tracked companies",
@@ -28,13 +28,13 @@
         {
           "source": "Crunchbase tech funding news items",
           "status": "FLAT",
-          "note": "Stable at 1 item",
+          "note": "Stable at 1 item per day",
           "today": 1,
           "avg30": 1.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Tech research and discussion activity declining sharply; protein folding, autonomous driving interest waning.",
+      "conclusion": "Tech research and discussion activity declining sharply; funding remains stable.",
       "confidence": "MEDIUM",
       "time_horizon": "weeks"
     },
@@ -46,7 +46,7 @@
           "status": "FLAT",
           "note": "Spread stable near 0.50",
           "today": 0.49,
-          "avg30": 0.5033
+          "avg30": 0.5023
         },
         {
           "source": "FRED cardboard box production index",
@@ -71,9 +71,9 @@
         }
       ],
       "convergence": 0,
-      "conclusion": "Economic indicators stable; yield curve flat, no shipping or labor market stress signals.",
+      "conclusion": "Yield curve stable; limited economic stress signals in shipping or labor.",
       "confidence": "LOW",
-      "time_horizon": "months"
+      "time_horizon": "weeks"
     },
     {
       "name": "Biotech",
@@ -81,34 +81,34 @@
         {
           "source": "NIH Reporter active grants this FY",
           "status": "DROPPING",
-          "note": "Grants down 15% vs 30d average",
+          "note": "Grants down 14% vs 30d average",
           "today": 6987,
-          "avg30": 8229.1538
+          "avg30": 8140.4286
         },
         {
           "source": "bioRxiv preprints submitted",
           "status": "DROPPING",
-          "note": "Preprints down 24% vs 30d average",
-          "today": 226.0,
-          "avg30": 295.9
+          "note": "Preprints down 22% vs 30d average",
+          "today": 226.1,
+          "avg30": 290.5308
         },
         {
           "source": "ClinicalTrials.gov active trials started",
           "status": "FLAT",
-          "note": "No new trials, consistent baseline",
+          "note": "No new trials started this period",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "SEC S-1 biotech filings",
           "status": "RISING",
-          "note": "Filings up 75% vs 30d average",
+          "note": "Filings up 66% vs 30d average",
           "today": 7,
-          "avg30": 4.0
+          "avg30": 4.2143
         }
       ],
       "convergence": 1,
-      "conclusion": "Biotech research declining but IPO activity surging; CAR-T, mRNA, protein folding funding shifting.",
+      "conclusion": "Research activity declining but IPO filings accelerating; mixed biotech signals.",
       "confidence": "MEDIUM",
       "time_horizon": "months"
     },
@@ -125,14 +125,14 @@
         {
           "source": "Google Trends avg interest score",
           "status": "DROPPING",
-          "note": "Interest down 66% vs 30d average",
-          "today": 2.5,
-          "avg30": 7.4615
+          "note": "Interest down 100% vs 30d average",
+          "today": 0.0,
+          "avg30": 6.9286
         },
         {
           "source": "New Kickstarter projects",
           "status": "FLAT",
-          "note": "No projects, consistent baseline",
+          "note": "No new projects detected",
           "today": 0,
           "avg30": 0.0
         },
@@ -145,7 +145,7 @@
         }
       ],
       "convergence": 0,
-      "conclusion": "Public interest in autonomous vehicles, robotaxi, protein folding declining sharply.",
+      "conclusion": "Public interest in tracked topics collapsed; consumer engagement minimal.",
       "confidence": "MEDIUM",
       "time_horizon": "weeks"
     },
@@ -169,22 +169,22 @@
         {
           "source": "EU open consultations count",
           "status": "FLAT",
-          "note": "No consultations, consistent baseline",
+          "note": "No consultations initiated",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Congressional committee hearings",
           "status": "FLAT",
-          "note": "No hearings, consistent baseline",
+          "note": "No hearings scheduled",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Geopolitical activity muted; no commodity, shipping, or regulatory signals detected.",
+      "conclusion": "Geopolitical activity muted; no commodity or regulatory pressure signals.",
       "confidence": "LOW",
-      "time_horizon": "months"
+      "time_horizon": "weeks"
     },
     {
       "name": "Corporate",
@@ -192,34 +192,34 @@
         {
           "source": "SEC Form 4 insider filings for watchlist",
           "status": "RISING",
-          "note": "Insider filings up 160% vs 30d average",
+          "note": "Insider filings up 133% vs 30d average",
           "today": 1,
-          "avg30": 0.3846
+          "avg30": 0.4286
         },
         {
           "source": "Job posting proxy for watchlist companies",
           "status": "FLAT",
-          "note": "No job postings, consistent baseline",
+          "note": "No job postings detected",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "USPTO patent filings by watchlist companies",
           "status": "FLAT",
-          "note": "No filings, consistent baseline",
+          "note": "No filings, consistent with baseline",
           "today": 0.0,
           "avg30": 0.0
         },
         {
           "source": "SEC 8-K filings for watchlist companies",
           "status": "RISING",
-          "note": "8-K filings up 20% vs 30d average",
+          "note": "8-K filings up 18% vs 30d average",
           "today": 10,
-          "avg30": 8.3077
+          "avg30": 8.4286
         }
       ],
       "convergence": 2,
-      "conclusion": "NVIDIA, Eli Lilly, Novo Nordisk insider activity and corporate events accelerating.",
+      "conclusion": "Insider activity and material event filings elevated; executive positioning intensifying.",
       "confidence": "MEDIUM",
       "time_horizon": "weeks"
     },
@@ -236,9 +236,9 @@
         {
           "source": "arXiv physics.app-ph preprints",
           "status": "DROPPING",
-          "note": "Preprints down 79% vs 30d average",
+          "note": "Preprints down 77% vs 30d average",
           "today": 3292.4,
-          "avg30": 15449.0769
+          "avg30": 14580.7429
         },
         {
           "source": "Average energy commodity price",
@@ -250,13 +250,13 @@
         {
           "source": "Crunchbase energy funding news",
           "status": "FLAT",
-          "note": "No funding, consistent baseline",
+          "note": "No funding activity detected",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Energy research output collapsing; lithium, uranium, copper commodity data unavailable.",
+      "conclusion": "Energy research output collapsed; funding and commodity data unavailable.",
       "confidence": "LOW",
       "time_horizon": "weeks"
     }
