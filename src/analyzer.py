@@ -125,16 +125,29 @@ def call_claude(system: str, user: str) -> dict:
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     response = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=4096,
+        max_tokens=8192,
         temperature=0,
         system=system,
         messages=[{"role": "user", "content": user}]
     )
     text = response.content[0].text.strip()
+    log.info(f"Response: {len(text)} chars, stop_reason={response.stop_reason}")
+
     # Strip markdown fences if Claude wrapped the JSON anyway
     if text.startswith("```"):
         lines = text.split("\n")
-        text = "\n".join(lines[1:-1] if lines[-1] == "```" else lines[1:])
+        text = "\n".join(lines[1:-1] if lines[-1].strip() == "```" else lines[1:])
+        text = text.strip()
+
+    # Find JSON object boundaries robustly
+    start = text.find("{")
+    end = text.rfind("}") + 1
+    if start >= 0 and end > start:
+        text = text[start:end]
+
+    if response.stop_reason == "max_tokens":
+        log.error("Response was truncated (max_tokens reached) — JSON will be incomplete")
+
     return json.loads(text)
 
 
