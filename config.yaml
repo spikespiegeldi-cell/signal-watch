@@ -9,17 +9,28 @@ email:
 
 tech_chain:
   arxiv_keywords:
-    - "agentic AI"
-    - "solid-state battery"
-    - "GLP-2"
+    - "protein folding"
+    - "drug discovery AI"
+    - "quantum computing"
+    - "foundation model biology"
+    - "autonomous driving"
+    - "LiDAR perception"
+    - "end-to-end driving"
   hacker_news_keywords:
-    - "agent"
-    - "reasoning model"
-    - "LLM"
+    - "AlphaFold"
+    - "drug discovery"
+    - "quantum computing"
+    - "autonomous vehicle"
+    - "robotaxi"
+    - "self-driving"
   patent_companies:
     - "OpenAI"
     - "Anthropic"
     - "Google DeepMind"
+    - "Novo Nordisk"
+    - "Eli Lilly"
+    - "NVIDIA"
+    - "Waymo"
 
 economy_chain:
   fred_series:
@@ -31,12 +42,15 @@ economy_chain:
 
 biotech_chain:
   nih_keywords:
-    - "GLP-1"
+    - "protein folding"
+    - "AlphaFold"
+    - "small molecule"
+    - "CAR-T"
     - "mRNA"
-    - "cell therapy"
   clinicaltrials_keywords:
+    - "CAR-T"
     - "obesity"
-    - "Alzheimer"
+    - "small molecule"
     - "cancer immunotherapy"
   sec_biotech_keywords:
     - "biopharmaceutical"
@@ -46,12 +60,13 @@ biotech_chain:
 social_chain:
   subreddits:
     - r/longevity
-    - r/Nootropics
-    - r/homesteading
+    - r/SelfDrivingCars
+    - r/singularity
   google_trends_terms:
-    - "biohacking"
-    - "pickleball"
-    - "homesteading"
+    - "autonomous vehicle"
+    - "robotaxi"
+    - "protein folding"
+    - "small modular reactor"
   amazon_category: "books"
 
 geopolitics_chain:
@@ -62,17 +77,29 @@ geopolitics_chain:
 
 corporate_chain:
   company_watchlist:
-    - "NVDA"
-    - "TSLA"
-    - "MSFT"
-    - "AAPL"
-    - "META"
+    - "NVIDIA"
+    - "Google"
+    - "Novo Nordisk"
+    - "Eli Lilly"
+    - "Moderna"
+    - "WeRide"
+    - "Alto Ingredients"
+    - "Ormat Technologies"
+    - "Remitly Global"
+    - "Tempus AI"
+    - "Safe Pro Group"
+    - "Generate Biomedicines"
+    - "Recursion Pharmaceuticals"
+    - "Zscaler"
+    - "UiPath"
+    - "Firefly Neuroscience"
+    - "Schrodinger"
 
 energy_chain:
   commodities:
     - lithium
-    - cobalt
     - uranium
+    - copper
 
 thresholds:
   rising_pct: 20       # % above 30d avg to count as RISING

@@ -483,13 +483,13 @@ def fetch_congress_hearings() -> Optional[int]:
 
 def fetch_sec_form4(companies: list) -> Optional[int]:
     """Count SEC Form 4 insider filings for watchlist companies."""
-    query = " OR ".join(f'"{c}"' for c in companies[:5])
+    query = " OR ".join(f'"{c}"' for c in companies[:15])
     return fetch_sec_efts("4", query)
 
 
 def fetch_sec_8k(companies: list) -> Optional[int]:
     """Count SEC 8-K material event filings for watchlist companies."""
-    query = " OR ".join(f'"{c}"' for c in companies[:5])
+    query = " OR ".join(f'"{c}"' for c in companies[:15])
     return fetch_sec_efts("8-K", query)
 
 
