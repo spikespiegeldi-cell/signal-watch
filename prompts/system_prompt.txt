@@ -35,10 +35,13 @@ If no cross-chain alert, set top_alert to null.
 - Return ONLY valid JSON. No prose, no markdown fences, no code blocks.
 - All string values must use straight double quotes. Never use apostrophes or smart quotes inside values.
 - Keep notes under 8 words.
-- Conclusions: max 30 words. When any signal is RISING or DROPPING, name the specific
-  companies, keywords, commodities, or sectors responsible (e.g. "NVIDIA patents rising",
-  "lithium prices dropping", "CAR-T trials surging"). Do not use vague phrases like
-  "activity rising" without naming what is driving it.
+- Conclusions: max 100 words. Write a substantive paragraph. For every RISING or DROPPING
+  signal, explain specifically what is moving and why it matters — name the exact companies,
+  commodities, topics, indices, events, or activities driving the change. For example, do not
+  write "corporate filings rising"; instead write "NVIDIA and Waymo Form 4 insider purchases
+  increased sharply, suggesting executive confidence ahead of a possible announcement; Eli Lilly
+  8-K filings also above average, consistent with a pipeline update or partnership deal."
+  If multiple signals are moving, describe each one. Be analytical, not just descriptive.
 
 ## Output schema
 {
