@@ -7,16 +7,16 @@
         {
           "source": "arXiv papers matching keywords",
           "status": "DROPPING",
-          "note": "57% below 30-day average",
+          "note": "Papers down 55% vs 30d average",
           "today": 4919.4,
-          "avg30": 11567.0545
+          "avg30": 11013.0833
         },
         {
           "source": "Hacker News stories matching keywords",
           "status": "DROPPING",
-          "note": "49% below 30-day average",
-          "today": 20110,
-          "avg30": 39303.25
+          "note": "Stories down 47% vs 30d average",
+          "today": 19982,
+          "avg30": 37817.0
         },
         {
           "source": "USPTO patent filings by tracked companies",
@@ -28,13 +28,13 @@
         {
           "source": "Crunchbase tech funding news items",
           "status": "FLAT",
-          "note": "At 30-day average",
+          "note": "Stable at 1 item",
           "today": 1,
           "avg30": 1.0
         }
       ],
       "convergence": 0,
-      "conclusion": "arXiv and Hacker News activity declining sharply; protein folding and autonomous driving discourse weakening.",
+      "conclusion": "Tech research and discussion activity declining sharply; protein folding, autonomous driving interest waning.",
       "confidence": "MEDIUM",
       "time_horizon": "weeks"
     },
@@ -44,9 +44,9 @@
         {
           "source": "FRED T10Y2Y yield spread",
           "status": "FLAT",
-          "note": "Within normal range",
+          "note": "Spread stable near 0.50",
           "today": 0.49,
-          "avg30": 0.5045
+          "avg30": 0.5033
         },
         {
           "source": "FRED cardboard box production index",
@@ -58,20 +58,20 @@
         {
           "source": "Shanghai port congestion news articles",
           "status": "FLAT",
-          "note": "No articles, consistent baseline",
+          "note": "No congestion signals detected",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Job market proxy \u2014 Indeed RSS count",
           "status": "FLAT",
-          "note": "No job postings, consistent baseline",
+          "note": "No job postings detected",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Yield spread stable; economic indicators flat with limited data availability.",
+      "conclusion": "Economic indicators stable; yield curve flat, no shipping or labor market stress signals.",
       "confidence": "LOW",
       "time_horizon": "months"
     },
@@ -81,16 +81,16 @@
         {
           "source": "NIH Reporter active grants this FY",
           "status": "DROPPING",
-          "note": "16% below 30-day average",
+          "note": "Grants down 15% vs 30d average",
           "today": 6987,
-          "avg30": 8332.6667
+          "avg30": 8229.1538
         },
         {
           "source": "bioRxiv preprints submitted",
           "status": "DROPPING",
-          "note": "25% below 30-day average",
-          "today": 225.7,
-          "avg30": 302.2545
+          "note": "Preprints down 24% vs 30d average",
+          "today": 226.0,
+          "avg30": 295.9
         },
         {
           "source": "ClinicalTrials.gov active trials started",
@@ -102,13 +102,13 @@
         {
           "source": "SEC S-1 biotech filings",
           "status": "RISING",
-          "note": "87% above 30-day average",
+          "note": "Filings up 75% vs 30d average",
           "today": 7,
-          "avg30": 3.75
+          "avg30": 4.0
         }
       ],
       "convergence": 1,
-      "conclusion": "NIH grants and bioRxiv submissions declining; S-1 IPO filings surging, suggesting biotech capital reallocation.",
+      "conclusion": "Biotech research declining but IPO activity surging; CAR-T, mRNA, protein folding funding shifting.",
       "confidence": "MEDIUM",
       "time_horizon": "months"
     },
@@ -125,9 +125,9 @@
         {
           "source": "Google Trends avg interest score",
           "status": "DROPPING",
-          "note": "62% below 30-day average",
-          "today": 3.0,
-          "avg30": 7.875
+          "note": "Interest down 66% vs 30d average",
+          "today": 2.5,
+          "avg30": 7.4615
         },
         {
           "source": "New Kickstarter projects",
@@ -139,13 +139,13 @@
         {
           "source": "Amazon Movers & Shakers item count",
           "status": "FLAT",
-          "note": "At 30-day average",
+          "note": "Stable at 30 items",
           "today": 30,
           "avg30": 30.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Google Trends interest in autonomous vehicles and protein folding declining significantly.",
+      "conclusion": "Public interest in autonomous vehicles, robotaxi, protein folding declining sharply.",
       "confidence": "MEDIUM",
       "time_horizon": "weeks"
     },
@@ -153,7 +153,7 @@
       "name": "Geopolitics",
       "signals": [
         {
-          "source": "Average commodity price index",
+          "source": "% of tracked commodities above own 30d baseline",
           "status": "SILENT",
           "note": "Source returned no data",
           "today": null,
@@ -162,7 +162,7 @@
         {
           "source": "Shipping congestion news articles",
           "status": "FLAT",
-          "note": "No articles, consistent baseline",
+          "note": "No congestion signals detected",
           "today": 0,
           "avg30": 0.0
         },
@@ -182,7 +182,7 @@
         }
       ],
       "convergence": 0,
-      "conclusion": "Geopolitical activity flat; commodity price data unavailable.",
+      "conclusion": "Geopolitical activity muted; no commodity, shipping, or regulatory signals detected.",
       "confidence": "LOW",
       "time_horizon": "months"
     },
@@ -192,14 +192,14 @@
         {
           "source": "SEC Form 4 insider filings for watchlist",
           "status": "RISING",
-          "note": "200% above 30-day average",
+          "note": "Insider filings up 160% vs 30d average",
           "today": 1,
-          "avg30": 0.3333
+          "avg30": 0.3846
         },
         {
           "source": "Job posting proxy for watchlist companies",
           "status": "FLAT",
-          "note": "No postings, consistent baseline",
+          "note": "No job postings, consistent baseline",
           "today": 0,
           "avg30": 0.0
         },
@@ -213,13 +213,13 @@
         {
           "source": "SEC 8-K filings for watchlist companies",
           "status": "RISING",
-          "note": "22% above 30-day average",
+          "note": "8-K filings up 20% vs 30d average",
           "today": 10,
-          "avg30": 8.1667
+          "avg30": 8.3077
         }
       ],
       "convergence": 2,
-      "conclusion": "Insider trading and material event filings rising; elevated corporate activity among NVIDIA, Eli Lilly, Moderna watchlist.",
+      "conclusion": "NVIDIA, Eli Lilly, Novo Nordisk insider activity and corporate events accelerating.",
       "confidence": "MEDIUM",
       "time_horizon": "weeks"
     },
@@ -236,9 +236,9 @@
         {
           "source": "arXiv physics.app-ph preprints",
           "status": "DROPPING",
-          "note": "80% below 30-day average",
+          "note": "Preprints down 79% vs 30d average",
           "today": 3292.4,
-          "avg30": 16462.1333
+          "avg30": 15449.0769
         },
         {
           "source": "Average energy commodity price",
@@ -250,13 +250,13 @@
         {
           "source": "Crunchbase energy funding news",
           "status": "FLAT",
-          "note": "No funding news, consistent baseline",
+          "note": "No funding, consistent baseline",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "Physics research preprints declining sharply; energy funding and commodity data unavailable.",
+      "conclusion": "Energy research output collapsing; lithium, uranium, copper commodity data unavailable.",
       "confidence": "LOW",
       "time_horizon": "weeks"
     }
