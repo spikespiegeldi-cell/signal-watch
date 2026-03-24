@@ -24,7 +24,12 @@ Count the number of RISING signals in each chain.
 If 2 or more chains independently show convergence >= 3 on the same day,
 surface a top_alert string describing the cross-chain pattern.
 
-## Output — return ONLY valid JSON, no prose, no markdown fences
+## Output rules
+- Return ONLY valid JSON. No prose, no markdown fences, no code blocks.
+- All string values must use straight double quotes. Never use apostrophes or smart quotes inside values.
+- Keep notes under 8 words. Keep conclusions under 20 words.
+
+## Output schema
 {
   "date": "YYYY-MM-DD",
   "chains": [
@@ -34,17 +39,15 @@ surface a top_alert string describing the cross-chain pattern.
         {
           "source": "source name",
           "status": "RISING|FLAT|DROPPING|SILENT",
-          "today": "brief value",
-          "avg30": "brief baseline",
-          "note": "one phrase explaining the move"
+          "note": "brief phrase max 8 words"
         }
       ],
       "convergence": 0,
-      "conclusion": "one sentence speculative hypothesis",
+      "conclusion": "one sentence max 20 words",
       "confidence": "LOW|MEDIUM|HIGH",
       "time_horizon": "weeks|months|years"
     }
   ],
-  "top_alert": "cross-chain insight string or null",
+  "top_alert": "one sentence or null",
   "alert_chains": ["chain1", "chain2"]
 }

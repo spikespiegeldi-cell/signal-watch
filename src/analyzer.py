@@ -125,30 +125,60 @@ def call_claude(system: str, user: str) -> dict:
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     response = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=8192,
+        max_tokens=4096,
         temperature=0,
         system=system,
         messages=[{"role": "user", "content": user}]
     )
     text = response.content[0].text.strip()
-    log.info(f"Response: {len(text)} chars, stop_reason={response.stop_reason}")
+    log.info(f"Claude response: {len(text)} chars, stop_reason={response.stop_reason}")
 
-    # Strip markdown fences if Claude wrapped the JSON anyway
-    if text.startswith("```"):
-        lines = text.split("\n")
-        text = "\n".join(lines[1:-1] if lines[-1].strip() == "```" else lines[1:])
-        text = text.strip()
+    if response.stop_reason == "max_tokens":
+        log.error("Response truncated at max_tokens — output may be incomplete")
 
-    # Find JSON object boundaries robustly
+    # Strip markdown fences
+    if "```" in text:
+        import re
+        match = re.search(r"```(?:json)?\s*([\s\S]*?)```", text)
+        if match:
+            text = match.group(1).strip()
+
+    # Find outermost JSON object
     start = text.find("{")
     end = text.rfind("}") + 1
     if start >= 0 and end > start:
         text = text[start:end]
 
-    if response.stop_reason == "max_tokens":
-        log.error("Response was truncated (max_tokens reached) — JSON will be incomplete")
-
     return json.loads(text)
+
+
+def enrich_with_raw(analysis: dict, raw: dict) -> dict:
+    """Inject today/avg30 values from raw_data into each signal (Claude no longer returns them)."""
+    chain_source_map = {
+        "Tech":        {"arxiv": "arxiv", "hacker_news": "hacker_news", "patents": "patents", "crunchbase": "crunchbase"},
+        "Economy":     {"yield_curve": "yield_curve", "box_production": "box_production", "marine_traffic": "marine_traffic", "linkedin_jobs": "linkedin_jobs"},
+        "Biotech":     {"nih_reporter": "nih_reporter", "biorxiv": "biorxiv", "clinical_trials": "clinical_trials", "sec_s1_biotech": "sec_s1_biotech"},
+        "Social":      {"reddit": "reddit", "google_trends": "google_trends", "kickstarter": "kickstarter", "amazon_movers": "amazon_movers"},
+        "Geopolitics": {"commodities": "commodities", "marine_traffic": "marine_traffic", "eu_consultations": "eu_consultations", "congress_hearings": "congress_hearings"},
+        "Corporate":   {"sec_form4": "sec_form4", "jobs_proxy": "jobs_proxy", "patents": "patents", "sec_8k": "sec_8k"},
+        "Energy":      {"arpa_e": "arpa_e", "arxiv_physics": "arxiv_physics", "energy_commodities": "energy_commodities", "crunchbase_energy": "crunchbase_energy"},
+    }
+    raw_chains = raw.get("chains", {})
+    for chain in analysis.get("chains", []):
+        chain_name = chain.get("name", "")
+        raw_chain = raw_chains.get(chain_name.lower(), {})
+        source_map = chain_source_map.get(chain_name, {})
+        for signal in chain.get("signals", []):
+            # Match by lowercased source name
+            src_key = signal.get("source", "").lower().replace(" ", "_").replace("-", "_")
+            raw_entry = raw_chain.get(src_key) or raw_chain.get(source_map.get(src_key, ""), {})
+            if raw_entry:
+                signal["today"] = raw_entry.get("today", "N/A")
+                signal["avg30"] = raw_entry.get("avg30", "N/A")
+            else:
+                signal.setdefault("today", "N/A")
+                signal.setdefault("avg30", "N/A")
+    return analysis
 
 
 def main():
@@ -160,6 +190,7 @@ def main():
 
     log.info("Calling Claude Haiku for analysis...")
     analysis = call_claude(system_prompt, user_prompt)
+    analysis = enrich_with_raw(analysis, raw)
 
     out_path = OUTPUT_DIR / f"analysis_{TODAY}.json"
     out_path.write_text(json.dumps(analysis, indent=2))
