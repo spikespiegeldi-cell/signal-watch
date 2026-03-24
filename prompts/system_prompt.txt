@@ -57,7 +57,7 @@ If no cross-chain alert, set top_alert to null.
         }
       ],
       "convergence": 0,
-      "conclusion": "one sentence max 20 words",
+      "conclusion": "substantive paragraph up to 100 words naming specific entities driving each RISING/DROPPING signal",
       "confidence": "LOW|MEDIUM|HIGH",
       "time_horizon": "weeks|months|years"
     }
