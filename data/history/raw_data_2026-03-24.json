@@ -4,12 +4,12 @@
     "tech": {
       "arxiv": {
         "today": 34436,
-        "avg30": 12187.3333,
+        "avg30": 15365.7143,
         "label": "arXiv AI papers (24h)"
       },
       "hacker_news": {
-        "today": 20102,
-        "avg30": 54198.4286,
+        "today": 20106,
+        "avg30": 49936.875,
         "label": "HN stories matching keywords"
       },
       "patents": {
@@ -48,11 +48,11 @@
     "biotech": {
       "nih_reporter": {
         "today": 6987,
-        "avg30": 9293.8571,
+        "avg30": 9005.5,
         "label": "NIH grants this FY"
       },
       "biorxiv": {
-        "today": 348,
+        "today": null,
         "avg30": 346.2857,
         "label": "bioRxiv preprints (24h)"
       },
@@ -74,8 +74,8 @@
         "label": "Tracked subreddit post velocity (24h)"
       },
       "google_trends": {
-        "today": 0.5,
-        "avg30": 12.0714,
+        "today": 1.25,
+        "avg30": 10.7188,
         "label": "Google Trends avg interest (7d)"
       },
       "kickstarter": {
@@ -91,8 +91,8 @@
     },
     "geopolitics": {
       "commodities": {
-        "today": 3320.6267,
-        "avg30": 3314.0967,
+        "today": 3323.7733,
+        "avg30": 3317.3222,
         "label": "Avg price: lithium, copper, wheat"
       },
       "marine_traffic": {
@@ -128,8 +128,8 @@
         "label": "Patent filings by watchlist cos (24h)"
       },
       "sec_8k": {
-        "today": 0,
-        "avg30": 6.8571,
+        "today": 10,
+        "avg30": 7.25,
         "label": "SEC 8-K filings by watchlist (24h)"
       }
     },
@@ -145,8 +145,8 @@
         "label": "arXiv physics.app-ph preprints (24h)"
       },
       "energy_commodities": {
-        "today": 2966.42,
-        "avg30": 2252.4183,
+        "today": 2969.7733,
+        "avg30": 2491.5367,
         "label": "Avg price: lithium, uranium, copper"
       },
       "crunchbase_energy": {
