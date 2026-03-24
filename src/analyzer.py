@@ -153,31 +153,26 @@ def call_claude(system: str, user: str) -> dict:
 
 
 def enrich_with_raw(analysis: dict, raw: dict) -> dict:
-    """Inject today/avg30 values from raw_data into each signal (Claude no longer returns them)."""
-    chain_source_map = {
-        "Tech":        {"arxiv": "arxiv", "hacker_news": "hacker_news", "patents": "patents", "crunchbase": "crunchbase"},
-        "Economy":     {"yield_curve": "yield_curve", "box_production": "box_production", "marine_traffic": "marine_traffic", "linkedin_jobs": "linkedin_jobs"},
-        "Biotech":     {"nih_reporter": "nih_reporter", "biorxiv": "biorxiv", "clinical_trials": "clinical_trials", "sec_s1_biotech": "sec_s1_biotech"},
-        "Social":      {"reddit": "reddit", "google_trends": "google_trends", "kickstarter": "kickstarter", "amazon_movers": "amazon_movers"},
-        "Geopolitics": {"commodities": "commodities", "marine_traffic": "marine_traffic", "eu_consultations": "eu_consultations", "congress_hearings": "congress_hearings"},
-        "Corporate":   {"sec_form4": "sec_form4", "jobs_proxy": "jobs_proxy", "patents": "patents", "sec_8k": "sec_8k"},
-        "Energy":      {"arpa_e": "arpa_e", "arxiv_physics": "arxiv_physics", "energy_commodities": "energy_commodities", "crunchbase_energy": "crunchbase_energy"},
+    """Inject today/avg30 values from raw_data into each signal using positional matching."""
+    # Fixed order of raw data keys per chain — must match fetcher.py output order
+    chain_key_order = {
+        "Tech":        ["arxiv", "hacker_news", "patents", "crunchbase"],
+        "Economy":     ["yield_curve", "box_production", "marine_traffic", "linkedin_jobs"],
+        "Biotech":     ["nih_reporter", "biorxiv", "clinical_trials", "sec_s1_biotech"],
+        "Social":      ["reddit", "google_trends", "kickstarter", "amazon_movers"],
+        "Geopolitics": ["commodities", "marine_traffic", "eu_consultations", "congress_hearings"],
+        "Corporate":   ["sec_form4", "jobs_proxy", "patents", "sec_8k"],
+        "Energy":      ["arpa_e", "arxiv_physics", "energy_commodities", "crunchbase_energy"],
     }
     raw_chains = raw.get("chains", {})
     for chain in analysis.get("chains", []):
         chain_name = chain.get("name", "")
         raw_chain = raw_chains.get(chain_name.lower(), {})
-        source_map = chain_source_map.get(chain_name, {})
-        for signal in chain.get("signals", []):
-            # Match by lowercased source name
-            src_key = signal.get("source", "").lower().replace(" ", "_").replace("-", "_")
-            raw_entry = raw_chain.get(src_key) or raw_chain.get(source_map.get(src_key, ""), {})
-            if raw_entry:
-                signal["today"] = raw_entry.get("today", "N/A")
-                signal["avg30"] = raw_entry.get("avg30", "N/A")
-            else:
-                signal.setdefault("today", "N/A")
-                signal.setdefault("avg30", "N/A")
+        keys = chain_key_order.get(chain_name, [])
+        for i, signal in enumerate(chain.get("signals", [])):
+            raw_entry = raw_chain.get(keys[i], {}) if i < len(keys) else {}
+            signal["today"] = raw_entry.get("today", "N/A") if raw_entry else "N/A"
+            signal["avg30"] = raw_entry.get("avg30", "N/A") if raw_entry else "N/A"
     return analysis
 
 
