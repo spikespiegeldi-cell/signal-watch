@@ -5,7 +5,7 @@ email:
   to: diweiwei@hotmail.com
   from: diweiwei626@gmail.com
   send_time_utc: "07:00"
-  only_alert_on_convergence: 0   # min convergence to send email
+  only_alert_on_convergence: 2   # min convergence to send email
 
 tech_chain:
   arxiv_keywords:
