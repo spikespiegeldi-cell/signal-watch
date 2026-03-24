@@ -34,7 +34,11 @@ If no cross-chain alert, set top_alert to null.
 ## Output rules
 - Return ONLY valid JSON. No prose, no markdown fences, no code blocks.
 - All string values must use straight double quotes. Never use apostrophes or smart quotes inside values.
-- Keep notes under 8 words. Keep conclusions under 20 words.
+- Keep notes under 8 words.
+- Conclusions: max 30 words. When any signal is RISING or DROPPING, name the specific
+  companies, keywords, commodities, or sectors responsible (e.g. "NVIDIA patents rising",
+  "lithium prices dropping", "CAR-T trials surging"). Do not use vague phrases like
+  "activity rising" without naming what is driving it.
 
 ## Output schema
 {
