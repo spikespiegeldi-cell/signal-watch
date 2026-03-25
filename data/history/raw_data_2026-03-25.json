@@ -1,0 +1,159 @@
+{
+  "date": "2026-03-25",
+  "chains": {
+    "tech": {
+      "arxiv": {
+        "today": 4922.0,
+        "avg30": 9489.825,
+        "label": "arXiv AI papers (24h)"
+      },
+      "hacker_news": {
+        "today": 20013,
+        "avg30": 32701.7647,
+        "label": "HN stories matching keywords"
+      },
+      "patents": {
+        "today": 0.0,
+        "avg30": 0.0,
+        "label": "USPTO patent filings (24h)"
+      },
+      "crunchbase": {
+        "today": 1,
+        "avg30": 1.0,
+        "label": "Tech funding news items (24h)"
+      }
+    },
+    "economy": {
+      "yield_curve": {
+        "today": 0.49,
+        "avg30": 0.5,
+        "label": "FRED T10Y2Y yield spread"
+      },
+      "box_production": {
+        "today": null,
+        "avg30": null,
+        "label": "FRED cardboard box production index"
+      },
+      "marine_traffic": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "Shanghai port congestion news (7d)"
+      },
+      "linkedin_jobs": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "Job market proxy (Indeed RSS)"
+      }
+    },
+    "biotech": {
+      "nih_reporter": {
+        "today": 9368,
+        "avg30": 8357.0588,
+        "label": "NIH grants this FY"
+      },
+      "biorxiv": {
+        "today": 202.3,
+        "avg30": 276.9875,
+        "label": "bioRxiv preprints (24h)"
+      },
+      "clinical_trials": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "ClinicalTrials.gov active trials (30d)"
+      },
+      "sec_s1_biotech": {
+        "today": 1,
+        "avg30": 3.7647,
+        "label": "SEC S-1 biotech filings (24h)"
+      }
+    },
+    "social": {
+      "reddit": {
+        "today": null,
+        "avg30": null,
+        "label": "Tracked subreddit post velocity (24h)"
+      },
+      "google_trends": {
+        "today": 2.25,
+        "avg30": 6.1471,
+        "label": "Google Trends avg interest (7d)"
+      },
+      "kickstarter": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "New Kickstarter projects (24h)"
+      },
+      "amazon_movers": {
+        "today": 30,
+        "avg30": 30.0,
+        "label": "Amazon Movers & Shakers item count"
+      }
+    },
+    "geopolitics": {
+      "commodities": {
+        "today": null,
+        "avg30": 3337.064,
+        "label": "Avg price: lithium, copper, wheat, crude-oil, gold"
+      },
+      "marine_traffic": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "Shipping congestion news (7d)"
+      },
+      "eu_consultations": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "EU open consultations"
+      },
+      "congress_hearings": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "Congressional hearings (7d)"
+      }
+    },
+    "corporate": {
+      "sec_form4": {
+        "today": 1,
+        "avg30": 0.5294,
+        "label": "SEC Form 4 insider filings (24h)"
+      },
+      "jobs_proxy": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "Job posting proxy for watchlist"
+      },
+      "patents": {
+        "today": 0.0,
+        "avg30": 0.0,
+        "label": "Patent filings by watchlist cos (24h)"
+      },
+      "sec_8k": {
+        "today": 0,
+        "avg30": 8.1176,
+        "label": "SEC 8-K filings by watchlist (24h)"
+      }
+    },
+    "energy": {
+      "arpa_e": {
+        "today": null,
+        "avg30": null,
+        "label": "ARPA-E press releases (30d)"
+      },
+      "arxiv_physics": {
+        "today": 3294.0,
+        "avg30": 12588.7765,
+        "label": "arXiv physics.app-ph preprints (24h)"
+      },
+      "energy_commodities": {
+        "today": null,
+        "avg30": 2699.4993,
+        "label": "Avg price: lithium, uranium, copper"
+      },
+      "crunchbase_energy": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "Energy funding news (24h)"
+      }
+    }
+  }
+}
