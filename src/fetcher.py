@@ -311,41 +311,21 @@ def fetch_sec_efts(form_type: str, query: str) -> Optional[int]:
 
 # ── Social chain ──────────────────────────────────────────────────────────────
 
-def fetch_reddit(subreddits: list) -> Optional[float]:
-    """Count posts across tracked subreddits in the past 24h."""
-    client_id = os.environ.get("REDDIT_CLIENT_ID", "")
-    client_secret = os.environ.get("REDDIT_SECRET", "")
-    if not client_id or not client_secret:
-        log.warning("Reddit credentials not set")
-        return None
+def fetch_bluesky(keywords: list) -> Optional[int]:
+    """Count Bluesky posts matching keywords in the past 24h. No auth required."""
     try:
-        token_r = requests.post(
-            "https://www.reddit.com/api/v1/access_token",
-            auth=requests.auth.HTTPBasicAuth(client_id, client_secret),
-            data={"grant_type": "client_credentials"},
-            headers={"User-Agent": "SignalWatch/1.0"},
-            timeout=15
-        ).json()
-        token = token_r.get("access_token")
-        if not token:
-            return None
-        hdrs = {"User-Agent": "SignalWatch/1.0", "Authorization": f"bearer {token}"}
+        since = (datetime.utcnow() - timedelta(hours=24)).strftime("%Y-%m-%dT%H:%M:%SZ")
         total = 0
-        cutoff = datetime.utcnow() - timedelta(hours=24)
-        for sub in subreddits[:5]:
-            name = sub.replace("r/", "")
-            posts = requests.get(
-                f"https://oauth.reddit.com/r/{name}/new?limit=25",
-                headers=hdrs, timeout=15
+        for kw in keywords[:5]:
+            r = requests.get(
+                "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts",
+                params={"q": kw, "limit": 1, "since": since},
+                timeout=15, headers=HEADERS
             ).json()
-            children = posts.get("data", {}).get("children", [])
-            total += sum(
-                1 for p in children
-                if datetime.utcfromtimestamp(p["data"]["created_utc"]) > cutoff
-            )
-        return float(total)
+            total += r.get("hitsTotal", 0)
+        return total
     except Exception as e:
-        log.warning(f"Reddit: {e}")
+        log.warning(f"Bluesky: {e}")
         return None
 
 
@@ -625,12 +605,12 @@ def main():
 
     # ── Social ────────────────────────────────────────────────────────────────
     log.info("Fetching Social chain...")
-    soc_reddit, soc_reddit_avg = record(b, "soc_reddit",  fetch_reddit(cfg["social_chain"]["subreddits"]))
+    soc_bsky,   soc_bsky_avg   = record(b, "soc_bluesky", fetch_bluesky(cfg["social_chain"]["bluesky_keywords"]))
     soc_trends, soc_trends_avg = record(b, "soc_trends",  fetch_trends(cfg["social_chain"]["google_trends_terms"]))
     soc_ks,     soc_ks_avg     = record(b, "soc_ks",      fetch_kickstarter())
     soc_amz,    soc_amz_avg    = record(b, "soc_amazon",  fetch_amazon_movers())
     result["chains"]["social"] = {
-        "reddit":        {"today": soc_reddit, "avg30": soc_reddit_avg, "label": "Tracked subreddit post velocity (24h)"},
+        "bluesky":       {"today": soc_bsky,   "avg30": soc_bsky_avg,   "label": "Bluesky posts matching keywords (24h)"},
         "google_trends": {"today": soc_trends, "avg30": soc_trends_avg, "label": "Google Trends avg interest (7d)"},
         "kickstarter":   {"today": soc_ks,     "avg30": soc_ks_avg,     "label": "New Kickstarter projects (24h)"},
         "amazon_movers": {"today": soc_amz,    "avg30": soc_amz_avg,    "label": "Amazon Movers & Shakers item count"},

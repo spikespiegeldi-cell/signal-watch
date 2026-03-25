@@ -72,10 +72,12 @@ biotech_chain:
     - "cell therapy"
 
 social_chain:
-  subreddits:
-    - r/longevity
-    - r/SelfDrivingCars
-    - r/singularity
+  bluesky_keywords:
+    - "autonomous vehicle"
+    - "drug discovery"
+    - "protein folding"
+    - "small modular reactor"
+    - "AI research"
   google_trends_terms:
     - "autonomous vehicle"
     - "robotaxi"

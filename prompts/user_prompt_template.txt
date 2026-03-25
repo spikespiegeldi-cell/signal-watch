@@ -23,9 +23,9 @@ ClinicalTrials.gov active trials started (30d window): {{ CLIN_TODAY }} (30d avg
 SEC S-1 biotech filings (24h): {{ SEC_BIO_TODAY }} (30d avg: {{ SEC_BIO_AVG }})
 
 ## Social chain
-Subreddits monitored: {{ SUBREDDITS }}
+Bluesky keywords monitored: {{ BLUESKY_KEYWORDS }}
 Google Trends terms: {{ TRENDS_TERMS }}
-Reddit post velocity across tracked subreddits (24h): {{ REDDIT_TODAY }} (30d avg: {{ REDDIT_AVG }})
+Bluesky post count matching keywords (24h): {{ BLUESKY_TODAY }} (30d avg: {{ BLUESKY_AVG }})
 Google Trends avg interest score (7d window): {{ TRENDS_TODAY }} (30d avg: {{ TRENDS_AVG }})
 New Kickstarter projects (24h): {{ KS_TODAY }} (30d avg: {{ KS_AVG }})
 Amazon Movers & Shakers item count: {{ AMZ_TODAY }} (30d avg: {{ AMZ_AVG }})
