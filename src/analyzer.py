@@ -118,8 +118,9 @@ def render_user_prompt(raw: dict) -> str:
         "EN_CB_TODAY":    val(raw, "energy", "crunchbase_energy"),
         "EN_CB_AVG":      val(raw, "energy", "crunchbase_energy", "avg30"),
         # Secondary signals (Yahoo Finance)
-        "SHORT_INTEREST":  raw.get("secondary_signals", {}).get("short_interest", "N/A (not fetched)"),
-        "OPTIONS_CP_RATIO": raw.get("secondary_signals", {}).get("options_cp_ratio", "N/A (not fetched)"),
+        "SHORT_INTEREST":     raw.get("secondary_signals", {}).get("short_interest", "N/A (not fetched)"),
+        "OPTIONS_CP_RATIO":   raw.get("secondary_signals", {}).get("options_cp_ratio", "N/A (not fetched)"),
+        "FORM4_PER_COMPANY":  raw.get("secondary_signals", {}).get("form4_per_company", "N/A (not fetched)"),
     }
     return Template(template_text).render(**ctx)
 
@@ -186,7 +187,7 @@ def main():
     system_prompt = (PROMPTS_DIR / "system_prompt.txt").read_text()
     user_prompt = render_user_prompt(raw)
 
-    log.info("Calling Claude Haiku for analysis...")
+    log.info("Calling Claude Sonnet for analysis...")
     analysis = call_claude(system_prompt, user_prompt)
     analysis = enrich_with_raw(analysis, raw)
 

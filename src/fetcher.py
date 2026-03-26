@@ -554,6 +554,8 @@ def fetch_crunchbase_energy() -> Optional[int]:
 
 def fetch_short_interest_all(ticker_map: dict, b: dict) -> str:
     """Fetch short interest % of float for each listed watchlist ticker via yfinance.
+    Issue 2: tracks skipped tickers with reasons.
+    Issue 3: falls back to sharesShort/sharesOutstanding, then shortRatio if shortPercentOfFloat is None.
     Returns a formatted string summarising today vs 30d average per ticker."""
     try:
         import yfinance as yf
@@ -562,30 +564,64 @@ def fetch_short_interest_all(ticker_map: dict, b: dict) -> str:
         return "N/A (yfinance not installed)"
 
     parts = []
+    skipped = []
     for company, ticker in ticker_map.items():
         try:
             info = yf.Ticker(ticker).info
             raw_pct = info.get("shortPercentOfFloat")
+            is_ratio = False
+
+            # Issue 3: fallback chain when shortPercentOfFloat is None
             if raw_pct is None:
-                continue
-            today_val, avg_val = record(b, f"secondary_short_{ticker}", round(float(raw_pct) * 100, 2))
-            if today_val is None:
-                continue
-            if avg_val and avg_val > 0:
-                chg = round((today_val - avg_val) / avg_val * 100)
-                direction = f"+{chg}%" if chg >= 0 else f"{chg}%"
-                parts.append(f"{ticker}: {today_val:.1f}% (avg {avg_val:.1f}%, {direction})")
+                shares_short = info.get("sharesShort") or 0
+                shares_out = info.get("sharesOutstanding")
+                if shares_out and shares_out > 0 and shares_short:
+                    raw_pct = shares_short / shares_out  # compute as fraction, same unit
+                elif info.get("shortRatio") is not None:
+                    raw_pct = info.get("shortRatio")
+                    is_ratio = True
+                else:
+                    skipped.append(f"{ticker} short interest data unavailable")
+                    continue
+
+            if not is_ratio:
+                today_val, avg_val = record(b, f"secondary_short_{ticker}", round(float(raw_pct) * 100, 2))
+                if today_val is None:
+                    skipped.append(f"{ticker} no data returned")
+                    continue
+                if avg_val and avg_val > 0:
+                    chg = round((today_val - avg_val) / avg_val * 100)
+                    direction = f"+{chg}%" if chg >= 0 else f"{chg}%"
+                    parts.append(f"{ticker}: {today_val:.1f}% float (avg {avg_val:.1f}%, {direction})")
+                else:
+                    parts.append(f"{ticker}: {today_val:.1f}% float (no baseline yet)")
             else:
-                parts.append(f"{ticker}: {today_val:.1f}% (no baseline yet)")
+                # shortRatio (days-to-cover) — record separately, note as ratio not percentage
+                today_val, avg_val = record(b, f"secondary_short_{ticker}", round(float(raw_pct), 2))
+                if today_val is None:
+                    skipped.append(f"{ticker} no data returned")
+                    continue
+                if avg_val and avg_val > 0:
+                    chg = round((today_val - avg_val) / avg_val * 100)
+                    direction = f"+{chg}%" if chg >= 0 else f"{chg}%"
+                    parts.append(f"{ticker}: short ratio {today_val:.1f}d (avg {avg_val:.1f}d, {direction})")
+                else:
+                    parts.append(f"{ticker}: short ratio {today_val:.1f}d (no baseline yet)")
+
         except Exception as e:
             log.warning(f"Short interest {ticker}: {e}")
+            skipped.append(f"{ticker} {str(e)[:60]}")
 
-    return "; ".join(parts) if parts else "N/A (no data returned)"
+    result_str = "; ".join(parts)
+    if skipped:
+        result_str += f" [skipped: {', '.join(skipped)}]"
+    return result_str if result_str else "N/A (no data returned)"
 
 
 def fetch_options_activity_all(ticker_map: dict, b: dict) -> str:
     """Fetch call/put open interest ratio for each listed watchlist ticker via yfinance.
     Uses the nearest 3 option expiration dates for a stable ratio.
+    Issue 2: tracks skipped tickers with reasons.
     Returns a formatted string summarising today vs 30d average per ticker."""
     try:
         import yfinance as yf
@@ -594,11 +630,13 @@ def fetch_options_activity_all(ticker_map: dict, b: dict) -> str:
         return "N/A (yfinance not installed)"
 
     parts = []
+    skipped = []
     for company, ticker in ticker_map.items():
         try:
             t = yf.Ticker(ticker)
             expirations = t.options
             if not expirations:
+                skipped.append(f"{ticker} no options listed")
                 continue
             total_call_oi = 0
             total_put_oi = 0
@@ -607,10 +645,12 @@ def fetch_options_activity_all(ticker_map: dict, b: dict) -> str:
                 total_call_oi += chain.calls["openInterest"].fillna(0).sum()
                 total_put_oi += chain.puts["openInterest"].fillna(0).sum()
             if total_put_oi == 0:
+                skipped.append(f"{ticker} no put open interest")
                 continue
             ratio = round(total_call_oi / total_put_oi, 2)
             today_val, avg_val = record(b, f"secondary_options_{ticker}", ratio)
             if today_val is None:
+                skipped.append(f"{ticker} no data returned")
                 continue
             if avg_val and avg_val > 0:
                 chg = round((today_val - avg_val) / avg_val * 100)
@@ -620,6 +660,92 @@ def fetch_options_activity_all(ticker_map: dict, b: dict) -> str:
                 parts.append(f"{ticker}: C/P {today_val:.2f} (no baseline yet)")
         except Exception as e:
             log.warning(f"Options activity {ticker}: {e}")
+            skipped.append(f"{ticker} {str(e)[:60]}")
+
+    result_str = "; ".join(parts)
+    if skipped:
+        result_str += f" [skipped: {', '.join(skipped)}]"
+    return result_str if result_str else "N/A (no data returned)"
+
+
+def fetch_form4_per_company(ticker_map: dict) -> str:
+    """Fetch per-company insider transactions from yfinance for the last 7 days.
+    Purchases by executives/directors are Signal B evidence; sales are not.
+    Returns a formatted string with one entry per ticker."""
+    try:
+        import yfinance as yf
+        import pandas as pd
+    except ImportError:
+        log.warning("yfinance/pandas not installed — skipping Form 4 per-company")
+        return "N/A (yfinance not installed)"
+
+    cutoff = date.today() - timedelta(days=7)
+    parts = []
+    for company, ticker in ticker_map.items():
+        try:
+            df = yf.Ticker(ticker).insider_transactions
+            if df is None or (hasattr(df, "empty") and df.empty):
+                parts.append(f"{ticker}: data unavailable")
+                continue
+
+            # Detect date column (varies by yfinance version)
+            date_col = next((c for c in ["Start Date", "Date", "Transaction Date"] if c in df.columns), None)
+            if date_col is None:
+                parts.append(f"{ticker}: data unavailable (unrecognised schema)")
+                continue
+
+            # Detect transaction type column
+            type_col = next((c for c in ["Transaction", "Type"] if c in df.columns), None)
+
+            # Parse dates and filter to last 7 days
+            df = df.copy()
+            df[date_col] = pd.to_datetime(df[date_col], errors="coerce")
+            recent = df[df[date_col].dt.date >= cutoff]
+
+            if recent.empty:
+                parts.append(f"{ticker}: no insider transactions (7d)")
+                continue
+
+            # Filter for purchases only — sales are not Signal B evidence
+            if type_col:
+                purchases = recent[
+                    recent[type_col].astype(str).str.lower().str.contains(r"buy|purchase", na=False)
+                ]
+            else:
+                # No type column: use Text column as fallback
+                text_col = "Text" if "Text" in recent.columns else None
+                if text_col:
+                    purchases = recent[
+                        recent[text_col].astype(str).str.lower().str.contains(r"buy|purchase", na=False)
+                    ]
+                else:
+                    purchases = pd.DataFrame()
+
+            if purchases.empty:
+                parts.append(f"{ticker}: no insider purchases (7d)")
+                continue
+
+            # Most recent purchase
+            row = purchases.sort_values(date_col, ascending=False).iloc[0]
+            tx_date = row[date_col].strftime("%Y-%m-%d")
+            position = str(row.get("Position", row.get("Title", "Insider"))).strip()
+            insider_name = str(row.get("Insider", row.get("Name", ""))).strip()
+            shares_raw = row.get("Shares", row.get("shares", None))
+
+            try:
+                shares_fmt = f"{int(float(shares_raw)):,}"
+            except (TypeError, ValueError):
+                shares_fmt = None
+
+            who = f"{position} {insider_name}".strip()
+            if shares_fmt:
+                parts.append(f"{ticker}: {who} bought {shares_fmt} shares on {tx_date}")
+            else:
+                parts.append(f"{ticker}: {who} insider purchase on {tx_date} (share count N/A)")
+
+        except Exception as e:
+            log.warning(f"Form4 per-company {ticker}: {e}")
+            parts.append(f"{ticker}: data unavailable ({str(e)[:60]})")
 
     return "; ".join(parts) if parts else "N/A (no data returned)"
 
@@ -752,18 +878,22 @@ def main():
     # ── Secondary signals (Yahoo Finance) ─────────────────────────────────────
     ticker_map = cfg["corporate_chain"].get("ticker_map", {})
     if ticker_map:
-        log.info("Fetching secondary signals (short interest + options) via Yahoo Finance...")
+        log.info("Fetching secondary signals (short interest + options + Form 4 per-company) via Yahoo Finance...")
         short_interest_str = fetch_short_interest_all(ticker_map, b)
         options_str = fetch_options_activity_all(ticker_map, b)
-        log.info(f"  Short interest: {short_interest_str[:120]}...")
-        log.info(f"  Options C/P: {options_str[:120]}...")
+        form4_per_company_str = fetch_form4_per_company(ticker_map)
+        log.info(f"  Short interest: {short_interest_str[:300]}")
+        log.info(f"  Options C/P:    {options_str[:300]}")
+        log.info(f"  Form4 per-co:   {form4_per_company_str[:300]}")
     else:
         short_interest_str = "N/A (no ticker_map configured)"
         options_str = "N/A (no ticker_map configured)"
+        form4_per_company_str = "N/A (no ticker_map configured)"
 
     result["secondary_signals"] = {
         "short_interest": short_interest_str,
         "options_cp_ratio": options_str,
+        "form4_per_company": form4_per_company_str,
     }
 
     # ── Save outputs ──────────────────────────────────────────────────────────
