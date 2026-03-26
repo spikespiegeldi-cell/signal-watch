@@ -150,6 +150,9 @@ Confidence and Key Risk: State confidence as HIGH, MEDIUM, or LOW based on chain
 Tier 2 may be populated independently of whether Tier 1 fires.
 Word limit: 300 words maximum for Tier 2.
 
+## Sequential Chain Alerts
+If sequential_alerts is non-empty in the input data, treat each entry as elevated conviction context for the recommendation section. A sequential alert means chain A's upstream signal has now propagated to chain B within the expected lag window — this is stronger evidence than either chain firing alone. Note the sequential alert explicitly in the investment_implication for chain B and increase confidence by one step (LOW → MEDIUM, MEDIUM → HIGH) if the directional signals are consistent.
+
 ## Investment Implication and Recommendation for top_alert
 If top_alert is not null, always populate both investment_implication (max 200 words) and
 recommendation (object with tier_1 max 700 words and tier_2 max 300 words) for the cross-chain
@@ -190,5 +193,6 @@ simultaneously — cross-chain exposure increases conviction and should be noted
       "tier_2": "max 300 words: cross-chain thematic watch with company watchlist"
     }
   },
-  "alert_chains": ["chain1", "chain2"]
+  "alert_chains": ["chain1", "chain2"],
+  "sequential_alerts": []
 }

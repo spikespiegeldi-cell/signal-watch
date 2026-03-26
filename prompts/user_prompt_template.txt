@@ -79,5 +79,8 @@ A "meaningful" Signal D move is a drop of 15%+ vs the 30d average. A "meaningful
 move is a call/put ratio 30%+ above the 30d average. Apply the directional consistency rule —
 a bullish signal for a bearish chain implication is a contradiction, not confirmation.
 
+Sequential chain alerts active today (treat as elevated conviction — chain A signal has propagated to chain B within expected lag window):
+{{ SEQUENTIAL_ALERTS }}
+
 Analyse all 7 chains. Apply scoring rules from your instructions.
 Return JSON only — no preamble, no explanation outside the JSON.

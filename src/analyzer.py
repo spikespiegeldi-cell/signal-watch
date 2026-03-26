@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 """
 Signal Watch — Stage 2: Analyzer
-Reads raw fetched data, calls Claude Haiku for cross-chain analysis,
-and saves structured JSON output.
+Reads raw fetched data, calls Claude Sonnet for cross-chain analysis,
+saves structured JSON output, and maintains the convergence log.
 
 Usage: python src/analyzer.py
 """
 
 import os
 import json
+import re
 import yaml
 import logging
 import anthropic
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from jinja2 import Template
 
@@ -29,6 +30,43 @@ TODAY = date.today().isoformat()
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)
 
+# Signal key order per chain — must match fetcher.py output order
+CHAIN_SIGNAL_KEYS = {
+    "Tech":        ["arxiv", "hacker_news", "patents", "crunchbase"],
+    "Economy":     ["yield_curve", "box_production", "layoffs", "sector_hiring"],
+    "Biotech":     ["nih_reporter", "biorxiv", "clinical_trials", "sec_s1_biotech"],
+    "Social":      ["bluesky", "google_trends", "kickstarter", "amazon_movers"],
+    "Geopolitics": ["commodities", "marine_traffic", "eu_consultations", "congress_hearings"],
+    "Corporate":   ["sec_form4", "jobs_per_company", "patents", "sec_8k"],
+    "Energy":      ["arpa_e", "arxiv_physics", "energy_commodities", "crunchbase_energy"],
+}
+
+# Hypothesis pairs for sequential alert detection
+SEQUENTIAL_HYPOTHESES = [
+    ("Biotech",     "Corporate", 21, "Biotech leads Corporate by up to 21 days"),
+    ("Tech",        "Corporate", 21, "Tech leads Corporate by up to 21 days"),
+    ("Geopolitics", "Energy",    14, "Geopolitics leads Energy by up to 14 days"),
+    ("Geopolitics", "Economy",   14, "Geopolitics leads Economy by up to 14 days"),
+    ("Tech",        "Biotech",   30, "Tech leads Biotech by up to 30 days"),
+]
+
+# Common English words filtered out of capitalised-phrase entity extraction
+_COMMON_CAPS = {
+    "The", "This", "That", "These", "Those", "With", "From", "Into", "Over",
+    "Under", "Above", "Below", "Between", "Through", "During", "Before", "After",
+    "While", "Since", "Until", "Although", "Because", "However", "Therefore",
+    "Furthermore", "Additionally", "Moreover", "Nevertheless", "Consequently",
+    "Rising", "Falling", "Dropping", "Growing", "Declining", "Increasing",
+    "Decreasing", "Flat", "Strong", "Weak", "High", "Low", "New", "Key",
+    "Major", "Minor", "Large", "Small", "First", "Second", "Third",
+    "Signal", "Source", "Value", "Level", "Rate", "Index",
+    "Market", "Sector", "Industry", "Company", "Chain",
+    "United", "States", "Federal", "National", "Global", "International",
+    "Corp", "Inc", "Ltd",
+}
+
+
+# ── Data loading ───────────────────────────────────────────────────────────────
 
 def load_raw_data() -> dict:
     path = HISTORY_DIR / f"raw_data_{TODAY}.json"
@@ -42,9 +80,199 @@ def val(raw: dict, chain: str, source: str, key: str = "today") -> str:
     return str(v) if v is not None else "N/A (source silent)"
 
 
-def render_user_prompt(raw: dict) -> str:
+# ── Entity extraction ──────────────────────────────────────────────────────────
+
+def _extract_entities(conclusion: str, cfg: dict) -> list:
+    """Extract named entities from a chain conclusion using pattern matching only."""
+    entities = set()
+
+    # 1. Company names from corporate watchlist
+    for company in cfg.get("corporate_chain", {}).get("company_watchlist", []):
+        if company.lower() in conclusion.lower():
+            entities.add(company)
+
+    # 2. Tech / drug keyword terms
+    for kw_list in [
+        cfg.get("tech_chain", {}).get("arxiv_keywords", []),
+        cfg.get("biotech_chain", {}).get("nih_keywords", []),
+        cfg.get("biotech_chain", {}).get("clinicaltrials_keywords", []),
+    ]:
+        for kw in kw_list:
+            if kw.lower() in conclusion.lower():
+                entities.add(kw)
+
+    # 3. Capitalised 2–3 word phrases not composed entirely of common words
+    for match in re.finditer(
+        r'\b([A-Z][A-Za-z0-9\-]+(?:\s+[A-Z][A-Za-z0-9\-]+){1,2})\b', conclusion
+    ):
+        phrase = match.group(1)
+        if not all(w in _COMMON_CAPS for w in phrase.split()):
+            entities.add(phrase)
+
+    return sorted(entities)
+
+
+# ── Convergence log helpers ────────────────────────────────────────────────────
+
+def _load_log_history(log_path: Path, n: int = 30) -> list:
+    """Read the last n records from the convergence log."""
+    if not log_path.exists():
+        return []
+    lines = log_path.read_text().strip().splitlines()
+    records = []
+    for line in lines[-n:]:
+        try:
+            records.append(json.loads(line))
+        except Exception:
+            pass
+    return records
+
+
+def _detect_sequential_alerts(chains_today: dict, entities_today: dict,
+                               history: list, today_str: str) -> list:
+    """Check all hypothesis pairs and return sequential alerts firing today."""
+    today = date.fromisoformat(today_str)
+    alerts = []
+
+    for chain_a, chain_b, max_lag, hypothesis in SEQUENTIAL_HYPOTHESES:
+        chain_b_conv = chains_today.get(chain_b, {}).get("convergence", 0)
+        if chain_b_conv < 2:
+            continue
+
+        for record in reversed(history):   # most recent first
+            try:
+                record_date = date.fromisoformat(record.get("date", ""))
+            except ValueError:
+                continue
+            lag = (today - record_date).days
+            if lag < 1 or lag > max_lag:
+                continue
+
+            chain_a_conv = record.get("chains", {}).get(chain_a, {}).get("convergence", 0)
+            if chain_a_conv >= 3:
+                alert = {
+                    "type": "sequential",
+                    "chain_a": chain_a,
+                    "chain_b": chain_b,
+                    "chain_a_fired_date": record["date"],
+                    "chain_a_convergence": chain_a_conv,
+                    "chain_b_convergence_today": chain_b_conv,
+                    "days_lag": lag,
+                    "hypothesis": hypothesis,
+                }
+                # Entity overlap between historical chain_a and today's chain_b
+                hist_ents_a = {e.lower() for e in record.get("entities", {}).get(chain_a, [])}
+                curr_ents_b = {e.lower() for e in entities_today.get(chain_b, [])}
+                overlap = sorted(hist_ents_a & curr_ents_b)
+                if overlap:
+                    alert["entity_overlap"] = overlap
+                alerts.append(alert)
+                break  # Only the most recent match per hypothesis pair
+
+    return alerts
+
+
+def _write_log_record(record: dict, log_path: Path, today: str):
+    """Append record to log. Overwrites the last line if it is already today's record."""
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    line = json.dumps(record, separators=(",", ":"))
+
+    if log_path.exists():
+        content = log_path.read_text()
+        lines = content.splitlines()
+        if lines:
+            try:
+                if json.loads(lines[-1]).get("date") == today:
+                    lines[-1] = line
+                    log_path.write_text("\n".join(lines) + "\n")
+                    return
+            except Exception:
+                pass
+        with log_path.open("a") as f:
+            f.write(line + "\n")
+    else:
+        log_path.write_text(line + "\n")
+
+
+def append_convergence_log(analysis: dict, log_path: Path) -> list:
+    """Build and append a structured convergence record. Returns today's sequential_alerts."""
+    today = analysis.get("date", TODAY)
+    cfg = CONFIG
+
+    chains_record = {}
+    entities_record = {}
+
+    for chain in analysis.get("chains", []):
+        name = chain["name"]
+        convergence = chain.get("convergence", 0)
+        confidence = chain.get("confidence", "LOW")
+
+        # Map signals positionally to short keys
+        keys = CHAIN_SIGNAL_KEYS.get(name, [])
+        signals = {
+            (keys[i] if i < len(keys) else f"signal_{i}"): sig.get("status", "SILENT")
+            for i, sig in enumerate(chain.get("signals", []))
+        }
+
+        chains_record[name] = {
+            "convergence": convergence,
+            "signals": signals,
+            "confidence": confidence,
+        }
+        entities_record[name] = (
+            _extract_entities(chain.get("conclusion", ""), cfg)
+            if convergence >= 2 else []
+        )
+
+    top_alert = analysis.get("top_alert")
+    top_alert_record = {
+        "fired": top_alert is not None,
+        "alert_chains": analysis.get("alert_chains", []),
+    }
+
+    history = _load_log_history(log_path, n=30)
+    sequential_alerts = _detect_sequential_alerts(
+        chains_record, entities_record, history, today
+    )
+
+    record = {
+        "date": today,
+        "chains": chains_record,
+        "top_alert": top_alert_record,
+        "sequential_alerts": sequential_alerts,
+        "entities": entities_record,
+    }
+
+    _write_log_record(record, log_path, today)
+
+    total = len(log_path.read_text().strip().splitlines())
+    log.info(f"Convergence log updated → data/convergence_log.jsonl ({total} records total)")
+
+    return sequential_alerts
+
+
+def _load_prev_sequential_alerts(log_path: Path) -> list:
+    """Return sequential alerts from the most recent past log record (not today)."""
+    for record in reversed(_load_log_history(log_path, n=10)):
+        if record.get("date") != TODAY:
+            return record.get("sequential_alerts", [])
+    return []
+
+
+# ── Prompt rendering ───────────────────────────────────────────────────────────
+
+def render_user_prompt(raw: dict, seq_alerts: list = None) -> str:
     template_text = (PROMPTS_DIR / "user_prompt_template.txt").read_text()
     cfg = CONFIG
+    seq_alerts = seq_alerts or []
+    seq_alert_str = "; ".join(
+        "{} → {} ({}d lag{})".format(
+            a["chain_a"], a["chain_b"], a["days_lag"],
+            ", entities: " + ", ".join(a["entity_overlap"]) if a.get("entity_overlap") else ""
+        )
+        for a in seq_alerts
+    ) if seq_alerts else "none"
+
     ctx = {
         "DATE": raw["date"],
         # Tech
@@ -121,12 +349,16 @@ def render_user_prompt(raw: dict) -> str:
         "EN_CB_TODAY":    val(raw, "energy", "crunchbase_energy"),
         "EN_CB_AVG":      val(raw, "energy", "crunchbase_energy", "avg30"),
         # Secondary signals (Yahoo Finance)
-        "SHORT_INTEREST":     raw.get("secondary_signals", {}).get("short_interest", "N/A (not fetched)"),
-        "OPTIONS_CP_RATIO":   raw.get("secondary_signals", {}).get("options_cp_ratio", "N/A (not fetched)"),
-        "FORM4_PER_COMPANY":  raw.get("secondary_signals", {}).get("form4_per_company", "N/A (not fetched)"),
+        "SHORT_INTEREST":     raw.get("secondary_signals", {}).get("short_interest",     "N/A (not fetched)"),
+        "OPTIONS_CP_RATIO":   raw.get("secondary_signals", {}).get("options_cp_ratio",   "N/A (not fetched)"),
+        "FORM4_PER_COMPANY":  raw.get("secondary_signals", {}).get("form4_per_company",  "N/A (not fetched)"),
+        # Sequential alerts (from previous day's log — informs Claude of active propagation)
+        "SEQUENTIAL_ALERTS": seq_alert_str,
     }
     return Template(template_text).render(**ctx)
 
+
+# ── Claude call ────────────────────────────────────────────────────────────────
 
 def call_claude(system: str, user: str) -> dict:
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
@@ -145,7 +377,6 @@ def call_claude(system: str, user: str) -> dict:
 
     # Strip markdown fences
     if "```" in text:
-        import re
         match = re.search(r"```(?:json)?\s*([\s\S]*?)```", text)
         if match:
             text = match.group(1).strip()
@@ -159,23 +390,15 @@ def call_claude(system: str, user: str) -> dict:
     return json.loads(text)
 
 
+# ── Raw data enrichment ────────────────────────────────────────────────────────
+
 def enrich_with_raw(analysis: dict, raw: dict) -> dict:
     """Inject today/avg30 values from raw_data into each signal using positional matching."""
-    # Fixed order of raw data keys per chain — must match fetcher.py output order
-    chain_key_order = {
-        "Tech":        ["arxiv", "hacker_news", "patents", "crunchbase"],
-        "Economy":     ["yield_curve", "box_production", "layoffs", "sector_hiring"],
-        "Biotech":     ["nih_reporter", "biorxiv", "clinical_trials", "sec_s1_biotech"],
-        "Social":      ["bluesky", "google_trends", "kickstarter", "amazon_movers"],
-        "Geopolitics": ["commodities", "marine_traffic", "eu_consultations", "congress_hearings"],
-        "Corporate":   ["sec_form4", "jobs_per_company", "patents", "sec_8k"],
-        "Energy":      ["arpa_e", "arxiv_physics", "energy_commodities", "crunchbase_energy"],
-    }
     raw_chains = raw.get("chains", {})
     for chain in analysis.get("chains", []):
         chain_name = chain.get("name", "")
         raw_chain = raw_chains.get(chain_name.lower(), {})
-        keys = chain_key_order.get(chain_name, [])
+        keys = CHAIN_SIGNAL_KEYS.get(chain_name, [])
         for i, signal in enumerate(chain.get("signals", [])):
             raw_entry = raw_chain.get(keys[i], {}) if i < len(keys) else {}
             signal["today"] = raw_entry.get("today", "N/A") if raw_entry else "N/A"
@@ -183,12 +406,21 @@ def enrich_with_raw(analysis: dict, raw: dict) -> dict:
     return analysis
 
 
+# ── Main ───────────────────────────────────────────────────────────────────────
+
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     raw = load_raw_data()
     system_prompt = (PROMPTS_DIR / "system_prompt.txt").read_text()
-    user_prompt = render_user_prompt(raw)
+
+    # Load previous sequential alerts from log to inform Claude
+    log_path = BASE_DIR / "data" / "convergence_log.jsonl"
+    prev_seq_alerts = _load_prev_sequential_alerts(log_path)
+    if prev_seq_alerts:
+        log.info(f"Loaded {len(prev_seq_alerts)} previous sequential alert(s) for prompt context")
+
+    user_prompt = render_user_prompt(raw, prev_seq_alerts)
 
     log.info("Calling Claude Sonnet for analysis...")
     analysis = call_claude(system_prompt, user_prompt)
@@ -207,6 +439,22 @@ def main():
     top = analysis.get("top_alert")
     if top:
         log.info(f"TOP ALERT: {top}")
+
+    # Append convergence log and detect today's sequential alerts
+    seq_alerts = append_convergence_log(analysis, log_path)
+
+    if seq_alerts:
+        analysis["sequential_alerts"] = seq_alerts
+        out_path.write_text(json.dumps(analysis, indent=2))
+        for alert in seq_alerts:
+            overlap_str = (
+                f", entity overlap: {alert['entity_overlap']}"
+                if alert.get("entity_overlap") else ""
+            )
+            log.info(
+                f"SEQUENTIAL ALERT: {alert['chain_a']} → {alert['chain_b']} "
+                f"({alert['days_lag']} day lag{overlap_str})"
+            )
 
     return analysis
 
