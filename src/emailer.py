@@ -45,7 +45,8 @@ def build_subject(analysis: dict) -> str:
     top = analysis.get("top_alert")
     firing = [c["name"] for c in analysis.get("chains", []) if c["convergence"] >= 3]
     if top:
-        short = top[:60] + "..." if len(top) > 60 else top
+        summary = top.get("summary", "") if isinstance(top, dict) else str(top)
+        short = summary[:60] + "..." if len(summary) > 60 else summary
         return f"Signal Watch {TODAY} — {short}"
     elif firing:
         names = ", ".join(firing)

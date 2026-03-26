@@ -550,6 +550,80 @@ def fetch_crunchbase_energy() -> Optional[int]:
         return None
 
 
+# ── Secondary signals (Yahoo Finance) ────────────────────────────────────────
+
+def fetch_short_interest_all(ticker_map: dict, b: dict) -> str:
+    """Fetch short interest % of float for each listed watchlist ticker via yfinance.
+    Returns a formatted string summarising today vs 30d average per ticker."""
+    try:
+        import yfinance as yf
+    except ImportError:
+        log.warning("yfinance not installed — skipping short interest")
+        return "N/A (yfinance not installed)"
+
+    parts = []
+    for company, ticker in ticker_map.items():
+        try:
+            info = yf.Ticker(ticker).info
+            raw_pct = info.get("shortPercentOfFloat")
+            if raw_pct is None:
+                continue
+            today_val, avg_val = record(b, f"secondary_short_{ticker}", round(float(raw_pct) * 100, 2))
+            if today_val is None:
+                continue
+            if avg_val and avg_val > 0:
+                chg = round((today_val - avg_val) / avg_val * 100)
+                direction = f"+{chg}%" if chg >= 0 else f"{chg}%"
+                parts.append(f"{ticker}: {today_val:.1f}% (avg {avg_val:.1f}%, {direction})")
+            else:
+                parts.append(f"{ticker}: {today_val:.1f}% (no baseline yet)")
+        except Exception as e:
+            log.warning(f"Short interest {ticker}: {e}")
+
+    return "; ".join(parts) if parts else "N/A (no data returned)"
+
+
+def fetch_options_activity_all(ticker_map: dict, b: dict) -> str:
+    """Fetch call/put open interest ratio for each listed watchlist ticker via yfinance.
+    Uses the nearest 3 option expiration dates for a stable ratio.
+    Returns a formatted string summarising today vs 30d average per ticker."""
+    try:
+        import yfinance as yf
+    except ImportError:
+        log.warning("yfinance not installed — skipping options activity")
+        return "N/A (yfinance not installed)"
+
+    parts = []
+    for company, ticker in ticker_map.items():
+        try:
+            t = yf.Ticker(ticker)
+            expirations = t.options
+            if not expirations:
+                continue
+            total_call_oi = 0
+            total_put_oi = 0
+            for exp in expirations[:3]:
+                chain = t.option_chain(exp)
+                total_call_oi += chain.calls["openInterest"].fillna(0).sum()
+                total_put_oi += chain.puts["openInterest"].fillna(0).sum()
+            if total_put_oi == 0:
+                continue
+            ratio = round(total_call_oi / total_put_oi, 2)
+            today_val, avg_val = record(b, f"secondary_options_{ticker}", ratio)
+            if today_val is None:
+                continue
+            if avg_val and avg_val > 0:
+                chg = round((today_val - avg_val) / avg_val * 100)
+                direction = f"+{chg}%" if chg >= 0 else f"{chg}%"
+                parts.append(f"{ticker}: C/P {today_val:.2f} (avg {avg_val:.2f}, {direction})")
+            else:
+                parts.append(f"{ticker}: C/P {today_val:.2f} (no baseline yet)")
+        except Exception as e:
+            log.warning(f"Options activity {ticker}: {e}")
+
+    return "; ".join(parts) if parts else "N/A (no data returned)"
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
@@ -673,6 +747,23 @@ def main():
         "arxiv_physics":    {"today": en_phys,        "avg30": en_phys_avg,  "label": "arXiv physics.app-ph preprints (24h)"},
         "energy_commodities":{"today": en_price_today,"avg30": en_price_avg, "label": f"Avg price: {', '.join(en_comms[:3])}"},
         "crunchbase_energy":{"today": en_cb,          "avg30": en_cb_avg,    "label": "Energy funding news (24h)"},
+    }
+
+    # ── Secondary signals (Yahoo Finance) ─────────────────────────────────────
+    ticker_map = cfg["corporate_chain"].get("ticker_map", {})
+    if ticker_map:
+        log.info("Fetching secondary signals (short interest + options) via Yahoo Finance...")
+        short_interest_str = fetch_short_interest_all(ticker_map, b)
+        options_str = fetch_options_activity_all(ticker_map, b)
+        log.info(f"  Short interest: {short_interest_str[:120]}...")
+        log.info(f"  Options C/P: {options_str[:120]}...")
+    else:
+        short_interest_str = "N/A (no ticker_map configured)"
+        options_str = "N/A (no ticker_map configured)"
+
+    result["secondary_signals"] = {
+        "short_interest": short_interest_str,
+        "options_cp_ratio": options_str,
     }
 
     # ── Save outputs ──────────────────────────────────────────────────────────

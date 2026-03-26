@@ -51,5 +51,21 @@ arXiv physics.app-ph preprints (24h): {{ EN_PHYS_TODAY }} (30d avg: {{ EN_PHYS_A
 Average energy commodity price ({{ EN_COMMODITIES }}): {{ EN_COMM_TODAY }} (30d avg: {{ EN_COMM_AVG }})
 Crunchbase energy funding news (24h): {{ EN_CB_TODAY }} (30d avg: {{ EN_CB_AVG }})
 
+## Secondary Signals — Watchlist Companies (use for Tier 1 Recommendation)
+These are live per-ticker data points for the corporate watchlist. Use them as evidence
+when evaluating Signal A (options unusual activity) and Signal D (short interest trajectory)
+for Tier 1 recommendations across all chains.
+
+Short interest % of float vs 30d baseline (Signal D — a meaningful DROP is bullish):
+{{ SHORT_INTEREST }}
+
+Options call/put open interest ratio vs 30d baseline (Signal A — a meaningful SPIKE in C/P ratio is bullish):
+{{ OPTIONS_CP_RATIO }}
+
+Note: Short interest data is updated twice monthly by FINRA; options C/P ratio is daily.
+A "meaningful" Signal D move is a drop of 15%+ vs the 30d average. A "meaningful" Signal A
+move is a call/put ratio 30%+ above the 30d average. Apply the directional consistency rule —
+a bullish signal for a bearish chain implication is a contradiction, not confirmation.
+
 Analyse all 7 chains. Apply scoring rules from your instructions.
 Return JSON only — no preamble, no explanation outside the JSON.

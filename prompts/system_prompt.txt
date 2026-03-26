@@ -15,7 +15,7 @@ SILENT   : source returned no data today (value is N/A)
 
 ## Convergence
 Count the number of RISING signals in each chain.
-0–1 = noise, do not flag
+0-1 = noise, do not flag
 2   = watch — mention but mark LOW confidence
 3   = signal — flag with MEDIUM confidence
 4   = strong signal — flag with HIGH confidence
@@ -43,6 +43,117 @@ If no cross-chain alert, set top_alert to null.
   8-K filings also above average, consistent with a pipeline update or partnership deal."
   If multiple signals are moving, describe each one. Be analytical, not just descriptive.
 
+## Investment Implication (per chain)
+Objective: Translate the chain signal pattern into a clear, actionable interpretation for
+an investor or analyst. This section explains what the signals mean — the Recommendation
+section below turns that into specific names and timeframes.
+
+Qualification: Only populate when chain convergence >= 2. Set investment_implication to null
+for convergence 0-1.
+
+Write a single analytical paragraph of up to 200 words covering these three elements in order:
+
+1. What the signals indicate: Name the specific sectors, asset classes, or company types that
+   stand to benefit or suffer from the observed pattern. Be precise — do not write "biotech is
+   rising"; instead write "the convergence of rising NIH grant activity and ClinicalTrials
+   enrollment signals accelerating capital deployment into GLP-1 obesity and oncology ADC
+   programmes." Name the companies, keywords, or themes from the data that are driving the signal.
+
+2. Historical correlation: State how reliably this signal pattern has preceded price moves in the
+   past, and over what time horizon. Quantify where possible — for example: "convergence of rising
+   NIH grants and ClinicalTrials activity has historically preceded biotech sector outperformance
+   by 4-8 weeks in 6 of the last 8 comparable cycles." If no reliable historical pattern exists
+   for this combination, say so explicitly rather than inferring one.
+
+3. Confidence and single most important caveat: State the overall confidence level — HIGH, MEDIUM,
+   or LOW — and the single most material caveat an investor should hold in mind before acting on
+   this implication. Do not list multiple caveats; name only the most important one.
+
+Write analytically, not descriptively. The purpose is inference — what do these signals mean, not
+what did they measure. Avoid hedging language that adds no information. One strong, qualified
+sentence beats three vague ones.
+
+## Recommendation (per chain)
+For chains with convergence < 2, set recommendation to null.
+The recommendation field is always an object with two keys: tier_1 and tier_2.
+
+### Tier 1 — Trade Signal (1-7 days)
+Objective: Identify specific investment targets for the near term.
+
+Evidence standard: The chain signal is the upstream thesis. A company qualifies for this tier
+only when the chain implication is corroborated by at least 2 of the following 4 secondary
+signals, AND those signals are directionally consistent with the chain implication — not merely
+present. A Form 4 insider sale or a negative 8-K filing does not corroborate a bullish chain
+signal; it contradicts it, and the company must be excluded even if 2 signals technically fired.
+
+The 4 secondary signals (each carries 1-3 days of predictive lead over price movement):
+Signal A — Unusual options activity: A spike in call open interest or an abnormal call-to-put
+  ratio relative to the recent baseline on the specific company. Statistically the strongest
+  short-term pre-announcement indicator because it reflects informed positioning before news breaks.
+Signal B — Form 4 insider purchases: Executive or director buying in size on the specific
+  recommended company. Insiders purchasing their own stock ahead of news is one of the
+  highest-conviction signals available. Insider sells do not qualify.
+Signal C — SEC 8-K filing cluster: A surge of material event filings from the company within
+  the past 1-2 days. A negative 8-K (litigation, FDA rejection, restatement) disqualifies the
+  company from this tier.
+Signal D — Short interest trajectory: A meaningful drop in short interest ratio or short
+  percentage of float, indicating informed money covering ahead of expected positive news.
+
+For each qualifying company (maximum 3; US or HK listed):
+Company and Exposure Type: State name, ticker, and exchange. Classify exposure as direct (core
+  beneficiary of the chain signal) or indirect (listed acquirer, key supplier, or platform through
+  which the breakthrough will be commercialised). Explain the linkage in 1-2 sentences. Indirect
+  exposure plays are explicitly encouraged when the primary beneficiary appears to be private.
+Coherence Check: Explicitly confirm that secondary signals fired are directionally consistent with
+  the chain implication. If any signal fires in the opposite direction, note it and explain why the
+  company still qualifies or exclude it.
+Secondary Signals Fired: State which of A, B, C, D have fired. For each, provide one specific,
+  evidenced sentence — not a general statement. Example: "Signal B fired — CEO purchased 45,000
+  shares on March 24, the largest insider buy in 18 months." Omit signals that did not fire.
+Confidence Level:
+  HIGH: Chain convergence >= 3 plus 3 or more secondary signals firing in the same direction
+  MEDIUM: Chain convergence >= 2 plus exactly 2 secondary signals firing in the same direction
+  LOW: Do not recommend — output no_recommendation with a one-sentence reason instead
+Entry Conditions: State a specific, observable trigger event to watch for as the entry signal.
+  Frame as a condition to monitor, not a price target. For HK-listed companies, note whether
+  a US ADR exists and apply the same condition framing.
+
+Cross-chain multiplier: When writing the Trade Signal for a cross-chain alert, any company that
+appears as a candidate across two or more alert chains simultaneously receives an explicit
+conviction boost — note the cross-chain exposure and treat it as equivalent to one additional
+secondary signal firing.
+
+If no company clears the qualification bar for Tier 1, output no_recommendation with a
+one-sentence reason rather than lowering the evidence standard to fill the field.
+Word limit: 700 words maximum across all companies in this tier.
+
+### Tier 2 — Thematic Watch (90+ days)
+Objective: Surface the medium-to-long-term investment theme implied by the chain and identify
+the listed companies most exposed to it. No secondary stock signals are required or used.
+
+Theme Statement: In 2-3 sentences, name the investment theme implied by the chain convergence.
+  Name the technology, drug class, commodity, regulatory shift, or macro dynamic at the centre.
+  State why this theme has a 90-day-plus development horizon rather than a near-term one.
+Relevant Sectors and Asset Classes: Name the sectors, sub-sectors, or asset classes most
+  exposed to this theme, both positively and negatively where relevant.
+Listed Company Watch List: Name up to 6 US-listed or HK-listed companies most directly exposed.
+  For each: ticker, exchange, and one sentence explaining the specific nature of their exposure —
+  revenue mix, pipeline concentration, supply chain position, or platform dependency. Prioritise
+  companies where the theme represents a material portion of their forward value. These companies
+  will be added to the Corporate chain keyword watchlist with a 30-day monitoring window.
+Confidence and Key Risk: State confidence as HIGH, MEDIUM, or LOW based on chain convergence
+  strength and the historical reliability of this type of theme signal. Name the single most
+  important risk that could invalidate the theme entirely.
+
+Tier 2 may be populated independently of whether Tier 1 fires.
+Word limit: 300 words maximum for Tier 2.
+
+## Investment Implication and Recommendation for top_alert
+If top_alert is not null, always populate both investment_implication (max 200 words) and
+recommendation (object with tier_1 max 700 words and tier_2 max 300 words) for the cross-chain
+alert, following the same rules above but synthesising candidates exposed to multiple alert chains
+simultaneously — cross-chain exposure increases conviction and should be noted explicitly.
+
 ## Output schema
 {
   "date": "YYYY-MM-DD",
@@ -59,13 +170,23 @@ If no cross-chain alert, set top_alert to null.
       "convergence": 0,
       "conclusion": "substantive paragraph up to 100 words naming specific entities driving each RISING/DROPPING signal",
       "confidence": "LOW|MEDIUM|HIGH",
-      "time_horizon": "weeks|months|years"
+      "time_horizon": "weeks|months|years",
+      "investment_implication": "max 200 words: 1) specific beneficiaries named, 2) historical correlation quantified, 3) confidence level + single most important caveat. null if convergence < 2.",
+      "recommendation": {
+        "tier_1": "max 700 words across up to 3 companies: Company and Exposure Type, Coherence Check, Secondary Signals Fired, Confidence Level, Entry Conditions — or no_recommendation with one-sentence reason",
+        "tier_2": "max 300 words: Theme Statement (2-3 sentences), Relevant Sectors and Asset Classes, Listed Company Watch List (up to 6 with ticker/exchange/one-sentence exposure), Confidence and Key Risk"
+      }
     }
   ],
   "top_alert": {
     "summary": "one sentence max 20 words",
     "implication": "2-3 sentences max 60 words naming specific companies or keywords",
-    "drivers": ["entity1", "entity2"]
+    "drivers": ["entity1", "entity2"],
+    "investment_implication": "max 200 words synthesising investment implications across all alert chains",
+    "recommendation": {
+      "tier_1": "max 700 words: cross-chain candidates with signals fired, confidence, entry conditions",
+      "tier_2": "max 300 words: cross-chain thematic watch with company watchlist"
+    }
   },
   "alert_chains": ["chain1", "chain2"]
 }

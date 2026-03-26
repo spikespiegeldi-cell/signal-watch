@@ -116,6 +116,28 @@ corporate_chain:
     - "Intellia Therapeutics"
     - "Beam Therapeutics"
     - "Denali Therapeutics"
+  # Ticker symbols for Yahoo Finance secondary signals (Signal A: options, Signal D: short interest)
+  # Generate Biomedicines is private — no ticker. Firefly Neuroscience omitted (ticker unconfirmed).
+  ticker_map:
+    NVIDIA: NVDA
+    Google: GOOGL
+    "Novo Nordisk": NVO
+    "Eli Lilly": LLY
+    Moderna: MRNA
+    WeRide: WRD
+    "Alto Ingredients": ALTO
+    "Ormat Technologies": ORA
+    "Remitly Global": RELY
+    "Tempus AI": TEM
+    "Safe Pro Group": SPAI
+    "Recursion Pharmaceuticals": RXRX
+    Zscaler: ZS
+    UiPath: PATH
+    Schrodinger: SDGR
+    Arvinas: ARVN
+    "Intellia Therapeutics": NTLA
+    "Beam Therapeutics": BEAM
+    "Denali Therapeutics": DNLI
 
 energy_chain:
   commodities:

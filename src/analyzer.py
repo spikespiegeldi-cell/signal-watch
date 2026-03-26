@@ -117,6 +117,9 @@ def render_user_prompt(raw: dict) -> str:
         "EN_COMM_AVG":    val(raw, "energy", "energy_commodities", "avg30"),
         "EN_CB_TODAY":    val(raw, "energy", "crunchbase_energy"),
         "EN_CB_AVG":      val(raw, "energy", "crunchbase_energy", "avg30"),
+        # Secondary signals (Yahoo Finance)
+        "SHORT_INTEREST":  raw.get("secondary_signals", {}).get("short_interest", "N/A (not fetched)"),
+        "OPTIONS_CP_RATIO": raw.get("secondary_signals", {}).get("options_cp_ratio", "N/A (not fetched)"),
     }
     return Template(template_text).render(**ctx)
 
@@ -124,8 +127,8 @@ def render_user_prompt(raw: dict) -> str:
 def call_claude(system: str, user: str) -> dict:
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     response = client.messages.create(
-        model="claude-haiku-4-5-20251001",
-        max_tokens=4096,
+        model="claude-sonnet-4-6",
+        max_tokens=16000,
         temperature=0,
         system=system,
         messages=[{"role": "user", "content": user}]
