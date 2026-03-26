@@ -1,0 +1,266 @@
+{
+  "date": "2026-03-26",
+  "chains": [
+    {
+      "name": "Tech",
+      "signals": [
+        {
+          "source": "arXiv papers matching keywords",
+          "status": "DROPPING",
+          "note": "45% below 30-day average",
+          "today": 4924.4,
+          "avg30": 8982.4222
+        },
+        {
+          "source": "Hacker News stories matching keywords",
+          "status": "DROPPING",
+          "note": "35% below 30-day average",
+          "today": 20070,
+          "avg30": 30958.0
+        },
+        {
+          "source": "USPTO patent filings by tracked companies",
+          "status": "FLAT",
+          "note": "No filings, consistent with baseline",
+          "today": 0.0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Crunchbase tech funding news items",
+          "status": "RISING",
+          "note": "150% above 30-day average",
+          "today": 3,
+          "avg30": 1.2105
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "Tech chain shows mixed signals with a notable drop in academic research output (arXiv papers down 45% and Hacker News coverage down 35%), suggesting reduced near-term visibility in protein folding, drug discovery AI, and autonomous driving discussions. However, Crunchbase tech funding news surged 150% above average, indicating continued investor interest despite lower public discourse. This divergence suggests funding activity may be outpacing research publication cycles or shifting toward private announcements.",
+      "confidence": "LOW",
+      "time_horizon": "weeks"
+    },
+    {
+      "name": "Economy",
+      "signals": [
+        {
+          "source": "FRED T10Y2Y yield spread",
+          "status": "FLAT",
+          "note": "Within normal range at 0.49",
+          "today": 0.49,
+          "avg30": 0.4989
+        },
+        {
+          "source": "FRED cardboard box production index",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "Shanghai port congestion news articles",
+          "status": "FLAT",
+          "note": "Zero articles, consistent baseline",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Job market proxy \u2014 Indeed RSS count",
+          "status": "FLAT",
+          "note": "Zero postings, consistent baseline",
+          "today": 0,
+          "avg30": 0.0
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Economy chain shows no actionable signals. Yield spread remains stable at 0.49, within normal range. Port congestion and job market proxies remain at baseline zero levels. One source (cardboard box production) is silent. Overall economic indicators show no emerging trends or disruptions.",
+      "confidence": "LOW",
+      "time_horizon": "weeks"
+    },
+    {
+      "name": "Biotech",
+      "signals": [
+        {
+          "source": "NIH Reporter active grants this FY",
+          "status": "RISING",
+          "note": "11% above 30-day average",
+          "today": 9368,
+          "avg30": 8463.4737
+        },
+        {
+          "source": "bioRxiv preprints submitted",
+          "status": "DROPPING",
+          "note": "22% below 30-day average",
+          "today": 211.4,
+          "avg30": 270.3944
+        },
+        {
+          "source": "ClinicalTrials.gov active trials started",
+          "status": "FLAT",
+          "note": "Zero trials, consistent baseline",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "SEC S-1 biotech filings",
+          "status": "DROPPING",
+          "note": "100% below 30-day average",
+          "today": 0,
+          "avg30": 3.3684
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "Biotech chain shows divergent signals. NIH active grants rose 11% above average, suggesting sustained federal funding momentum for protein folding, CAR-T, mRNA, and CRISPR research. However, bioRxiv preprints dropped 22% below average and SEC S-1 biotech filings fell to zero (100% below average), indicating reduced near-term IPO activity and slower research publication velocity. This suggests funding is flowing but commercialization pipelines may be tightening.",
+      "confidence": "LOW",
+      "time_horizon": "months"
+    },
+    {
+      "name": "Social",
+      "signals": [
+        {
+          "source": "Bluesky post count matching keywords",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "Google Trends avg interest score",
+          "status": "DROPPING",
+          "note": "48% below 30-day average",
+          "today": 3.0,
+          "avg30": 5.75
+        },
+        {
+          "source": "New Kickstarter projects",
+          "status": "FLAT",
+          "note": "Zero projects, consistent baseline",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Amazon Movers & Shakers item count",
+          "status": "FLAT",
+          "note": "Exactly at 30-day average",
+          "today": 30,
+          "avg30": 30.0
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Social chain shows declining public interest. Google Trends interest in autonomous vehicles, robotaxi, protein folding, and small modular reactors dropped 48% below the 30-day average, indicating reduced consumer and mainstream attention to these topics. Bluesky data is unavailable. Kickstarter and Amazon Movers metrics remain at baseline. Overall social signal momentum is weakening.",
+      "confidence": "LOW",
+      "time_horizon": "weeks"
+    },
+    {
+      "name": "Geopolitics",
+      "signals": [
+        {
+          "source": "% of tracked commodities above own 30d baseline",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": 3337.064
+        },
+        {
+          "source": "Shipping congestion news articles",
+          "status": "FLAT",
+          "note": "Zero articles, consistent baseline",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "EU open consultations count",
+          "status": "FLAT",
+          "note": "Zero consultations, consistent baseline",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Congressional committee hearings",
+          "status": "FLAT",
+          "note": "Zero hearings, consistent baseline",
+          "today": 0,
+          "avg30": 0.0
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Geopolitics chain shows no emerging signals. Commodity tracking data is unavailable. Shipping congestion, EU consultations, and Congressional hearings all remain at baseline zero levels. No geopolitical disruptions or policy shifts are evident in the monitored signals.",
+      "confidence": "LOW",
+      "time_horizon": "weeks"
+    },
+    {
+      "name": "Corporate",
+      "signals": [
+        {
+          "source": "SEC Form 4 insider filings for watchlist",
+          "status": "RISING",
+          "note": "400% above 30-day average",
+          "today": 5,
+          "avg30": 1.0
+        },
+        {
+          "source": "Job posting proxy for watchlist companies",
+          "status": "FLAT",
+          "note": "Zero postings, consistent baseline",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "USPTO patent filings by watchlist companies",
+          "status": "FLAT",
+          "note": "No filings, consistent baseline",
+          "today": 0.0,
+          "avg30": 0.0
+        },
+        {
+          "source": "SEC 8-K filings for watchlist companies",
+          "status": "FLAT",
+          "note": "Slightly above average at 8 vs 7.84",
+          "today": 8,
+          "avg30": 7.8421
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "Corporate chain shows elevated insider activity. SEC Form 4 insider filings for the watchlist (NVIDIA, Google, Novo Nordisk, Eli Lilly, Moderna, WeRide, Tempus AI, Schrodinger, Arvinas, Intellia, Beam, Denali, and others) surged 400% above the 30-day average with 5 filings, suggesting executive confidence or portfolio rebalancing ahead of potential announcements. SEC 8-K filings remain near baseline. Job postings and patent filings show no acceleration, indicating insider activity is not yet matched by hiring or IP expansion.",
+      "confidence": "MEDIUM",
+      "time_horizon": "weeks"
+    },
+    {
+      "name": "Energy",
+      "signals": [
+        {
+          "source": "ARPA-E press releases",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "arXiv physics.app-ph preprints",
+          "status": "DROPPING",
+          "note": "72% below 30-day average",
+          "today": 3295.7,
+          "avg30": 11610.4684
+        },
+        {
+          "source": "Average energy commodity price",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": 2699.4993
+        },
+        {
+          "source": "Crunchbase energy funding news",
+          "status": "FLAT",
+          "note": "Zero items, consistent baseline",
+          "today": 0,
+          "avg30": 0.0
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Energy chain shows declining research activity. arXiv physics.app-ph preprints dropped 72% below the 30-day average, indicating a sharp pullback in applied physics research submissions relevant to energy technologies. ARPA-E press releases and commodity price data are unavailable. Crunchbase energy funding remains at baseline zero. The research slowdown may reflect seasonal patterns or a temporary lull in energy technology publication cycles.",
+      "confidence": "LOW",
+      "time_horizon": "weeks"
+    }
+  ],
+  "top_alert": null,
+  "alert_chains": []
+}
