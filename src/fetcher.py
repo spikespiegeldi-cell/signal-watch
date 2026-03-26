@@ -228,6 +228,102 @@ def fetch_jobs_proxy(keywords: list) -> Optional[int]:
         return None
 
 
+def fetch_jobs_per_company(ats_map: dict, keywords: list, b: dict) -> tuple:
+    """Fetch keyword-matched job postings per company via Greenhouse, Lever, or Adzuna.
+
+    Returns (total_today, per_company_str).
+    total_today is the sum of matched counts for companies that responded.
+    per_company_str is a line-per-company breakdown for secondary_signals.
+    """
+    adzuna_app_id  = os.environ.get("ADZUNA_APP_ID", "")
+    adzuna_app_key = os.environ.get("ADZUNA_APP_KEY", "")
+    kws_lower = [kw.lower() for kw in keywords]
+
+    parts = []
+    total = 0
+    successful = 0
+
+    for company, entry in ats_map.items():
+        provider = entry.get("provider", "adzuna")
+        slug     = entry.get("slug", "")
+        count    = None
+        skip_reason = None
+
+        if provider == "greenhouse":
+            try:
+                url = f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs?content=true"
+                r = requests.get(url, timeout=15, headers=HEADERS)
+                r.raise_for_status()
+                jobs = r.json().get("jobs", [])
+                matched = 0
+                for job in jobs:
+                    title = job.get("title", "").lower()
+                    dept  = (job.get("departments") or [{}])[0].get("name", "").lower()
+                    if any(kw in title or kw in dept for kw in kws_lower):
+                        matched += 1
+                count = matched
+            except Exception as e:
+                skip_reason = str(e)[:80]
+
+        elif provider == "lever":
+            try:
+                url = f"https://api.lever.co/v0/postings/{slug}?mode=json"
+                r = requests.get(url, timeout=15, headers=HEADERS)
+                r.raise_for_status()
+                jobs = r.json()
+                if not isinstance(jobs, list):
+                    jobs = []
+                matched = 0
+                for job in jobs:
+                    text = job.get("text", "").lower()
+                    team = (job.get("categories") or {}).get("team", "").lower()
+                    if any(kw in text or kw in team for kw in kws_lower):
+                        matched += 1
+                count = matched
+            except Exception as e:
+                skip_reason = str(e)[:80]
+
+        elif provider == "adzuna":
+            if not adzuna_app_id or not adzuna_app_key:
+                skip_reason = "adzuna credentials not configured"
+            else:
+                try:
+                    params = {
+                        "app_id": adzuna_app_id,
+                        "app_key": adzuna_app_key,
+                        "employer": company,
+                        "what": " ".join(keywords[:3]),
+                        "results_per_page": 50,
+                    }
+                    r = requests.get(
+                        "https://api.adzuna.com/v1/api/jobs/us/search/1",
+                        params=params, timeout=15, headers=HEADERS
+                    )
+                    r.raise_for_status()
+                    count = r.json().get("count", 0)
+                except Exception as e:
+                    skip_reason = str(e)[:80]
+        else:
+            skip_reason = f"unknown provider {provider}"
+
+        slug_key     = company.lower().replace(" ", "_").replace("/", "_")
+        baseline_key = f"jobs_{slug_key}"
+
+        if count is not None:
+            avg = update_rolling(b, baseline_key, float(count))
+            total     += count
+            successful += 1
+            parts.append(f"{company}: {count} (avg30: {avg:.1f})")
+        else:
+            avg = get_avg(b, baseline_key)
+            avg_str = f"{avg:.1f}" if avg is not None else "N/A"
+            parts.append(f"{company}: [skipped: {skip_reason}] (avg30: {avg_str})")
+
+    per_company_str = "\n".join(parts) if parts else "N/A"
+    total_val = float(total) if successful > 0 else None
+    return total_val, per_company_str
+
+
 # ── Biotech chain ─────────────────────────────────────────────────────────────
 
 def fetch_nih(keywords: list) -> Optional[int]:
@@ -847,15 +943,25 @@ def main():
     # ── Corporate ─────────────────────────────────────────────────────────────
     log.info("Fetching Corporate chain...")
     watchlist = cfg["corporate_chain"]["company_watchlist"]
+    ats_map   = cfg["corporate_chain"].get("ats_map", {})
+    # Merge jobs_keywords with arxiv and NIH keywords (deduplicated, order-preserving)
+    _raw_kws = (
+        cfg["corporate_chain"].get("jobs_keywords", []) +
+        cfg["tech_chain"].get("arxiv_keywords", []) +
+        cfg["biotech_chain"].get("nih_keywords", [])
+    )
+    jobs_keywords = list(dict.fromkeys(_raw_kws))
+
     corp_f4,   corp_f4_avg   = record(b, "corp_form4",   fetch_sec_form4(watchlist))
-    corp_jobs, corp_jobs_avg = record(b, "corp_jobs",    fetch_jobs_proxy(watchlist))
+    corp_jobs_today, corp_jobs_str = fetch_jobs_per_company(ats_map, jobs_keywords, b)
+    corp_jobs, corp_jobs_avg = record(b, "corp_jobs", corp_jobs_today)
     corp_pat,  corp_pat_avg  = record(b, "corp_patents", fetch_patents(watchlist))
     corp_8k,   corp_8k_avg   = record(b, "corp_8k",      fetch_sec_8k(watchlist))
     result["chains"]["corporate"] = {
-        "sec_form4":  {"today": corp_f4,   "avg30": corp_f4_avg,   "label": "SEC Form 4 insider filings (24h)"},
-        "jobs_proxy": {"today": corp_jobs, "avg30": corp_jobs_avg, "label": "Job posting proxy for watchlist"},
-        "patents":    {"today": corp_pat,  "avg30": corp_pat_avg,  "label": "Patent filings by watchlist cos (24h)"},
-        "sec_8k":     {"today": corp_8k,   "avg30": corp_8k_avg,   "label": "SEC 8-K filings by watchlist (24h)"},
+        "sec_form4":        {"today": corp_f4,   "avg30": corp_f4_avg,   "label": "SEC Form 4 insider filings (24h)"},
+        "jobs_per_company": {"today": corp_jobs, "avg30": corp_jobs_avg, "label": "Per-company job postings (keyword-matched)"},
+        "patents":          {"today": corp_pat,  "avg30": corp_pat_avg,  "label": "Patent filings by watchlist cos (24h)"},
+        "sec_8k":           {"today": corp_8k,   "avg30": corp_8k_avg,   "label": "SEC 8-K filings by watchlist (24h)"},
     }
 
     # ── Energy ────────────────────────────────────────────────────────────────
@@ -894,6 +1000,7 @@ def main():
         "short_interest": short_interest_str,
         "options_cp_ratio": options_str,
         "form4_per_company": form4_per_company_str,
+        "jobs_per_company": corp_jobs_str,
     }
 
     # ── Save outputs ──────────────────────────────────────────────────────────

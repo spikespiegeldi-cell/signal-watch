@@ -101,8 +101,9 @@ def render_user_prompt(raw: dict) -> str:
         "WATCHLIST":      ", ".join(cfg["corporate_chain"]["company_watchlist"]),
         "CORP_F4_TODAY":  val(raw, "corporate", "sec_form4"),
         "CORP_F4_AVG":    val(raw, "corporate", "sec_form4", "avg30"),
-        "CORP_JOBS_TODAY":val(raw, "corporate", "jobs_proxy"),
-        "CORP_JOBS_AVG":  val(raw, "corporate", "jobs_proxy", "avg30"),
+        "CORP_JOBS_TODAY":val(raw, "corporate", "jobs_per_company"),
+        "CORP_JOBS_AVG":  val(raw, "corporate", "jobs_per_company", "avg30"),
+        "JOBS_PER_COMPANY": raw.get("secondary_signals", {}).get("jobs_per_company", "N/A (not fetched)"),
         "CORP_PAT_TODAY": val(raw, "corporate", "patents"),
         "CORP_PAT_AVG":   val(raw, "corporate", "patents", "avg30"),
         "CORP_8K_TODAY":  val(raw, "corporate", "sec_8k"),
@@ -165,7 +166,7 @@ def enrich_with_raw(analysis: dict, raw: dict) -> dict:
         "Biotech":     ["nih_reporter", "biorxiv", "clinical_trials", "sec_s1_biotech"],
         "Social":      ["bluesky", "google_trends", "kickstarter", "amazon_movers"],
         "Geopolitics": ["commodities", "marine_traffic", "eu_consultations", "congress_hearings"],
-        "Corporate":   ["sec_form4", "jobs_proxy", "patents", "sec_8k"],
+        "Corporate":   ["sec_form4", "jobs_per_company", "patents", "sec_8k"],
         "Energy":      ["arpa_e", "arxiv_physics", "energy_commodities", "crunchbase_energy"],
     }
     raw_chains = raw.get("chains", {})

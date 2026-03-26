@@ -40,7 +40,7 @@ Congressional committee hearings (7d): {{ CONG_TODAY }} (30d avg: {{ CONG_AVG }}
 ## Corporate chain
 Company watchlist: {{ WATCHLIST }}
 SEC Form 4 insider filings for watchlist (24h): {{ CORP_F4_TODAY }} (30d avg: {{ CORP_F4_AVG }})
-Job posting proxy for watchlist companies: {{ CORP_JOBS_TODAY }} (30d avg: {{ CORP_JOBS_AVG }})
+Keyword-matched job postings across watchlist companies (total): {{ CORP_JOBS_TODAY }} (30d avg: {{ CORP_JOBS_AVG }})
 USPTO patent filings by watchlist companies (24h): {{ CORP_PAT_TODAY }} (30d avg: {{ CORP_PAT_AVG }})
 SEC 8-K filings for watchlist companies (24h): {{ CORP_8K_TODAY }} (30d avg: {{ CORP_8K_AVG }})
 
@@ -64,6 +64,9 @@ Options call/put open interest ratio vs 30d baseline (Signal A — a meaningful 
 
 Per-company insider transactions — last 7 days (Signal B — purchases by executives or directors are bullish; sales are not Signal B evidence):
 {{ FORM4_PER_COMPANY }}
+
+Per-company keyword-matched job postings — current count vs 30d baseline (rising hiring is a directional signal):
+{{ JOBS_PER_COMPANY }}
 
 Note: Short interest data is updated twice monthly by FINRA; options C/P ratio is daily.
 A "meaningful" Signal D move is a drop of 15%+ vs the 30d average. A "meaningful" Signal A

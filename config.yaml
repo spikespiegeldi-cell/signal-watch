@@ -116,6 +116,72 @@ corporate_chain:
     - "Intellia Therapeutics"
     - "Beam Therapeutics"
     - "Denali Therapeutics"
+  # Role-level keywords — job postings matching any of these count toward the signal.
+  # Merged at runtime with tech_chain.arxiv_keywords and biotech_chain.nih_keywords.
+  jobs_keywords:
+    - "research scientist"
+    - "research engineer"
+    - "drug discovery"
+    - "machine learning"
+    - "computational biology"
+    - "product development"
+    - "clinical research"
+    - "protein"
+    - "pipeline"
+    - "R&D"
+
+  # ATS provider mapping — probed live on 2026-03-26.
+  # Greenhouse and Lever boards return live job counts; others fall back to Adzuna.
+  ats_map:
+    "Generate Biomedicines":
+      provider: greenhouse
+      slug: generatebiomedicines
+    Zscaler:
+      provider: greenhouse
+      slug: zscaler
+    Arvinas:
+      provider: greenhouse
+      slug: arvinas
+    "Beam Therapeutics":
+      provider: greenhouse
+      slug: beamtherapeutics
+    "Recursion Pharmaceuticals":
+      provider: greenhouse
+      slug: recursionpharmaceuticals
+    WeRide:
+      provider: lever
+      slug: weride
+    NVIDIA:
+      provider: adzuna
+    Google:
+      provider: adzuna
+    "Novo Nordisk":
+      provider: adzuna
+    "Eli Lilly":
+      provider: adzuna
+    Moderna:
+      provider: adzuna
+    "Alto Ingredients":
+      provider: adzuna
+    "Ormat Technologies":
+      provider: adzuna
+    "Remitly Global":
+      provider: adzuna
+    "Tempus AI":
+      provider: adzuna
+    "Safe Pro Group":
+      provider: adzuna
+    UiPath:
+      provider: adzuna
+    "Firefly Neuroscience":
+      provider: adzuna
+    Schrodinger:
+      provider: adzuna
+    "Intellia Therapeutics":
+      provider: adzuna
+    "Denali Therapeutics":
+      provider: adzuna
+
   # Ticker symbols for Yahoo Finance secondary signals (Signal A: options, Signal D: short interest)
   # Generate Biomedicines is private — no ticker. Firefly Neuroscience omitted (ticker unconfirmed).
   ticker_map:
