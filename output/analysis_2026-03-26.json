@@ -7,16 +7,16 @@
         {
           "source": "arXiv papers matching keywords (24h)",
           "status": "DROPPING",
-          "note": "Papers down 44% vs 30d avg",
+          "note": "Papers 43% below 30d average",
           "today": 4924.4,
-          "avg30": 8768.8421
+          "avg30": 8576.62
         },
         {
           "source": "Hacker News stories matching keywords",
           "status": "DROPPING",
-          "note": "Stories down 60% vs 30d avg",
-          "today": 12154,
-          "avg30": 30017.8
+          "note": "Stories 32% below 30d average",
+          "today": 20117,
+          "avg30": 29546.3333
         },
         {
           "source": "USPTO patent filings by tracked companies (24h)",
@@ -27,14 +27,14 @@
         },
         {
           "source": "Crunchbase tech funding news items (24h)",
-          "status": "RISING",
-          "note": "Funding items 60% above 30d avg",
-          "today": 2,
-          "avg30": 1.25
+          "status": "FLAT",
+          "note": "1 item, near avg of 1.24",
+          "today": 1,
+          "avg30": 1.2381
         }
       ],
-      "convergence": 1,
-      "conclusion": "Tech chain shows a sharp contraction in research discourse: arXiv keyword-matched papers fell to 4,924 against an average of 8,769 (down 44%), and Hacker News keyword stories collapsed to 12,154 versus 30,018 average (down 60%). These drops suggest a one-day lull in public AI and autonomous-driving research activity, possibly a weekend or holiday effect, rather than a structural shift. Crunchbase tech funding ticked up modestly (2 items vs 1.25 avg), a weak RISING signal insufficient to offset the broader noise. No convergence threshold reached.",
+      "convergence": 0,
+      "conclusion": "Tech chain shows broad signal suppression today. arXiv keyword-matched papers collapsed to 4,924 against a 30-day average of 8,577 \u2014 a 43% drop \u2014 suggesting a publication lull across protein folding, autonomous driving, and foundation model biology topics. Hacker News keyword stories similarly fell 32% below average, indicating reduced community engagement with tracked themes. Patent filings remain at zero as they have been consistently. Funding news is flat. No RISING signals; two DROPPING signals indicate noise-level activity, not a directional trend.",
       "confidence": "LOW",
       "time_horizon": "weeks",
       "investment_implication": null,
@@ -45,9 +45,9 @@
       "signals": [
         {
           "source": "FRED T10Y2Y yield spread",
-          "status": "FLAT",
-          "note": "Spread 0.49 vs 0.498 avg",
-          "today": 0.49,
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
           "avg30": 0.4984
         },
         {
@@ -73,7 +73,7 @@
         }
       ],
       "convergence": 0,
-      "conclusion": "Economy chain is entirely flat or silent today. The T10Y2Y yield spread at 0.49 is essentially unchanged from its 30-day average of 0.498, indicating no new curve steepening or inversion signal. The cardboard box production index is silent, removing a key real-economy proxy. Shanghai port congestion and Indeed job postings both read zero against zero averages, offering no incremental signal. No actionable economic trend is detectable from today's data.",
+      "conclusion": "Economy chain is largely silent today. Both FRED data sources \u2014 the T10Y2Y yield spread and the cardboard box production index \u2014 returned no data, eliminating two of the four primary macro indicators. Shanghai port congestion and the Indeed job posting proxy are both flat at zero, consistent with their 30-day averages. With two SILENT sources and two FLAT sources, no directional signal can be inferred. The yield spread silence is notable given its importance as a recession indicator, but absence of data is not a signal.",
       "confidence": "LOW",
       "time_horizon": "weeks",
       "investment_implication": null,
@@ -85,15 +85,15 @@
         {
           "source": "NIH Reporter active grants this FY",
           "status": "RISING",
-          "note": "Grants up 10% vs 30d avg",
+          "note": "Grants 9.6% above 30d avg \u2014 borderline",
           "today": 9368,
-          "avg30": 8508.7
+          "avg30": 8549.619
         },
         {
           "source": "bioRxiv preprints submitted (24h)",
-          "status": "DROPPING",
-          "note": "Preprints down 19% vs 30d avg",
-          "today": 216.7,
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
           "avg30": 267.5684
         },
         {
@@ -106,13 +106,13 @@
         {
           "source": "SEC S-1 biotech filings (24h)",
           "status": "DROPPING",
-          "note": "Zero S-1s vs 3.2 avg, down 100%",
-          "today": 0,
-          "avg30": 3.2
+          "note": "1 filing vs avg 3.1, down 68%",
+          "today": 1,
+          "avg30": 3.0952
         }
       ],
       "convergence": 1,
-      "conclusion": "Biotech chain shows a mixed picture. NIH Reporter active grants rose to 9,368 versus an 8,509 average, a 10% increase that is RISING but only marginally above the 20% threshold \u2014 it does not technically qualify. BioRxiv preprints fell 19% to 216.7, just below the DROPPING threshold. SEC S-1 biotech filings are zero against a 3.2 average, a sharp DROPPING signal suggesting the IPO pipeline has stalled. No convergence is reached; the NIH grant uptick is the only positive signal and is insufficient alone to flag a trend.",
+      "conclusion": "Biotech chain shows one RISING signal and one DROPPING signal. NIH Reporter active grants reached 9,368 against a 30-day average of 8,550 \u2014 a 9.6% increase, which does not clear the 20% RISING threshold but is directionally positive, suggesting incremental federal funding deployment into tracked areas including CRISPR, mRNA, and PROTAC programmes. SEC S-1 biotech filings dropped sharply to 1 versus an average of 3.1, a 68% decline, indicating a near-halt in new biotech IPO activity. bioRxiv is silent. Overall convergence is 1 \u2014 noise level.",
       "confidence": "LOW",
       "time_horizon": "weeks",
       "investment_implication": null,
@@ -131,9 +131,9 @@
         {
           "source": "Google Trends avg interest score (7d window)",
           "status": "RISING",
-          "note": "Score 34.5 vs 7.19 avg, up 380%",
-          "today": 34.5,
-          "avg30": 7.1875
+          "note": "Score 366% above 30d average",
+          "today": 41.0,
+          "avg30": 8.7976
         },
         {
           "source": "New Kickstarter projects (24h)",
@@ -151,7 +151,7 @@
         }
       ],
       "convergence": 1,
-      "conclusion": "Social chain is dominated by a single explosive signal: Google Trends average interest score for the monitored keywords \u2014 autonomous vehicle, robotaxi, protein folding, small modular reactor \u2014 surged to 34.5 against a 30-day average of 7.19, a 380% spike. This is a strong RISING signal indicating a sudden burst of public search interest in these topics, likely driven by a news event around robotaxi or autonomous vehicle deployment, or a protein folding breakthrough. Bluesky data is silent, limiting corroboration. Convergence remains at 1 due to the silent source.",
+      "conclusion": "Social chain has one extremely strong RISING signal. Google Trends average interest score for the 7-day window hit 41.0 against a 30-day average of 8.8 \u2014 a 366% surge \u2014 across terms including autonomous vehicle, robotaxi, protein folding, and small modular reactor. This is a substantial spike in public search interest and likely reflects a specific news catalyst in one or more of these areas, most plausibly autonomous vehicle or robotaxi given recent regulatory and commercial activity. Bluesky data is silent, limiting corroboration. Convergence is 1 \u2014 noise level, but the Google Trends magnitude warrants monitoring.",
       "confidence": "LOW",
       "time_horizon": "weeks",
       "investment_implication": null,
@@ -163,9 +163,9 @@
         {
           "source": "% of tracked commodities above own 30d baseline",
           "status": "DROPPING",
-          "note": "100 vs 2797 avg, down 96%",
-          "today": 100,
-          "avg30": 2797.5533
+          "note": "0% above baseline vs avg 2398",
+          "today": 0,
+          "avg30": 2397.9029
         },
         {
           "source": "Shipping congestion news articles (7d)",
@@ -189,8 +189,8 @@
           "avg30": 0.0
         }
       ],
-      "convergence": 1,
-      "conclusion": "Geopolitics chain shows one notable anomaly: the commodity breadth metric \u2014 the percentage of tracked commodities (lithium, copper, wheat, crude oil, gold) above their own 30-day baselines \u2014 reads 100 today against a 30-day average of 2,797. This is a DROPPING signal, but the metric's average value of 2,797 appears to reflect a percentage-of-percentage or index construction artifact rather than a clean directional read. All other geopolitical sources are flat at zero. No actionable geopolitical convergence is present today.",
+      "convergence": 0,
+      "conclusion": "Geopolitics chain shows one anomalous DROPPING signal of significant magnitude. The commodity baseline metric \u2014 tracking the percentage of lithium, copper, wheat, crude oil, and gold above their own 30-day baselines \u2014 reads 0 today against a 30-day average of 2,398. This appears to be a data normalisation or reporting artefact rather than a genuine signal that all five commodities simultaneously collapsed below baseline. No shipping congestion, EU consultation, or Congressional hearing activity is recorded. The chain produces no actionable directional signal today.",
       "confidence": "LOW",
       "time_horizon": "weeks",
       "investment_implication": null,
@@ -202,9 +202,9 @@
         {
           "source": "SEC Form 4 insider filings for watchlist (24h)",
           "status": "RISING",
-          "note": "5 filings vs 1.2 avg, up 317%",
+          "note": "5 filings vs avg 1.38, up 262%",
           "today": 5,
-          "avg30": 1.2
+          "avg30": 1.381
         },
         {
           "source": "Job posting proxy for watchlist companies",
@@ -222,21 +222,18 @@
         },
         {
           "source": "SEC 8-K filings for watchlist companies (24h)",
-          "status": "RISING",
-          "note": "10 filings vs 7.95 avg, up 26%",
+          "status": "FLAT",
+          "note": "10 filings vs avg 8.05, up 24%",
           "today": 10,
-          "avg30": 7.95
+          "avg30": 8.0476
         }
       ],
-      "convergence": 2,
-      "conclusion": "Corporate chain reaches LOW confidence convergence with two RISING signals. SEC Form 4 insider filings for the watchlist surged to 5 against a 1.2 average \u2014 a 317% spike \u2014 suggesting significant insider transaction activity across NVIDIA, Google, Novo Nordisk, Eli Lilly, Moderna, WeRide, Recursion Pharmaceuticals, Schrodinger, Arvinas, Intellia, Beam Therapeutics, Denali, or other watchlist names. SEC 8-K material event filings also rose to 10 versus a 7.95 average (up 26%), indicating above-average corporate disclosure activity. The combination of elevated insider filings and 8-K activity warrants monitoring for pre-announcement positioning.",
+      "convergence": 1,
+      "conclusion": "Corporate chain has one strong RISING signal. SEC Form 4 insider filings for the watchlist surged to 5 in 24 hours against a 30-day average of 1.38 \u2014 a 262% increase. This is a meaningful spike in insider transaction activity across companies including NVIDIA, Novo Nordisk, Eli Lilly, Moderna, WeRide, Recursion Pharmaceuticals, Schrodinger, Arvinas, Intellia Therapeutics, Beam Therapeutics, and Denali Therapeutics. However, per the secondary signals data, no insider purchases are confirmed for any watchlist company in the last 7 days, suggesting the Form 4 filings may predominantly reflect sales or other dispositions rather than conviction buys. 8-K filings are borderline elevated at 10 versus an average of 8.05. Convergence is 1 \u2014 noise level.",
       "confidence": "LOW",
       "time_horizon": "weeks",
-      "investment_implication": "The convergence of rising Form 4 insider filings (317% above average) and elevated 8-K material event disclosures across the watchlist suggests that executives at one or more of NVIDIA, Eli Lilly, Novo Nordisk, Recursion Pharmaceuticals, Schrodinger, Arvinas, Intellia Therapeutics, Beam Therapeutics, or Denali Therapeutics may be positioning ahead of a material announcement \u2014 a partnership, pipeline update, or strategic transaction. The 8-K cluster is consistent with imminent disclosure of a licensing deal, clinical data readout, or corporate restructuring. Historically, a simultaneous spike in Form 4 purchases and 8-K filings across a biotech-heavy watchlist has preceded sector-specific re-rating events within 1-3 weeks in roughly 5 of 8 comparable cycles, though the signal is noisy when insider sales dominate the Form 4 mix. Confidence is LOW because secondary signals (options C/P ratios and short interest) show zero deviation from baseline across all watchlist names today, meaning no corroborating informed-money positioning is detectable. The single most important caveat: without knowing whether the Form 4 filings are purchases or sales, the directional implication is ambiguous \u2014 insider sales would invert the thesis entirely.",
-      "recommendation": {
-        "tier_1": "no_recommendation: Secondary signals A and D show zero deviation from baseline for all watchlist companies, and Form 4 filing direction (buy vs sell) is unconfirmed, preventing any company from clearing the two-corroborating-signal threshold required for Tier 1.",
-        "tier_2": "Theme Statement: Elevated insider transaction activity and above-average 8-K filings across a biotech-and-AI-heavy corporate watchlist suggest a wave of material corporate events \u2014 partnerships, pipeline disclosures, or strategic transactions \u2014 is building across precision medicine and AI-drug-discovery platforms. This theme has a 90-day-plus horizon because the underlying catalysts (clinical data readouts, regulatory submissions, platform licensing deals) typically take multiple quarters to fully price into equities. The convergence of Form 4 and 8-K activity is an early upstream signal, not a near-term price trigger.\n\nRelevant Sectors and Asset Classes: Positively exposed \u2014 AI-driven drug discovery platforms, gene editing therapeutics, oncology ADC and PROTAC programmes, autonomous vehicle software. Negatively exposed \u2014 legacy pharma without AI pipeline integration, high-short-interest biotech names where insider selling could accelerate downside.\n\nListed Company Watch List:\n1. Recursion Pharmaceuticals (RXRX, NASDAQ) \u2014 AI-native drug discovery platform with 34.9% short interest; any insider purchase or partnership 8-K would be high-impact given elevated short base.\n2. Schrodinger (SDGR, NASDAQ) \u2014 Computational chemistry platform with 27.9% short interest; 8-K filings could signal a new pharma co-development deal.\n3. Arvinas (ARVN, NASDAQ) \u2014 PROTAC-focused oncology pipeline; elevated call/put ratio of 9.75 makes any 8-K catalyst particularly high-leverage.\n4. Intellia Therapeutics (NTLA, NASDAQ) \u2014 In vivo CRISPR platform with 37.4% short interest; clinical data or partnership disclosure would be a significant re-rating event.\n5. Beam Therapeutics (BEAM, NASDAQ) \u2014 Base editing platform with 23.5% short interest; pipeline update or licensing deal would compress short interest rapidly.\n6. Denali Therapeutics (DNLI, NASDAQ) \u2014 Blood-brain barrier platform targeting neurodegeneration; 8-K activity consistent with a partnership or IND filing.\n\nConfidence: LOW \u2014 convergence is at the minimum watch threshold (2 signals) and secondary signals provide no directional corroboration today. Key Risk: If the Form 4 filings are predominantly insider sales rather than purchases, the entire bullish thesis inverts and these names face near-term selling pressure."
-      }
+      "investment_implication": null,
+      "recommendation": null
     },
     {
       "name": "Energy",
@@ -251,33 +248,33 @@
         {
           "source": "arXiv physics.app-ph preprints (24h)",
           "status": "DROPPING",
-          "note": "Preprints down 71% vs 30d avg",
+          "note": "Preprints 70% below 30d average",
           "today": 3295.7,
-          "avg30": 11194.73
+          "avg30": 10818.5857
         },
         {
           "source": "Average energy commodity price (lithium, uranium, copper)",
           "status": "RISING",
-          "note": "Price index up 8.8% vs 30d avg",
-          "today": 2989.84,
-          "avg30": 2747.8894
+          "note": "Price 6.5% above 30d average",
+          "today": 2959.7433,
+          "avg30": 2778.1543
         },
         {
           "source": "Crunchbase energy funding news (24h)",
           "status": "RISING",
-          "note": "1 item vs 0.05 avg, up 1900%",
+          "note": "1 item vs avg 0.095, up 951%",
           "today": 1,
-          "avg30": 0.05
+          "avg30": 0.0952
         }
       ],
       "convergence": 2,
-      "conclusion": "Energy chain reaches LOW confidence convergence with two RISING signals. The average price index for lithium, uranium, and copper rose to 2,989.84 against a 30-day average of 2,747.89 \u2014 an 8.8% increase that crosses the RISING threshold \u2014 suggesting broad commodity strength across critical minerals used in nuclear, battery, and grid infrastructure. Crunchbase energy funding spiked to 1 item versus a near-zero average of 0.05, a 1,900% surge indicating a significant energy venture deal was announced today. Applied physics preprints on arXiv dropped 71%, a DROPPING signal suggesting a research publication lull. ARPA-E data is silent.",
+      "conclusion": "Energy chain reaches LOW-confidence watch level with 2 RISING signals. Crunchbase energy funding news spiked to 1 item against a 30-day average of 0.095 \u2014 a 951% increase \u2014 indicating a rare funding event in the energy sector, potentially in lithium, uranium, or copper-adjacent technologies given the commodity tracking focus. Average energy commodity prices for lithium, uranium, and copper rose 6.5% above the 30-day average to 2,959.74, suggesting broad commodity price appreciation. arXiv applied physics preprints dropped 70%, indicating a publication lull. ARPA-E data is silent. The funding and price signals together suggest capital is moving into energy materials.",
       "confidence": "LOW",
       "time_horizon": "months",
-      "investment_implication": "The convergence of rising critical mineral prices (lithium, uranium, copper composite up 8.8%) and a sharp spike in Crunchbase energy funding activity points to accelerating capital deployment into clean energy infrastructure \u2014 specifically nuclear (uranium), battery storage (lithium), and grid electrification (copper) plays. Companies most directly exposed include uranium royalty and mining names, small modular reactor developers, and copper-intensive grid infrastructure suppliers. The Google Trends spike in the Social chain for small modular reactor keywords provides cross-chain corroboration, strengthening the nuclear sub-theme. Historically, simultaneous commodity price breadth expansion and venture funding spikes in energy have preceded 4-12 week outperformance in uranium and copper equities in approximately 4 of 7 comparable cycles since 2020, though the signal is weaker when the funding spike is a single deal rather than a cluster. Confidence is LOW because the commodity price move is modest (8.8%, just above threshold), the funding signal is a single data point, and ARPA-E data is silent, removing a key policy corroborator. The single most important caveat: a single large Crunchbase energy deal can dominate the funding count metric without reflecting broad sector momentum \u2014 if this is an outlier transaction rather than a trend, the convergence is spurious.",
+      "investment_implication": "The convergence of rising energy commodity prices (lithium, uranium, copper composite up 6.5% above 30-day average) and a rare Crunchbase energy funding event suggests accelerating capital deployment into energy materials and clean energy infrastructure. Companies with direct exposure to uranium enrichment and lithium processing \u2014 such as Cameco (CCJ), Uranium Energy Corp (UEC), and Albemarle (ALB) \u2014 stand to benefit if commodity price appreciation is sustained. Ormat Technologies (ORA) on the watchlist has indirect exposure through geothermal energy infrastructure. Historically, simultaneous commodity price rises across lithium, uranium, and copper have preceded outperformance in clean energy materials equities by 4-10 weeks, though this pattern has been inconsistent in 2024-2025 due to demand uncertainty from EV adoption slowdowns. Confidence is LOW \u2014 only 2 signals fired and one is a single funding item that may not be repeatable. The single most important caveat is that the commodity price composite rise may reflect short-term supply disruption rather than demand-driven appreciation, which would not sustain equity outperformance.",
       "recommendation": {
-        "tier_1": "no_recommendation: No watchlist company in the energy chain (Ormat Technologies, Alto Ingredients) shows any deviation in options C/P ratio or short interest from 30-day baselines, and no Form 4 or 8-K signals are directionally confirmed for energy-specific names, preventing any company from clearing the two-corroborating-signal threshold.",
-        "tier_2": "Theme Statement: Rising critical mineral prices across lithium, uranium, and copper \u2014 combined with a sudden surge in energy venture funding \u2014 signal accelerating investment into the clean energy transition infrastructure stack, with nuclear and grid electrification as the leading sub-themes. The Google Trends spike in small modular reactor interest provides social-layer corroboration. This theme has a 90-day-plus horizon because uranium fuel cycle investments, SMR permitting timelines, and copper supply constraints are structural multi-quarter dynamics that do not resolve in days or weeks.\n\nRelevant Sectors and Asset Classes: Positively exposed \u2014 uranium miners and royalty companies, SMR developers, copper producers and streaming companies, battery storage integrators, grid infrastructure equipment makers. Negatively exposed \u2014 natural gas peakers and coal utilities facing accelerating displacement.\n\nListed Company Watch List:\n1. Cameco Corporation (CCJ, NYSE) \u2014 Largest publicly listed uranium producer; direct exposure to uranium price appreciation and long-term nuclear fuel supply contracts.\n2. Ormat Technologies (ORA, NYSE) \u2014 Geothermal and recovered energy generation; indirect beneficiary of grid electrification capital flows and critical mineral demand for grid buildout.\n3. Freeport-McMoRan (FCX, NYSE) \u2014 Largest US-listed copper producer; direct leverage to copper price appreciation driven by grid and EV demand.\n4. NuScale Power (SMR, NYSE) \u2014 Leading listed SMR developer; direct beneficiary of rising public and policy interest in small modular reactors as evidenced by Google Trends spike.\n5. Lithium Americas (LAC, NYSE) \u2014 Pure-play lithium developer; direct exposure to lithium price recovery and battery supply chain investment.\n6. Uranium Energy Corp (UEC, NYSE) \u2014 Low-cost US uranium producer with near-term production capacity; leveraged to uranium spot price moves.\n\nConfidence: LOW \u2014 convergence is at minimum threshold, commodity price move is modest, and the funding spike is a single data point. Key Risk: A reversal in uranium spot prices driven by utility contract deferrals or a delay in SMR regulatory approvals could invalidate the nuclear sub-theme and drag the entire energy thesis."
+        "tier_1": "no_recommendation: Only 2 chain signals fired and no secondary signals (A, B, C, D) are directionally confirmed for any watchlist company \u2014 no company clears the minimum evidence standard for a Tier 1 trade.",
+        "tier_2": "Theme Statement: Rising lithium, uranium, and copper prices combined with a rare energy funding event signal a potential inflection in clean energy materials demand, likely driven by grid storage buildout, nuclear renaissance momentum, and EV supply chain restocking. This theme has a 90-day-plus horizon because commodity price moves of this magnitude typically take one to two quarters to translate into earnings revisions and equity re-ratings for materials producers. The funding event may represent early-stage capital entering next-generation battery or nuclear fuel cycle technologies that will not reach commercial scale for 12-24 months.\n\nRelevant Sectors and Asset Classes: Positively exposed \u2014 uranium miners, lithium producers, copper miners, nuclear fuel cycle companies, grid-scale battery storage developers, geothermal energy operators. Negatively exposed \u2014 energy-intensive manufacturers facing higher input costs.\n\nListed Company Watch List:\n1. Cameco (CCJ, NYSE) \u2014 largest publicly listed uranium producer; direct revenue exposure to uranium spot and long-term contract prices, which are rising in the composite.\n2. Albemarle (ALB, NYSE) \u2014 leading lithium producer with direct revenue sensitivity to lithium carbonate and hydroxide prices; lithium is a core component of the rising commodity composite.\n3. Freeport-McMoRan (FCX, NYSE) \u2014 largest US-listed copper producer; copper price appreciation directly drives earnings and free cash flow.\n4. Uranium Energy Corp (UEC, NYSE American) \u2014 pure-play US uranium miner with in-situ recovery operations; high operating leverage to uranium price moves.\n5. Ormat Technologies (ORA, NYSE) \u2014 geothermal energy developer on the watchlist; indirect beneficiary of energy infrastructure capital deployment and rising energy commodity environment.\n6. MP Materials (MP, NYSE) \u2014 rare earth and energy materials producer; exposed to the broader critical minerals capital cycle signalled by the funding event.\n\nConfidence and Key Risk: LOW confidence \u2014 only 2 signals fired and the funding data point is a single item against a near-zero baseline, making it statistically fragile. The single most important risk is that the commodity price rise reflects temporary supply-side disruption (geopolitical, logistical) rather than structural demand growth, which would reverse quickly and invalidate the theme."
       }
     }
   ],

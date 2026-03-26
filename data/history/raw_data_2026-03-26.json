@@ -4,12 +4,12 @@
     "tech": {
       "arxiv": {
         "today": 4924.4,
-        "avg30": 8768.8421,
+        "avg30": 8576.62,
         "label": "arXiv AI papers (24h)"
       },
       "hacker_news": {
-        "today": 12154,
-        "avg30": 30017.8,
+        "today": 20117,
+        "avg30": 29546.3333,
         "label": "HN stories matching keywords"
       },
       "patents": {
@@ -18,14 +18,14 @@
         "label": "USPTO patent filings (24h)"
       },
       "crunchbase": {
-        "today": 2,
-        "avg30": 1.25,
+        "today": 1,
+        "avg30": 1.2381,
         "label": "Tech funding news items (24h)"
       }
     },
     "economy": {
       "yield_curve": {
-        "today": 0.49,
+        "today": null,
         "avg30": 0.4984,
         "label": "FRED T10Y2Y yield spread"
       },
@@ -48,11 +48,11 @@
     "biotech": {
       "nih_reporter": {
         "today": 9368,
-        "avg30": 8508.7,
+        "avg30": 8549.619,
         "label": "NIH grants this FY"
       },
       "biorxiv": {
-        "today": 216.7,
+        "today": null,
         "avg30": 267.5684,
         "label": "bioRxiv preprints (24h)"
       },
@@ -62,8 +62,8 @@
         "label": "ClinicalTrials.gov active trials (30d)"
       },
       "sec_s1_biotech": {
-        "today": 0,
-        "avg30": 3.2,
+        "today": 1,
+        "avg30": 3.0952,
         "label": "SEC S-1 biotech filings (24h)"
       }
     },
@@ -74,8 +74,8 @@
         "label": "Bluesky posts matching keywords (24h)"
       },
       "google_trends": {
-        "today": 34.5,
-        "avg30": 7.1875,
+        "today": 41.0,
+        "avg30": 8.7976,
         "label": "Google Trends avg interest (7d)"
       },
       "kickstarter": {
@@ -91,8 +91,8 @@
     },
     "geopolitics": {
       "commodities": {
-        "today": 100,
-        "avg30": 2797.5533,
+        "today": 0,
+        "avg30": 2397.9029,
         "label": "Avg price: lithium, copper, wheat, crude-oil, gold"
       },
       "marine_traffic": {
@@ -114,7 +114,7 @@
     "corporate": {
       "sec_form4": {
         "today": 5,
-        "avg30": 1.2,
+        "avg30": 1.381,
         "label": "SEC Form 4 insider filings (24h)"
       },
       "jobs_proxy": {
@@ -129,7 +129,7 @@
       },
       "sec_8k": {
         "today": 10,
-        "avg30": 7.95,
+        "avg30": 8.0476,
         "label": "SEC 8-K filings by watchlist (24h)"
       }
     },
@@ -141,23 +141,24 @@
       },
       "arxiv_physics": {
         "today": 3295.7,
-        "avg30": 11194.73,
+        "avg30": 10818.5857,
         "label": "arXiv physics.app-ph preprints (24h)"
       },
       "energy_commodities": {
-        "today": 2989.84,
-        "avg30": 2747.8894,
+        "today": 2959.7433,
+        "avg30": 2778.1543,
         "label": "Avg price: lithium, uranium, copper"
       },
       "crunchbase_energy": {
         "today": 1,
-        "avg30": 0.05,
+        "avg30": 0.0952,
         "label": "Energy funding news (24h)"
       }
     }
   },
   "secondary_signals": {
-    "short_interest": "NVDA: 1.0% (avg 1.0%, +0%); GOOGL: 1.4% (avg 1.4%, +0%); NVO: 0.8% (avg 0.8%, +0%); LLY: 0.9% (avg 0.9%, +0%); MRNA: 20.4% (avg 20.4%, +0%); WRD: 4.0% (avg 4.0%, +0%); ALTO: 2.0% (avg 2.0%, +0%); ORA: 7.4% (avg 7.4%, +0%); RELY: 3.3% (avg 3.3%, +0%); TEM: 18.8% (avg 18.8%, +0%); SPAI: 4.8% (avg 4.8%, +0%); RXRX: 34.9% (avg 34.9%, +0%); ZS: 7.5% (avg 7.5%, +0%); PATH: 25.6% (avg 25.6%, +0%); SDGR: 27.9% (avg 27.9%, +0%); ARVN: 7.6% (avg 7.6%, +0%); NTLA: 37.4% (avg 37.4%, +0%); BEAM: 23.5% (avg 23.5%, +0%); DNLI: 10.0% (avg 10.0%, +0%)",
-    "options_cp_ratio": "NVDA: C/P 1.07 (avg 1.07, +0%); GOOGL: C/P 1.73 (avg 1.73, +0%); NVO: C/P 1.38 (avg 1.38, +0%); LLY: C/P 0.81 (avg 0.81, +0%); MRNA: C/P 2.68 (avg 2.68, +0%); WRD: C/P 2.28 (avg 2.28, +0%); ALTO: C/P 14.06 (avg 14.06, +0%); ORA: C/P 3.99 (avg 3.99, +0%); RELY: C/P 1.28 (avg 1.28, +0%); TEM: C/P 1.70 (avg 1.70, +0%); RXRX: C/P 6.36 (avg 6.36, +0%); ZS: C/P 0.82 (avg 0.82, +0%); PATH: C/P 2.64 (avg 2.64, +0%); SDGR: C/P 2.93 (avg 2.93, +0%); ARVN: C/P 9.75 (avg 9.75, +0%); NTLA: C/P 3.70 (avg 3.70, +0%); BEAM: C/P 2.21 (avg 2.21, +0%); DNLI: C/P 2.09 (avg 2.09, +0%)"
+    "short_interest": "NVDA: 1.0% float (avg 1.0%, +0%); GOOGL: 1.4% float (avg 1.4%, +0%); NVO: 0.8% float (avg 0.8%, +0%); LLY: 0.9% float (avg 0.9%, +0%); MRNA: 20.4% float (avg 20.4%, +0%); WRD: 4.0% float (avg 4.0%, +0%); ALTO: 2.0% float (avg 2.0%, +0%); ORA: 7.4% float (avg 7.4%, +0%); RELY: 3.3% float (avg 3.3%, +0%); TEM: 18.8% float (avg 18.8%, +0%); SPAI: 4.8% float (avg 4.8%, +0%); RXRX: 34.9% float (avg 34.9%, +0%); ZS: 7.5% float (avg 7.5%, +0%); PATH: 25.6% float (avg 25.6%, +0%); SDGR: 27.9% float (avg 27.9%, +0%); ARVN: 7.6% float (avg 7.6%, +0%); NTLA: 37.4% float (avg 37.4%, +0%); BEAM: 23.5% float (avg 23.5%, +0%); DNLI: 10.0% float (avg 10.0%, +0%)",
+    "options_cp_ratio": "NVDA: C/P 1.07 (avg 1.07, +0%); GOOGL: C/P 1.73 (avg 1.73, +0%); NVO: C/P 1.38 (avg 1.38, +0%); LLY: C/P 0.81 (avg 0.81, +0%); MRNA: C/P 2.68 (avg 2.68, +0%); WRD: C/P 2.28 (avg 2.28, +0%); ALTO: C/P 14.06 (avg 14.06, +0%); ORA: C/P 3.99 (avg 3.99, +0%); RELY: C/P 1.28 (avg 1.28, +0%); TEM: C/P 1.70 (avg 1.70, +0%); RXRX: C/P 6.36 (avg 6.36, +0%); ZS: C/P 0.82 (avg 0.82, +0%); PATH: C/P 2.64 (avg 2.64, +0%); SDGR: C/P 2.93 (avg 2.93, +0%); ARVN: C/P 9.75 (avg 9.75, +0%); NTLA: C/P 3.70 (avg 3.70, +0%); BEAM: C/P 2.21 (avg 2.21, +0%); DNLI: C/P 2.09 (avg 2.09, +0%) [skipped: SPAI no options listed]",
+    "form4_per_company": "NVDA: no insider purchases (7d); GOOGL: no insider transactions (7d); NVO: data unavailable; LLY: no insider transactions (7d); MRNA: no insider transactions (7d); WRD: no insider transactions (7d); ALTO: no insider transactions (7d); ORA: no insider purchases (7d); RELY: no insider transactions (7d); TEM: no insider transactions (7d); SPAI: no insider transactions (7d); RXRX: no insider purchases (7d); ZS: no insider transactions (7d); PATH: no insider transactions (7d); SDGR: no insider transactions (7d); ARVN: no insider transactions (7d); NTLA: no insider transactions (7d); BEAM: no insider transactions (7d); DNLI: no insider transactions (7d)"
   }
 }
