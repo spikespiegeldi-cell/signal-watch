@@ -65,6 +65,16 @@ _COMMON_CAPS = {
     "Corp", "Inc", "Ltd",
 }
 
+_ENTITY_STOPLIST = {
+    "SEC Form", "Form 4", "Form 4s", "8-K", "8-K filings", "10-K", "10-Q", "S-1",
+    "30-day", "30d", "24h", "52-week", "Year", "Quarter", "Q1", "Q2", "Q3", "Q4",
+    "Signal A", "Signal B", "Signal C", "Signal D",
+    "Tier 1", "Tier 2", "Trade Signal", "Thematic Watch",
+    "RISING", "FLAT", "DROPPING", "SILENT",
+    "HIGH", "MEDIUM", "LOW",
+    "No", "None", "Null", "True", "False",
+}
+
 
 # ── Data loading ───────────────────────────────────────────────────────────────
 
@@ -109,7 +119,9 @@ def _extract_entities(conclusion: str, cfg: dict) -> list:
         if not all(w in _COMMON_CAPS for w in phrase.split()):
             entities.add(phrase)
 
-    return sorted(entities)
+    # Filter: stoplist (case-insensitive) and minimum length of 4 characters
+    stoplist_lower = {s.lower() for s in _ENTITY_STOPLIST}
+    return sorted(e for e in entities if len(e) >= 4 and e.lower() not in stoplist_lower)
 
 
 # ── Convergence log helpers ────────────────────────────────────────────────────
@@ -443,9 +455,11 @@ def main():
     # Append convergence log and detect today's sequential alerts
     seq_alerts = append_convergence_log(analysis, log_path)
 
+    # Always write sequential_alerts to output (empty list on quiet days)
+    analysis["sequential_alerts"] = seq_alerts
+    out_path.write_text(json.dumps(analysis, indent=2))
+
     if seq_alerts:
-        analysis["sequential_alerts"] = seq_alerts
-        out_path.write_text(json.dumps(analysis, indent=2))
         for alert in seq_alerts:
             overlap_str = (
                 f", entity overlap: {alert['entity_overlap']}"
