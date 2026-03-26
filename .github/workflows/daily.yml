@@ -32,6 +32,8 @@ jobs:
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_SECRET: ${{ secrets.REDDIT_SECRET }}
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
         run: python src/fetcher.py
 
       - name: Stage 2 — Analyse (07:05 UTC)
