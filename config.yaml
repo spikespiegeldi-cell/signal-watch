@@ -51,10 +51,10 @@ economy_chain:
     - "Energy"
     - "Finance"
   adzuna_sector_categories:
-    scientific-qa: "Biotech/Pharma"
     it-jobs: "Tech/AI"
-    energy-oil-gas: "Energy"
+    engineering-jobs: "Engineering"
     healthcare-nursing: "Healthcare"
+    scientific-qa: "Science/Biotech"
 
 biotech_chain:
   nih_keywords:

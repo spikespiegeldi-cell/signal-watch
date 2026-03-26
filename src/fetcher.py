@@ -307,11 +307,11 @@ def fetch_adzuna_sector_hiring(sectors: dict, app_id: str, app_key: str, b: dict
                 "app_key": app_key,
                 "results_per_page": 1,
                 "category": category_slug,
-                "content-type": "application/json",
             }
             r = requests.get(
                 "https://api.adzuna.com/v1/api/jobs/us/search/1",
-                params=params, timeout=15, headers=HEADERS
+                params=params, timeout=15,
+                headers={**HEADERS, "Accept": "application/json"}
             )
             r.raise_for_status()
             count = r.json().get("count", 0)
