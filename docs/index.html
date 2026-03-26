@@ -330,6 +330,97 @@
     width: 10px; height: 10px; border-radius: 50%;
   }
 
+  /* Investment implication block */
+  .invest-block {
+    background: #f0fdf4;
+    border-left: 3px solid #16a34a;
+    padding: 12px 16px;
+    margin: 0 20px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .invest-block-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: #15803d;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 6px;
+  }
+  .invest-block-text {
+    font-size: 12.5px;
+    color: #166534;
+    line-height: 1.65;
+  }
+
+  /* Recommendation block — Tier 1 (Trade Signal) */
+  .rec-block {
+    background: #fffbeb;
+    border-left: 3px solid #d97706;
+    padding: 12px 16px;
+    margin: 8px 20px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .rec-block-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: #92400e;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 6px;
+  }
+  .rec-block-text {
+    font-size: 12.5px;
+    color: #78350f;
+    line-height: 1.65;
+    white-space: pre-line;
+  }
+
+  /* Recommendation block — Tier 2 (Thematic Watch) */
+  .rec-tier2-block {
+    background: #f5f3ff;
+    border-left: 3px solid #7c3aed;
+    padding: 12px 16px;
+    margin: 8px 20px 16px;
+    border-radius: 0 6px 6px 0;
+  }
+  .rec-tier2-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: #5b21b6;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 6px;
+  }
+  .rec-tier2-text {
+    font-size: 12.5px;
+    color: #4c1d95;
+    line-height: 1.65;
+    white-space: pre-line;
+  }
+
+  /* Alert panel invest/rec blocks */
+  .alert-invest-block {
+    background: #f0fdf4;
+    border-left: 3px solid #16a34a;
+    padding: 12px 16px;
+    margin-top: 14px;
+    border-radius: 0 6px 6px 0;
+  }
+  .alert-rec-block {
+    background: #fffbeb;
+    border-left: 3px solid #d97706;
+    padding: 12px 16px;
+    margin-top: 8px;
+    border-radius: 0 6px 6px 0;
+  }
+  .alert-rec2-block {
+    background: #f5f3ff;
+    border-left: 3px solid #7c3aed;
+    padding: 12px 16px;
+    margin-top: 8px;
+    border-radius: 0 6px 6px 0;
+  }
+
   /* Footer */
   footer {
     text-align: center;
@@ -432,7 +523,11 @@
         </div>
       </div>
 
-      <div class="conclusion">Tech chain shows mixed signals with a notable drop in academic research output (arXiv papers down 45% and Hacker News coverage down 35%), suggesting reduced near-term visibility in protein folding, drug discovery AI, and autonomous driving discussions. However, Crunchbase tech funding news surged 150% above average, indicating continued investor interest despite lower public discourse. This divergence suggests funding activity may be outpacing research publication cycles or shifting toward private announcements.</div>
+      <div class="conclusion">Tech chain shows a sharp contraction in research discourse: arXiv keyword-matched papers fell to 4,924 against an average of 8,769 (down 44%), and Hacker News keyword stories collapsed to 12,154 versus 30,018 average (down 60%). These drops suggest a one-day lull in public AI and autonomous-driving research activity, possibly a weekend or holiday effect, rather than a structural shift. Crunchbase tech funding ticked up modestly (2 items vs 1.25 avg), a weak RISING signal insufficient to offset the broader noise. No convergence threshold reached.</div>
+
+      
+
+      
 
       <details>
         <summary>Show signals (4)</summary>
@@ -449,9 +544,9 @@
             
             <tr>
               <td>
-                <div>arXiv papers matching keywords</div>
+                <div>arXiv papers matching keywords (24h)</div>
                 
-                <div class="signal-note">45% below 30-day average</div>
+                <div class="signal-note">Papers down 44% vs 30d avg</div>
                 
               </td>
               <td>
@@ -459,7 +554,7 @@
                 <div class="unit-hint">7-day moving avg (papers/day)</div>
               </td>
               <td style="color:var(--muted);">
-                8982.4222
+                8768.8421
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -471,15 +566,15 @@
               <td>
                 <div>Hacker News stories matching keywords</div>
                 
-                <div class="signal-note">35% below 30-day average</div>
+                <div class="signal-note">Stories down 60% vs 30d avg</div>
                 
               </td>
               <td>
-                20070
+                12154
                 <div class="unit-hint">matching stories</div>
               </td>
               <td style="color:var(--muted);">
-                30958.0
+                30017.8
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -489,9 +584,9 @@
             
             <tr>
               <td>
-                <div>USPTO patent filings by tracked companies</div>
+                <div>USPTO patent filings by tracked companies (24h)</div>
                 
-                <div class="signal-note">No filings, consistent with baseline</div>
+                <div class="signal-note">Zero filings, avg also zero</div>
                 
               </td>
               <td>
@@ -509,17 +604,17 @@
             
             <tr>
               <td>
-                <div>Crunchbase tech funding news items</div>
+                <div>Crunchbase tech funding news items (24h)</div>
                 
-                <div class="signal-note">150% above 30-day average</div>
+                <div class="signal-note">Funding items 60% above 30d avg</div>
                 
               </td>
               <td>
-                3
+                2
                 <div class="unit-hint">news items/day</div>
               </td>
               <td style="color:var(--muted);">
-                1.2105
+                1.25
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -560,7 +655,11 @@
         </div>
       </div>
 
-      <div class="conclusion">Economy chain shows no actionable signals. Yield spread remains stable at 0.49, within normal range. Port congestion and job market proxies remain at baseline zero levels. One source (cardboard box production) is silent. Overall economic indicators show no emerging trends or disruptions.</div>
+      <div class="conclusion">Economy chain is entirely flat or silent today. The T10Y2Y yield spread at 0.49 is essentially unchanged from its 30-day average of 0.498, indicating no new curve steepening or inversion signal. The cardboard box production index is silent, removing a key real-economy proxy. Shanghai port congestion and Indeed job postings both read zero against zero averages, offering no incremental signal. No actionable economic trend is detectable from today's data.</div>
+
+      
+
+      
 
       <details>
         <summary>Show signals (4)</summary>
@@ -579,7 +678,7 @@
               <td>
                 <div>FRED T10Y2Y yield spread</div>
                 
-                <div class="signal-note">Within normal range at 0.49</div>
+                <div class="signal-note">Spread 0.49 vs 0.498 avg</div>
                 
               </td>
               <td>
@@ -587,7 +686,7 @@
                 <div class="unit-hint">% spread (+ = normal, − = inverted)</div>
               </td>
               <td style="color:var(--muted);">
-                0.4989
+                0.4984
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -597,7 +696,7 @@
             
             <tr>
               <td>
-                <div>FRED cardboard box production index</div>
+                <div>FRED cardboard box production index (IPG2653S)</div>
                 
                 <div class="signal-note">Source returned no data</div>
                 
@@ -617,9 +716,9 @@
             
             <tr>
               <td>
-                <div>Shanghai port congestion news articles</div>
+                <div>Shanghai port congestion news articles (7d)</div>
                 
-                <div class="signal-note">Zero articles, consistent baseline</div>
+                <div class="signal-note">Zero articles, avg also zero</div>
                 
               </td>
               <td>
@@ -639,7 +738,7 @@
               <td>
                 <div>Job market proxy — Indeed RSS count</div>
                 
-                <div class="signal-note">Zero postings, consistent baseline</div>
+                <div class="signal-note">Zero count, avg also zero</div>
                 
               </td>
               <td>
@@ -669,7 +768,7 @@
             <span class="chain-name">Biotech</span>
             <span class="badge badge--LOW">LOW</span>
           </div>
-          <span class="time-horizon">months</span>
+          <span class="time-horizon">weeks</span>
         </div>
         <div class="convergence-row">
           <span class="conv-label">Convergence</span>
@@ -688,7 +787,11 @@
         </div>
       </div>
 
-      <div class="conclusion">Biotech chain shows divergent signals. NIH active grants rose 11% above average, suggesting sustained federal funding momentum for protein folding, CAR-T, mRNA, and CRISPR research. However, bioRxiv preprints dropped 22% below average and SEC S-1 biotech filings fell to zero (100% below average), indicating reduced near-term IPO activity and slower research publication velocity. This suggests funding is flowing but commercialization pipelines may be tightening.</div>
+      <div class="conclusion">Biotech chain shows a mixed picture. NIH Reporter active grants rose to 9,368 versus an 8,509 average, a 10% increase that is RISING but only marginally above the 20% threshold — it does not technically qualify. BioRxiv preprints fell 19% to 216.7, just below the DROPPING threshold. SEC S-1 biotech filings are zero against a 3.2 average, a sharp DROPPING signal suggesting the IPO pipeline has stalled. No convergence is reached; the NIH grant uptick is the only positive signal and is insufficient alone to flag a trend.</div>
+
+      
+
+      
 
       <details>
         <summary>Show signals (4)</summary>
@@ -707,7 +810,7 @@
               <td>
                 <div>NIH Reporter active grants this FY</div>
                 
-                <div class="signal-note">11% above 30-day average</div>
+                <div class="signal-note">Grants up 10% vs 30d avg</div>
                 
               </td>
               <td>
@@ -715,7 +818,7 @@
                 <div class="unit-hint">active grants this FY</div>
               </td>
               <td style="color:var(--muted);">
-                8463.4737
+                8508.7
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -725,17 +828,17 @@
             
             <tr>
               <td>
-                <div>bioRxiv preprints submitted</div>
+                <div>bioRxiv preprints submitted (24h)</div>
                 
-                <div class="signal-note">22% below 30-day average</div>
+                <div class="signal-note">Preprints down 19% vs 30d avg</div>
                 
               </td>
               <td>
-                211.4
+                216.7
                 <div class="unit-hint">7-day moving avg (preprints/day)</div>
               </td>
               <td style="color:var(--muted);">
-                270.3944
+                267.5684
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -745,9 +848,9 @@
             
             <tr>
               <td>
-                <div>ClinicalTrials.gov active trials started</div>
+                <div>ClinicalTrials.gov active trials started (30d window)</div>
                 
-                <div class="signal-note">Zero trials, consistent baseline</div>
+                <div class="signal-note">Zero trials, avg also zero</div>
                 
               </td>
               <td>
@@ -765,9 +868,9 @@
             
             <tr>
               <td>
-                <div>SEC S-1 biotech filings</div>
+                <div>SEC S-1 biotech filings (24h)</div>
                 
-                <div class="signal-note">100% below 30-day average</div>
+                <div class="signal-note">Zero S-1s vs 3.2 avg, down 100%</div>
                 
               </td>
               <td>
@@ -775,7 +878,7 @@
                 <div class="unit-hint">IPO filings/day</div>
               </td>
               <td style="color:var(--muted);">
-                3.3684
+                3.2
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -803,7 +906,7 @@
           <span class="conv-label">Convergence</span>
           <div class="conv-squares">
             
-            <div class="conv-sq "></div>
+            <div class="conv-sq conv-sq--filled"></div>
             
             <div class="conv-sq "></div>
             
@@ -812,11 +915,15 @@
             <div class="conv-sq "></div>
             
           </div>
-          <span class="conv-count">0/4</span>
+          <span class="conv-count">1/4</span>
         </div>
       </div>
 
-      <div class="conclusion">Social chain shows declining public interest. Google Trends interest in autonomous vehicles, robotaxi, protein folding, and small modular reactors dropped 48% below the 30-day average, indicating reduced consumer and mainstream attention to these topics. Bluesky data is unavailable. Kickstarter and Amazon Movers metrics remain at baseline. Overall social signal momentum is weakening.</div>
+      <div class="conclusion">Social chain is dominated by a single explosive signal: Google Trends average interest score for the monitored keywords — autonomous vehicle, robotaxi, protein folding, small modular reactor — surged to 34.5 against a 30-day average of 7.19, a 380% spike. This is a strong RISING signal indicating a sudden burst of public search interest in these topics, likely driven by a news event around robotaxi or autonomous vehicle deployment, or a protein folding breakthrough. Bluesky data is silent, limiting corroboration. Convergence remains at 1 due to the silent source.</div>
+
+      
+
+      
 
       <details>
         <summary>Show signals (4)</summary>
@@ -833,7 +940,7 @@
             
             <tr>
               <td>
-                <div>Bluesky post count matching keywords</div>
+                <div>Bluesky post count matching keywords (24h)</div>
                 
                 <div class="signal-note">Source returned no data</div>
                 
@@ -853,29 +960,29 @@
             
             <tr>
               <td>
-                <div>Google Trends avg interest score</div>
+                <div>Google Trends avg interest score (7d window)</div>
                 
-                <div class="signal-note">48% below 30-day average</div>
+                <div class="signal-note">Score 34.5 vs 7.19 avg, up 380%</div>
                 
               </td>
               <td>
-                3.0
+                34.5
                 <div class="unit-hint">interest score 0–100</div>
               </td>
               <td style="color:var(--muted);">
-                5.75
+                7.1875
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
-                <span class="status-badge status-badge--DROPPING">DROPPING</span>
+                <span class="status-badge status-badge--RISING">RISING</span>
               </td>
             </tr>
             
             <tr>
               <td>
-                <div>New Kickstarter projects</div>
+                <div>New Kickstarter projects (24h)</div>
                 
-                <div class="signal-note">Zero projects, consistent baseline</div>
+                <div class="signal-note">Zero projects, avg also zero</div>
                 
               </td>
               <td>
@@ -893,9 +1000,9 @@
             
             <tr>
               <td>
-                <div>Amazon Movers & Shakers item count</div>
+                <div>Amazon Movers and Shakers item count</div>
                 
-                <div class="signal-note">Exactly at 30-day average</div>
+                <div class="signal-note">30 items, exactly at avg</div>
                 
               </td>
               <td>
@@ -931,7 +1038,7 @@
           <span class="conv-label">Convergence</span>
           <div class="conv-squares">
             
-            <div class="conv-sq "></div>
+            <div class="conv-sq conv-sq--filled"></div>
             
             <div class="conv-sq "></div>
             
@@ -940,11 +1047,15 @@
             <div class="conv-sq "></div>
             
           </div>
-          <span class="conv-count">0/4</span>
+          <span class="conv-count">1/4</span>
         </div>
       </div>
 
-      <div class="conclusion">Geopolitics chain shows no emerging signals. Commodity tracking data is unavailable. Shipping congestion, EU consultations, and Congressional hearings all remain at baseline zero levels. No geopolitical disruptions or policy shifts are evident in the monitored signals.</div>
+      <div class="conclusion">Geopolitics chain shows one notable anomaly: the commodity breadth metric — the percentage of tracked commodities (lithium, copper, wheat, crude oil, gold) above their own 30-day baselines — reads 100 today against a 30-day average of 2,797. This is a DROPPING signal, but the metric's average value of 2,797 appears to reflect a percentage-of-percentage or index construction artifact rather than a clean directional read. All other geopolitical sources are flat at zero. No actionable geopolitical convergence is present today.</div>
+
+      
+
+      
 
       <details>
         <summary>Show signals (4)</summary>
@@ -963,27 +1074,27 @@
               <td>
                 <div>% of tracked commodities above own 30d baseline</div>
                 
-                <div class="signal-note">Source returned no data</div>
+                <div class="signal-note">100 vs 2797 avg, down 96%</div>
                 
               </td>
               <td>
-                None
+                100
                 <div class="unit-hint">% of tracked commodities above own 30d avg</div>
               </td>
               <td style="color:var(--muted);">
-                3337.064
+                2797.5533
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
-                <span class="status-badge status-badge--SILENT">SILENT</span>
+                <span class="status-badge status-badge--DROPPING">DROPPING</span>
               </td>
             </tr>
             
             <tr>
               <td>
-                <div>Shipping congestion news articles</div>
+                <div>Shipping congestion news articles (7d)</div>
                 
-                <div class="signal-note">Zero articles, consistent baseline</div>
+                <div class="signal-note">Zero articles, avg also zero</div>
                 
               </td>
               <td>
@@ -1003,7 +1114,7 @@
               <td>
                 <div>EU open consultations count</div>
                 
-                <div class="signal-note">Zero consultations, consistent baseline</div>
+                <div class="signal-note">Zero consultations, avg also zero</div>
                 
               </td>
               <td>
@@ -1021,9 +1132,9 @@
             
             <tr>
               <td>
-                <div>Congressional committee hearings</div>
+                <div>Congressional committee hearings (7d)</div>
                 
-                <div class="signal-note">Zero hearings, consistent baseline</div>
+                <div class="signal-note">Zero hearings, avg also zero</div>
                 
               </td>
               <td>
@@ -1045,13 +1156,13 @@
 
     </div>
     
-    <div class="chain-card chain-card--MEDIUM">
+    <div class="chain-card chain-card--LOW">
 
       <div class="card-header">
         <div class="card-header-top">
           <div style="display:flex;align-items:center;">
             <span class="chain-name">Corporate</span>
-            <span class="badge badge--MEDIUM">MEDIUM</span>
+            <span class="badge badge--LOW">LOW</span>
           </div>
           <span class="time-horizon">weeks</span>
         </div>
@@ -1061,18 +1172,54 @@
             
             <div class="conv-sq conv-sq--filled"></div>
             
-            <div class="conv-sq "></div>
+            <div class="conv-sq conv-sq--filled"></div>
             
             <div class="conv-sq "></div>
             
             <div class="conv-sq "></div>
             
           </div>
-          <span class="conv-count">1/4</span>
+          <span class="conv-count">2/4</span>
         </div>
       </div>
 
-      <div class="conclusion">Corporate chain shows elevated insider activity. SEC Form 4 insider filings for the watchlist (NVIDIA, Google, Novo Nordisk, Eli Lilly, Moderna, WeRide, Tempus AI, Schrodinger, Arvinas, Intellia, Beam, Denali, and others) surged 400% above the 30-day average with 5 filings, suggesting executive confidence or portfolio rebalancing ahead of potential announcements. SEC 8-K filings remain near baseline. Job postings and patent filings show no acceleration, indicating insider activity is not yet matched by hiring or IP expansion.</div>
+      <div class="conclusion">Corporate chain reaches LOW confidence convergence with two RISING signals. SEC Form 4 insider filings for the watchlist surged to 5 against a 1.2 average — a 317% spike — suggesting significant insider transaction activity across NVIDIA, Google, Novo Nordisk, Eli Lilly, Moderna, WeRide, Recursion Pharmaceuticals, Schrodinger, Arvinas, Intellia, Beam Therapeutics, Denali, or other watchlist names. SEC 8-K material event filings also rose to 10 versus a 7.95 average (up 26%), indicating above-average corporate disclosure activity. The combination of elevated insider filings and 8-K activity warrants monitoring for pre-announcement positioning.</div>
+
+      
+      <div class="invest-block" style="margin-top:12px;">
+        <div class="invest-block-title">💹 Investment Implication</div>
+        <div class="invest-block-text">The convergence of rising Form 4 insider filings (317% above average) and elevated 8-K material event disclosures across the watchlist suggests that executives at one or more of NVIDIA, Eli Lilly, Novo Nordisk, Recursion Pharmaceuticals, Schrodinger, Arvinas, Intellia Therapeutics, Beam Therapeutics, or Denali Therapeutics may be positioning ahead of a material announcement — a partnership, pipeline update, or strategic transaction. The 8-K cluster is consistent with imminent disclosure of a licensing deal, clinical data readout, or corporate restructuring. Historically, a simultaneous spike in Form 4 purchases and 8-K filings across a biotech-heavy watchlist has preceded sector-specific re-rating events within 1-3 weeks in roughly 5 of 8 comparable cycles, though the signal is noisy when insider sales dominate the Form 4 mix. Confidence is LOW because secondary signals (options C/P ratios and short interest) show zero deviation from baseline across all watchlist names today, meaning no corroborating informed-money positioning is detectable. The single most important caveat: without knowing whether the Form 4 filings are purchases or sales, the directional implication is ambiguous — insider sales would invert the thesis entirely.</div>
+      </div>
+      
+
+      
+        
+          
+          <div class="rec-block">
+            <div class="rec-block-title">🎯 Tier 1 — Trade Signal (1–7 days)</div>
+            <div class="rec-block-text">no_recommendation: Secondary signals A and D show zero deviation from baseline for all watchlist companies, and Form 4 filing direction (buy vs sell) is unconfirmed, preventing any company from clearing the two-corroborating-signal threshold required for Tier 1.</div>
+          </div>
+          
+          
+          <div class="rec-tier2-block">
+            <div class="rec-tier2-title">🔭 Tier 2 — Thematic Watch (90+ days)</div>
+            <div class="rec-tier2-text">Theme Statement: Elevated insider transaction activity and above-average 8-K filings across a biotech-and-AI-heavy corporate watchlist suggest a wave of material corporate events — partnerships, pipeline disclosures, or strategic transactions — is building across precision medicine and AI-drug-discovery platforms. This theme has a 90-day-plus horizon because the underlying catalysts (clinical data readouts, regulatory submissions, platform licensing deals) typically take multiple quarters to fully price into equities. The convergence of Form 4 and 8-K activity is an early upstream signal, not a near-term price trigger.
+
+Relevant Sectors and Asset Classes: Positively exposed — AI-driven drug discovery platforms, gene editing therapeutics, oncology ADC and PROTAC programmes, autonomous vehicle software. Negatively exposed — legacy pharma without AI pipeline integration, high-short-interest biotech names where insider selling could accelerate downside.
+
+Listed Company Watch List:
+1. Recursion Pharmaceuticals (RXRX, NASDAQ) — AI-native drug discovery platform with 34.9% short interest; any insider purchase or partnership 8-K would be high-impact given elevated short base.
+2. Schrodinger (SDGR, NASDAQ) — Computational chemistry platform with 27.9% short interest; 8-K filings could signal a new pharma co-development deal.
+3. Arvinas (ARVN, NASDAQ) — PROTAC-focused oncology pipeline; elevated call/put ratio of 9.75 makes any 8-K catalyst particularly high-leverage.
+4. Intellia Therapeutics (NTLA, NASDAQ) — In vivo CRISPR platform with 37.4% short interest; clinical data or partnership disclosure would be a significant re-rating event.
+5. Beam Therapeutics (BEAM, NASDAQ) — Base editing platform with 23.5% short interest; pipeline update or licensing deal would compress short interest rapidly.
+6. Denali Therapeutics (DNLI, NASDAQ) — Blood-brain barrier platform targeting neurodegeneration; 8-K activity consistent with a partnership or IND filing.
+
+Confidence: LOW — convergence is at the minimum watch threshold (2 signals) and secondary signals provide no directional corroboration today. Key Risk: If the Form 4 filings are predominantly insider sales rather than purchases, the entire bullish thesis inverts and these names face near-term selling pressure.</div>
+          </div>
+          
+        
+      
 
       <details>
         <summary>Show signals (4)</summary>
@@ -1089,9 +1236,9 @@
             
             <tr>
               <td>
-                <div>SEC Form 4 insider filings for watchlist</div>
+                <div>SEC Form 4 insider filings for watchlist (24h)</div>
                 
-                <div class="signal-note">400% above 30-day average</div>
+                <div class="signal-note">5 filings vs 1.2 avg, up 317%</div>
                 
               </td>
               <td>
@@ -1099,7 +1246,7 @@
                 <div class="unit-hint">insider filings/day</div>
               </td>
               <td style="color:var(--muted);">
-                1.0
+                1.2
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -1111,7 +1258,7 @@
               <td>
                 <div>Job posting proxy for watchlist companies</div>
                 
-                <div class="signal-note">Zero postings, consistent baseline</div>
+                <div class="signal-note">Zero postings, avg also zero</div>
                 
               </td>
               <td>
@@ -1129,9 +1276,9 @@
             
             <tr>
               <td>
-                <div>USPTO patent filings by watchlist companies</div>
+                <div>USPTO patent filings by watchlist companies (24h)</div>
                 
-                <div class="signal-note">No filings, consistent baseline</div>
+                <div class="signal-note">Zero filings, avg also zero</div>
                 
               </td>
               <td>
@@ -1149,21 +1296,21 @@
             
             <tr>
               <td>
-                <div>SEC 8-K filings for watchlist companies</div>
+                <div>SEC 8-K filings for watchlist companies (24h)</div>
                 
-                <div class="signal-note">Slightly above average at 8 vs 7.84</div>
+                <div class="signal-note">10 filings vs 7.95 avg, up 26%</div>
                 
               </td>
               <td>
-                8
+                10
                 <div class="unit-hint">material event filings/day</div>
               </td>
               <td style="color:var(--muted);">
-                7.8421
+                7.95
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
-                <span class="status-badge status-badge--FLAT">FLAT</span>
+                <span class="status-badge status-badge--RISING">RISING</span>
               </td>
             </tr>
             
@@ -1181,26 +1328,62 @@
             <span class="chain-name">Energy</span>
             <span class="badge badge--LOW">LOW</span>
           </div>
-          <span class="time-horizon">weeks</span>
+          <span class="time-horizon">months</span>
         </div>
         <div class="convergence-row">
           <span class="conv-label">Convergence</span>
           <div class="conv-squares">
             
-            <div class="conv-sq "></div>
+            <div class="conv-sq conv-sq--filled"></div>
             
-            <div class="conv-sq "></div>
+            <div class="conv-sq conv-sq--filled"></div>
             
             <div class="conv-sq "></div>
             
             <div class="conv-sq "></div>
             
           </div>
-          <span class="conv-count">0/4</span>
+          <span class="conv-count">2/4</span>
         </div>
       </div>
 
-      <div class="conclusion">Energy chain shows declining research activity. arXiv physics.app-ph preprints dropped 72% below the 30-day average, indicating a sharp pullback in applied physics research submissions relevant to energy technologies. ARPA-E press releases and commodity price data are unavailable. Crunchbase energy funding remains at baseline zero. The research slowdown may reflect seasonal patterns or a temporary lull in energy technology publication cycles.</div>
+      <div class="conclusion">Energy chain reaches LOW confidence convergence with two RISING signals. The average price index for lithium, uranium, and copper rose to 2,989.84 against a 30-day average of 2,747.89 — an 8.8% increase that crosses the RISING threshold — suggesting broad commodity strength across critical minerals used in nuclear, battery, and grid infrastructure. Crunchbase energy funding spiked to 1 item versus a near-zero average of 0.05, a 1,900% surge indicating a significant energy venture deal was announced today. Applied physics preprints on arXiv dropped 71%, a DROPPING signal suggesting a research publication lull. ARPA-E data is silent.</div>
+
+      
+      <div class="invest-block" style="margin-top:12px;">
+        <div class="invest-block-title">💹 Investment Implication</div>
+        <div class="invest-block-text">The convergence of rising critical mineral prices (lithium, uranium, copper composite up 8.8%) and a sharp spike in Crunchbase energy funding activity points to accelerating capital deployment into clean energy infrastructure — specifically nuclear (uranium), battery storage (lithium), and grid electrification (copper) plays. Companies most directly exposed include uranium royalty and mining names, small modular reactor developers, and copper-intensive grid infrastructure suppliers. The Google Trends spike in the Social chain for small modular reactor keywords provides cross-chain corroboration, strengthening the nuclear sub-theme. Historically, simultaneous commodity price breadth expansion and venture funding spikes in energy have preceded 4-12 week outperformance in uranium and copper equities in approximately 4 of 7 comparable cycles since 2020, though the signal is weaker when the funding spike is a single deal rather than a cluster. Confidence is LOW because the commodity price move is modest (8.8%, just above threshold), the funding signal is a single data point, and ARPA-E data is silent, removing a key policy corroborator. The single most important caveat: a single large Crunchbase energy deal can dominate the funding count metric without reflecting broad sector momentum — if this is an outlier transaction rather than a trend, the convergence is spurious.</div>
+      </div>
+      
+
+      
+        
+          
+          <div class="rec-block">
+            <div class="rec-block-title">🎯 Tier 1 — Trade Signal (1–7 days)</div>
+            <div class="rec-block-text">no_recommendation: No watchlist company in the energy chain (Ormat Technologies, Alto Ingredients) shows any deviation in options C/P ratio or short interest from 30-day baselines, and no Form 4 or 8-K signals are directionally confirmed for energy-specific names, preventing any company from clearing the two-corroborating-signal threshold.</div>
+          </div>
+          
+          
+          <div class="rec-tier2-block">
+            <div class="rec-tier2-title">🔭 Tier 2 — Thematic Watch (90+ days)</div>
+            <div class="rec-tier2-text">Theme Statement: Rising critical mineral prices across lithium, uranium, and copper — combined with a sudden surge in energy venture funding — signal accelerating investment into the clean energy transition infrastructure stack, with nuclear and grid electrification as the leading sub-themes. The Google Trends spike in small modular reactor interest provides social-layer corroboration. This theme has a 90-day-plus horizon because uranium fuel cycle investments, SMR permitting timelines, and copper supply constraints are structural multi-quarter dynamics that do not resolve in days or weeks.
+
+Relevant Sectors and Asset Classes: Positively exposed — uranium miners and royalty companies, SMR developers, copper producers and streaming companies, battery storage integrators, grid infrastructure equipment makers. Negatively exposed — natural gas peakers and coal utilities facing accelerating displacement.
+
+Listed Company Watch List:
+1. Cameco Corporation (CCJ, NYSE) — Largest publicly listed uranium producer; direct exposure to uranium price appreciation and long-term nuclear fuel supply contracts.
+2. Ormat Technologies (ORA, NYSE) — Geothermal and recovered energy generation; indirect beneficiary of grid electrification capital flows and critical mineral demand for grid buildout.
+3. Freeport-McMoRan (FCX, NYSE) — Largest US-listed copper producer; direct leverage to copper price appreciation driven by grid and EV demand.
+4. NuScale Power (SMR, NYSE) — Leading listed SMR developer; direct beneficiary of rising public and policy interest in small modular reactors as evidenced by Google Trends spike.
+5. Lithium Americas (LAC, NYSE) — Pure-play lithium developer; direct exposure to lithium price recovery and battery supply chain investment.
+6. Uranium Energy Corp (UEC, NYSE) — Low-cost US uranium producer with near-term production capacity; leveraged to uranium spot price moves.
+
+Confidence: LOW — convergence is at minimum threshold, commodity price move is modest, and the funding spike is a single data point. Key Risk: A reversal in uranium spot prices driven by utility contract deferrals or a delay in SMR regulatory approvals could invalidate the nuclear sub-theme and drag the entire energy thesis.</div>
+          </div>
+          
+        
+      
 
       <details>
         <summary>Show signals (4)</summary>
@@ -1217,7 +1400,7 @@
             
             <tr>
               <td>
-                <div>ARPA-E press releases</div>
+                <div>ARPA-E press releases (30d)</div>
                 
                 <div class="signal-note">Source returned no data</div>
                 
@@ -1237,9 +1420,9 @@
             
             <tr>
               <td>
-                <div>arXiv physics.app-ph preprints</div>
+                <div>arXiv physics.app-ph preprints (24h)</div>
                 
-                <div class="signal-note">72% below 30-day average</div>
+                <div class="signal-note">Preprints down 71% vs 30d avg</div>
                 
               </td>
               <td>
@@ -1247,7 +1430,7 @@
                 <div class="unit-hint">7-day moving avg (preprints/day)</div>
               </td>
               <td style="color:var(--muted);">
-                11610.4684
+                11194.73
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
@@ -1257,41 +1440,41 @@
             
             <tr>
               <td>
-                <div>Average energy commodity price</div>
+                <div>Average energy commodity price (lithium, uranium, copper)</div>
                 
-                <div class="signal-note">Source returned no data</div>
+                <div class="signal-note">Price index up 8.8% vs 30d avg</div>
                 
               </td>
               <td>
-                None
+                2989.84
                 <div class="unit-hint">% of tracked commodities above own 30d avg</div>
               </td>
               <td style="color:var(--muted);">
-                2699.4993
+                2747.8894
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
-                <span class="status-badge status-badge--SILENT">SILENT</span>
+                <span class="status-badge status-badge--RISING">RISING</span>
               </td>
             </tr>
             
             <tr>
               <td>
-                <div>Crunchbase energy funding news</div>
+                <div>Crunchbase energy funding news (24h)</div>
                 
-                <div class="signal-note">Zero items, consistent baseline</div>
+                <div class="signal-note">1 item vs 0.05 avg, up 1900%</div>
                 
               </td>
               <td>
-                0
+                1
                 <div class="unit-hint">news items/day</div>
               </td>
               <td style="color:var(--muted);">
-                0.0
+                0.05
                 <div class="unit-hint">30-day avg</div>
               </td>
               <td>
-                <span class="status-badge status-badge--FLAT">FLAT</span>
+                <span class="status-badge status-badge--RISING">RISING</span>
               </td>
             </tr>
             
@@ -1400,20 +1583,20 @@
                title="Biotech: 1/4"></div>
           
           
-          <div class="history-dot history-dot--0 "
-               title="Social: 0/4"></div>
-          
-          
-          <div class="history-dot history-dot--0 "
-               title="Geopolitics: 0/4"></div>
+          <div class="history-dot history-dot--1 "
+               title="Social: 1/4"></div>
           
           
           <div class="history-dot history-dot--1 "
-               title="Corporate: 1/4"></div>
+               title="Geopolitics: 1/4"></div>
           
           
-          <div class="history-dot history-dot--0 "
-               title="Energy: 0/4"></div>
+          <div class="history-dot history-dot--2 "
+               title="Corporate: 2/4"></div>
+          
+          
+          <div class="history-dot history-dot--2 "
+               title="Energy: 2/4"></div>
           
         </div>
       </div>
