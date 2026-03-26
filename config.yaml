@@ -50,11 +50,13 @@ economy_chain:
     - "AI"
     - "Energy"
     - "Finance"
+  # Keys are keyword search terms passed to Adzuna's `what` param.
+  # Values are display labels used in summary strings.
   adzuna_sector_categories:
-    it-jobs: "Tech/AI"
-    engineering-jobs: "Engineering"
-    healthcare-nursing: "Healthcare"
-    scientific-qa: "Science/Biotech"
+    "software engineer AI machine learning": "Tech/AI"
+    "biotech pharmaceutical drug discovery": "Biotech/Pharma"
+    "healthcare nurse clinical": "Healthcare"
+    "energy renewable nuclear": "Energy"
 
 biotech_chain:
   nih_keywords:

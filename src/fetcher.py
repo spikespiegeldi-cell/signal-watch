@@ -284,12 +284,11 @@ def fetch_layoffs_fyi(sectors: list) -> tuple:
 
 
 def fetch_adzuna_sector_hiring(sectors: dict, app_id: str, app_key: str, b: dict) -> tuple:
-    """Query Adzuna for total live job postings per sector category.
+    """Query Adzuna for total live job postings per sector using keyword search.
 
-    sectors: dict of {adzuna_category_slug: display_label}
+    sectors: dict of {keyword_search_terms: display_label}
+    The key is passed as Adzuna's `what` (keyword) parameter — no category slugs needed.
     Returns (total_today, summary_str).
-    total_today = sum of posting counts across all sector categories.
-    summary_str = per-sector breakdown with vs-baseline comparison.
     """
     if not app_id or not app_key:
         log.warning("Adzuna credentials not set — skipping sector hiring signal. "
@@ -300,13 +299,13 @@ def fetch_adzuna_sector_hiring(sectors: dict, app_id: str, app_key: str, b: dict
     total = 0
     successful = 0
 
-    for category_slug, display_label in sectors.items():
+    for search_terms, display_label in sectors.items():
         try:
             params = {
                 "app_id": app_id,
                 "app_key": app_key,
                 "results_per_page": 1,
-                "category": category_slug,
+                "what": search_terms,
             }
             r = requests.get(
                 "https://api.adzuna.com/v1/api/jobs/us/search/1",
@@ -316,8 +315,7 @@ def fetch_adzuna_sector_hiring(sectors: dict, app_id: str, app_key: str, b: dict
             r.raise_for_status()
             count = r.json().get("count", 0)
 
-            # Per-category baseline
-            baseline_key = f"adzuna_sector_{category_slug.replace('-', '_')}"
+            baseline_key = f"adzuna_sector_{display_label.lower().replace('/', '_').replace(' ', '_')}"
             avg = update_rolling(b, baseline_key, float(count))
             pct_chg = round((count - avg) / avg * 100, 1) if avg else 0.0
             sign = "+" if pct_chg >= 0 else ""
