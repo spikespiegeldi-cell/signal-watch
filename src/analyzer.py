@@ -62,10 +62,12 @@ def render_user_prompt(raw: dict) -> str:
         "YIELD_AVG":     val(raw, "economy", "yield_curve", "avg30"),
         "BOX_TODAY":     val(raw, "economy", "box_production"),
         "BOX_AVG":       val(raw, "economy", "box_production", "avg30"),
-        "MARINE_TODAY":  val(raw, "economy", "marine_traffic"),
-        "MARINE_AVG":    val(raw, "economy", "marine_traffic", "avg30"),
-        "JOBS_TODAY":    val(raw, "economy", "linkedin_jobs"),
-        "JOBS_AVG":      val(raw, "economy", "linkedin_jobs", "avg30"),
+        "LAYOFFS_TODAY": val(raw, "economy", "layoffs"),
+        "LAYOFFS_AVG":   val(raw, "economy", "layoffs", "avg30"),
+        "HIRING_TODAY":  val(raw, "economy", "sector_hiring"),
+        "HIRING_AVG":    val(raw, "economy", "sector_hiring", "avg30"),
+        "LAYOFFS_SUMMARY":       raw.get("secondary_signals", {}).get("layoffs_summary",       "N/A (not fetched)"),
+        "SECTOR_HIRING_SUMMARY": raw.get("secondary_signals", {}).get("sector_hiring_summary", "N/A (not fetched)"),
         # Biotech
         "BIO_KEYWORDS":  ", ".join(cfg["biotech_chain"]["nih_keywords"]),
         "NIH_TODAY":     val(raw, "biotech", "nih_reporter"),
@@ -162,7 +164,7 @@ def enrich_with_raw(analysis: dict, raw: dict) -> dict:
     # Fixed order of raw data keys per chain — must match fetcher.py output order
     chain_key_order = {
         "Tech":        ["arxiv", "hacker_news", "patents", "crunchbase"],
-        "Economy":     ["yield_curve", "box_production", "marine_traffic", "linkedin_jobs"],
+        "Economy":     ["yield_curve", "box_production", "layoffs", "sector_hiring"],
         "Biotech":     ["nih_reporter", "biorxiv", "clinical_trials", "sec_s1_biotech"],
         "Social":      ["bluesky", "google_trends", "kickstarter", "amazon_movers"],
         "Geopolitics": ["commodities", "marine_traffic", "eu_consultations", "congress_hearings"],

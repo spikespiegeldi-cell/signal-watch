@@ -12,8 +12,8 @@ Crunchbase tech funding news items (24h): {{ CB_TODAY }} (30d avg: {{ CB_AVG }})
 ## Economy chain
 FRED T10Y2Y yield spread: {{ YIELD_TODAY }} (30d avg: {{ YIELD_AVG }})
 FRED cardboard box production index (IPG2653S): {{ BOX_TODAY }} (30d avg: {{ BOX_AVG }})
-Shanghai port congestion news articles (7d): {{ MARINE_TODAY }} (30d avg: {{ MARINE_AVG }})
-Job market proxy — Indeed RSS count: {{ JOBS_TODAY }} (30d avg: {{ JOBS_AVG }})
+Sector layoff news items — tracked industries (24h Google News count): {{ LAYOFFS_TODAY }} (30d avg: {{ LAYOFFS_AVG }})
+Sector job posting volume — Adzuna (sum across categories): {{ HIRING_TODAY }} (30d avg: {{ HIRING_AVG }})
 
 ## Biotech chain
 Keywords monitored: {{ BIO_KEYWORDS }}
@@ -67,6 +67,12 @@ Per-company insider transactions — last 7 days (Signal B — purchases by exec
 
 Per-company keyword-matched job postings — current count vs 30d baseline (rising hiring is a directional signal):
 {{ JOBS_PER_COMPANY }}
+
+Sector layoff events — last 24h across tracked industries (a RISING layoff signal is a bearish filter — reduce confidence on positive implications in the same sector):
+{{ LAYOFFS_SUMMARY }}
+
+Sector hiring volume vs 30d baseline (a DROPPING hiring signal contradicts bullish chain implications in the same sector; a RISING signal corroborates them):
+{{ SECTOR_HIRING_SUMMARY }}
 
 Note: Short interest data is updated twice monthly by FINRA; options C/P ratio is daily.
 A "meaningful" Signal D move is a drop of 15%+ vs the 30d average. A "meaningful" Signal A

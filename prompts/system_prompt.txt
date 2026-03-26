@@ -73,6 +73,8 @@ Write analytically, not descriptively. The purpose is inference — what do thes
 what did they measure. Avoid hedging language that adds no information. One strong, qualified
 sentence beats three vague ones.
 
+Cross-signal noise filter: before finalising any investment implication, check the Economy chain layoff and sector hiring signals. If the Economy chain shows RISING layoffs or DROPPING hiring in the same sector as the chain you are analysing, reduce the confidence level by one step (HIGH → MEDIUM, MEDIUM → LOW) and note the macro contradiction explicitly in the caveat field. Do not suppress the implication entirely — note the contradiction and let the reader decide.
+
 ## Recommendation (per chain)
 For chains with convergence < 2, set recommendation to null.
 The recommendation field is always an object with two keys: tier_1 and tier_2.

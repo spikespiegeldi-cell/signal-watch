@@ -42,6 +42,19 @@ economy_chain:
     - "clinical research"
     - "nuclear engineer"
     - "AI researcher"
+  layoffs_fyi_sectors:
+    - "Biotech"
+    - "Healthcare"
+    - "Pharma"
+    - "Tech"
+    - "AI"
+    - "Energy"
+    - "Finance"
+  adzuna_sector_categories:
+    scientific-qa: "Biotech/Pharma"
+    it-jobs: "Tech/AI"
+    energy-oil-gas: "Energy"
+    healthcare-nursing: "Healthcare"
 
 biotech_chain:
   nih_keywords:

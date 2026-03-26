@@ -228,6 +228,111 @@ def fetch_jobs_proxy(keywords: list) -> Optional[int]:
         return None
 
 
+def fetch_layoffs_fyi(sectors: list) -> tuple:
+    """Count layoff news mentions for tracked sectors via Google News RSS (24h window).
+
+    layoffs.fyi embeds its data via JavaScript / Airtable and is not
+    directly scrapeable, so this function uses Google News RSS as a
+    proxy: it searches for "<sector> layoffs" news items published in
+    the last 24 hours and counts distinct events as a RISING/FLAT/DROPPING
+    proxy signal.
+
+    Returns (event_count, summary_str).
+    event_count = number of distinct layoff news items in the last 24 hours.
+    summary_str = per-sector breakdown for secondary_signals.
+    """
+    try:
+        cutoff = datetime.utcnow() - timedelta(hours=24)
+        per_sector = {}
+
+        for sector in sectors:
+            query = requests.utils.quote(f"{sector} layoffs")
+            url = (
+                f"https://news.google.com/rss/search"
+                f"?q={query}&hl=en-US&gl=US&ceid=US:en"
+            )
+            try:
+                feed = feedparser.parse(url)
+                count = 0
+                for entry in feed.entries:
+                    # Parse published time
+                    published = entry.get("published_parsed") or entry.get("updated_parsed")
+                    if published is None:
+                        count += 1  # include if we can't parse date
+                        continue
+                    entry_dt = datetime(*published[:6])
+                    if entry_dt >= cutoff:
+                        count += 1
+                per_sector[sector] = count
+            except Exception as e:
+                log.warning(f"Layoffs news ({sector}): {e}")
+                per_sector[sector] = None
+
+        valid_counts = [v for v in per_sector.values() if v is not None]
+        total = sum(valid_counts) if valid_counts else None
+
+        parts = []
+        for sector, cnt in per_sector.items():
+            parts.append(f"{sector}: {cnt if cnt is not None else 'N/A'} items")
+        summary = "Layoff news (24h): " + "; ".join(parts) if parts else "N/A"
+
+        return float(total) if total is not None else None, summary
+
+    except Exception as e:
+        log.warning(f"Layoffs news: {e}")
+        return None, f"N/A (fetch error: {str(e)[:60]})"
+
+
+def fetch_adzuna_sector_hiring(sectors: dict, app_id: str, app_key: str, b: dict) -> tuple:
+    """Query Adzuna for total live job postings per sector category.
+
+    sectors: dict of {adzuna_category_slug: display_label}
+    Returns (total_today, summary_str).
+    total_today = sum of posting counts across all sector categories.
+    summary_str = per-sector breakdown with vs-baseline comparison.
+    """
+    if not app_id or not app_key:
+        log.warning("Adzuna credentials not set — skipping sector hiring signal. "
+                    "Register at https://developer.adzuna.com/ to enable this source.")
+        return None, "N/A (adzuna credentials not configured — register at https://developer.adzuna.com/)"
+
+    parts = []
+    total = 0
+    successful = 0
+
+    for category_slug, display_label in sectors.items():
+        try:
+            params = {
+                "app_id": app_id,
+                "app_key": app_key,
+                "results_per_page": 1,
+                "category": category_slug,
+                "content-type": "application/json",
+            }
+            r = requests.get(
+                "https://api.adzuna.com/v1/api/jobs/us/search/1",
+                params=params, timeout=15, headers=HEADERS
+            )
+            r.raise_for_status()
+            count = r.json().get("count", 0)
+
+            # Per-category baseline
+            baseline_key = f"adzuna_sector_{category_slug.replace('-', '_')}"
+            avg = update_rolling(b, baseline_key, float(count))
+            pct_chg = round((count - avg) / avg * 100, 1) if avg else 0.0
+            sign = "+" if pct_chg >= 0 else ""
+            parts.append(f"{display_label}: {count:,} postings (avg30: {avg:,.0f}, {sign}{pct_chg}%)")
+            total += count
+            successful += 1
+        except Exception as e:
+            parts.append(f"{display_label}: [skipped: {str(e)[:60]}]")
+            log.warning(f"Adzuna sector '{display_label}': {e}")
+
+    summary = "; ".join(parts) if parts else "N/A"
+    total_val = float(total) if successful > 0 else None
+    return total_val, summary
+
+
 def fetch_jobs_per_company(ats_map: dict, keywords: list, b: dict) -> tuple:
     """Fetch keyword-matched job postings per company via Greenhouse, Lever, or Adzuna.
 
@@ -875,15 +980,27 @@ def main():
 
     # ── Economy ───────────────────────────────────────────────────────────────
     log.info("Fetching Economy chain...")
+    adzuna_app_id  = os.environ.get("ADZUNA_APP_ID", "")
+    adzuna_app_key = os.environ.get("ADZUNA_APP_KEY", "")
+
     e_yield, e_yield_avg  = record(b, "econ_yield",  fetch_fred(cfg["economy_chain"]["fred_series"]["yield_curve"]))
     e_box,   e_box_avg    = record(b, "econ_box",    fetch_fred(cfg["economy_chain"]["fred_series"]["box_production"]))
     e_mar,   e_mar_avg    = record(b, "econ_marine", fetch_marine_proxy())
-    e_jobs,  e_jobs_avg   = record(b, "econ_jobs",   fetch_jobs_proxy(cfg["economy_chain"]["linkedin_keywords"]))
+
+    layoffs_today, layoffs_summary_str = fetch_layoffs_fyi(
+        cfg["economy_chain"].get("layoffs_fyi_sectors", []))
+    e_layoffs, e_layoffs_avg = record(b, "econ_layoffs", layoffs_today)
+
+    hiring_today, sector_hiring_summary_str = fetch_adzuna_sector_hiring(
+        cfg["economy_chain"].get("adzuna_sector_categories", {}),
+        adzuna_app_id, adzuna_app_key, b)
+    e_hiring, e_hiring_avg = record(b, "econ_hiring", hiring_today)
+
     result["chains"]["economy"] = {
-        "yield_curve":    {"today": e_yield, "avg30": e_yield_avg, "label": "FRED T10Y2Y yield spread"},
-        "box_production": {"today": e_box,   "avg30": e_box_avg,   "label": "FRED cardboard box production index"},
-        "marine_traffic": {"today": e_mar,   "avg30": e_mar_avg,   "label": "Shanghai port congestion news (7d)"},
-        "linkedin_jobs":  {"today": e_jobs,  "avg30": e_jobs_avg,  "label": "Job market proxy (Indeed RSS)"},
+        "yield_curve":    {"today": e_yield,   "avg30": e_yield_avg,   "label": "FRED T10Y2Y yield spread"},
+        "box_production": {"today": e_box,     "avg30": e_box_avg,     "label": "FRED cardboard box production index"},
+        "layoffs":        {"today": e_layoffs, "avg30": e_layoffs_avg, "label": "Sector layoff news items (24h Google News)"},
+        "sector_hiring":  {"today": e_hiring,  "avg30": e_hiring_avg,  "label": "Sector job posting volume (Adzuna)"},
     }
 
     # ── Biotech ───────────────────────────────────────────────────────────────
@@ -1001,6 +1118,8 @@ def main():
         "options_cp_ratio": options_str,
         "form4_per_company": form4_per_company_str,
         "jobs_per_company": corp_jobs_str,
+        "layoffs_summary": layoffs_summary_str,
+        "sector_hiring_summary": sector_hiring_summary_str,
     }
 
     # ── Save outputs ──────────────────────────────────────────────────────────
