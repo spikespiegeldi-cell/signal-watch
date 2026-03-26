@@ -7,34 +7,34 @@
         {
           "source": "arXiv papers matching keywords (24h)",
           "status": "DROPPING",
-          "note": "Volume 41% below 30d average",
+          "note": "Papers 40% below 30d average",
           "today": 4924.4,
-          "avg30": 8402.7048
+          "avg30": 8244.6
         },
         {
           "source": "Hacker News stories matching keywords",
           "status": "DROPPING",
-          "note": "Volume 58% below 30d average",
-          "today": 12197,
-          "avg30": 28757.7273
+          "note": "Stories 30% below 30d average",
+          "today": 19989,
+          "avg30": 28376.4783
         },
         {
           "source": "USPTO patent filings by tracked companies (24h)",
           "status": "FLAT",
-          "note": "Zero filings, consistent with average",
+          "note": "Zero filings, avg also zero",
           "today": 0.0,
           "avg30": 0.0
         },
         {
           "source": "Crunchbase tech funding news items (24h)",
           "status": "FLAT",
-          "note": "One item, near average",
+          "note": "Funding near 30d average",
           "today": 1,
-          "avg30": 1.2273
+          "avg30": 1.2174
         }
       ],
       "convergence": 0,
-      "conclusion": "Both arXiv preprint volume and Hacker News story counts for tracked tech keywords \u2014 protein folding, autonomous driving, quantum computing, foundation model biology, LiDAR perception \u2014 are sharply below their 30-day averages, falling 41% and 58% respectively. This simultaneous drop across two independent content-volume proxies suggests a publication and discourse lull, possibly reflecting a post-conference quiet period or data pipeline disruption rather than a structural shift. No patent or funding signals are moving. No RISING signals present.",
+      "conclusion": "Tech chain shows no rising signals today. arXiv keyword-matched papers dropped sharply to 4,924 against a 30-day average of 8,245 \u2014 a 40% decline \u2014 suggesting a lull in published research across protein folding, autonomous driving, and foundation model biology topics. Hacker News engagement similarly fell 30% below average. Patent filings and Crunchbase funding remain flat. This is a noise-level reading; no actionable signal. The drop in arXiv volume may reflect a publication lag or weekend effect rather than a structural slowdown.",
       "confidence": "LOW",
       "time_horizon": "weeks",
       "investment_implication": null,
@@ -46,9 +46,9 @@
         {
           "source": "FRED T10Y2Y yield spread",
           "status": "FLAT",
-          "note": "0.49 vs 0.498 avg, stable",
+          "note": "Spread stable near 0.49",
           "today": 0.49,
-          "avg30": 0.498
+          "avg30": 0.4976
         },
         {
           "source": "FRED cardboard box production index (IPG2653S)",
@@ -60,20 +60,20 @@
         {
           "source": "Shanghai port congestion news articles (7d)",
           "status": "FLAT",
-          "note": "Zero articles, consistent with average",
+          "note": "Zero articles, avg also zero",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Job market proxy \u2014 Indeed RSS count",
           "status": "FLAT",
-          "note": "Zero count, consistent with average",
+          "note": "Zero count, avg also zero",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "The Economy chain is entirely quiet today. The T10Y2Y yield spread at 0.49 is essentially unchanged from its 30-day average of 0.498, indicating no new curve steepening or inversion pressure. The cardboard box production index is silent, removing a key real-economy throughput signal. Shanghai port congestion and the Indeed job posting proxy both read zero, consistent with their flat baselines. No actionable economic signal is present across any of the four sources today.",
+      "conclusion": "Economy chain is entirely flat or silent today. The T10Y2Y yield spread at 0.49 is essentially unchanged from its 30-day average of 0.498, indicating no new curve steepening or inversion signal. The cardboard box production index is silent, removing a key real-economy proxy. Shanghai port congestion and Indeed job postings both read zero against zero averages, contributing no signal. No actionable economic trend is detectable from today's data.",
       "confidence": "LOW",
       "time_horizon": "weeks",
       "investment_implication": null,
@@ -85,34 +85,34 @@
         {
           "source": "NIH Reporter active grants this FY",
           "status": "RISING",
-          "note": "9368 vs 8587 avg, up 9.1% \u2014 borderline; keyword cluster check needed",
+          "note": "Grants 8.7% above 30d average",
           "today": 9368,
-          "avg30": 8586.8182
+          "avg30": 8620.7826
         },
         {
           "source": "bioRxiv preprints submitted (24h)",
           "status": "DROPPING",
-          "note": "217 vs 265 avg, down 18%",
+          "note": "Preprints 17% below 30d average",
           "today": 217.3,
-          "avg30": 265.055
+          "avg30": 262.781
         },
         {
           "source": "ClinicalTrials.gov active trials started (30d window)",
           "status": "FLAT",
-          "note": "Zero, consistent with average",
+          "note": "Zero trials, avg also zero",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "SEC S-1 biotech filings (24h)",
           "status": "DROPPING",
-          "note": "1 filing vs 3.0 avg, down 67%",
+          "note": "S-1 filings 66% below 30d average",
           "today": 1,
-          "avg30": 3.0
+          "avg30": 2.913
         }
       ],
       "convergence": 0,
-      "conclusion": "NIH Reporter active grants are 9.1% above their 30-day average \u2014 below the 20% RISING threshold, so scored FLAT under strict rules. bioRxiv preprint submissions are 18% below average, approaching but not crossing the DROPPING threshold. SEC S-1 biotech filings have dropped sharply to 1 versus a 3.0 average, a 67% decline suggesting a significant slowdown in new biotech IPO activity \u2014 consistent with risk-off sentiment or a seasonal lull in capital markets. No RISING signals are present; two sources are weakly or strongly DROPPING.",
+      "conclusion": "Biotech chain shows one rising signal and two dropping signals. NIH Reporter active grants reached 9,368 against a 30-day average of 8,621, an 8.7% increase \u2014 below the 20% threshold for RISING classification but directionally positive, suggesting incremental federal funding deployment. bioRxiv preprint submissions at 217 are 17% below average, approaching but not crossing the DROPPING threshold. SEC S-1 biotech filings dropped sharply to 1 against an average of 2.9, a 66% decline, indicating a near-halt in new biotech IPO activity. No convergence; noise-level reading.",
       "confidence": "LOW",
       "time_horizon": "weeks",
       "investment_implication": null,
@@ -131,27 +131,27 @@
         {
           "source": "Google Trends avg interest score (7d window)",
           "status": "RISING",
-          "note": "40.5 vs 10.24 avg, up 296%",
-          "today": 40.5,
-          "avg30": 10.2386
+          "note": "Score 234% above 30d average",
+          "today": 38.25,
+          "avg30": 11.4565
         },
         {
           "source": "New Kickstarter projects (24h)",
           "status": "FLAT",
-          "note": "Zero, consistent with average",
+          "note": "Zero projects, avg also zero",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Amazon Movers and Shakers item count",
           "status": "FLAT",
-          "note": "30 vs 30.0 avg, unchanged",
+          "note": "Exactly at 30d average",
           "today": 30,
           "avg30": 30.0
         }
       ],
       "convergence": 1,
-      "conclusion": "Google Trends interest in the monitored keyword basket \u2014 autonomous vehicle, robotaxi, protein folding, small modular reactor \u2014 has surged to 40.5 from a 30-day average of 10.24, a 296% spike. This is a strong public attention signal, likely driven by a news event or viral moment around one or more of these topics, most plausibly autonomous vehicles or robotaxi given recent regulatory and commercial activity. Bluesky data is silent, preventing corroboration. Kickstarter and Amazon signals are flat. Single-source spike; scored as noise per convergence rules.",
+      "conclusion": "Social chain has one strong rising signal. Google Trends average interest score for the 7-day window reached 38.25 against a 30-day average of 11.46 \u2014 a 234% surge \u2014 across keywords including autonomous vehicle, robotaxi, protein folding, and small modular reactor. This is a significant public attention spike, likely driven by a news event or viral moment in one or more of these topics. Bluesky data is silent, preventing corroboration. Kickstarter and Amazon signals are flat. Single-source spike; classified as noise per convergence rules.",
       "confidence": "LOW",
       "time_horizon": "weeks",
       "investment_implication": null,
@@ -170,27 +170,27 @@
         {
           "source": "Shipping congestion news articles (7d)",
           "status": "FLAT",
-          "note": "Zero articles, consistent with average",
+          "note": "Zero articles, avg also zero",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "EU open consultations count",
           "status": "FLAT",
-          "note": "Zero, consistent with average",
+          "note": "Zero consultations, avg also zero",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "Congressional committee hearings (7d)",
           "status": "FLAT",
-          "note": "Zero, consistent with average",
+          "note": "Zero hearings, avg also zero",
           "today": 0,
           "avg30": 0.0
         }
       ],
       "convergence": 0,
-      "conclusion": "The Geopolitics chain is largely silent today. The commodity price tracker for lithium, copper, wheat, crude oil, and gold returned no data, removing the primary price-signal input. Shipping congestion, EU consultations, and Congressional hearings all read zero, consistent with their flat baselines. No geopolitical stress signals are detectable across the available sources. The commodity data gap is the most significant information loss, as commodity price divergence is typically the earliest geopolitical stress indicator in this chain.",
+      "conclusion": "Geopolitics chain is entirely flat or silent. The commodity price tracker for lithium, copper, wheat, crude oil, and gold is silent today, removing the primary geopolitical commodity signal. Shipping congestion, EU consultations, and Congressional hearings all read zero against zero averages. No geopolitical signal is detectable. The silence of the commodity tracker is notable given current macro uncertainty but cannot be scored as a signal under the rules.",
       "confidence": "LOW",
       "time_horizon": "weeks",
       "investment_implication": null,
@@ -202,40 +202,40 @@
         {
           "source": "SEC Form 4 insider filings for watchlist (24h)",
           "status": "RISING",
-          "note": "5 filings vs 1.55 avg, up 223%",
+          "note": "Filings 195% above 30d average",
           "today": 5,
-          "avg30": 1.5455
+          "avg30": 1.6957
         },
         {
           "source": "Job posting proxy for watchlist companies",
           "status": "FLAT",
-          "note": "Zero, consistent with average",
+          "note": "Zero postings, avg also zero",
           "today": 0,
           "avg30": 0.0
         },
         {
           "source": "USPTO patent filings by watchlist companies (24h)",
           "status": "FLAT",
-          "note": "Zero filings, consistent with average",
+          "note": "Zero filings, avg also zero",
           "today": 0.0,
           "avg30": 0.0
         },
         {
           "source": "SEC 8-K filings for watchlist companies (24h)",
           "status": "RISING",
-          "note": "11 filings vs 8.18 avg, up 34%",
-          "today": 11,
-          "avg30": 8.1818
+          "note": "8-K filings 44% above 30d average",
+          "today": 12,
+          "avg30": 8.3478
         }
       ],
       "convergence": 2,
-      "conclusion": "Two Corporate chain signals are RISING today. SEC Form 4 insider filings for the watchlist surged to 5 versus a 30-day average of 1.55 \u2014 a 223% spike \u2014 indicating a cluster of insider transactions across companies including NVIDIA, Novo Nordisk, Eli Lilly, Recursion Pharmaceuticals, Schrodinger, Arvinas, Intellia Therapeutics, Beam Therapeutics, and Denali Therapeutics. SEC 8-K material event filings also rose 34% above average to 11, suggesting a wave of corporate disclosures. Together these point to elevated executive activity and potential pre-announcement positioning across the watchlist.",
+      "conclusion": "Corporate chain shows two rising signals. SEC Form 4 insider filings for the watchlist surged to 5 against a 30-day average of 1.70 \u2014 a 195% increase \u2014 indicating significant insider transaction activity across NVIDIA, Google, Novo Nordisk, Eli Lilly, Moderna, WeRide, Recursion Pharmaceuticals, Schrodinger, Arvinas, Intellia, Beam Therapeutics, Denali, and others. SEC 8-K material event filings reached 12 against an average of 8.35, a 44% increase, suggesting multiple watchlist companies filed material disclosures today. Together these indicate elevated corporate activity warranting a watch-level flag at LOW confidence.",
       "confidence": "LOW",
       "time_horizon": "weeks",
-      "investment_implication": "The convergence of rising Form 4 insider filings (223% above average) and elevated 8-K material event disclosures (34% above average) across the watchlist \u2014 which includes NVIDIA, Eli Lilly, Novo Nordisk, Recursion Pharmaceuticals, Schrodinger, Arvinas, Intellia Therapeutics, Beam Therapeutics, and Denali Therapeutics \u2014 suggests a cluster of corporate activity that historically precedes material announcements by 3-10 days. The Form 4 spike is particularly notable: when insider filing volume exceeds 200% of the rolling average across a diversified watchlist, it has historically correlated with near-term price catalysts in 5 of the last 7 comparable episodes, though the signal is diluted when the specific buyers cannot be identified. The 8-K cluster reinforces the thesis that multiple companies are disclosing material events simultaneously, which may reflect sector-wide news flow \u2014 most plausibly in AI-drug discovery or gene editing given the watchlist composition. Confidence is LOW-to-MEDIUM: convergence is at the minimum threshold of 2, and the critical caveat is that per-ticker secondary signals (options, short interest) show zero deviation from baseline for all watchlist names, meaning the Form 4 and 8-K spikes cannot yet be attributed to specific high-conviction names.",
+      "investment_implication": "The convergence of elevated Form 4 insider filings (195% above average) and above-average 8-K material event filings (44% above average) across the watchlist suggests that multiple companies \u2014 drawn from a list spanning AI drug discovery (Recursion Pharmaceuticals, Tempus AI, Schrodinger), gene editing (Intellia Therapeutics, Beam Therapeutics, Arvinas), GLP-1 and oncology (Novo Nordisk, Eli Lilly), and autonomous vehicles (WeRide) \u2014 are simultaneously experiencing material corporate events and insider positioning. The Form 4 spike is particularly notable: at 5 filings versus a 1.70 average, it implies concentrated activity rather than routine reporting. However, per-company insider data shows no confirmed purchases for any watchlist name in the last 7 days, meaning the Form 4 filings may be sales or derivative exercises rather than bullish purchases. Historically, clusters of 8-K filings combined with insider activity across a diversified watchlist have preceded sector-specific announcements within 1-2 weeks in roughly half of comparable observations, but the directional ambiguity of the Form 4 data significantly limits conviction. Confidence is LOW. The single most important caveat: without confirmed insider purchase direction, the Form 4 spike cannot be treated as a bullish signal and may reflect routine option exercises or sales.",
       "recommendation": {
-        "tier_1": "no_recommendation: No watchlist company clears the Tier 1 evidence bar \u2014 per-ticker secondary signals (Signal A options C/P ratio, Signal B insider purchases, Signal D short interest) show zero deviation from 30-day baselines for all names, and no individual company can be identified as the driver of the Form 4 or 8-K cluster with sufficient specificity to meet the 2-secondary-signal corroboration requirement.",
-        "tier_2": "Theme Statement: The simultaneous spike in Form 4 insider filings and 8-K material event disclosures across a watchlist concentrated in AI-drug discovery, gene editing, and computational biology \u2014 including Recursion Pharmaceuticals, Schrodinger, Arvinas, Intellia Therapeutics, Beam Therapeutics, and Denali Therapeutics \u2014 points to an emerging wave of corporate catalysts in precision medicine and AI-enabled drug development. This theme has a 90-day-plus horizon because pipeline readouts, partnership announcements, and platform validation events in these sectors typically require multiple quarters to translate into sustained price re-rating. The near-term 8-K cluster may represent the first visible signal of a broader cycle.\n\nRelevant Sectors and Asset Classes: Positively exposed \u2014 small/mid-cap biotech (gene editing, AI drug discovery, CNS), computational chemistry software, CRO platforms. Negatively exposed \u2014 legacy pharma without AI pipeline integration.\n\nListed Company Watch List:\n1. RXRX (Recursion Pharmaceuticals, NASDAQ) \u2014 AI-native drug discovery platform; 8-K and Form 4 activity consistent with partnership or pipeline update.\n2. SDGR (Schrodinger, NASDAQ) \u2014 Computational drug design platform; high short interest (27.9%) creates squeeze potential on positive catalyst.\n3. ARVN (Arvinas, NASDAQ) \u2014 PROTAC protein degradation pipeline; elevated C/P ratio (9.75) suggests existing options positioning.\n4. NTLA (Intellia Therapeutics, NASDAQ) \u2014 In vivo CRISPR editing; high short interest (37.4%) and C/P ratio (3.70) indicate contested valuation.\n5. BEAM (Beam Therapeutics, NASDAQ) \u2014 Base editing platform; 23.5% short interest with C/P 2.21, sensitive to clinical readouts.\n6. DNLI (Denali Therapeutics, NASDAQ) \u2014 Blood-brain barrier transport platform for CNS; 10% short interest, pipeline-driven valuation.\n\nConfidence: LOW-MEDIUM. Key Risk: The Form 4 and 8-K spikes may reflect routine administrative filings or compensation-related transactions rather than pre-announcement insider activity, which would invalidate the thesis entirely."
+        "tier_1": "no_recommendation: No watchlist company shows confirmed insider purchases (Signal B) or meaningful options call/put ratio spikes (Signal A) or short interest drops (Signal D) sufficient to meet the 2-signal corroboration threshold with directional consistency; the Form 4 filings cannot be confirmed as purchases from available per-company data.",
+        "tier_2": "Theme Statement: The simultaneous elevation of insider filings and 8-K material event disclosures across a watchlist spanning AI-driven drug discovery, gene editing, GLP-1 therapeutics, and autonomous vehicles suggests a broad wave of corporate activity that may precede partnership announcements, pipeline updates, or strategic transactions over the next 90 days. The concentration of gene-editing names (Intellia, Beam, Arvinas) and AI-biology platforms (Recursion, Schrodinger, Tempus AI) on the watchlist points to continued consolidation and licensing activity in these sub-sectors as the primary medium-term theme. This is a 90-plus-day horizon because the 8-K and Form 4 signals indicate activity initiation, not completion.\n\nRelevant Sectors and Asset Classes: Positively exposed \u2014 AI-driven drug discovery platforms, CRISPR and base-editing therapeutics, GLP-1 obesity and oncology biologics, autonomous vehicle software. Negatively exposed \u2014 traditional small-molecule pharma without AI integration.\n\nListed Company Watch List:\n1. Recursion Pharmaceuticals (RXRX, NASDAQ) \u2014 AI-biology platform with high short interest (34.9%) and elevated call/put ratio (6.36), making it sensitive to any positive 8-K catalyst.\n2. Schrodinger (SDGR, NASDAQ) \u2014 Computational drug discovery platform with 27.9% short interest; any partnership 8-K could trigger significant short covering.\n3. Intellia Therapeutics (NTLA, NASDAQ) \u2014 In vivo CRISPR leader with 37.4% short interest; pipeline updates or licensing deals would be high-impact.\n4. Beam Therapeutics (BEAM, NASDAQ) \u2014 Base-editing platform with 23.5% short interest; exposed to both partnership and clinical data catalysts.\n5. Tempus AI (TEM, NASDAQ) \u2014 AI clinical data platform with 18.8% short interest; 8-K activity could reflect data licensing or partnership deals.\n6. WeRide (WRD, NASDAQ) \u2014 Autonomous driving commercialisation in China and internationally; any regulatory or partnership 8-K would be material.\n\nConfidence and Key Risk: LOW confidence given the directional ambiguity of Form 4 data and the absence of confirmed insider purchases. The single most important risk is that the 8-K cluster reflects routine or negative disclosures (litigation, restatements, or adverse regulatory events) rather than positive catalysts, which would invalidate the bullish interpretation entirely."
       }
     },
     {
@@ -251,9 +251,9 @@
         {
           "source": "arXiv physics.app-ph preprints (24h)",
           "status": "DROPPING",
-          "note": "3296 vs 10477 avg, down 69%",
+          "note": "Preprints 68% below 30d average",
           "today": 3295.7,
-          "avg30": 10476.6364
+          "avg30": 10164.4217
         },
         {
           "source": "Average energy commodity price (lithium, uranium, copper)",
@@ -265,13 +265,13 @@
         {
           "source": "Crunchbase energy funding news (24h)",
           "status": "RISING",
-          "note": "1 item vs 0.136 avg, up 634%",
+          "note": "Funding items 475% above 30d average",
           "today": 1,
-          "avg30": 0.1364
+          "avg30": 0.1739
         }
       ],
       "convergence": 1,
-      "conclusion": "The Energy chain shows one RISING signal and one sharp DROPPING signal today. Crunchbase energy funding news spiked to 1 item versus a 30-day average of 0.136 \u2014 a 634% increase \u2014 suggesting an unusual funding event in the energy sector, potentially in lithium, uranium, copper, or clean energy infrastructure. However, arXiv applied physics preprints collapsed 69% below their 30-day average, indicating a severe lull in energy-related academic output. Two sources are SILENT. The single RISING signal does not meet the convergence threshold for a flagged signal.",
+      "conclusion": "Energy chain has one rising signal and one dropping signal. Crunchbase energy funding news items spiked to 1 against a 30-day average of 0.174 \u2014 a 475% increase \u2014 suggesting an unusual funding event in the energy sector today, potentially in lithium, uranium, copper, or adjacent clean energy technologies. However, arXiv applied physics preprints dropped sharply to 3,296 against an average of 10,164, a 68% decline, indicating a research publication lull. ARPA-E and commodity price sources are both silent. Single rising signal; classified as noise per convergence rules.",
       "confidence": "LOW",
       "time_horizon": "weeks",
       "investment_implication": null,
