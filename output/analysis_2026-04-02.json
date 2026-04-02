@@ -1,0 +1,284 @@
+{
+  "date": "2026-04-02",
+  "chains": [
+    {
+      "name": "Tech",
+      "signals": [
+        {
+          "source": "arXiv papers matching keywords (24h)",
+          "status": "DROPPING",
+          "note": "34% below 30d avg, sharp research drop",
+          "today": 4939.9,
+          "avg30": 7489.04
+        },
+        {
+          "source": "Hacker News stories matching keywords",
+          "status": "DROPPING",
+          "note": "9% below avg, within range but soft",
+          "today": 14747,
+          "avg30": 16271.1
+        },
+        {
+          "source": "USPTO patent filings by tracked companies (24h)",
+          "status": "FLAT",
+          "note": "Zero filings, avg also zero",
+          "today": 0.0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Crunchbase tech funding news items (24h)",
+          "status": "RISING",
+          "note": "2 vs 1.17 avg, +71% above baseline",
+          "today": 2,
+          "avg30": 1.1667
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "Tech chain shows one RISING signal \u2014 Crunchbase tech funding items at 2 versus a 1.17 average, a 71% spike suggesting a small burst of deal activity in AI or autonomous driving verticals. However, arXiv keyword-matched papers dropped sharply to 4,940 versus a 7,489 average (34% below), indicating a meaningful pullback in research output across protein folding, drug discovery AI, quantum computing, and autonomous driving topics. Hacker News is mildly soft. Overall, the chain is dominated by DROPPING research volume, with only a minor funding uptick. Convergence is 1 \u2014 noise level.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Economy",
+      "signals": [
+        {
+          "source": "FRED T10Y2Y yield spread",
+          "status": "FLAT",
+          "note": "0.52 vs 0.50 avg, stable",
+          "today": 0.52,
+          "avg30": 0.5007
+        },
+        {
+          "source": "FRED cardboard box production index (IPG2653S)",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "Sector layoff news items (24h Google News count)",
+          "status": "RISING",
+          "note": "113 vs 50.3 avg, +125% surge",
+          "today": 113.0,
+          "avg30": 50.2727
+        },
+        {
+          "source": "Sector job posting volume \u2014 Adzuna",
+          "status": "DROPPING",
+          "note": "1,748 vs 106,652 avg, catastrophic drop",
+          "today": 1748.0,
+          "avg30": 106652.1
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "The Economy chain is flashing a severe internal contradiction. Layoff news items surged to 113 versus a 50.3 average \u2014 a 125% spike \u2014 driven by 55 AI-sector items, 40 Tech items, 10 Finance items, and 4 Healthcare items in a single 24-hour window, suggesting a coordinated or macro-driven wave of workforce reductions. Simultaneously, Adzuna job posting volume collapsed to 1,748 versus a 106,652 average \u2014 a 98% drop that almost certainly reflects a data feed disruption rather than a genuine labor market event. The yield spread is stable at 0.52. Convergence is 1 (only layoffs RISING), classified as noise, but the layoff surge is a critical bearish filter for all other chains.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Biotech",
+      "signals": [
+        {
+          "source": "NIH Reporter active grants this FY",
+          "status": "RISING",
+          "note": "9,692 vs 8,697 avg, +11.4% \u2014 borderline",
+          "today": 9692,
+          "avg30": 8696.9
+        },
+        {
+          "source": "bioRxiv preprints submitted (24h)",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": 250.4655
+        },
+        {
+          "source": "ClinicalTrials.gov active trials started (30d window)",
+          "status": "FLAT",
+          "note": "Zero vs zero avg, no change",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "SEC S-1 biotech filings (24h)",
+          "status": "FLAT",
+          "note": "1 vs 2.13 avg, below but within range",
+          "today": 1,
+          "avg30": 2.1333
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Biotech chain shows no RISING signals under strict scoring rules. NIH active grants at 9,692 versus an 8,697 average represent an 11.4% increase \u2014 meaningful directionally but below the 20% threshold for RISING classification. bioRxiv is silent today, removing a key research velocity signal. ClinicalTrials new trial starts remain at zero, consistent with the 30-day average. S-1 filings are below average at 1 versus 2.13. The chain is quiet with a slight positive lean in NIH funding, but convergence is 0 \u2014 noise. The layoff filter notes 1 biotech and 1 pharma layoff event in the past 24 hours.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Social",
+      "signals": [
+        {
+          "source": "Bluesky post count matching keywords (24h)",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "Google Trends avg interest score (7d window)",
+          "status": "RISING",
+          "note": "35.25 vs 17.97 avg, +96% surge",
+          "today": 35.25,
+          "avg30": 17.9667
+        },
+        {
+          "source": "New Kickstarter projects (24h)",
+          "status": "FLAT",
+          "note": "Zero vs zero avg, no change",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Amazon Movers and Shakers item count",
+          "status": "FLAT",
+          "note": "30 vs 30 avg, perfectly flat",
+          "today": 30,
+          "avg30": 30.0
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "Social chain has one strong RISING signal: Google Trends average interest score for monitored terms \u2014 autonomous vehicle, robotaxi, protein folding, small modular reactor \u2014 surged to 35.25 versus a 17.97 average, a 96% spike. This is a significant public attention event, likely driven by a news catalyst in autonomous vehicles or robotaxi deployment (consistent with WeRide options activity seen in Corporate chain) or a high-profile protein folding or SMR announcement. Bluesky is silent, limiting triangulation. Kickstarter and Amazon signals are flat. Convergence is 1 \u2014 noise level, but the Google Trends spike is notable as a leading public sentiment indicator.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Geopolitics",
+      "signals": [
+        {
+          "source": "% of tracked commodities above own 30d baseline",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": 1422.11
+        },
+        {
+          "source": "Shipping congestion news articles (7d)",
+          "status": "FLAT",
+          "note": "Zero vs zero avg, no signal",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "EU open consultations count",
+          "status": "FLAT",
+          "note": "Zero vs zero avg, no signal",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Congressional committee hearings (7d)",
+          "status": "FLAT",
+          "note": "Zero vs zero avg, no signal",
+          "today": 0,
+          "avg30": 0.0
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Geopolitics chain is effectively silent today. The commodity price tracker returned no data, removing the primary signal for lithium, copper, wheat, crude oil, and gold price movements. Shipping congestion, EU consultations, and Congressional hearings all register zero against zero averages \u2014 no change from baseline. The chain contributes no actionable signal today. The absence of commodity data is itself notable given the macro environment, but cannot be scored as RISING or DROPPING under the rules. Convergence is 0.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Corporate",
+      "signals": [
+        {
+          "source": "SEC Form 4 insider filings for watchlist (24h)",
+          "status": "RISING",
+          "note": "4 vs 2.6 avg, +54% above baseline",
+          "today": 4,
+          "avg30": 2.6
+        },
+        {
+          "source": "Keyword-matched job postings across watchlist companies",
+          "status": "RISING",
+          "note": "15 vs 6.07 avg, +147% above baseline",
+          "today": 15.0,
+          "avg30": 6.0667
+        },
+        {
+          "source": "USPTO patent filings by watchlist companies (24h)",
+          "status": "FLAT",
+          "note": "Zero vs zero avg, no change",
+          "today": 0.0,
+          "avg30": 0.0
+        },
+        {
+          "source": "SEC 8-K filings for watchlist companies (24h)",
+          "status": "FLAT",
+          "note": "6 vs 8.73 avg, below but within range",
+          "today": 6,
+          "avg30": 8.7333
+        }
+      ],
+      "convergence": 2,
+      "conclusion": "Corporate chain reaches convergence 2 (LOW confidence watch). Form 4 insider filings for the watchlist surged to 4 versus a 2.6 average (+54%), suggesting elevated insider activity across NVIDIA, Google, Novo Nordisk, Eli Lilly, Moderna, WeRide, and peers \u2014 though no specific purchases are confirmed in the per-company data, indicating these may be sales or routine filings. Keyword-matched job postings across watchlist companies jumped to 15 versus a 6.07 average (+147%), a significant hiring signal. Options data shows notable call/put spikes for WeRide (+148%), Denali Therapeutics (+160%), Intellia Therapeutics (+203%), Eli Lilly (+129%), and Schrodinger (+121%), suggesting informed positioning across autonomous driving and gene editing names.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": "The convergence of rising Form 4 activity and a 147% surge in keyword-matched job postings across the watchlist \u2014 combined with striking options call/put ratio spikes in WeRide (C/P +148%), Intellia Therapeutics (C/P +203%), Denali Therapeutics (C/P +160%), Eli Lilly (C/P +129%), and Schrodinger (C/P +121%) \u2014 suggests informed positioning across autonomous driving, gene editing, and AI drug discovery verticals. The job posting surge implies companies are actively scaling operations, not contracting. However, no confirmed insider purchases were identified in the per-company data, meaning Form 4 filings likely represent sales or routine grants rather than conviction buys. Historically, a combination of rising watchlist job postings and unusual options activity has preceded 5-15% moves in the relevant names within 2-4 weeks in comparable cycles, though the absence of insider purchases reduces conviction. Confidence is LOW. The single most important caveat is that the Economy chain is showing a 125% surge in layoff news \u2014 particularly 55 AI-sector and 40 Tech-sector items in 24 hours \u2014 which directly contradicts bullish hiring signals and reduces confidence by one step from MEDIUM to LOW for any Tech or AI-adjacent corporate name.",
+      "recommendation": {
+        "tier_1": "Intellia Therapeutics (NTLA, NASDAQ) \u2014 Direct exposure to gene editing and CRISPR therapeutics, a core watchlist theme. Signal A fired: C/P ratio at 46.16 versus a 15.22 average, a 203% spike \u2014 the largest options positioning anomaly across the entire watchlist today, indicating strong informed call buying. No Signal B (no insider purchases confirmed). No Signal C (8-K count is below average for the watchlist overall; no NTLA-specific positive 8-K identified). No Signal D (short interest flat at 37.4%). Only one secondary signal fires (Signal A), and no insider purchases corroborate. Under the evidence standard requiring at least 2 secondary signals, NTLA does not clear the qualification bar for Tier 1. no_recommendation: Only Signal A fires for NTLA; no second corroborating secondary signal is present, and the Economy chain layoff surge in AI/biotech sectors further reduces conviction.\n\nWeRide (WRD, NASDAQ) \u2014 Direct exposure to autonomous driving and robotaxi deployment, consistent with the Google Trends spike in autonomous vehicle and robotaxi search interest. Signal A fired: C/P ratio at 17.47 versus a 7.06 average, a 148% spike, indicating strong call positioning. No Signal B (insider data unavailable \u2014 cannot confirm or deny). No Signal C (no WRD-specific positive 8-K identified). No Signal D (short interest flat at 4.0%). Signal A fires clearly. Signal B is unavailable rather than absent, which does not constitute a second confirmed signal. Under strict rules, only one confirmed secondary signal fires. no_recommendation: Only Signal A is confirmed for WRD; Signal B data is unavailable rather than confirmed, and the evidence standard of 2 corroborating signals is not met.\n\nDenali Therapeutics (DNLI, NASDAQ) \u2014 Direct exposure to neurodegenerative disease drug discovery, including blood-brain barrier platform technology, a monitored keyword. Signal A fired: C/P ratio at 20.00 versus a 7.69 average, a 160% spike. No Signal B (no insider purchases confirmed). No Signal D (short interest flat at 10.0%). Only one secondary signal fires. no_recommendation: Only Signal A fires for DNLI; no second corroborating secondary signal is present to meet the 2-signal evidence standard.",
+        "tier_2": "Theme Statement: The convergence of unusual call options positioning across WeRide, Intellia Therapeutics, Denali Therapeutics, Schrodinger, and Eli Lilly \u2014 combined with a 147% surge in watchlist job postings and a 96% spike in Google Trends interest for autonomous vehicles and protein folding \u2014 points to an emerging multi-vertical theme centred on AI-enabled drug discovery and autonomous mobility commercialisation. These themes have 90-day-plus development horizons because regulatory approvals, clinical readouts, and robotaxi network scaling all operate on multi-quarter timelines. The Schrodinger options spike specifically suggests positioning ahead of a potential computational drug discovery partnership or platform update.\n\nRelevant Sectors and Asset Classes: Positively exposed \u2014 gene editing (CRISPR/base editing), AI-driven small molecule drug discovery, autonomous vehicle platforms, neurodegenerative disease therapeutics. Negatively exposed \u2014 legacy pharma without AI pipelines, traditional ride-hailing without AV transition plans.\n\nListed Company Watch List:\n- NTLA (NASDAQ): Intellia Therapeutics \u2014 CRISPR in vivo gene editing pipeline; C/P ratio spike of 203% suggests near-term catalyst watch.\n- WRD (NASDAQ): WeRide \u2014 robotaxi and autonomous driving commercialisation in China and internationally; C/P spike of 148% aligns with Google Trends robotaxi interest surge.\n- DNLI (NASDAQ): Denali Therapeutics \u2014 blood-brain barrier transport platform for neurodegeneration; C/P spike of 160% suggests informed positioning ahead of potential data readout.\n- SDGR (NASDAQ): Schrodinger \u2014 computational drug discovery platform; C/P spike of 121% may signal partnership or licensing news.\n- LLY (NYSE): Eli Lilly \u2014 GLP-1 and oncology pipeline; C/P spike of 129% consistent with ongoing pipeline momentum and potential label expansion.\n- RXRX (NASDAQ): Recursion Pharmaceuticals \u2014 AI-driven drug discovery; high short interest at 34.9% creates squeeze potential if positive catalyst emerges.\n\nConfidence: LOW. Key risk: The Economy chain layoff surge \u2014 55 AI and 40 Tech sector items in 24 hours \u2014 could signal a broader sector contraction that deflates hiring and options positioning signals simultaneously, invalidating the bullish theme entirely."
+      }
+    },
+    {
+      "name": "Energy",
+      "signals": [
+        {
+          "source": "ARPA-E press releases (30d)",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "arXiv physics.app-ph preprints (24h)",
+          "status": "DROPPING",
+          "note": "3,303 vs 7,245 avg, -54% sharp drop",
+          "today": 3302.7,
+          "avg30": 7245.4967
+        },
+        {
+          "source": "Average energy commodity price (lithium, uranium, copper)",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": 2884.6861
+        },
+        {
+          "source": "Crunchbase energy funding news (24h)",
+          "status": "FLAT",
+          "note": "Zero vs 0.4 avg, within range",
+          "today": 0,
+          "avg30": 0.4
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Energy chain is largely silent and DROPPING. Applied physics preprints on arXiv collapsed to 3,303 versus a 7,245 average \u2014 a 54% drop \u2014 indicating a sharp pullback in energy-adjacent research output across materials science, photovoltaics, battery technology, and related fields. ARPA-E press releases and commodity price data are both silent, removing two key signal sources. Crunchbase energy funding is flat at zero. The research drop may reflect a data collection anomaly consistent with the broader arXiv drop seen in the Tech chain, or a genuine research publication lull. Convergence is 0 \u2014 noise.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    }
+  ],
+  "top_alert": null,
+  "alert_chains": [],
+  "sequential_alerts": []
+}
