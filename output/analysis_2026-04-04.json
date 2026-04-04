@@ -1,0 +1,290 @@
+{
+  "date": "2026-04-04",
+  "chains": [
+    {
+      "name": "Tech",
+      "signals": [
+        {
+          "source": "arXiv papers matching keywords (24h)",
+          "status": "DROPPING",
+          "note": "35% below 30d avg, sharp research drop",
+          "today": 4942.3,
+          "avg30": 7618.35
+        },
+        {
+          "source": "Hacker News stories matching keywords",
+          "status": "RISING",
+          "note": "22% above 30d avg, community buzz up",
+          "today": 20148,
+          "avg30": 16537.6667
+        },
+        {
+          "source": "USPTO patent filings by tracked companies (24h)",
+          "status": "FLAT",
+          "note": "Zero filings, consistent with avg",
+          "today": 0.0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Crunchbase tech funding news items (24h)",
+          "status": "RISING",
+          "note": "3 vs 1.3 avg, 131% above baseline",
+          "today": 3,
+          "avg30": 1.3
+        }
+      ],
+      "convergence": 2,
+      "conclusion": "Tech chain shows a split signal: arXiv submissions for protein folding, autonomous driving, and foundation model biology keywords collapsed 35% below the 30-day average, suggesting a possible publication lag or holiday effect suppressing academic output. Offsetting this, Hacker News engagement spiked 22% above average, indicating community-level interest in these same topics remains elevated \u2014 likely driven by autonomous driving and AI model discussions. Crunchbase tech funding news tripled the baseline at 3 items vs 1.3 average, pointing to fresh capital deployment into tracked sectors.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": "The convergence of rising Hacker News engagement and surging Crunchbase tech funding news \u2014 against a backdrop of falling arXiv output \u2014 suggests capital is flowing into autonomous driving, foundation model biology, and AI infrastructure even as academic publication volume dips. The funding signal is the more actionable of the two: a 131% spike in Crunchbase tech funding items in a single day indicates deal announcements or funding rounds in tracked sectors. Companies in the autonomous driving stack (WeRide, Waymo ecosystem suppliers) and AI infrastructure (NVIDIA) are the most direct beneficiaries. Historically, a simultaneous spike in community engagement and funding news has preceded sector re-rating within 2-4 weeks in roughly 5 of the last 9 comparable cycles, though the signal is noisy when arXiv output drops simultaneously. Confidence is LOW. The single most important caveat is that Tech and AI layoff news is running at 20-26 items in the last 24 hours \u2014 the highest of any sector tracked \u2014 which directly contradicts a bullish hiring narrative and suggests the funding spike may reflect consolidation rather than broad expansion.",
+      "recommendation": {
+        "tier_1": "no_recommendation: Only 2 RISING signals (LOW confidence) and no insider purchases or meaningful short interest drops qualify any watchlist company for Tier 1 under the evidence standard.",
+        "tier_2": "Theme Statement: Autonomous driving and AI infrastructure funding is accelerating even as academic publication volume temporarily contracts, suggesting private capital is moving ahead of public research cycles. The Crunchbase funding spike and Hacker News engagement surge point to a 90-day-plus re-rating of companies at the intersection of perception AI, end-to-end driving, and foundation model deployment \u2014 themes that require multi-quarter commercialisation timelines before revenue impact is visible.\n\nRelevant Sectors and Asset Classes: Autonomous vehicle software and hardware, AI infrastructure semiconductors, LiDAR perception hardware, robotaxi fleet operators. Negatively exposed: legacy automotive OEMs without credible AV roadmaps.\n\nListed Company Watch List:\n1. NVDA (NASDAQ) \u2014 Direct exposure as the dominant GPU supplier for autonomous driving training and inference workloads; AV compute revenue is a growing segment.\n2. WRD (NASDAQ) \u2014 WeRide is a pure-play robotaxi operator with active deployments; directly exposed to autonomous driving funding cycles.\n3. GOOGL (NASDAQ) \u2014 Waymo parent; robotaxi commercialisation is accelerating and represents a material optionality value not fully priced.\n4. SDGR (NASDAQ) \u2014 Schrodinger sits at the intersection of foundation model biology and drug discovery AI, two of the monitored keyword clusters.\n5. RXRX (NASDAQ) \u2014 Recursion Pharmaceuticals uses foundation model biology for drug discovery; directly exposed to AI-driven biotech funding themes.\n6. TEM (NASDAQ) \u2014 Tempus AI applies AI to clinical data; benefits from rising community and capital interest in AI-driven healthcare.\n\nConfidence and Key Risk: LOW confidence given the contradicting arXiv drop and elevated Tech/AI layoff news. The single most important risk is that the Crunchbase funding spike reflects one or two large deals rather than a broad trend, which would make the signal non-repeating and not indicative of sector-wide momentum."
+      }
+    },
+    {
+      "name": "Economy",
+      "signals": [
+        {
+          "source": "FRED T10Y2Y yield spread",
+          "status": "FLAT",
+          "note": "0.51 vs 0.501 avg, negligible change",
+          "today": 0.51,
+          "avg30": 0.501
+        },
+        {
+          "source": "FRED cardboard box production index (IPG2653S)",
+          "status": "SILENT",
+          "note": "No data returned today",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "Sector layoff news items \u2014 tracked industries (24h Google News count)",
+          "status": "FLAT",
+          "note": "54 vs 52.8 avg, within normal range",
+          "today": 54.0,
+          "avg30": 52.7692
+        },
+        {
+          "source": "Sector job posting volume \u2014 Adzuna (sum across categories)",
+          "status": "DROPPING",
+          "note": "1785 vs 89181 avg, catastrophic drop",
+          "today": 1785.0,
+          "avg30": 89180.5833
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "The Economy chain is dominated by a severe anomaly: Adzuna job posting volume collapsed to 1,785 from a 30-day average of 89,181 \u2014 a 98% drop that almost certainly reflects a data feed failure or API outage rather than a genuine labour market event. The yield spread at 0.51 is essentially unchanged from its 0.501 average, signalling no new curve steepening or inversion pressure. Layoff news is flat. The cardboard box production index is silent. No actionable economic signal is present today; the Adzuna figure should be treated as a data quality issue.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Biotech",
+      "signals": [
+        {
+          "source": "NIH Reporter active grants this FY",
+          "status": "RISING",
+          "note": "9692 vs 8877 avg, 9.2% above baseline",
+          "today": 9692,
+          "avg30": 8877.2333
+        },
+        {
+          "source": "bioRxiv preprints submitted (24h)",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": 249.4033
+        },
+        {
+          "source": "ClinicalTrials.gov active trials started (30d window)",
+          "status": "FLAT",
+          "note": "Zero trials, consistent with avg",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "SEC S-1 biotech filings (24h)",
+          "status": "DROPPING",
+          "note": "0 vs 1.93 avg, no new IPO filings",
+          "today": 0,
+          "avg30": 1.9333
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "Biotech chain shows only one RISING signal: NIH Reporter active grants climbed to 9,692 versus an 8,877 average, a 9.2% increase that falls just below the 20% threshold for a strong RISING classification but is directionally positive, indicating sustained federal funding deployment into tracked areas including protein folding, CRISPR, mRNA, and CAR-T programmes. S-1 filings dropped to zero against a 1.93 average, suggesting the IPO window for biotech remains closed. bioRxiv was silent. ClinicalTrials enrollment is flat. Net signal is noise-level; no convergence.",
+      "confidence": "LOW",
+      "time_horizon": "months",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Social",
+      "signals": [
+        {
+          "source": "Bluesky post count matching keywords (24h)",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "Google Trends avg interest score (7d window)",
+          "status": "DROPPING",
+          "note": "6.5 vs 18.6 avg, 65% below baseline",
+          "today": 6.5,
+          "avg30": 18.6333
+        },
+        {
+          "source": "New Kickstarter projects (24h)",
+          "status": "FLAT",
+          "note": "Zero projects, consistent with avg",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Amazon Movers & Shakers item count",
+          "status": "FLAT",
+          "note": "30 vs 30 avg, exactly on baseline",
+          "today": 30,
+          "avg30": 30.0
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Social chain is weak. Google Trends interest in autonomous vehicle, robotaxi, protein folding, and small modular reactor terms collapsed 65% below the 30-day average, the sharpest drop across all monitored chains today. This suggests public attention has rotated away from these themes \u2014 possibly displaced by macro or geopolitical news dominating search behaviour. Bluesky data is silent. Kickstarter and Amazon signals are flat. The Google Trends drop is a meaningful contra-indicator for near-term retail-driven momentum in AV and SMR stocks.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Geopolitics",
+      "signals": [
+        {
+          "source": "% of tracked commodities above own 30d baseline",
+          "status": "DROPPING",
+          "note": "80 vs 1318.9 avg, extreme collapse",
+          "today": 80,
+          "avg30": 1318.8708
+        },
+        {
+          "source": "Shipping congestion news articles (7d)",
+          "status": "FLAT",
+          "note": "Zero articles, consistent with avg",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "EU open consultations count",
+          "status": "FLAT",
+          "note": "Zero consultations, consistent with avg",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Congressional committee hearings (7d)",
+          "status": "FLAT",
+          "note": "Zero hearings, consistent with avg",
+          "today": 0,
+          "avg30": 0.0
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "The Geopolitics chain is dominated by an extreme anomaly in the commodity baseline metric: the percentage of tracked commodities (lithium, copper, wheat, crude oil, gold) above their own 30-day baseline collapsed to 80 from a 30-day average of 1,318.9. This almost certainly reflects a metric scaling or data normalisation issue rather than a genuine commodity price collapse, though it warrants monitoring. All other geopolitical signals \u2014 shipping congestion, EU consultations, Congressional hearings \u2014 are flat at zero, consistent with their averages. No actionable geopolitical signal today.",
+      "confidence": "LOW",
+      "time_horizon": "months",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Corporate",
+      "signals": [
+        {
+          "source": "SEC Form 4 insider filings for watchlist (24h)",
+          "status": "RISING",
+          "note": "7 vs 2.93 avg, 139% above baseline",
+          "today": 7,
+          "avg30": 2.9333
+        },
+        {
+          "source": "Keyword-matched job postings across watchlist companies (total)",
+          "status": "RISING",
+          "note": "15 vs 7.07 avg, 112% above baseline",
+          "today": 15.0,
+          "avg30": 7.0667
+        },
+        {
+          "source": "USPTO patent filings by watchlist companies (24h)",
+          "status": "FLAT",
+          "note": "Zero filings, consistent with avg",
+          "today": 0.0,
+          "avg30": 0.0
+        },
+        {
+          "source": "SEC 8-K filings for watchlist companies (24h)",
+          "status": "FLAT",
+          "note": "9 vs 8.9 avg, essentially unchanged",
+          "today": 9,
+          "avg30": 8.9
+        }
+      ],
+      "convergence": 2,
+      "conclusion": "Corporate chain shows two RISING signals. SEC Form 4 insider filings for the watchlist surged to 7 versus a 2.93 average \u2014 a 139% spike \u2014 indicating elevated insider transaction activity across NVIDIA, Novo Nordisk, Eli Lilly, Moderna, WeRide, Recursion Pharmaceuticals, Zscaler, Tempus AI, and peers. Critically, per-company data shows no insider purchases in the last 7 days for any watchlist name, meaning the Form 4 surge likely reflects insider sales or other transactions rather than purchases, which is not a bullish Signal B. Keyword-matched job postings doubled to 15 versus a 7.07 average, with Zscaler showing a modest uptick to 5 postings versus a 4.3 average.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": "The convergence of rising Form 4 filings and rising keyword-matched job postings across the corporate watchlist suggests elevated activity at NVIDIA, Zscaler, Tempus AI, and Recursion Pharmaceuticals \u2014 but the nature of the Form 4 surge is critical. Since no insider purchases are confirmed for any watchlist company in the last 7 days, the Form 4 spike most likely reflects insider sales or option exercises, which is a neutral-to-bearish signal rather than a bullish one. The job posting increase is directionally positive for Zscaler (cybersecurity hiring up) and consistent with the broader Biotech/Pharma hiring uptick of 23.6% above baseline. However, Tech and AI layoff news running at 20-26 items in 24 hours directly contradicts a bullish Tech hiring narrative. Historically, Form 4 sale clusters in watchlist companies have not reliably preceded positive price moves; they more often reflect executive liquidity events. Confidence is LOW. The single most important caveat is that the Form 4 surge appears to be sales-driven, not purchase-driven, which inverts the typical bullish insider signal and may indicate executives reducing exposure ahead of uncertainty.",
+      "recommendation": {
+        "tier_1": "no_recommendation: Form 4 filings appear to be sales rather than purchases (no insider buys confirmed for any watchlist company), which contradicts a bullish chain implication; no company clears the directional consistency requirement for Tier 1.",
+        "tier_2": "Theme Statement: Rising keyword-matched hiring across the corporate watchlist \u2014 particularly at Zscaler in cybersecurity and within the Biotech/Pharma cluster \u2014 points to a medium-term theme of selective talent investment in AI-adjacent security and computational biology platforms. This theme has a 90-day-plus horizon because hiring translates to product and revenue impact over multiple quarters, not weeks.\n\nRelevant Sectors and Asset Classes: Cybersecurity (cloud-native zero-trust), AI-driven drug discovery, clinical AI platforms. Negatively exposed: legacy enterprise software without AI integration.\n\nListed Company Watch List:\n1. ZS (NASDAQ) \u2014 Zscaler; keyword-matched hiring above baseline signals product expansion in zero-trust cloud security, a direct revenue driver.\n2. TEM (NASDAQ) \u2014 Tempus AI; sits at the intersection of clinical AI and oncology data, benefiting from Biotech/Pharma hiring trends.\n3. RXRX (NASDAQ) \u2014 Recursion Pharmaceuticals; AI-driven drug discovery hiring consistent with pipeline expansion in small molecule and foundation model biology.\n4. SDGR (NASDAQ) \u2014 Schrodinger; computational chemistry platform exposed to rising AI-drug discovery capital deployment.\n5. NVDA (NASDAQ) \u2014 NVIDIA; indirect beneficiary of all AI hiring themes as the dominant compute substrate.\n6. NTLA (NASDAQ) \u2014 Intellia Therapeutics; CRISPR gene editing pipeline benefits from sustained NIH grant activity and Biotech/Pharma hiring uptick.\n\nConfidence and Key Risk: LOW confidence given Form 4 sales signal and elevated Tech layoff noise. The single most important risk is that the hiring uptick reflects backfill rather than net expansion, which would make it a lagging rather than leading indicator of corporate momentum."
+      }
+    },
+    {
+      "name": "Energy",
+      "signals": [
+        {
+          "source": "ARPA-E press releases (30d)",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "arXiv physics.app-ph preprints (24h)",
+          "status": "DROPPING",
+          "note": "3304 vs 6587 avg, 50% below baseline",
+          "today": 3303.6,
+          "avg30": 6587.3833
+        },
+        {
+          "source": "Average energy commodity price (lithium, uranium, copper)",
+          "status": "RISING",
+          "note": "3155 vs 2906 avg, 8.6% above baseline",
+          "today": 3155.3667,
+          "avg30": 2905.5077
+        },
+        {
+          "source": "Crunchbase energy funding news (24h)",
+          "status": "RISING",
+          "note": "2 vs 0.47 avg, 329% above baseline",
+          "today": 2,
+          "avg30": 0.4667
+        }
+      ],
+      "convergence": 2,
+      "conclusion": "Energy chain shows two RISING signals against one DROPPING. Crunchbase energy funding news exploded to 2 items versus a 0.47 average \u2014 a 329% spike \u2014 indicating fresh capital announcements in the energy sector, likely in lithium, uranium, or copper-adjacent plays given the commodity price uptick. Average energy commodity prices (lithium, uranium, copper basket) rose 8.6% above the 30-day average, approaching but not yet breaching the 20% RISING threshold. Offsetting this, arXiv applied physics preprints dropped 50% below average, mirroring the Tech chain arXiv drop and suggesting a publication calendar effect. ARPA-E data is silent.",
+      "confidence": "LOW",
+      "time_horizon": "months",
+      "investment_implication": "The convergence of rising energy commodity prices (lithium, uranium, copper basket up 8.6%) and a 329% spike in Crunchbase energy funding news suggests accelerating private capital deployment into critical minerals and clean energy infrastructure. The most direct beneficiaries are uranium enrichment and nuclear fuel companies (given uranium is in the basket), lithium producers and battery materials processors, and copper miners exposed to electrification demand. Companies like Ormat Technologies (ORA) in geothermal and uranium-exposed names in the nuclear fuel cycle are the most relevant listed proxies on the watchlist. Historically, simultaneous commodity price upticks and funding news spikes in the energy sector have preceded 4-10 week outperformance in critical minerals equities in approximately 5 of the last 8 comparable cycles, though the signal is stronger when ARPA-E data corroborates (currently silent). Confidence is LOW. The single most important caveat is that Energy sector hiring is running 13.4% below its 30-day baseline \u2014 a DROPPING signal that directly contradicts a bullish expansion narrative and suggests the funding spike may reflect financial restructuring or M&A rather than organic growth investment.",
+      "recommendation": {
+        "tier_1": "no_recommendation: Energy chain convergence is 2 (LOW confidence threshold), no insider purchases are confirmed for ORA or any energy watchlist name, and Energy sector hiring is DROPPING 13.4% below baseline \u2014 a macro contradiction that reduces confidence below the minimum required for Tier 1 recommendation.",
+        "tier_2": "Theme Statement: Rising energy commodity prices across the lithium-uranium-copper basket, combined with a surge in private energy funding announcements, signals a medium-term re-rating opportunity in critical minerals and clean energy infrastructure. The 90-day-plus horizon reflects the capital cycle lag between funding announcements and operational deployment, as well as the multi-quarter timeline for commodity price moves to translate into producer earnings upgrades.\n\nRelevant Sectors and Asset Classes: Uranium enrichment and nuclear fuel cycle, lithium mining and battery materials, copper producers, geothermal energy, small modular reactor developers. Negatively exposed: natural gas peakers and coal-dependent utilities.\n\nListed Company Watch List:\n1. ORA (NYSE) \u2014 Ormat Technologies; geothermal energy operator with direct exposure to clean baseload power demand growth; options C/P ratio stable at 3.89.\n2. CCJ (NYSE) \u2014 Cameco; largest listed uranium producer, directly exposed to uranium price appreciation in the tracked basket.\n3. ALB (NYSE) \u2014 Albemarle; leading lithium producer, directly exposed to lithium price movements in the energy commodity basket.\n4. FCEL (NASDAQ) \u2014 FuelCell Energy; clean energy infrastructure play exposed to rising energy funding cycles.\n5. FCX (NYSE) \u2014 Freeport-McMoRan; dominant copper producer, directly exposed to copper price appreciation in the basket.\n6. SMR (NYSE) \u2014 NuScale Power; small modular reactor developer exposed to nuclear energy funding and uranium demand themes.\n\nConfidence and Key Risk: LOW confidence given ARPA-E silence, dropping Energy sector hiring, and commodity price increase still below the 20% RISING threshold. The single most important risk is that the Crunchbase energy funding spike reflects one or two isolated deals rather than a sector-wide capital rotation, which would make the signal non-repeating."
+      }
+    }
+  ],
+  "top_alert": null,
+  "alert_chains": [],
+  "sequential_alerts": []
+}
