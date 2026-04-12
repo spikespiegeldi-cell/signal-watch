@@ -1,0 +1,281 @@
+{
+  "date": "2026-04-12",
+  "chains": [
+    {
+      "name": "Tech",
+      "signals": [
+        {
+          "source": "arXiv papers matching keywords (24h)",
+          "status": "FLAT",
+          "note": "Slightly above average, within normal range",
+          "today": 4957.0,
+          "avg30": 4931.28
+        },
+        {
+          "source": "Hacker News stories matching keywords",
+          "status": "DROPPING",
+          "note": "25% below 30d average, notable decline",
+          "today": 12187,
+          "avg30": 16297.9
+        },
+        {
+          "source": "USPTO patent filings by tracked companies (24h)",
+          "status": "FLAT",
+          "note": "Zero filings, consistent with average",
+          "today": 0.0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Crunchbase tech funding news items (24h)",
+          "status": "DROPPING",
+          "note": "Zero items vs 1.27 average",
+          "today": 0,
+          "avg30": 1.2667
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "The Tech chain shows no RISING signals today. Hacker News engagement with keywords including autonomous driving, protein folding, and quantum computing has dropped sharply \u2014 25% below the 30-day average \u2014 suggesting reduced community interest or a weekend/holiday effect suppressing discourse. Crunchbase tech funding news is also at zero versus a 1.27 average, indicating a dry day for deal announcements in AI and autonomous systems. arXiv output is essentially flat. No patent filings were recorded. Overall, the chain is in a quiet, slightly negative posture.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Economy",
+      "signals": [
+        {
+          "source": "FRED T10Y2Y yield spread",
+          "status": "FLAT",
+          "note": "Spread stable near 0.50",
+          "today": 0.5,
+          "avg30": 0.502
+        },
+        {
+          "source": "FRED cardboard box production index (IPG2653S)",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "Sector layoff news items \u2014 tracked industries (24h Google News count)",
+          "status": "DROPPING",
+          "note": "17 items vs 48.8 average, 65% below",
+          "today": 17.0,
+          "avg30": 48.8095
+        },
+        {
+          "source": "Sector job posting volume \u2014 Adzuna (sum across categories)",
+          "status": "DROPPING",
+          "note": "1,281 vs 54,073 average, severe drop",
+          "today": 1281.0,
+          "avg30": 54073.3
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "The Economy chain shows two DROPPING signals and one SILENT. The most striking reading is Adzuna job posting volume collapsing to 1,281 from a 30-day average of 54,073 \u2014 a 98% drop that almost certainly reflects a data pipeline or API anomaly rather than a genuine labor market event, and should be treated with extreme caution. Layoff news is also well below average at 17 items versus 48.8, which is directionally positive but may reflect weekend news suppression. The yield spread is stable. No actionable economic signal today.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Biotech",
+      "signals": [
+        {
+          "source": "NIH Reporter active grants this FY",
+          "status": "RISING",
+          "note": "11,960 vs 10,048 average, +19% \u2014 borderline RISING",
+          "today": 11960,
+          "avg30": 10048.4
+        },
+        {
+          "source": "bioRxiv preprints submitted (24h)",
+          "status": "FLAT",
+          "note": "188 vs 213 average, within range",
+          "today": 188.4,
+          "avg30": 213.48
+        },
+        {
+          "source": "ClinicalTrials.gov active trials started (30d window)",
+          "status": "FLAT",
+          "note": "Zero, consistent with average",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "SEC S-1 biotech filings (24h)",
+          "status": "DROPPING",
+          "note": "Zero vs 1.2 average",
+          "today": 0,
+          "avg30": 1.2
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "NIH Reporter active grants have risen to 11,960 versus a 30-day average of 10,048, a 19% increase that sits just below the 20% RISING threshold but represents a meaningful acceleration in federal funding deployment \u2014 likely reflecting fiscal year grant award cycles benefiting programmes in protein folding, CRISPR, mRNA, and GLP-1 adjacent research. bioRxiv preprint volume is modestly below average. ClinicalTrials enrollment is flat. S-1 biotech IPO filings are absent today, consistent with a cautious capital markets environment. The NIH signal is the sole notable mover; convergence is insufficient to flag.",
+      "confidence": "LOW",
+      "time_horizon": "months",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Social",
+      "signals": [
+        {
+          "source": "Bluesky post count matching keywords (24h)",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "Google Trends avg interest score (7d window)",
+          "status": "DROPPING",
+          "note": "11.5 vs 20.3 average, -43% below",
+          "today": 11.5,
+          "avg30": 20.2917
+        },
+        {
+          "source": "New Kickstarter projects (24h)",
+          "status": "FLAT",
+          "note": "Zero, consistent with average",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Amazon Movers & Shakers item count",
+          "status": "FLAT",
+          "note": "30 vs 30 average, exactly flat",
+          "today": 30,
+          "avg30": 30.0
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "Google Trends interest in monitored keywords \u2014 autonomous vehicle, robotaxi, protein folding, and small modular reactor \u2014 has dropped 43% below the 30-day average, signalling a meaningful pullback in public search engagement with these themes. This may reflect news cycle rotation away from AI and clean energy topics, or a weekend suppression effect. Bluesky data is silent. Kickstarter and Amazon signals are flat. The Social chain is in a quiet, slightly negative posture with no actionable convergence.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Geopolitics",
+      "signals": [
+        {
+          "source": "% of tracked commodities above own 30d baseline",
+          "status": "DROPPING",
+          "note": "80 vs 973.6 average, extreme drop",
+          "today": 80,
+          "avg30": 973.6289
+        },
+        {
+          "source": "Shipping congestion news articles (7d)",
+          "status": "FLAT",
+          "note": "Zero, consistent with average",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "EU open consultations count",
+          "status": "FLAT",
+          "note": "Zero, consistent with average",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Congressional committee hearings (7d)",
+          "status": "FLAT",
+          "note": "Zero, consistent with average",
+          "today": 0,
+          "avg30": 0.0
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "The commodity breadth indicator \u2014 measuring the percentage of tracked commodities (lithium, copper, wheat, crude oil, gold) above their 30-day baselines \u2014 has collapsed to 80 from a 973.6 average. This reading is almost certainly a data normalisation or scaling anomaly rather than a genuine signal that all five commodities have simultaneously fallen below baseline. Shipping congestion, EU consultations, and Congressional hearings are all flat at zero. No geopolitical signal is actionable today; the commodity metric requires data quality verification before interpretation.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Corporate",
+      "signals": [
+        {
+          "source": "SEC Form 4 insider filings for watchlist (24h)",
+          "status": "DROPPING",
+          "note": "Zero vs 3.03 average",
+          "today": 0,
+          "avg30": 3.0333
+        },
+        {
+          "source": "Keyword-matched job postings across watchlist companies (total)",
+          "status": "RISING",
+          "note": "13 vs 10.8 average, +20.4%",
+          "today": 13.0,
+          "avg30": 10.8
+        },
+        {
+          "source": "USPTO patent filings by watchlist companies (24h)",
+          "status": "FLAT",
+          "note": "Zero, consistent with average",
+          "today": 0.0,
+          "avg30": 0.0
+        },
+        {
+          "source": "SEC 8-K filings for watchlist companies (24h)",
+          "status": "DROPPING",
+          "note": "Zero vs 6.93 average",
+          "today": 0,
+          "avg30": 6.9333
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "Corporate watchlist job postings have risen to 13 versus a 10.8 average, just crossing the RISING threshold at +20.4%. This is driven by steady hiring at Recursion Pharmaceuticals (4 postings), Zscaler (4), Beam Therapeutics (2), WeRide (2), and Arvinas (1) \u2014 all at or near their individual baselines, suggesting broad-based stability rather than a single company surge. SEC Form 4 insider filings and 8-K material event filings are both at zero today, a notable quiet period for the watchlist that may reflect weekend filing patterns. No strong corporate signal today.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Energy",
+      "signals": [
+        {
+          "source": "ARPA-E press releases (30d)",
+          "status": "SILENT",
+          "note": "Source returned no data",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "arXiv physics.app-ph preprints (24h)",
+          "status": "FLAT",
+          "note": "3,311 vs 3,299 average, essentially flat",
+          "today": 3310.6,
+          "avg30": 3298.6333
+        },
+        {
+          "source": "Average energy commodity price (lithium, uranium, copper)",
+          "status": "RISING",
+          "note": "3,200 vs 2,988 average, +7.1%",
+          "today": 3199.9767,
+          "avg30": 2988.498
+        },
+        {
+          "source": "Crunchbase energy funding news (24h)",
+          "status": "DROPPING",
+          "note": "Zero vs 0.5 average",
+          "today": 0,
+          "avg30": 0.5
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "The average price of tracked energy commodities \u2014 lithium, uranium, and copper \u2014 has risen to 3,200 versus a 30-day average of 2,988, a 7.1% gain that does not clear the 20% RISING threshold but represents a directionally positive move for battery materials and nuclear fuel inputs. This is consistent with ongoing demand for EV supply chain materials and uranium driven by small modular reactor programme momentum. ARPA-E data is silent. arXiv applied physics output is flat. Energy funding news is absent. Convergence is insufficient to flag a signal.",
+      "confidence": "LOW",
+      "time_horizon": "months",
+      "investment_implication": null,
+      "recommendation": null
+    }
+  ],
+  "top_alert": null,
+  "alert_chains": [],
+  "sequential_alerts": []
+}
