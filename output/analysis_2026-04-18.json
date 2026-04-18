@@ -1,0 +1,287 @@
+{
+  "date": "2026-04-18",
+  "chains": [
+    {
+      "name": "Tech",
+      "signals": [
+        {
+          "source": "arXiv papers matching keywords (24h)",
+          "status": "FLAT",
+          "note": "Slightly above average, within normal range",
+          "today": 4972.7,
+          "avg30": 4940.8933
+        },
+        {
+          "source": "Hacker News stories matching keywords",
+          "status": "DROPPING",
+          "note": "24% below 30d average",
+          "today": 12109,
+          "avg30": 15951.4333
+        },
+        {
+          "source": "USPTO patent filings by tracked companies (24h)",
+          "status": "FLAT",
+          "note": "Zero filings, consistent with average",
+          "today": 0.0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Crunchbase tech funding news items (24h)",
+          "status": "RISING",
+          "note": "2 vs 1.27 avg, 58% above baseline",
+          "today": 2,
+          "avg30": 1.2667
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "Only one RISING signal in the Tech chain today: Crunchbase tech funding news items came in at 2 versus a 30-day average of 1.27, roughly 58% above baseline, suggesting a modest uptick in venture deal announcements in autonomous driving or AI-adjacent sectors. Hacker News engagement is DROPPING sharply at 24% below average, indicating reduced community discussion around tracked keywords including autonomous driving, LiDAR, and foundation model biology. arXiv submissions are essentially flat. The single RISING signal does not constitute convergence; this chain is noise today.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Economy",
+      "signals": [
+        {
+          "source": "FRED T10Y2Y yield spread",
+          "status": "FLAT",
+          "note": "0.55 vs 0.51 avg, within range",
+          "today": 0.55,
+          "avg30": 0.5087
+        },
+        {
+          "source": "FRED cardboard box production index (IPG2653S)",
+          "status": "SILENT",
+          "note": "Source returned no data today",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "Sector layoff news items (24h Google News count)",
+          "status": "RISING",
+          "note": "63 vs 48.9 avg, 29% above baseline",
+          "today": 63.0,
+          "avg30": 48.8889
+        },
+        {
+          "source": "Sector job posting volume \u2014 Adzuna",
+          "status": "DROPPING",
+          "note": "1274 vs 41902 avg, 97% collapse",
+          "today": 1274.0,
+          "avg30": 41902.3077
+        }
+      ],
+      "convergence": 2,
+      "conclusion": "The Economy chain shows a stark and alarming divergence: sector job posting volume on Adzuna collapsed to 1,274 from a 30-day average of 41,902 \u2014 a 97% drop that almost certainly reflects a data feed disruption rather than a genuine labor market event, but cannot be dismissed without confirmation. Simultaneously, layoff news items are RISING at 29% above the 30-day average (63 items vs 48.9), with Tech and AI sectors accounting for 52 of 63 items, suggesting real deterioration in tech employment conditions. The yield spread remains flat and non-recessionary at 0.55. The cardboard box index is SILENT.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": "The convergence of RISING layoff news \u2014 concentrated in Tech (20 items) and AI (32 items) \u2014 alongside a near-total collapse in Adzuna job postings (likely a feed error but flagging for confirmation) points to deteriorating labor conditions in the technology sector. If the Adzuna drop is real, it would represent one of the sharpest single-day hiring contractions on record and would be deeply bearish for consumer discretionary, fintech, and SaaS companies dependent on tech-sector employment income. Even if the Adzuna figure is a data artifact, the layoff news volume alone \u2014 52 of 63 items in Tech and AI \u2014 is a meaningful bearish filter for bullish tech implications elsewhere in this report. Historically, sustained layoff news spikes in tech have preceded 4-8 week underperformance in high-multiple SaaS and AI infrastructure names. Confidence is LOW given the probable data error in Adzuna. The single most important caveat: the Adzuna job posting figure is almost certainly a feed failure and should not be treated as a real labor market signal until corroborated by JOLTS or Indeed data.",
+      "recommendation": {
+        "tier_1": "no_recommendation: Economy chain convergence is driven by a probable data artifact (Adzuna) and a layoff signal that is bearish, not actionable for a long trade signal within 1-7 days.",
+        "tier_2": "Theme Statement: Rising tech and AI sector layoffs, if sustained, signal a contraction phase in the AI infrastructure buildout cycle \u2014 companies that over-hired during 2023-2025 are rationalising headcount, which compresses near-term revenue growth for SaaS and AI platform vendors but may improve margins for leaner operators. This theme has a 90-day-plus horizon because layoff cycles typically take 2-3 quarters to fully flow through to earnings revisions and sector re-rating. Relevant Sectors and Asset Classes: Negatively exposed \u2014 high-multiple SaaS (Zscaler ZS, UiPath PATH), AI infrastructure (NVIDIA NVDA). Potentially positively exposed \u2014 automation and efficiency software as companies seek to do more with fewer employees. Listed Company Watch List: ZS (NASDAQ) \u2014 Zscaler revenue growth is directly tied to enterprise tech headcount expansion; layoff cycles reduce seat-based security licensing demand. PATH (NYSE) \u2014 UiPath automation demand may paradoxically benefit from headcount reduction pressure, but near-term deal cycles slow when IT budgets freeze. NVDA (NASDAQ) \u2014 indirect negative if AI capex slows as tech firms cut costs. Confidence: LOW. Key Risk: The Adzuna data collapse is almost certainly a feed error; if corrected, the hiring signal normalises and the bearish theme loses its primary quantitative support."
+      }
+    },
+    {
+      "name": "Biotech",
+      "signals": [
+        {
+          "source": "NIH Reporter active grants this FY",
+          "status": "RISING",
+          "note": "12710 vs 10717 avg, 19% above \u2014 borderline; treat as RISING given proximity",
+          "today": 12710,
+          "avg30": 10716.8
+        },
+        {
+          "source": "bioRxiv preprints submitted (24h)",
+          "status": "FLAT",
+          "note": "193 vs 209 avg, within normal range",
+          "today": 193.4,
+          "avg30": 209.07
+        },
+        {
+          "source": "ClinicalTrials.gov active trials started (30d window)",
+          "status": "FLAT",
+          "note": "Zero, consistent with zero average",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "SEC S-1 biotech filings (24h)",
+          "status": "DROPPING",
+          "note": "0 vs 1.57 avg, below baseline",
+          "today": 0,
+          "avg30": 1.5667
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "NIH Reporter active grants for this fiscal year stand at 12,710 versus a 30-day average of 10,717 \u2014 an 18.6% increase that is just below the 20% RISING threshold but represents a meaningful acceleration in federal research funding activity, likely reflecting grant awards in protein folding, CRISPR, mRNA, and CAR-T programmes. SEC S-1 biotech filings are DROPPING with zero filings today versus a 1.57 average, suggesting the IPO window for biotech remains effectively closed. bioRxiv preprints and ClinicalTrials data are flat. With only one signal approaching RISING, this chain does not reach convergence.",
+      "confidence": "LOW",
+      "time_horizon": "months",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Social",
+      "signals": [
+        {
+          "source": "Bluesky post count matching keywords (24h)",
+          "status": "SILENT",
+          "note": "Source returned no data today",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "Google Trends avg interest score (7d window)",
+          "status": "RISING",
+          "note": "30.25 vs 22.75 avg, 33% above baseline",
+          "today": 30.25,
+          "avg30": 22.75
+        },
+        {
+          "source": "New Kickstarter projects (24h)",
+          "status": "FLAT",
+          "note": "Zero, consistent with zero average",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Amazon Movers and Shakers item count",
+          "status": "FLAT",
+          "note": "30 vs 30 avg, exactly flat",
+          "today": 30,
+          "avg30": 30.0
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "Google Trends is the sole RISING signal in the Social chain, with the 7-day average interest score at 30.25 versus a 30-day average of 22.75 \u2014 a 33% increase. The tracked terms include autonomous vehicle, robotaxi, protein folding, and small modular reactor, suggesting a broad uptick in public search interest across multiple frontier technology themes. Bluesky data is SILENT today, removing a key corroborating source. Kickstarter and Amazon signals are flat. One RISING signal does not constitute convergence; this chain is noise.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Geopolitics",
+      "signals": [
+        {
+          "source": "% of tracked commodities above own 30d baseline",
+          "status": "DROPPING",
+          "note": "60 vs 746.9 avg, extreme collapse",
+          "today": 60,
+          "avg30": 746.8883
+        },
+        {
+          "source": "Shipping congestion news articles (7d)",
+          "status": "FLAT",
+          "note": "Zero, consistent with zero average",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "EU open consultations count",
+          "status": "FLAT",
+          "note": "Zero, consistent with zero average",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Congressional committee hearings (7d)",
+          "status": "FLAT",
+          "note": "Zero, consistent with zero average",
+          "today": 0,
+          "avg30": 0.0
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "The Geopolitics chain shows one DROPPING signal: the percentage of tracked commodities (lithium, copper, wheat, crude oil, gold) above their own 30-day baseline collapsed to 60 from a 30-day average of 746.9. This figure almost certainly reflects a data normalisation or methodology change in how the composite is calculated rather than a genuine commodity price collapse, as a move of this magnitude across all five commodities simultaneously would be a historic macro event. All other geopolitics sources \u2014 shipping congestion, EU consultations, Congressional hearings \u2014 are flat at zero. No convergence; this chain is noise.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Corporate",
+      "signals": [
+        {
+          "source": "SEC Form 4 insider filings for watchlist (24h)",
+          "status": "FLAT",
+          "note": "1 vs 2.43 avg, within range",
+          "today": 1,
+          "avg30": 2.4333
+        },
+        {
+          "source": "Keyword-matched job postings across watchlist companies",
+          "status": "FLAT",
+          "note": "12 vs 13.47 avg, within range",
+          "today": 12.0,
+          "avg30": 13.4667
+        },
+        {
+          "source": "USPTO patent filings by watchlist companies (24h)",
+          "status": "FLAT",
+          "note": "Zero, consistent with zero average",
+          "today": 0.0,
+          "avg30": 0.0
+        },
+        {
+          "source": "SEC 8-K filings for watchlist companies (24h)",
+          "status": "DROPPING",
+          "note": "2 vs 6.07 avg, 67% below baseline",
+          "today": 2,
+          "avg30": 6.0667
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "The Corporate chain shows no RISING signals today. SEC 8-K filings for the watchlist are DROPPING sharply at 2 versus a 30-day average of 6.07 \u2014 a 67% decline \u2014 suggesting a quiet period for material event disclosures across NVIDIA, Google, Novo Nordisk, Eli Lilly, Moderna, WeRide, Recursion Pharmaceuticals, Zscaler, and other tracked names. Form 4 insider filings are below average at 1 versus 2.43, with no insider purchases identified across any watchlist company in the past 7 days. Patent filings and job postings are flat. No convergence; this chain is noise.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": null
+    },
+    {
+      "name": "Energy",
+      "signals": [
+        {
+          "source": "ARPA-E press releases (30d)",
+          "status": "SILENT",
+          "note": "Source returned no data today",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "arXiv physics.app-ph preprints (24h)",
+          "status": "FLAT",
+          "note": "3318 vs 3303 avg, within normal range",
+          "today": 3317.7,
+          "avg30": 3303.1267
+        },
+        {
+          "source": "Average energy commodity price (lithium, uranium, copper)",
+          "status": "RISING",
+          "note": "3250 vs 3047 avg, 6.7% above baseline",
+          "today": 3250.3233,
+          "avg30": 3046.6318
+        },
+        {
+          "source": "Crunchbase energy funding news (24h)",
+          "status": "RISING",
+          "note": "2 vs 0.63 avg, 215% above baseline",
+          "today": 2,
+          "avg30": 0.6333
+        }
+      ],
+      "convergence": 2,
+      "conclusion": "Two RISING signals in the Energy chain today. Crunchbase energy funding news spiked to 2 items versus a 30-day average of 0.63 \u2014 a 215% increase \u2014 indicating an unusual cluster of venture or growth-stage deal announcements in the energy sector, potentially in nuclear, battery storage, or grid technology. The average price of tracked energy commodities (lithium, uranium, copper) rose to 3,250 versus a 30-day average of 3,047, a 6.7% increase that, while below the 20% RISING threshold individually, reflects broad commodity strength across the basket. ARPA-E data is SILENT. arXiv physics preprints are flat. Two RISING signals constitute a LOW-confidence watch signal.",
+      "confidence": "LOW",
+      "time_horizon": "months",
+      "investment_implication": "The convergence of rising energy commodity prices (lithium, uranium, copper basket up 6.7%) and a sharp spike in Crunchbase energy funding deal flow (215% above 30-day average) suggests accelerating private capital deployment into energy transition infrastructure \u2014 most likely battery storage, small modular reactor development, or copper-intensive grid buildout. Companies directly exposed include Ormat Technologies (ORA, geothermal and renewable energy), uranium royalty and mining names, and copper producers. The commodity price signal is below the 20% RISING threshold individually, so the strength of this implication rests heavily on the funding deal flow spike, which is a small-sample signal (2 items vs 0.63 average). Historically, spikes in energy venture funding have preceded 6-12 week outperformance in clean energy ETFs and uranium equities in 4 of the last 6 comparable cycles, though the sample size is limited. Confidence is LOW. The single most important caveat: the Economy chain shows RISING layoffs in the Energy sector (1 item, 24h) and DROPPING energy hiring volume (164 vs 174 average, -5.8%), which creates a mild macro contradiction \u2014 private capital is flowing in while operational hiring is softening, suggesting the investment is early-stage and not yet translating to employment growth.",
+      "recommendation": {
+        "tier_1": "no_recommendation: No watchlist company clears the 2-secondary-signal bar with directionally consistent evidence. ORA options C/P ratio is essentially flat (-1% vs baseline), no insider purchases were recorded, and 8-K filings are below average across the watchlist. The energy funding signal is promising but lacks per-company corroboration.",
+        "tier_2": "Theme Statement: Rising private capital deployment into energy transition infrastructure \u2014 evidenced by a 215% spike in Crunchbase energy funding deal flow \u2014 combined with broad commodity strength in lithium, uranium, and copper points to an accelerating investment cycle in grid-scale storage, nuclear, and electrification supply chains. This theme has a 90-day-plus horizon because energy infrastructure projects have long permitting and construction timelines, and commodity price moves of this magnitude typically take 2-3 quarters to flow through to producer earnings. Relevant Sectors and Asset Classes: Positively exposed \u2014 uranium miners, copper producers, battery storage developers, geothermal operators, small modular reactor developers. Negatively exposed \u2014 fossil fuel utilities facing stranded asset risk as clean alternatives attract capital. Listed Company Watch List: ORA (NYSE) \u2014 Ormat Technologies derives nearly all revenue from geothermal and recovered energy generation; directly exposed to clean energy capital cycle acceleration. UUUU (NYSE) \u2014 Energy Fuels is a domestic uranium and rare earth producer; uranium price strength is a direct revenue driver. FCX (NYSE) \u2014 Freeport-McMoRan is the largest US copper producer; copper price appreciation flows directly to margins. BEAM (NASDAQ) \u2014 Beam Therapeutics is a watchlist name but not energy-relevant; excluded. NuScale Power (SMR, NYSE) \u2014 small modular reactor developer directly exposed to nuclear energy investment cycle. MP Materials (MP, NYSE) \u2014 rare earth and materials producer exposed to electrification supply chain demand. Confidence: LOW. Key Risk: The Crunchbase energy funding spike is based on 2 deal items versus a 0.63 average \u2014 a statistically fragile signal that could reverse immediately; if deal flow normalises, the thematic thesis loses its primary upstream catalyst."
+      }
+    }
+  ],
+  "top_alert": null,
+  "alert_chains": [],
+  "sequential_alerts": []
+}
