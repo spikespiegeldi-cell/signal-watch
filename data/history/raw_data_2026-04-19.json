@@ -1,0 +1,167 @@
+{
+  "date": "2026-04-19",
+  "chains": {
+    "tech": {
+      "arxiv": {
+        "today": 4972.7,
+        "avg30": 4942.5833,
+        "label": "arXiv AI papers (24h)"
+      },
+      "hacker_news": {
+        "today": 17436,
+        "avg30": 16126.0667,
+        "label": "HN stories matching keywords"
+      },
+      "patents": {
+        "today": 0.0,
+        "avg30": 0.0,
+        "label": "USPTO patent filings (24h)"
+      },
+      "crunchbase": {
+        "today": 0,
+        "avg30": 1.2333,
+        "label": "Tech funding news items (24h)"
+      }
+    },
+    "economy": {
+      "yield_curve": {
+        "today": 0.55,
+        "avg30": 0.5107,
+        "label": "FRED T10Y2Y yield spread"
+      },
+      "box_production": {
+        "today": null,
+        "avg30": null,
+        "label": "FRED cardboard box production index"
+      },
+      "layoffs": {
+        "today": 24.0,
+        "avg30": 48.0,
+        "label": "Sector layoff news items (24h Google News)"
+      },
+      "sector_hiring": {
+        "today": 1269.0,
+        "avg30": 40397.3704,
+        "label": "Sector job posting volume (Adzuna)"
+      }
+    },
+    "biotech": {
+      "nih_reporter": {
+        "today": 12710,
+        "avg30": 10828.2,
+        "label": "NIH grants this FY"
+      },
+      "biorxiv": {
+        "today": null,
+        "avg30": 209.07,
+        "label": "bioRxiv preprints (24h)"
+      },
+      "clinical_trials": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "ClinicalTrials.gov active trials (30d)"
+      },
+      "sec_s1_biotech": {
+        "today": 0,
+        "avg30": 1.5333,
+        "label": "SEC S-1 biotech filings (24h)"
+      }
+    },
+    "social": {
+      "bluesky": {
+        "today": null,
+        "avg30": null,
+        "label": "Bluesky posts matching keywords (24h)"
+      },
+      "google_trends": {
+        "today": 29.75,
+        "avg30": 23.6833,
+        "label": "Google Trends avg interest (7d)"
+      },
+      "kickstarter": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "New Kickstarter projects (24h)"
+      },
+      "amazon_movers": {
+        "today": 30,
+        "avg30": 30.0,
+        "label": "Amazon Movers & Shakers item count"
+      }
+    },
+    "geopolitics": {
+      "commodities": {
+        "today": 60,
+        "avg30": 719.4128,
+        "label": "Avg price: lithium, copper, wheat, crude-oil, gold"
+      },
+      "marine_traffic": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "Shipping congestion news (7d)"
+      },
+      "eu_consultations": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "EU open consultations"
+      },
+      "congress_hearings": {
+        "today": 0,
+        "avg30": 0.0,
+        "label": "Congressional hearings (7d)"
+      }
+    },
+    "corporate": {
+      "sec_form4": {
+        "today": 0,
+        "avg30": 2.2667,
+        "label": "SEC Form 4 insider filings (24h)"
+      },
+      "jobs_per_company": {
+        "today": 14.0,
+        "avg30": 13.9333,
+        "label": "Per-company job postings (keyword-matched)"
+      },
+      "patents": {
+        "today": 0.0,
+        "avg30": 0.0,
+        "label": "Patent filings by watchlist cos (24h)"
+      },
+      "sec_8k": {
+        "today": 0,
+        "avg30": 5.7,
+        "label": "SEC 8-K filings by watchlist (24h)"
+      }
+    },
+    "energy": {
+      "arpa_e": {
+        "today": null,
+        "avg30": null,
+        "label": "ARPA-E press releases (30d)"
+      },
+      "arxiv_physics": {
+        "today": 3317.7,
+        "avg30": 3303.9167,
+        "label": "arXiv physics.app-ph preprints (24h)"
+      },
+      "energy_commodities": {
+        "today": 3250.3233,
+        "avg30": 3054.7795,
+        "label": "Avg price: lithium, uranium, copper"
+      },
+      "crunchbase_energy": {
+        "today": 0,
+        "avg30": 0.6,
+        "label": "Energy funding news (24h)"
+      }
+    }
+  },
+  "secondary_signals": {
+    "short_interest": "NVDA: 1.2% float (avg 1.0%, +21%); GOOGL: 1.4% float (avg 1.4%, +0%); NVO: 0.6% float (avg 0.7%, -13%); LLY: 1.0% float (avg 0.9%, +9%); MRNA: 18.7% float (avg 20.2%, -8%); WRD: 4.9% float (avg 4.1%, +20%); ALTO: 2.1% float (avg 2.1%, +3%); ORA: 8.8% float (avg 7.8%, +13%); RELY: 3.8% float (avg 3.4%, +12%); TEM: 27.9% float (avg 19.7%, +42%); SPAI: 5.2% float (avg 4.9%, +7%); RXRX: 34.9% float (avg 34.9%, +0%); ZS: 7.8% float (avg 7.5%, +4%); PATH: 25.6% float (avg 25.4%, +1%); SDGR: 27.4% float (avg 27.8%, -2%); ARVN: 7.2% float (avg 7.6%, -5%); NTLA: 36.9% float (avg 37.3%, -1%); BEAM: 25.8% float (avg 23.7%, +9%); DNLI: 10.8% float (avg 10.1%, +7%)",
+    "options_cp_ratio": "NVDA: C/P 1.11 (avg 0.90, +23%); GOOGL: C/P 1.62 (avg 1.29, +26%); NVO: C/P 1.17 (avg 1.40, -16%); LLY: C/P 0.78 (avg 2.04, -62%); MRNA: C/P 1.25 (avg 1.61, -23%); WRD: C/P 3.98 (avg 5.59, -29%); ALTO: C/P 32.69 (avg 8.23, +297%); ORA: C/P 3.58 (avg 3.59, +0%); RELY: C/P 1.55 (avg 1.28, +21%); TEM: C/P 1.52 (avg 1.91, -20%); RXRX: C/P 14.88 (avg 7.10, +110%); ZS: C/P 1.37 (avg 1.04, +32%); PATH: C/P 0.76 (avg 2.06, -63%); SDGR: C/P 4.05 (avg 7.29, -44%); ARVN: C/P 6.36 (avg 4.88, +30%); NTLA: C/P 2.40 (avg 21.15, -89%); BEAM: C/P 4.15 (avg 2.04, +104%); DNLI: C/P 3.61 (avg 10.52, -66%) [skipped: SPAI no options listed]",
+    "form4_per_company": "NVDA: no insider transactions (7d); GOOGL: no insider transactions (7d); NVO: data unavailable; LLY: no insider transactions (7d); MRNA: no insider transactions (7d); WRD: no insider transactions (7d); ALTO: no insider transactions (7d); ORA: no insider transactions (7d); RELY: no insider purchases (7d); TEM: no insider transactions (7d); SPAI: no insider transactions (7d); RXRX: no insider transactions (7d); ZS: no insider transactions (7d); PATH: no insider transactions (7d); SDGR: no insider transactions (7d); ARVN: no insider transactions (7d); NTLA: no insider transactions (7d); BEAM: no insider transactions (7d); DNLI: no insider transactions (7d)",
+    "jobs_per_company": "Generate Biomedicines: 1 (avg30: 1.3)\nZscaler: 4 (avg30: 4.3)\nArvinas: 2 (avg30: 1.1)\nBeam Therapeutics: 1 (avg30: 1.9)\nRecursion Pharmaceuticals: 4 (avg30: 4.0)\nWeRide: 2 (avg30: 2.0)\nNVIDIA: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nGoogle: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nNovo Nordisk: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nEli Lilly: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nModerna: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nAlto Ingredients: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nOrmat Technologies: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nRemitly Global: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nTempus AI: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nSafe Pro Group: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nUiPath: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nFirefly Neuroscience: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nSchrodinger: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nIntellia Therapeutics: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)\nDenali Therapeutics: [skipped: 400 Client Error: Bad Request for url: https://api.adzuna.com/v1/api/jobs/us/sea] (avg30: N/A)",
+    "layoffs_summary": "Layoff news (24h): Biotech: 0 items; Healthcare: 0 items; Pharma: 0 items; Tech: 6 items; AI: 16 items; Energy: 0 items; Finance: 2 items",
+    "sector_hiring_summary": "Tech/AI: 127 postings (avg30: 132, -3.8%); Biotech/Pharma: 11 postings (avg30: 9, +20.6%); Healthcare: 966 postings (avg30: 1,185, -18.5%); Energy: 165 postings (avg30: 174, -5.1%)"
+  }
+}
