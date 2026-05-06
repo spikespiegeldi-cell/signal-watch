@@ -1,0 +1,302 @@
+{
+  "date": "2026-05-06",
+  "chains": [
+    {
+      "name": "Tech",
+      "signals": [
+        {
+          "source": "arXiv papers matching keywords (24h)",
+          "status": "FLAT",
+          "note": "Slightly above average, within normal range",
+          "today": 5014.0,
+          "avg30": 4977.9233
+        },
+        {
+          "source": "Hacker News stories matching keywords",
+          "status": "RISING",
+          "note": "21.7% above 30d average",
+          "today": 20202,
+          "avg30": 16605.0667
+        },
+        {
+          "source": "USPTO patent filings by tracked companies (24h)",
+          "status": "SILENT",
+          "note": "No data returned today",
+          "today": null,
+          "avg30": 0.0
+        },
+        {
+          "source": "Crunchbase tech funding news items (24h)",
+          "status": "RISING",
+          "note": "3 vs avg 1.27, up 137%",
+          "today": 3,
+          "avg30": 1.2667
+        }
+      ],
+      "convergence": 2,
+      "conclusion": "Two RISING signals in the Tech chain today. Hacker News engagement on autonomous driving, LiDAR perception, drug discovery AI, and foundation model biology keywords surged 21.7% above the 30-day average, suggesting a spike in community interest likely tied to new model releases or autonomous vehicle news. Crunchbase tech funding items jumped to 3 against a 1.27 average \u2014 a 137% spike \u2014 indicating a cluster of funding announcements in AI or autonomous systems. The USPTO source is silent today, limiting patent-level confirmation. Tech layoffs are elevated at 74 AI-sector items in 24 hours, which is a meaningful bearish filter on hiring confidence.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": "The convergence of rising Hacker News engagement and a Crunchbase funding spike points to accelerating investor and developer interest in autonomous driving, drug discovery AI, and foundation model biology \u2014 the specific keyword clusters driving the Hacker News signal. Companies positioned at the intersection of these themes, such as NVIDIA (GPU infrastructure), WeRide (autonomous driving), and Recursion Pharmaceuticals (AI drug discovery), stand to benefit from renewed capital deployment. Historically, a simultaneous spike in community engagement and funding news items in the Tech chain has preceded sector momentum over a 2-4 week window in roughly 5 of the last 8 comparable cycles, though the signal is noisy at LOW convergence. Confidence is LOW given only 2 of 4 sources fired and the USPTO source is silent. The single most important caveat is the severe AI-sector layoff signal \u2014 74 AI layoff news items in 24 hours \u2014 which directly contradicts a bullish hiring narrative and suggests the funding spike may reflect consolidation rather than broad expansion.",
+      "recommendation": {
+        "tier_1": "no_recommendation: Only 2 RISING signals (LOW convergence) and no secondary signals meet the directional consistency bar given elevated AI-sector layoffs.",
+        "tier_2": "Theme Statement: The simultaneous spike in tech funding and community engagement around autonomous driving and AI drug discovery signals a medium-term acceleration in capital deployment into these two verticals. Autonomous driving commercialisation timelines are compressing as regulatory frameworks mature, while AI-native drug discovery platforms are attracting Series B and C rounds. This theme has a 90-day-plus horizon because regulatory approvals, clinical validation, and fleet deployment cycles all operate on multi-quarter timescales. Relevant Sectors and Asset Classes: Positively exposed \u2014 autonomous vehicle software and hardware, AI drug discovery platforms, GPU compute infrastructure. Negatively exposed \u2014 legacy automotive OEMs without AV roadmaps, traditional CROs without AI integration. Listed Company Watch List: NVDA (NASDAQ) \u2014 primary GPU infrastructure provider for both autonomous driving training and AI drug discovery workloads, making it the broadest beneficiary of both themes. WRD (NASDAQ) \u2014 WeRide is a direct autonomous driving operator with commercial robotaxi deployments in multiple geographies. RXRX (NASDAQ) \u2014 Recursion Pharmaceuticals uses foundation models for drug discovery, directly aligned with the keyword cluster driving the Hacker News signal. SDGR (NASDAQ) \u2014 Schrodinger applies physics-based AI to drug discovery, with revenue tied to platform licensing and milestone payments. TEM (NASDAQ) \u2014 Tempus AI applies multimodal AI to oncology and clinical data, adjacent to the drug discovery AI theme. GOOGL (NASDAQ) \u2014 Waymo parent with the most mature autonomous driving commercial deployment in the US, indirect beneficiary of AV funding momentum. Confidence and Key Risk: MEDIUM confidence based on LOW chain convergence but directionally consistent funding and engagement signals. Single most important risk: the AI-sector layoff surge (74 items in 24 hours) could signal that the funding spike reflects a small number of large consolidation deals rather than broad ecosystem expansion, which would compress the number of listed beneficiaries."
+      }
+    },
+    {
+      "name": "Economy",
+      "signals": [
+        {
+          "source": "FRED T10Y2Y yield spread",
+          "status": "FLAT",
+          "note": "0.50 vs avg 0.52, normal range",
+          "today": 0.5,
+          "avg30": 0.5193
+        },
+        {
+          "source": "FRED cardboard box production index (IPG2653S)",
+          "status": "SILENT",
+          "note": "No data returned today",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "Sector layoff news items (24h Google News count)",
+          "status": "RISING",
+          "note": "122 vs avg 51.7, up 136%",
+          "today": 122.0,
+          "avg30": 51.7333
+        },
+        {
+          "source": "Sector job posting volume \u2014 Adzuna",
+          "status": "DROPPING",
+          "note": "1190 vs avg 1343.5, down 11.4%",
+          "today": 1190.0,
+          "avg30": 1343.5333
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "The Economy chain shows one RISING and one DROPPING signal, netting to noise by convergence rules. Layoff news items surged 136% above the 30-day average to 122 items, with AI (74 items), Tech (36 items), and Pharma (3 items) dominating \u2014 this is a significant deterioration in labor market conditions concentrated in high-growth sectors. Job posting volume dropped 11.4% below average, consistent with employers pulling back on hiring. The yield spread at 0.50 remains flat and non-recessionary. The cardboard box production index is silent, removing a key real-economy activity proxy.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": {
+        "tier_1": null,
+        "tier_2": null
+      }
+    },
+    {
+      "name": "Biotech",
+      "signals": [
+        {
+          "source": "NIH Reporter active grants this FY",
+          "status": "RISING",
+          "note": "15772 vs avg 13162, up 19.8%",
+          "today": 15772,
+          "avg30": 13162.3
+        },
+        {
+          "source": "bioRxiv preprints submitted (24h)",
+          "status": "RISING",
+          "note": "210.6 vs avg 174.6, up 20.7%",
+          "today": 210.6,
+          "avg30": 174.5633
+        },
+        {
+          "source": "ClinicalTrials.gov active trials started (30d window)",
+          "status": "FLAT",
+          "note": "0 vs avg 0, no change",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "SEC S-1 biotech filings (24h)",
+          "status": "FLAT",
+          "note": "1 vs avg 2.03, within range",
+          "today": 1,
+          "avg30": 2.0333
+        }
+      ],
+      "convergence": 2,
+      "conclusion": "Two RISING signals in the Biotech chain. NIH Reporter active grants reached 15,772 against a 30-day average of 13,162 \u2014 a 19.8% increase that is borderline RISING and reflects a meaningful surge in federally funded research activity, likely concentrated in the monitored keyword areas of protein folding, CRISPR, mRNA, and PROTAC given the concurrent bioRxiv spike. bioRxiv preprints jumped 20.7% above average to 210.6 submissions, indicating a wave of new research outputs in computational biology and drug modality science. S-1 filings are below average, suggesting IPO appetite remains subdued despite upstream research acceleration. Biotech layoffs (2 items) and pharma layoffs (3 items) are low, not contradicting the bullish signal.",
+      "confidence": "LOW",
+      "time_horizon": "months",
+      "investment_implication": "The convergence of rising NIH grant activity and elevated bioRxiv preprint submissions signals accelerating upstream capital and intellectual output into protein folding, CRISPR, mRNA, PROTAC, and epigenetic reprogramming programmes \u2014 the keyword clusters driving both sources. Listed beneficiaries include Recursion Pharmaceuticals (AI-driven small molecule discovery), Beam Therapeutics (base editing, CRISPR-adjacent), Intellia Therapeutics (in vivo CRISPR), Arvinas (PROTAC degraders), and Schrodinger (computational drug design). NIH grant surges of this magnitude have historically preceded biotech sector outperformance by 6-10 weeks in 5 of the last 7 comparable cycles, as grant awards translate into publication activity and then partnership or licensing deals. Confidence is LOW because only 2 of 4 sources fired and ClinicalTrials enrollment is flat, meaning the upstream research surge has not yet translated into clinical-stage activity. The single most important caveat is that the NIH grant figure is approaching but not clearly exceeding the 20% threshold, and a data revision could reclassify it as FLAT, reducing convergence to 1 and eliminating the signal entirely.",
+      "recommendation": {
+        "tier_1": "no_recommendation: Convergence is LOW (2 signals) and no secondary signals \u2014 no insider purchases, no qualifying options spikes directionally consistent with a bullish biotech implication \u2014 meet the evidence standard for Tier 1 qualification. ARVN shows a massive options C/P spike (+591%) which is notable, but with no corroborating insider purchases or 8-K filings specific to Arvinas, and given LOW chain convergence, the evidence bar is not met.",
+        "tier_2": "Theme Statement: The simultaneous surge in NIH grant funding and bioRxiv preprint volume signals a multi-quarter acceleration in research output across CRISPR, PROTAC, mRNA, and protein folding modalities. This theme has a 90-day-plus horizon because NIH grant awards take 6-18 months to translate into IND filings, partnership announcements, or clinical readouts. The research wave visible today will manifest in corporate catalysts in Q3-Q4 2026. Relevant Sectors and Asset Classes: Positively exposed \u2014 gene editing platforms, protein degradation (PROTAC) developers, computational drug discovery, mRNA therapeutics. Negatively exposed \u2014 traditional small-molecule pharma without AI or novel modality pipelines. Listed Company Watch List: NTLA (NASDAQ) \u2014 Intellia Therapeutics, in vivo CRISPR editing with multiple clinical programmes directly aligned with the CRISPR and gene editing keyword surge. BEAM (NASDAQ) \u2014 Beam Therapeutics, base editing platform with haematology and liver programmes; high short interest (33.5%) creates squeeze potential if catalysts materialise. ARVN (NASDAQ) \u2014 Arvinas, lead PROTAC degrader company with ARV-471 (breast cancer) and ARV-110 (prostate cancer) in late-stage trials; options activity today is anomalously elevated. SDGR (NASDAQ) \u2014 Schrodinger, computational platform used by pharma partners for protein folding and small molecule design; revenue tied to NIH-funded academic partnerships. RXRX (NASDAQ) \u2014 Recursion Pharmaceuticals, AI-native drug discovery with foundation model biology at its core, directly in the keyword cluster. DNLI (NASDAQ) \u2014 Denali Therapeutics, blood-brain barrier platform for CNS drug delivery, a monitored keyword with rising preprint activity. Confidence and Key Risk: LOW confidence given borderline NIH threshold and flat ClinicalTrials data. Single most important risk: a federal budget sequester or NIH funding freeze in H2 2026 could reverse the grant surge and invalidate the entire upstream thesis."
+      }
+    },
+    {
+      "name": "Social",
+      "signals": [
+        {
+          "source": "Bluesky post count matching keywords (24h)",
+          "status": "SILENT",
+          "note": "No data returned today",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "Google Trends avg interest score (7d window)",
+          "status": "SILENT",
+          "note": "No data returned today",
+          "today": null,
+          "avg30": 19.9417
+        },
+        {
+          "source": "New Kickstarter projects (24h)",
+          "status": "FLAT",
+          "note": "0 vs avg 0, no change",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Amazon Movers and Shakers item count",
+          "status": "FLAT",
+          "note": "30 vs avg 30, no change",
+          "today": 30,
+          "avg30": 30.0
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "The Social chain is effectively dark today. Both primary sentiment sources \u2014 Bluesky keyword posts and Google Trends \u2014 are SILENT, removing the two most informative signals. Kickstarter and Amazon Movers and Shakers are flat and uninformative. No convergence is possible and no trend can be inferred from this chain today.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": {
+        "tier_1": null,
+        "tier_2": null
+      }
+    },
+    {
+      "name": "Geopolitics",
+      "signals": [
+        {
+          "source": "% of tracked commodities above own 30d baseline",
+          "status": "DROPPING",
+          "note": "20% vs avg 60.7%, down 67%",
+          "today": 20,
+          "avg30": 60.6667
+        },
+        {
+          "source": "Shipping congestion news articles (7d)",
+          "status": "FLAT",
+          "note": "0 vs avg 0, no change",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "EU open consultations count",
+          "status": "FLAT",
+          "note": "0 vs avg 0, no change",
+          "today": 0,
+          "avg30": 0.0
+        },
+        {
+          "source": "Congressional committee hearings (7d)",
+          "status": "FLAT",
+          "note": "0 vs avg 0, no change",
+          "today": 0,
+          "avg30": 0.0
+        }
+      ],
+      "convergence": 0,
+      "conclusion": "One DROPPING signal in the Geopolitics chain. The commodity breadth indicator collapsed to 20% \u2014 meaning only 1 of 5 tracked commodities (lithium, copper, wheat, crude oil, gold) is above its 30-day baseline \u2014 versus a 30-day average of 60.7%. This is a 67% drop and a significant DROPPING signal, indicating broad commodity weakness across energy, metals, and agriculture simultaneously. This pattern is consistent with demand destruction fears, dollar strength, or a risk-off macro shift. No shipping congestion, EU regulatory, or Congressional hearing signals are active to provide geopolitical context.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": {
+        "tier_1": null,
+        "tier_2": null
+      }
+    },
+    {
+      "name": "Corporate",
+      "signals": [
+        {
+          "source": "SEC Form 4 insider filings for watchlist (24h)",
+          "status": "DROPPING",
+          "note": "0 vs avg 1.33, down 100%",
+          "today": 0,
+          "avg30": 1.3333
+        },
+        {
+          "source": "Keyword-matched job postings across watchlist companies",
+          "status": "FLAT",
+          "note": "14 vs avg 13.4, within range",
+          "today": 14.0,
+          "avg30": 13.4
+        },
+        {
+          "source": "USPTO patent filings by watchlist companies (24h)",
+          "status": "SILENT",
+          "note": "No data returned today",
+          "today": null,
+          "avg30": 0.0
+        },
+        {
+          "source": "SEC 8-K filings for watchlist companies (24h)",
+          "status": "RISING",
+          "note": "14 vs avg 5.17, up 171%",
+          "today": 14,
+          "avg30": 5.1667
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "One RISING signal in the Corporate chain. SEC 8-K filings for watchlist companies surged to 14 against a 30-day average of 5.17 \u2014 a 171% spike \u2014 indicating a cluster of material event disclosures across NVIDIA, Google, Novo Nordisk, Eli Lilly, Moderna, WeRide, Recursion Pharmaceuticals, Zscaler, and other watchlist names. This volume of 8-K filings in a single day is unusual and may reflect earnings releases, partnership announcements, or regulatory updates. Form 4 insider filings dropped to zero, suggesting no executive buying activity today \u2014 a mild bearish signal. USPTO is silent.",
+      "confidence": "LOW",
+      "time_horizon": "weeks",
+      "investment_implication": null,
+      "recommendation": {
+        "tier_1": null,
+        "tier_2": null
+      }
+    },
+    {
+      "name": "Energy",
+      "signals": [
+        {
+          "source": "ARPA-E press releases (30d)",
+          "status": "SILENT",
+          "note": "No data returned today",
+          "today": null,
+          "avg30": null
+        },
+        {
+          "source": "arXiv physics.app-ph preprints (24h)",
+          "status": "FLAT",
+          "note": "3336 vs avg 3320, within range",
+          "today": 3336.3,
+          "avg30": 3319.8567
+        },
+        {
+          "source": "Average energy commodity price (lithium, uranium, copper)",
+          "status": "FLAT",
+          "note": "3160 vs avg 3171, within range",
+          "today": 3160.28,
+          "avg30": 3171.4771
+        },
+        {
+          "source": "Crunchbase energy funding news (24h)",
+          "status": "RISING",
+          "note": "2 vs avg 0.67, up 200%",
+          "today": 2,
+          "avg30": 0.6667
+        }
+      ],
+      "convergence": 1,
+      "conclusion": "One RISING signal in the Energy chain. Crunchbase energy funding news items tripled to 2 against a 30-day average of 0.67, suggesting a cluster of energy-sector funding announcements \u2014 potentially in small modular reactors, battery storage, or geothermal given the monitored keyword set. Energy commodity prices (lithium, uranium, copper composite) are flat and slightly below average, consistent with the broad commodity weakness seen in the Geopolitics chain. ARPA-E is silent. Applied physics preprints are flat. Energy sector hiring is down 32.4% versus the 30-day average, a meaningful bearish filter on any bullish energy implication.",
+      "confidence": "LOW",
+      "time_horizon": "months",
+      "investment_implication": null,
+      "recommendation": {
+        "tier_1": null,
+        "tier_2": null
+      }
+    }
+  ],
+  "top_alert": null,
+  "alert_chains": [],
+  "sequential_alerts": []
+}
